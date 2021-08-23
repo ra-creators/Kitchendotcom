@@ -1,0 +1,183 @@
+/* Price_Estimator */
+
+#steps {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.8),rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.8)) , url(/assets/img/mkitchen2.png);
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    filter: drop-shadow(0px 30px 0px yellow);
+}
+#button {
+    border: white 4px solid;
+    border-radius: 12px;
+    padding: 10px 40px 10px 40px;
+}
+#button:hover {
+    box-shadow: 2px 2px white;
+}
+
+/* Teal Bg, White Container */
+
+#main-theme {
+    background-image: url('/assets/img/bg-image.jpg');
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    filter: drop-shadow(0px 60px 0px white);
+}
+
+#layout {
+    background-image: url('/assets/img/bg-image.jpg');
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    filter: drop-shadow(0px 60px 0px white);
+}
+#select {
+    background-color: white;
+    color: teal;
+    border-radius: 25px;
+} 
+
+.white-container {
+    background-color: white;
+    color: black;
+    border-radius: 25px;
+}
+
+/* Inputs */
+
+
+input[type='radio']:after {
+width: 30px;
+height: 30px;
+border-radius: 15px;
+top: -5px;
+left: -5px;
+position: relative;
+background-color: white;
+content: '';
+display: inline-block;
+visibility: visible;
+border: 2px solid teal;
+}
+
+input[type='radio']:checked:after {
+    width: 30px;
+    height: 30px;
+    border-radius: 15px;
+    top: -5px;
+    left: -5px;
+    position: relative;
+    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" fill="teal" class="bi bi-check-lg" viewBox="0 0 16 16"><path d="M13.485 1.431a1.473 1.473 0 0 1 2.104 2.062l-7.84 9.801a1.473 1.473 0 0 1-2.12.04L.431 8.138a1.473 1.473 0 0 1 2.084-2.083l4.111 4.112 6.82-8.69a.486.486 0 0 1 .04-.045z"/></svg>');
+    background-repeat: no-repeat;
+    content: '';
+    display: inline-block;
+    visibility: visible;
+}
+
+
+input[type='checkbox']:after {
+    width: 20px;
+    height: 20px;
+    top: -2px;
+    left: -3px;
+    border-radius: 15px;
+    position: relative;
+    background-color: white;
+    content: '';
+    display: inline-block;
+    visibility: visible;
+    border: 2px solid teal;
+    }
+    
+input[type='checkbox']:checked:after {
+    position: relative;
+    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" fill="teal" class="bi bi-check-lg" viewBox="0 0 16 16"><path d="M13.485 1.431a1.473 1.473 0 0 1 2.104 2.062l-7.84 9.801a1.473 1.473 0 0 1-2.12.04L.431 8.138a1.473 1.473 0 0 1 2.084-2.083l4.111 4.112 6.82-8.69a.486.486 0 0 1 .04-.045z"/></svg>');
+    background-repeat: no-repeat;
+    content: '';
+    display: inline-block;
+    visibility: visible;
+    }
+
+/* Select_Layout */
+
+#layout .card {
+    border: 2px solid teal;
+}
+
+#layout .card:hover {
+    border: 5px solid teal;
+    box-shadow: 5px 5px 10px teal;
+}
+
+#layout .card:hover .card-footer {
+    border-top: 2px solid black;
+}
+#layout .card-footer {
+    border-top: 2px solid grey;
+}
+
+/* Customer_Details */
+
+#details {
+    background-image: linear-gradient(white, white);
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    filter: drop-shadow(0px 30px 0px teal);
+}
+#kitchen1 {
+    box-shadow: -20px 20px teal;
+}
+
+/* Select Shapes(L, U, Straight, Parallel)  */
+
+#shapes {
+    background-color: lemonchiffon;
+    color: teal;
+    border-radius: 25px;
+}
+
+/* Checbox over an image */
+
+.relative {
+    position: relative;
+  }
+  
+.topright {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+  }
+
+
+/* Colors */
+.text-teal {
+    color: teal;
+}
+
+.text-teal:hover {
+    color: teal;
+}
+
+
+.bg-teal {
+    background-color: teal;
+}
+
+.bg-lightgrey {
+    background-color: lightgrey;
+}
+
+.border-teal {
+    border: 3px solid teal;
+}
+
+.btn-opacity {
+    background-image: linear-gradient(rgba(255, 255, 255, 0.2),teal, rgba(255, 255, 255, 0.2));
+}

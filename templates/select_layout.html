@@ -1,0 +1,104 @@
+{% load static %}
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <!-- Bootstrap Icons-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    <!-- Svg.css -->
+    <link rel="stylesheet" href="{%static "/assets/css/svg.css"%}">
+    <link rel="stylesheet" href="{%static "/assets/css/style.css"%}">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Select Kitchen Layout</title>
+</head>
+<body>
+<div id="layout" class="h-100 img-fluid">
+    <div class="p-5">
+
+        <div class="ps-md-5">
+            <h1 class="text-light">Kitchen Price Estimate Steps</h1>
+        </div>  
+
+        <div class="container-lg text-center offset-lg-1 col-lg-10 col-sm-12 px-3 my-3" id="select">
+            <h2 class="">Select the layout of your Kitchen</h2>
+            <div class="row g-3 m-5" id="layout-select">
+                <div class="col-lg-3 col-md-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="form-check float-end">
+                                <input class="form-check-input" type="radio" name="kitchenLayout" id="kitchenLayout1">
+                            </div>
+                            <img src="static/assets/img/L-Shape-Kitchen-Layout.png" class="card-img img-fluid" alt="L-Shaped Kitchen">
+                          <div class="card-footer text-dark">
+                            <i class="bi bi-dash-lg"></i>
+                            <p class="card-title fw-bold">L-Shaped Design</h5>
+                          </div>
+                        </div>
+                      </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="form-check float-end">
+                                <input class="form-check-input" type="radio" name="kitchenLayout" id="kitchenLayout2">
+                            </div>
+                            <img src="static/assets/img/U-Shape-Kitchen-Layout.png" class="card-img img-fluid" alt="U-Shaped Kitchen">
+                          <div class="card-footer text-dark">
+                            <i class="bi bi-dash-lg"></i>
+                            <p class="card-title fw-bold">U-Shaped Design</h5>
+                          </div>
+                        </div>
+                      </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="form-check float-end">
+                                <input class="form-check-input" type="radio" name="kitchenLayout" id="kitchenLayout3">
+                            </div>
+                            <img src="static/assets/img/Straight-Kitchen-Layout.png" class="card-img img-fluid" alt="Straight Shaped Kitchen">
+                          <div class="card-footer text-dark">
+                            <i class="bi bi-dash-lg"></i>
+                            <p class="card-title fw-bold">Straight Shaped Design</h5>
+                          </div>
+                        </div>
+                      </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="form-check float-end">
+                                <input class="form-check-input" type="radio" name="kitchenLayout" id="kitchenLayout4">
+                            </div>
+                            <img src="static/assets/img/Parallel-Kitchen-Layout.png" height="400" class="card-img img-fluid" alt="Parallel Shaped Kitchen">
+                          <div class="card-footer text-dark">
+                            <i class="bi bi-dash-lg"></i>
+                            <p class="card-title fw-bold">Parallel Shaped Design</h5>
+                          </div>
+                        </div>
+                      </div>
+                </div>
+
+            </div>
+            
+            <div class="row m-3 p-3 text-center g-3">
+                <div class="col-md-3 text-md-start col-sm-12">
+                    <a href="/" class="btn btn-lg bg-light text-teal border-teal px-5 py-2 rounded" role="button"><h4>Back</h4></a>   
+                </div>
+                <div class="offset-md-6 col-md-3 text-md-end col-sm-12">
+                    <a href="/customer_details" class="btn btn-lg bg-teal text-light px-5 py-2 rounded" role="button"><h4>Next</h4></a>   
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+<!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body>
+</html>
