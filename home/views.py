@@ -1,6 +1,6 @@
 from django.http.response import HttpResponse
 from django.shortcuts import render
-from home.models import c_details, calculation
+from home.models import c_details, calculation, kitchen_details
 
 # Create your views here.
 def kitchen_price_steps(request):
@@ -57,15 +57,31 @@ def ushape(request):
         cal1 = calculation(a_feet = a_feet, a_inch = a_inch, b_feet = b_feet, b_inch = b_inch, c_feet = c_feet, c_inch = c_inch)
         cal1.save()
 
+def select_loft_type(request):
+    if request.method == "POST":
+        loft1 = request.POST.get('loft') # this keyword depends on template
+        cal5 = calculation(loft = loft1)
+        cal5.save()
+    return render(request, "select_loft_type.html")
+
+def select_loft(request):
+    if request.method == "POST":
+        ans = request.POST.get('loft')
+        loft = kitchen_details(loft = ans)
+        loft.save()
+    return render(request, "select_loft_type")
+
 def select_package(request):  # fqname is not confirmed
     if request.method == "POST":    
         final_cal = calculation()
         a = int(final_cal.a_feet) + (float(final_cal.a_inch) / 12)
         b = int(final_cal.b_feet) + (float(final_cal.b_inch) / 12)
+        l = int(final_cal.loft)
         # if condition will be here for case of Ushape selection by user
         c = int(final_cal.c_feet) + (float(final_cal.c_inch) / 12)
-        essentials = (a+b) * 5 * 1500
-        premium = (a+b) * 5 * 1500
-        deluxe = (a+b) * 5 * 2500
+        # c will be ZERO for cases apart from Ushape
+        essentials = (a+b+c) * (3+l) * 1800
+        premium = (a+b+c) * (3+l) * 2100
+        deluxe = (a+b+c) * (3+l) * 2500
      
     return render(request, 'select_package.html', essentials, premium, deluxe) # 1.what for custom? 2.template name is not confirmed

@@ -13,3 +13,15 @@ class calculation(models.Model):
     b_inch : str
     c_feet : str
     c_inch : str
+    loft : str
+
+class kitchen_details(models.Model):
+    Shape : str
+    Size : dict
+    Material : str
+    Countertop : bool
+    Loft : bool
+    Finish : str
+    Accessories : str
+    Services : dict
+    Appliances : dict
