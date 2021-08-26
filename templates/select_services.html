@@ -1,11 +1,22 @@
-{% extends 'base.html' %}
-
-{% load static %}
-
-{% block title %} Select On-site Services {% endblock title %} 
-
-{% block body%}
-
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <!-- Bootstrap Icons-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    <!-- Svg.css -->
+    <link rel="stylesheet" href="/assets/css/svg.css">
+    <link rel="stylesheet" href="/assets/css/styles.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Select On-site Services</title>
+    <style>
+    </style>
+</head>
+<body>
 <div id="layout" class="h-100 img-thumbnail">
     <div class="p-3">
 
@@ -19,7 +30,7 @@
             <div class="row g-3 p-3" id="layout-select">
                 <div class="col-lg-3 col-md-6 col-sm-12">
                     <div class="card">
-                            <img src="{%static "assets/img/Painting.png" %}" class="card-img img-thumbnail relative" alt="Painting">
+                            <img src="/assets/img/Painting.png" class="card-img img-thumbnail relative" alt="Painting">
                             <div class="form-check topright">
                                 <input class="form-check-input" type="checkbox" name="service" id="service1">
                             </div>
@@ -30,7 +41,7 @@
                 </div>
                 <div class="offset-lg-1 col-lg-3 col-md-6 col-sm-12">
                     <div class="card">
-                            <img src="{%static "assets/img/Plumbing.png" %}" class="card-img img-thumbnail relative" alt="Plumbing">
+                            <img src="/assets/img/Plumbing.png" class="card-img img-thumbnail relative" alt="Plumbing">
                             <div class="form-check topright">
                                 <input class="form-check-input" type="checkbox" name="service" id="service2">
                             </div>
@@ -41,7 +52,7 @@
                 </div>
                 <div class="offset-lg-1 col-lg-3 col-md-6 col-sm-12">
                     <div class="card">
-                            <img src="{%static "assets/img/Electrical.png" %}" class="card-img img-thumbnail relative" alt="Electrical">
+                            <img src="/assets/img/Electrical.png" class="card-img img-thumbnail relative" alt="Electrical">
                             <div class="form-check topright">
                                 <input class="form-check-input" type="checkbox" name="service" id="service3">
                             </div>
@@ -53,7 +64,7 @@
                 <div class="offset-lg-2 col-lg-3 col-md-6 col-sm-12">
                     <div class="card">
                             
-                            <img src="{%static "assets/img/Platform.png" %}" class="card-img img-thumbnail relative" alt="Platform">
+                            <img src="/assets/img/Platform.png" class="card-img img-thumbnail relative" alt="Platform">
                             <div class="form-check topright">
                                 <input class="form-check-input" type="checkbox" name="service" id="service4">
                             </div>
@@ -66,7 +77,7 @@
                 <div class="offset-lg-1 col-lg-3 offset-md-3 col-md-6 col-sm-12">
                     <div class="card">
                         
-                        <img src="{%static "assets/img/Dado.png" %}" class="card-img img-thumbnail relative" alt="Dado">
+                        <img src="/assets/img/Dado.png" class="card-img img-thumbnail relative" alt="Dado">
                         <div class="form-check topright">
                             <input class="form-check-input"  type="checkbox" name="service" id="service5">
                         </div>
@@ -89,5 +100,7 @@
         </div>
     </div>
 </div>
-
-{% endblock body%}
+<!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body>
+</html>

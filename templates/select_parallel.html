@@ -1,24 +1,35 @@
-{% extends 'base.html' %}
-
-{% load static %}
-
-{% block title %} Select Parallel Kitchen Layout {% endblock title %} 
-
-{% block body%}
-
-<div id="layout" class="h-100 img-fluid">
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <!-- Bootstrap Icons-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    <!-- Svg.css -->
+    <link rel="stylesheet" href="/assets/css/svg.css">
+    <link rel="stylesheet" href="/assets/css/styles.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Select Parallel Kitchen Layout</title>
+    <style>
+    </style>
+</head>
+<body>
+<div id="main-theme" class="h-100 img-fluid">
     <div class="p-3">
 
-        <div class="ps-5">
+        <div class="ps-md-5">
             <h1 class="text-light">Kitchen Price Estimate Steps</h1>
         </div>  
 
-        <div class="container-lg text-center px-3 my-3 py-3 offset-lg-1 col-lg-10 col-sm-12" id="select">
+        <div class="container-lg text-center px-3 my-3 py-4 offset-lg-1 col-lg-10 col-sm-12" id="select">
             <div class="p-3"><h2>Now refer to the chosen layout here and add the measurement</h2></div>
             <div class="row p-2 justify-content-center">
 
                 <div class="container-lg offset-lg-2 col-lg-9 col-sm-12 p-5" id="shapes">
-                    <img src="{%static "assets/img/L-shape.png" %}" class="img-fluid h-100 bg-transparent" alt="L-Shaped Kitchen">
+                    <img src="/assets/img/Parallel.jpg" class="img-fluid h-100 bg-transparent" alt="Parallel Kitchen">
                 </div>
             </div>
             
@@ -119,5 +130,7 @@
 
     </div>
 </div>
-
-{% endblock body%}
+<!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body>
+</html>

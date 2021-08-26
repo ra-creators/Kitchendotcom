@@ -29,7 +29,7 @@ def customer_details(request):
 
 # logic required for rendering selected layout's page
 
-def l_shape(request):
+def lshape(request):
     if request.method == "POST":
         a_feet = request.POST.get('a_feet')
         a_inch = request.POST.get('a_inch')

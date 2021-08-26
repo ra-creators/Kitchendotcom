@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <!-- Bootstrap Icons-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    <!-- Svg.css -->
+    <link rel="stylesheet" href="/assets/css/svg.css">
+    <link rel="stylesheet" href="/assets/css/styles.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Kitchen Summary</title>
+
+</head>
+<body>
+    <div id="details" class="h-100 img-fluid">
+        <div class="p-3">
+            
+            <div class="row justify-content-center">
+                        <div class="col-lg-8 col-sm-12">
+                            <img src="/assets/img/Summary.png" class="img-fluid h-100" alt="Login Image">
+                        </div>
+                        
+            </div>
+
+            <div class="row justify-content-center text-center p-3 g-3">
+               <h1 class="text-teal">You’re done and so are we!</h1>
+               <h4 class="fw-normal">Your Estimated modular kitchen cost</h4>
+               <form action="">
+                   <div class="btn border-teal dashed px-5 p-3 bg-paleturquoise text-start"><h6 class="text-dark"> Starts from: ₹ </h6></div>
+               </form>
+            </div>
+
+            <div class="row justify-content-center p-3">
+                <div class="accordion accordion-flush" id="accordionExample">
+                    <div class="accordion-item offset-lg-3 col-lg-6 col-sm-12 align-self-center">
+                        <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <div class="row">
+                                    <div class="col-6 text-start">
+                                        <h6>Shape</h6>
+                                    </div>
+                                    <div class="col-6 text-end">
+                                        <p>Straight</p>
+                                    </div>
+                                    <div class="col-6 text-start">
+                                        <h6>Size</h6>
+                                    </div>
+                                    <div class="col-6 text-end">
+                                        <p>10 ft x 0 ft x 0 ft</p>
+                                    </div>
+                                    <div class="col-6 text-start">
+                                        <h6>Type</h6>
+                                    </div>
+                                    <div class="col-6 text-end">
+                                        <p>Essentials</p>
+                                    </div>
+                                </div>
+                            </div>
+                          </div>
+                    <div class="accordion-header offset-md-4 col-md-4 col-sm-12" id="headingOne">
+                        <a class="btn accordion-button bg-transparent nav-link text-teal" onclick="acc();" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                          <p id="summary">Show Summary</p>
+                        </a>
+                    </div>
+                    </div>
+                </div>
+            </div>
+                    <div class="row p-3 m-3 justify-content-center text-center">
+                        <div class="col-lg-2 text-md-center col-md-12">
+                                <a href="#" class="btn btn-lg bg-light text-teal border-teal px-5 py-2 rounded" role="button"><h4>Back</h4></a>   
+                        </div>
+                    </div>
+                        
+            </div>
+    </div>
+<!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+<!-- For Hide/Show Summary -->
+<script src="/assets/js/summary.js"></script>
+
+</body>
+</html>

@@ -1,12 +1,22 @@
-{% extends 'base.html' %}
-
-{% load static %}
-
-{% block title %} Build your own package {% endblock title %}  
-
-{% block body %}
-
-
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <!-- Bootstrap Icons-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    <!-- Svg.css -->
+    <link rel="stylesheet" href="/assets/css/svg.css">
+    <link rel="stylesheet" href="/assets/css/styles.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Build your own package </title>
+    <style>
+    </style>
+</head>
+<body>
 <div id="main-theme" class="h-100 img-fluid">
     <div class="p-3">
 
@@ -14,67 +24,46 @@
             <h1 class="text-light">Kitchen Price Estimate Steps</h1>
         </div>  
 
-        <div class="row py-3 g-1 justify-content-center">
-
-            <div class="col-lg-5">
-                <div class="p-3"><h2 class="text-light">Now refer to the chosen layout here and add the measurement</h2></div>
+        <div class="container-lg text-center px-3 my-3 py-3 justify-content-center col-lg-9 col-sm-12" id="select">
+            
+            <div class="row p-3 gy-5 justify-content-center">
+                <div class="col-lg-9 px-5 col-sm-12"><h1>Now refer to the chosen layout here and add the measurement</h1></div>
+                <div class="col-lg-5 border-teal col-md-8 col-sm-12 white-container p-3 text-start">
+                    <div class="form-check float-start">
+                        <input class="form-check-input" type="radio" name="ownpackage" id="hdhmr">
+                    </div>
+                    <h3 class="ps-5">HDHMR <a href="/build_package_hdhmr.html" class="text-decoration-none"><span class="float-end"><i class="bi bi-info-circle"></i></span></a> </h3>
+                    <p class="ps-5 lead fs-5">Has high strength and density, and a solid screw-holding capacity.</p>
+                </div>
+    
+                <div class="offset-lg-1 col-lg-5 border-teal col-md-8 col-sm-12 white-container p-3 text-start">
+                    <div class="form-check float-start">
+                        <input class="form-check-input" type="radio" name="ownpackage" id="mrply">
+                    </div>
+                    <h3 class="ps-5">MR Plywood <a href="/build_package_mrply.html" class="text-decoration-none"><span class="float-end"><i class="bi bi-info-circle"></i></span></a></h3>
+                    <p class="ps-5 lead fs-5">Is moisture and termite resistant and does not wear off easily.</p>
+                </div>
+    
+                <div class="col-lg-5 border-teal col-md-8 col-sm-12 white-container p-3 text-start">
+                    <div class="form-check float-start">
+                        <input class="form-check-input" type="radio" name="ownpackage" id="bwrply">
+                    </div>
+                    <h3 class="ps-5">BWR Plywood <a href="/build_package_bwrply.html" class="text-decoration-none"><span class="float-end"><i class="bi bi-info-circle"></i></span></a></h3>
+                    <p class="ps-5 lead fs-5">Is water resistant and works well in areas prone to water exposure.</p>
+                </div>
+    
+                <div class="offset-lg-1 col-lg-5 border-teal col-md-8 col-sm-12 white-container p-3 text-start">
+                    <div class="form-check float-start">
+                        <input class="form-check-input" type="radio" name="ownpackage" id="bwpply">
+                    </div>
+                    <h3 class="ps-5">BWP Plywood <a href="/build_package_bwpply.html" class="text-decoration-none"><span class="float-end"><i class="bi bi-info-circle"></i></span></a></h3>
+                    <p class="ps-5 lead fs-5">Is waterproof and withstands prolonged exposure to water and moisture.</p>
+                </div>
+               
             </div>
-           
         </div>
-
-        <div class="row py-3 g-1 justify-content-center">
-
-            <div class="col-lg-3 col-md-8 col-sm-12 white-container p-3">
-                <div class="form-check float-start">
-                    <input class="form-check-input" type="radio" name="buildpkg" id="hdfhmr">
-                </div>
-                <h6 class="px-5">HDFHMR</h6>
-                <p class="px-5 small">Has high strength and density, and a solid screw-holding capacity.</p>
-            </div>
-
-            <div class="offset-lg-1 col-lg-3 col-md-8 col-sm-12 white-container p-3">
-                <div class="form-check float-start">
-                    <input class="form-check-input" type="radio" name="buildpkg" id="mrply">
-                </div>
-                <h6 class="px-5">MR Plywood</h6>
-                <p class="px-5 small">Is moisture and termite resistant and does not wear off easily.</p>
-            </div>
-           
-        </div>
-
-        <div class="row py-3 g-1 justify-content-center">
-
-            <div class="col-lg-3 col-md-8 col-sm-12 white-container p-3">
-                <div class="form-check float-start">
-                    <input class="form-check-input" type="radio" name="buildpkg" id="mdf">
-                </div>
-                <h6 class="px-5">MDF</h6>
-                <p class="px-5 small">Is seamless, free of knots, and has high resistance of wear and tear.</p>
-            </div>
-
-            <div class="offset-lg-1 col-lg-3 col-md-8 col-sm-12 white-container p-3">
-                <div class="form-check float-start">
-                    <input class="form-check-input" type="radio" name="buildpkg" id="bwrply">
-                </div>
-                <h6 class="px-5">BWR Plywood</h6>
-                <p class="px-5 small">Is water resistant and works well in areas prone to water exposure.</p>
-            </div>
-           
-        </div>
-
-        <div class="row py-3 g-1 justify-content-center">
-
-            <div class="col-lg-3 col-md-8 col-sm-12 white-container p-3">
-                <div class="form-check float-start">
-                    <input class="form-check-input" type="radio" name="buildpkg" id="bwpply">
-                </div>
-                <h6 class="px-5">BWP Plywood</h6>
-                <p class="px-5 small">Is waterproof and withstands prolonged exposure to water moisture</p>
-            </div>
-           
-        </div>
-
-        <div class="row container-lg pb-5 justify-content-center text-center g-3">
+        
+        <div class="row container-lg py-4 justify-content-center text-center g-3">
             <div class="offset-lg-2 col-lg-2 text-md-center col-md-12">
                 <a href="#" class="btn btn-lg bg-light text-teal border-teal px-5 py-2 rounded" role="button"><h4>Back</h4></a>   
             </div>
@@ -85,5 +74,7 @@
 
     </div>
 </div>
-
-{% endblock body %}
+<!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body>
+</html>
