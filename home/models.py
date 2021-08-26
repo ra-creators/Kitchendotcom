@@ -7,21 +7,22 @@ class c_details(models.Model):
     email = models.CharField(max_length=122)
 
 class calculation(models.Model):
-    a_feet : str
-    a_inch : str
-    b_feet : str
-    b_inch : str
-    c_feet : str
-    c_inch : str
-    loft : str
+    a_feet = models.CharField(max_length=3, default="0")
+    a_inch = models.CharField(max_length=3, default="0")
+    b_feet = models.CharField(max_length=3, default="0")
+    b_inch = models.CharField(max_length=3, default="0")
+    c_feet = models.CharField(max_length=3, default="0")
+    c_inch = models.CharField(max_length=3, default="0")
+    loft = models.CharField(max_length=12, default="0")
 
 class kitchen_details(models.Model):
-    Shape : str
+    layout = models.CharField(max_length=30, default="0")
+    Shape = models.CharField(max_length=12, default="0")
     Size : dict
-    Material : str
-    Countertop : bool
-    Loft : bool
-    Finish : str
-    Accessories : str
+    Material = models.CharField(max_length=12, default="0")
+    Countertop = models.CharField(max_length=12, default="0")
+    Loft = models.CharField(max_length=12, default="0")
+    Finish = models.CharField(max_length=12, default="0")
+    Accessories = models.CharField(max_length=12, default="0")
     Services : dict
     Appliances : dict

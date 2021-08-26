@@ -21,5 +21,9 @@ urlpatterns = [
     path("select_layout", views.select_layout, name='select_layout'),
     path("customer_details", views.customer_details, name='customer_details'),
     path("select_lshape", views.l_shape, name='select_lshape'), # add straight, ushape, parallel here
-    path("select_package", views.select_package, name='select_package')
+    path("select_package", views.select_package, name='select_package'),
+    path("select_countertop", views.select_countertop, name='select_countertop'),
+    path("select_finish", views.select_finish, name='select_finish'),
+    path("select_accessories", views.select_accessories, name='select_accessories'),
+    path("select_appliances", views.select_appliances, name='select_appliances')
 ]
