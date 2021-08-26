@@ -1,22 +1,11 @@
-<!DOCTYPE html>
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- CSS only -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <!-- Bootstrap Icons-->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
-    <!-- Svg.css -->
-    <link rel="stylesheet" href="/assets/css/svg.css">
-    <link rel="stylesheet" href="/assets/css/styles.css">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <title>Select Appliances</title>
-    <style>
-    </style>
-</head>
-<body>
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %} Select Appliances {% endblock title %}  
+
+{% block body %}
+
 <div id="layout" class="h-100 img-thumbnail">
     <div class="p-3">
 
@@ -30,7 +19,7 @@
             <div class="row g-3 p-3 pe-lg-5 ps-lg-0 justify-content-center" id="layout-select">
                 <div class="offset-lg-1 col-lg-3 col-md-6 col-sm-12">
                     <div class="card">
-                            <img src="/assets/img/Hob.png" class="card-img img-thumbnail relative" alt="Hob">
+                            <img src="{%static "/assets/img/Hob.png" %}" class="card-img img-thumbnail relative" alt="Hob">
                             <div class="form-check topright">
                                 <input class="form-check-input" type="checkbox" name="appliance" id="appliance1">
                             </div>
@@ -41,7 +30,7 @@
                 </div>
                 <div class="col-lg-3 col-md-6 col-sm-12">
                     <div class="card">
-                            <img src="/assets/img/Chimney.png" class="card-img img-thumbnail relative" alt="Chimney">
+                            <img src="{%static "/assets/img/Chimney.png" %}" class="card-img img-thumbnail relative" alt="Chimney">
                             <div class="form-check topright">
                                 <input class="form-check-input" type="checkbox" name="appliance" id="appliance2">
                             </div>
@@ -52,7 +41,7 @@
                 </div>
                 <div class="col-lg-3 col-md-6 col-sm-12">
                     <div class="card">
-                            <img src="/assets/img/Faucets.png" class="card-img img-thumbnail relative" alt="Faucets & Sink">
+                            <img src="{%static "/assets/img/Faucets.png" %}" class="card-img img-thumbnail relative" alt="Faucets & Sink">
                             <div class="form-check topright">
                                 <input class="form-check-input" type="checkbox" name="appliance" id="appliance3">
                             </div>
@@ -64,7 +53,7 @@
                 <div class="offset-lg-1 col-lg-3 col-md-6 col-sm-12">
                     <div class="card">
                             
-                            <img src="/assets/img/BI_Microwave.png" class="card-img img-thumbnail relative" alt="Built In Microwave">
+                            <img src="{%static "/assets/img/BI_Microwave.png" %}" class="card-img img-thumbnail relative" alt="Built In Microwave">
                             <div class="form-check topright">
                                 <input class="form-check-input" type="checkbox" name="appliance" id="appliance4">
                             </div>
@@ -77,7 +66,7 @@
                 <div class="col-lg-3 col-md-6 col-sm-12">
                     <div class="card">
                         
-                        <img src="/assets/img/BI_Oven.png" class="card-img img-thumbnail relative" alt="Built In Oven">
+                        <img src="{%static "/assets/img/BI_Oven.png" %}" class="card-img img-thumbnail relative" alt="Built In Oven">
                         <div class="form-check topright">
                             <input class="form-check-input"  type="checkbox" name="appliance" id="appliance5">
                         </div>
@@ -90,7 +79,7 @@
                 <div class="col-lg-3 col-md-6 col-sm-12">
                     <div class="card">
                         
-                        <img src="/assets/img/Refrigerator.png" class="card-img img-thumbnail relative" alt="Refrigerator">
+                        <img src="{%static "/assets/img/Refrigerator.png" %}" class="card-img img-thumbnail relative" alt="Refrigerator">
                         <div class="form-check topright">
                             <input class="form-check-input"  type="checkbox" name="appliance" id="appliance6">
                         </div>
@@ -113,7 +102,4 @@
 
    </div>
 </div>
-<!-- JavaScript Bundle with Popper -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-</body>
-</html>
+{% endblock body %}

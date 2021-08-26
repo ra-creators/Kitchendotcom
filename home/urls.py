@@ -23,5 +23,5 @@ urlpatterns = [
     path("select_lshape", views.lshape, name='select_lshape'), 
     path("select_ushape", views.ushape, name='select_ushape'), 
     path("select_straight", views.straight, name='select_straight'), 
-    path("select_parallel", views.parallel, name='select_parallel'), 
+    path("select_parallel", views.parallel, name='select_parallel') 
 ]
