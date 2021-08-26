@@ -1,5 +1,6 @@
 from django.http.response import HttpResponse
-from django.shortcuts import render
+from django.http import HttpResponseRedirect  
+from django.shortcuts import redirect, render  
 from home.models import c_details, calculation, kitchen_details
 
 # Create your views here.
@@ -11,10 +12,12 @@ def select_layout(request):
         layout = request.POST.get('kitchenLayout')
         select_layout = kitchen_details(layout = layout)
         select_layout.save()
-        return render(request, 'customer_details.html')
+        return redirect('/customer_details')    
     return render(request, 'select_layout.html')
 
 def customer_details(request):
+    #selected_layout = kitchen_details()
+    #final_layout = selected_layout.layout
     # store the choise and details of customer here
     if request.method == "POST":
         name = request.POST.get('name')
@@ -22,8 +25,6 @@ def customer_details(request):
         phone = request.POST.get('phone')
         c_detail = c_details(name=name, email=email, phone=phone)  
         c_detail.save()
-    selected_layout = kitchen_details()
-    final_layout = selected_layout.layout
     return render(request, 'customer_details.html')
 
 # logic required for rendering selected layout's page
