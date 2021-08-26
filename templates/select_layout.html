@@ -6,16 +6,19 @@
 
 {% block body %}
 
-<div id="layout" class="h-100 img-fluid">
+<div id="layout" class="h-100 img-fluid" style="background-image: url('{% static "/assets/img/bg-image.jpg" %}');">
     <div class="p-5">
 
         <div class="ps-md-5">
             <h1 class="text-light">Kitchen Price Estimate Steps</h1>
         </div>  
 
+        <form method="POST">
+
+          {% csrf_token %}
+
         <div class="container-lg text-center offset-lg-1 col-lg-10 col-sm-12 px-3 my-3" id="select">
             <h2 class="">Select the layout of your Kitchen</h2>
-            <form method="POST">
             <div class="row g-3 m-5" id="layout-select">
                 <div class="col-lg-3 col-md-6">
                     <div class="card">
@@ -35,7 +38,7 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="form-check float-end">
-                                <input class="form-check-input" type="radio" name="kitchenLayout" id="kitchenLayout2">
+                                <input class="form-check-input" type="radio" name="kitchenLayout" id="kitchenLayout2" value="U">
                             </div>
                             <img src="{%static "assets/img/U-Shape-Kitchen-Layout.png" %}" class="card-img img-fluid" alt="U-Shaped Kitchen">
                           <div class="card-footer text-dark">
@@ -49,7 +52,7 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="form-check float-end">
-                                <input class="form-check-input" type="radio" name="kitchenLayout" id="kitchenLayout3">
+                                <input class="form-check-input" type="radio" name="kitchenLayout" id="kitchenLayout3" value="S">
                             </div>
                             <img src="{%static "assets/img/Straight-Kitchen-Layout.png" %}" class="card-img img-fluid" alt="Straight Shaped Kitchen">
                           <div class="card-footer text-dark">
@@ -63,7 +66,7 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="form-check float-end">
-                                <input class="form-check-input" type="radio" name="kitchenLayout" id="kitchenLayout4">
+                                <input class="form-check-input" type="radio" name="kitchenLayout" id="kitchenLayout4"value="P">
                             </div>
                             <img src="{%static "assets/img/Parallel-Kitchen-Layout.png" %}" height="400" class="card-img img-fluid" alt="Parallel Shaped Kitchen">
                           <div class="card-footer text-dark">
@@ -81,7 +84,7 @@
                     <a href="/" class="btn btn-lg bg-light text-teal border-teal px-5 py-2 rounded" role="button"><h4>Back</h4></a>   
                 </div>
                 <div class="offset-md-6 col-md-3 text-md-end col-sm-12">
-                    <a href="/customer_details" class="btn btn-lg bg-teal text-light px-5 py-2 rounded" role="button" type="submit" ><h4>Next</h4></a>   
+                    <button class="btn btn-lg bg-teal text-light px-5 py-2 rounded" role="button" type="submit" ><h4>Next</h4></a>   
                 </div>
             </div>
             </form>

@@ -11,6 +11,7 @@ def select_layout(request):
         layout = request.POST.get('kitchenLayout')
         select_layout = kitchen_details(layout = layout)
         select_layout.save()
+        return render(request, 'customer_details.html')
     return render(request, 'select_layout.html')
 
 def customer_details(request):
@@ -23,7 +24,7 @@ def customer_details(request):
         c_detail.save()
     selected_layout = kitchen_details()
     final_layout = selected_layout.layout
-    return render(request, 'customer_details.html', final_layout)
+    return render(request, 'customer_details.html')
 
 # logic required for rendering selected layout's page
 
