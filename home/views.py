@@ -43,9 +43,9 @@ def parallel(request):
     if request.method == "POST":
         a_feet = request.POST.get('a_feet')
         a_inch = request.POST.get('a_inch')
-        # b_feet = request.POST.get('b_feet')
-        # b_inch = request.POST.get('b_inch')
-        cal2 = calculation(a_feet = a_feet, a_inch = a_inch, b_feet = a_feet, b_inch = a_inch, c_feet = 0, c_inch = 0)
+        b_feet = request.POST.get('b_feet')
+        b_inch = request.POST.get('b_inch')
+        cal2 = calculation(a_feet = a_feet, a_inch = a_inch, b_feet = b_feet, b_inch = b_inch, c_feet = 0, c_inch = 0)
         cal2.save()
     return render(request, 'select_parallel.html')
 
@@ -53,9 +53,7 @@ def straight(request):
     if request.method == "POST":
         a_feet = request.POST.get('a_feet')
         a_inch = request.POST.get('a_inch')
-        b_feet = request.POST.get('b_feet')
-        b_inch = request.POST.get('b_inch')
-        cal3 = calculation(a_feet = a_feet, a_inch = a_inch, b_feet = b_feet, b_inch = b_inch, c_feet = 0, c_inch = 0)
+        cal3 = calculation(a_feet = a_feet, a_inch = a_inch, b_feet = 0, b_inch = 0, c_feet = 0, c_inch = 0)
         cal3.save()
     return render(request, 'select_straight.html')
 
