@@ -20,7 +20,7 @@
 /* Teal Bg, White Container */
 
 #main-theme {
-    /* background-image: url('/assets/img/bg-image.jpg'); */
+    background-image: url('/assets/img/bg-image.jpg');
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
@@ -170,9 +170,38 @@ input[type='checkbox']:checked:after {
     background-color: teal;
 }
 
+.bg-paleturquoise {
+    background-color: paleturquoise;
+}
+
 .bg-lightgrey {
     background-color: lightgrey;
 }
+
+.opacity-0{
+    opacity: 0;
+}
+
+.opacity-1{
+    opacity: 0.2;
+}
+
+.opacity-2{
+    opacity: 0.4;
+}
+
+.opacity-3{
+    opacity: 0.6;
+}
+
+.opacity-4{
+    opacity: 0.8;
+}
+
+.opacity-5{
+    opacity: 1;
+}
+
 
 .border-teal {
     border: 3px solid teal;
@@ -180,4 +209,8 @@ input[type='checkbox']:checked:after {
 
 .btn-opacity {
     background-image: linear-gradient(rgba(255, 255, 255, 0.2),teal, rgba(255, 255, 255, 0.2));
+}
+
+.dashed {
+    border: dashed;
 }
