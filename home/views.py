@@ -10,6 +10,7 @@ def kitchen_price_steps(request):
 def select_layout(request):
     if request.method == "POST":
         layout = request.POST.get('kitchenLayout')
+        print(layout)
         select_layout = kitchen_details(layout = layout)
         select_layout.save()
         return redirect('/customer_details')    
@@ -17,21 +18,22 @@ def select_layout(request):
 
 def customer_details(request):
     # store the choise and details of customer here
-    selected_layout = kitchen_details()
-    final_layout = selected_layout.layout
+    selected_layout = kitchen_details.objects.all()[0]
+    
+    print(type(selected_layout))
     if request.method == "POST":
         name = request.POST.get('name')
         email = request.POST.get('email')
         phone = request.POST.get('phone')
         c_detail = c_details(name=name, email=email, phone=phone)  
         c_detail.save()
-        if(final_layout == "L"):
+        if selected_layout == "L":
             return redirect('/select_lshape')
-        elif(final_layout == "S"):
-            return redirect('select_straight')
-        elif(final_layout == "U"):
+        elif(selected_layout == 'S'):
+            return redirect('/select_straight')
+        elif(selected_layout == 'U'):
             return redirect('/select_ushape')
-        elif(final_layout == "P"):
+        elif(selected_layout == 'P'):
             return redirect('/select_parallel')
     return render(request, 'customer_details.html')
 
