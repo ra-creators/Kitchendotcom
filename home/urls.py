@@ -24,5 +24,6 @@ urlpatterns = [
     path("select_ushape", views.ushape, name='select_ushape'), 
     path("select_straight", views.straight, name='select_straight'), 
     path("select_parallel", views.parallel, name='select_parallel'),
-    path("select_countertop", views.select_countertop, name='select_countertop') 
+    path("select_countertop", views.select_countertop, name='select_countertop'), 
+    path("select_loft", views.select_loft_type, name='select_loft') 
 ]
