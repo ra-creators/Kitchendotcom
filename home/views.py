@@ -25,6 +25,16 @@ def customer_details(request):
         phone = request.POST.get('phone')
         c_detail = c_details(name=name, email=email, phone=phone)  
         c_detail.save()
+    # selected_layout = kitchen_details()
+    # layout1 = selected_layout.layout
+    # if():
+    #     context = {
+    #         "L" : "/select_lshape",
+    #         "S" : "/select_straight",
+    #         "U" : "/select_ushape",
+    #         "P" : "/select_parallel"
+    #     }
+    #     return redirect()
     return render(request, 'customer_details.html')
 
 # logic required for rendering selected layout's page
