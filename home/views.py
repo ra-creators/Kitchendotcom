@@ -16,25 +16,23 @@ def select_layout(request):
     return render(request, 'select_layout.html')
 
 def customer_details(request):
-    #selected_layout = kitchen_details()
-    #final_layout = selected_layout.layout
     # store the choise and details of customer here
+    selected_layout = kitchen_details()
+    final_layout = selected_layout.layout
     if request.method == "POST":
         name = request.POST.get('name')
         email = request.POST.get('email')
         phone = request.POST.get('phone')
         c_detail = c_details(name=name, email=email, phone=phone)  
         c_detail.save()
-    # selected_layout = kitchen_details()
-    # layout1 = selected_layout.layout
-    # if():
-    #     context = {
-    #         "L" : "/select_lshape",
-    #         "S" : "/select_straight",
-    #         "U" : "/select_ushape",
-    #         "P" : "/select_parallel"
-    #     }
-    #     return redirect()
+        if(final_layout == "L"):
+            return redirect('/select_lshape')
+        elif(final_layout == "S"):
+            return redirect('select_straight')
+        elif(final_layout == "U"):
+            return redirect('/select_ushape')
+        elif(final_layout == "P"):
+            return redirect('/select_parallel')
     return render(request, 'customer_details.html')
 
 # logic required for rendering selected layout's page
