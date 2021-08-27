@@ -99,7 +99,9 @@ def select_package(request):  # fqname is not confirmed
 
 def select_loft_type(request):
     if request.method == "POST":
-        loft1 = request.POST.get('loft') # this keyword depends on template
+        loft1 = request.POST.get('loft_type') # this keyword depends on template
+        if loft1 == "custom":
+            loft1 = request.POST.get('loft')
         cal5 = calculation(loft = loft1)
         cal5.save()
     return render(request, "select_loft_type.html")

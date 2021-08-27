@@ -3,7 +3,7 @@ from home.models import c_details,kitchen_details,calculation
 
 # Displaying Models
 class Kd_Admin(admin.ModelAdmin):
-    list_display = ["layout", "Shape"]
+    list_display = ["layout", "Shape", "Countertop", "Loft"]
 
 
 class Cd_Admin(admin.ModelAdmin):
