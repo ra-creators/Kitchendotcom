@@ -25,5 +25,11 @@ urlpatterns = [
     path("select_straight", views.straight, name='select_straight'), 
     path("select_parallel", views.parallel, name='select_parallel'),
     path("select_countertop", views.select_countertop, name='select_countertop'), 
-    path("select_loft", views.select_loft_type, name='select_loft') 
+    path("select_loft_type", views.select_loft_type, name='select_loft_type'), # might be changed
+    path("select_package", views.select_package, name='select_package'),
+    path("select_package/premium", views.select_package_premium, name='select_package_premium'),
+    path("select_package/luxe", views.select_package_luxe, name='select_package_luxe'),
+    path("select_package/essentials", views.select_package_essentials, name='select_package_essentials')
+
+    
 ]

@@ -18,22 +18,26 @@ def select_layout(request):
 
 def customer_details(request):
     # store the choise and details of customer here
-    selected_layout = kitchen_details.objects.all()[0]
+    context = kitchen_details.objects.all().last()
+    # selected_layout = sizeof(context)
     
-    print(type(selected_layout))
+    # print(context)
+    # print('Pratham')
+
+    # print(type(selected_layout))
     if request.method == "POST":
         name = request.POST.get('name')
         email = request.POST.get('email')
         phone = request.POST.get('phone')
         c_detail = c_details(name=name, email=email, phone=phone)  
         c_detail.save()
-        if selected_layout == "L":
+        if context.layout == "L":
             return redirect('/select_lshape')
-        elif(selected_layout == 'S'):
+        elif(context.layout == 'S'):
             return redirect('/select_straight')
-        elif(selected_layout == 'U'):
+        elif(context.layout == 'U'):
             return redirect('/select_ushape')
-        elif(selected_layout == 'P'):
+        elif(context.layout == 'P'):
             return redirect('/select_parallel')
     return render(request, 'customer_details.html')
 
@@ -47,6 +51,7 @@ def lshape(request):
         b_inch = request.POST.get('b_inch')
         cal1 = calculation(a_feet = a_feet, a_inch = a_inch, b_feet = b_feet, b_inch = b_inch, c_feet = 0, c_inch = 0)
         cal1.save()
+        return redirect('/select_loft_type')
     return render(request, 'select_lshape.html')
 
 def parallel(request):
@@ -57,6 +62,7 @@ def parallel(request):
         b_inch = request.POST.get('b_inch')
         cal2 = calculation(a_feet = a_feet, a_inch = a_inch, b_feet = b_feet, b_inch = b_inch, c_feet = 0, c_inch = 0)
         cal2.save()
+        return redirect('/select_loft_type')
     return render(request, 'select_parallel.html')
 
 def straight(request):
@@ -65,6 +71,7 @@ def straight(request):
         a_inch = request.POST.get('a_inch')
         cal3 = calculation(a_feet = a_feet, a_inch = a_inch, b_feet = 0, b_inch = 0, c_feet = 0, c_inch = 0)
         cal3.save()
+        return redirect('/select_loft_type')
     return render(request, 'select_straight.html')
 
 def ushape(request):
@@ -77,25 +84,15 @@ def ushape(request):
         c_inch = request.POST.get('c_inch')
         cal1 = calculation(a_feet = a_feet, a_inch = a_inch, b_feet = b_feet, b_inch = b_inch, c_feet = c_feet, c_inch = c_inch)
         cal1.save()
+        return redirect('/select_loft_type')
     return render(request, 'select_ushape.html')
 
-def select_package(request):  # fqname is not confirmed
-    
-    final_cal = calculation()
-    a = int(final_cal.a_feet) + (float(final_cal.a_inch) / 12)
-    b = int(final_cal.b_feet) + (float(final_cal.b_inch) / 12)
-    l = int(final_cal.loft)
-    # if condition will be here for case of Ushape selection by user
-    c = int(final_cal.c_feet) + (float(final_cal.c_inch) / 12)
-    # c will be ZERO for cases apart from Ushape
-    essentials = (a+b+c) * (3+l) * 1800
-    premium = (a+b+c) * (3+l) * 2100
-    deluxe = (a+b+c) * (3+l) * 2500
-    if request.method == "POST":    
-        package = request.POST.get('package') # "package" <- this name might be different
-    # custom calculation remaining
-
-    return render(request, 'select_package.html', essentials, premium, deluxe) # 1.what for custom? 2.template name is not confirmed
+# def select_loft(request):
+#     if request.method == "POST":
+#         ans = request.POST.get('loft')
+#         loft = kitchen_details(loft = ans)
+#         loft.save()
+#     return render(request, "select_loft_type")
 
 def select_loft_type(request):
     if request.method == "POST":
@@ -104,14 +101,42 @@ def select_loft_type(request):
             loft1 = request.POST.get('loft')
         cal5 = calculation(loft = loft1)
         cal5.save()
+        return redirect('/select_package')
     return render(request, "select_loft_type.html")
 
-def select_loft(request):
-    if request.method == "POST":
-        ans = request.POST.get('loft')
-        loft = kitchen_details(loft = ans)
-        loft.save()
-    return render(request, "select_loft_type")
+def select_package(request):  # fqname is not confirmed
+    
+    final_cal = calculation.objects.all().last()
+    a = int(final_cal.a_feet) + (float(final_cal.a_inch) / 12)
+    b = int(final_cal.b_feet) + (float(final_cal.b_inch) / 12)
+    l = int(final_cal.loft)
+    # if condition will be here for case of Ushape selection by user
+    c = int(final_cal.c_feet) + (float(final_cal.c_inch) / 12)
+    # c will be ZERO for cases apart from Ushape
+    print(a)
+    print(b)
+    print(c)
+    print(l)
+    context = {
+    "essentials" : (a+b+c) * (3+l) * 1800,
+    "premium" : (a+b+c) * (3+l) * 2100,
+    "deluxe" : (a+b+c) * (3+l) * 2500
+    }
+    
+    if request.method == "POST":    
+        package = request.POST.get('package') # "package" <- this name might be different
+    # custom calculation remaining
+
+    return render(request, 'select_package.html', context) # 1.what for custom? 2.template name is not confirmed
+
+def select_package_essentials(request):
+    return render(request, 'select_package_essentials.html')
+
+def select_package_luxe(request):
+    return render(request, 'select_package_luxe.html')
+
+def select_package_premium(request):
+    return render(request, 'select_package_premium.html')
 
 def select_countertop(request):
     if request.method == "POST":

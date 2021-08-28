@@ -6,6 +6,9 @@ class c_details(models.Model):
     phone = models.CharField(max_length=12)
     email = models.CharField(max_length=122)
 
+    def __str__(self):
+        return self.name
+
 class calculation(models.Model):
     a_feet = models.CharField(max_length=3, default="0")
     a_inch = models.CharField(max_length=3, default="0")
@@ -14,6 +17,7 @@ class calculation(models.Model):
     c_feet = models.CharField(max_length=3, default="0")
     c_inch = models.CharField(max_length=3, default="0")
     loft = models.CharField(max_length=12, default="0")
+    
 
 class kitchen_details(models.Model):
     layout = models.CharField(max_length=30, default="0")
@@ -26,3 +30,8 @@ class kitchen_details(models.Model):
     Accessories = models.CharField(max_length=12, default="0")
     Services : dict
     Appliances : dict
+    customer = models.ForeignKey(c_details, blank=True, null=True, on_delete=models.CASCADE )
+    cal = models.ForeignKey(calculation, blank=True, null=True, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.layout
