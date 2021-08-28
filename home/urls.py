@@ -30,7 +30,11 @@ urlpatterns = [
     path("select_package/premium", views.select_package_premium, name='select_package_premium'),
     path("select_package/luxe", views.select_package_luxe, name='select_package_luxe'),
     path("select_package/essentials", views.select_package_essentials, name='select_package_essentials'),
-    path("select_package/buildpackage", views.select_package_buildpkg, name='select_package_buildpkg')
-
+    path("select_package/buildpackage", views.select_package_buildpkg, name='select_package_buildpkg'),
+    path("build_package", views.build_package, name='build_package'),
+    path("build_package/hdhmr", views.build_package_hdhmr, name='build_package_hdhmr'),
+    path("build_package/mrplywood", views.build_package_mrply, name='build_package_mrply'),
+    path("build_package/bwrplywood", views.build_package_bwrply, name='build_package_bwrply'),
+    path("build_package/bwpplywood", views.build_package_bwpply, name='build_package_bwpply'),
     
 ]

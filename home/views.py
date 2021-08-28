@@ -125,6 +125,7 @@ def select_package(request):  # fqname is not confirmed
     
     if request.method == "POST":    
         package = request.POST.get('package') # "package" <- this name might be different
+        print(package)
     # custom calculation remaining
 
     return render(request, 'select_package.html', context) # 1.what for custom? 2.template name is not confirmed
@@ -140,6 +141,25 @@ def select_package_premium(request):
 
 def select_package_buildpkg(request):
     return render(request, 'select_package_buildpkg.html')
+
+def build_package(request):
+    if request.method == "POST":    
+        material = request.POST.get('ownpackage')
+        print(material)
+    return render(request, 'build_package.html')    
+
+def build_package_hdhmr(request):
+    return render(request, 'build_package_hdhmr.html')
+
+def build_package_mrply(request):
+    return render(request, 'build_package_mrply.html')
+
+def build_package_bwrply(request):
+    return render(request, 'build_package_bwrply.html')
+
+def build_package_bwpply(request):
+    return render(request, 'build_package_bwpply.html')
+
 
 def select_countertop(request):
     if request.method == "POST":

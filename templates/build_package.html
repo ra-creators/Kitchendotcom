@@ -6,46 +6,50 @@
 
 {% block body %}
 
-<div id="main-theme" class="h-100 img-fluid">
+<div id="main-theme" class="h-100 img-fluid" style="background-image: url('{% static "/assets/img/bg-image.jpg" %}');>
     <div class="p-3">
 
         <div class="ps-md-5">
             <h1 class="text-light">Kitchen Price Estimate Steps</h1>
         </div>  
 
-        <div class="container-lg text-center px-3 my-3 py-3 justify-content-center col-lg-9 col-sm-12" id="select">
+        <form method="POST">
+
+            {% csrf_token %}
+
+        <div class="container-lg text-center px-3 my-3 py-4 justify-content-center col-lg-9 col-sm-12" id="select">
             
             <div class="row p-3 gy-5 justify-content-center">
                 <div class="col-lg-9 px-5 col-sm-12"><h1>Now refer to the chosen layout here and add the measurement</h1></div>
                 <div class="col-lg-5 border-teal col-md-8 col-sm-12 white-container p-3 text-start">
                     <div class="form-check float-start">
-                        <input class="form-check-input" type="radio" name="ownpackage" id="hdhmr">
+                        <input class="form-check-input" type="radio" name="ownpackage" id="hdhmr" value="hdhmr">
                     </div>
-                    <h3 class="ps-5">HDHMR <a href="/build_package_hdhmr.html" class="text-decoration-none"><span class="float-end"><i class="bi bi-info-circle"></i></span></a> </h3>
+                    <h3 class="ps-5">HDHMR <a href="/build_package/hdhmr" class="text-decoration-none"><span class="float-end"><i class="bi bi-info-circle"></i></span></a> </h3>
                     <p class="ps-5 lead fs-5">Has high strength and density, and a solid screw-holding capacity.</p>
                 </div>
     
                 <div class="offset-lg-1 col-lg-5 border-teal col-md-8 col-sm-12 white-container p-3 text-start">
                     <div class="form-check float-start">
-                        <input class="form-check-input" type="radio" name="ownpackage" id="mrply">
+                        <input class="form-check-input" type="radio" name="ownpackage" id="mrply" value="mrply">
                     </div>
-                    <h3 class="ps-5">MR Plywood <a href="/build_package_mrply.html" class="text-decoration-none"><span class="float-end"><i class="bi bi-info-circle"></i></span></a></h3>
+                    <h3 class="ps-5">MR Plywood <a href="/build_package/mrplywood" class="text-decoration-none"><span class="float-end"><i class="bi bi-info-circle"></i></span></a></h3>
                     <p class="ps-5 lead fs-5">Is moisture and termite resistant and does not wear off easily.</p>
                 </div>
     
                 <div class="col-lg-5 border-teal col-md-8 col-sm-12 white-container p-3 text-start">
                     <div class="form-check float-start">
-                        <input class="form-check-input" type="radio" name="ownpackage" id="bwrply">
+                        <input class="form-check-input" type="radio" name="ownpackage" id="bwrply" value="bwrply">
                     </div>
-                    <h3 class="ps-5">BWR Plywood <a href="/build_package_bwrply.html" class="text-decoration-none"><span class="float-end"><i class="bi bi-info-circle"></i></span></a></h3>
+                    <h3 class="ps-5">BWR Plywood <a href="/build_package/bwrplywood" class="text-decoration-none"><span class="float-end"><i class="bi bi-info-circle"></i></span></a></h3>
                     <p class="ps-5 lead fs-5">Is water resistant and works well in areas prone to water exposure.</p>
                 </div>
     
                 <div class="offset-lg-1 col-lg-5 border-teal col-md-8 col-sm-12 white-container p-3 text-start">
                     <div class="form-check float-start">
-                        <input class="form-check-input" type="radio" name="ownpackage" id="bwpply">
+                        <input class="form-check-input" type="radio" name="ownpackage" id="bwpply" value="bwpply">
                     </div>
-                    <h3 class="ps-5">BWP Plywood <a href="/build_package_bwpply.html" class="text-decoration-none"><span class="float-end"><i class="bi bi-info-circle"></i></span></a></h3>
+                    <h3 class="ps-5">BWP Plywood <a href="/build_package/bwpplywood" class="text-decoration-none"><span class="float-end"><i class="bi bi-info-circle"></i></span></a></h3>
                     <p class="ps-5 lead fs-5">Is waterproof and withstands prolonged exposure to water and moisture.</p>
                 </div>
                
@@ -57,9 +61,11 @@
                 <a href="#" class="btn btn-lg bg-light text-teal border-teal px-5 py-2 rounded" role="button"><h4>Back</h4></a>   
             </div>
             <div class="offset-lg-4 col-lg-2 text-md-center col-md-12">
-                <a href="#" class="btn btn-lg btn-opacity bg-teal text-light px-5 py-2 rounded" role="button"><h4>Next</h4></a>   
+                <button class="btn btn-lg btn-opacity bg-teal text-light px-5 py-2 rounded" type="submit" role="button"><h4>Next</h4></button>   
             </div>
         </div>
+
+    </form>
 
     </div>
 </div>
