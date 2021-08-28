@@ -6,7 +6,7 @@
 
 {% block body %}
 
-<div id="main-theme" class="h-100 img-fluid">
+<div id="main-theme" class="h-100 img-fluid" style="background-image: url('{% static "/assets/img/bg-image.jpg" %}');">
     <div class="p-3">
 
         <div class="ps-md-5">
@@ -45,7 +45,7 @@
                     <div class="form-check float-start">
                         <input class="form-check-input" type="radio" name="package" id="ownpackage">
                     </div>
-                    <h3 class="ps-5">Build your own package<a href="/select_package_buildpkg" class="text-decoration-none"><span class="float-end"><i class="bi bi-info-circle"></i></span></a> </h3>
+                    <h3 class="ps-5">Build your own package<a href="/select_package/buildpackage" class="text-decoration-none"><span class="float-end"><i class="bi bi-info-circle"></i></span></a> </h3>
                     <p class="ps-5 lead fs-5">Select materials, finishes, accessories and more of your choices from a range of collections for your kitchen.</p>
                 </div>
                

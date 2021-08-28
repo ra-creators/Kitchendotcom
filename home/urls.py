@@ -29,7 +29,8 @@ urlpatterns = [
     path("select_package", views.select_package, name='select_package'),
     path("select_package/premium", views.select_package_premium, name='select_package_premium'),
     path("select_package/luxe", views.select_package_luxe, name='select_package_luxe'),
-    path("select_package/essentials", views.select_package_essentials, name='select_package_essentials')
+    path("select_package/essentials", views.select_package_essentials, name='select_package_essentials'),
+    path("select_package/buildpackage", views.select_package_buildpkg, name='select_package_buildpkg')
 
     
 ]

@@ -138,6 +138,9 @@ def select_package_luxe(request):
 def select_package_premium(request):
     return render(request, 'select_package_premium.html')
 
+def select_package_buildpkg(request):
+    return render(request, 'select_package_buildpkg.html')
+
 def select_countertop(request):
     if request.method == "POST":
         c_top = request.POST.get('countertop')

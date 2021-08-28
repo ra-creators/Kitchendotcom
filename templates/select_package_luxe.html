@@ -6,7 +6,7 @@
 
 {% block body %}
 
-<div id="main-theme" class="h-100 img-fluid">
+<div id="main-theme" class="h-100 img-fluid" style="background-image: url('{% static "/assets/img/bg-image.jpg" %}');">
     <div class="p-3">
 
         <div class="ps-md-5">
@@ -20,7 +20,7 @@
                     <div class="form-check float-start">
                         <input class="form-check-input" type="radio" name="package" id="luxe">
                     </div>
-                    <h3 class="ps-5">Luxe <a href="/select_package.html" class="text-decoration-none"><span class="float-end"><i class="bi bi-arrow-return-left"></i></span></a> </h3>
+                    <h3 class="ps-5">Luxe <a href="/select_package" class="text-decoration-none"><span class="float-end"><i class="bi bi-arrow-return-left"></i></span></a> </h3>
                     <p class="ps-5 lead fs-5">Luxurious dream kitchen that's a fine blend of aesthetics and high functionality complete with swanky units and accessories.</p>
                     <div class="row justify-content-center">
                         <div class="col-10">
@@ -41,7 +41,7 @@
                             <div class="form-check float-start">
                                 <input class="form-check-input" type="radio" name="package" id="essentials">
                             </div>
-                            <h3 class="ps-5">Essentials <a href="/select_package_essentials.html" class="text-decoration-none"><span class="float-end"><i class="bi bi-info-circle"></i></span></a> </h3>
+                            <h3 class="ps-5">Essentials <a href="/select_package/essentials" class="text-decoration-none"><span class="float-end"><i class="bi bi-info-circle"></i></span></a> </h3>
                             <p class="ps-5 lead fs-5">A range that has the basic unit and accessories necessary for a comfortable modular kitchen.</p>
                         </div>
 
@@ -49,7 +49,7 @@
                             <div class="form-check float-start">
                                 <input class="form-check-input" type="radio" name="package" id="premium">
                             </div>
-                            <h3 class="ps-5">Premium <a href="/select_package_premium.html" class="text-decoration-none"><span class="float-end"><i class="bi bi-info-circle"></i></span></a> </h3>
+                            <h3 class="ps-5">Premium <a href="/select_package/premium" class="text-decoration-none"><span class="float-end"><i class="bi bi-info-circle"></i></span></a> </h3>
                             <p class="ps-5 lead fs-5">An exquisite kitchen with sleek features, hardware, cabinets and fittings for an elegant and smooth cooking experience.</p>
                         </div>
     
@@ -59,7 +59,7 @@
                             <div class="form-check float-start">
                                 <input class="form-check-input" type="radio" name="package" id="ownpackage">
                             </div>
-                            <h3 class="ps-5">Build your own package <a href="/select_package_buildpkg.html" class="text-decoration-none"><span class="float-end"><i class="bi bi-info-circle"></i></span></a> </h3>
+                            <h3 class="ps-5">Build your own package <a href="/select_package/buildpackage" class="text-decoration-none"><span class="float-end"><i class="bi bi-info-circle"></i></span></a> </h3>
                             <p class="ps-5 lead fs-5">Select materials, finishes, accessories and more of your choices from a range of collections for your kitchen.</p>
                         </div>
     
