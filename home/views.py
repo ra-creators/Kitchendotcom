@@ -131,6 +131,10 @@ def select_package(request):  # fqname is not confirmed
         
         print(package)
     # custom calculation remaining
+        if package == "ownpackage":
+            return redirect('/build_package')
+        else:
+            return redirect('/summary')
 
     return render(request, 'select_package.html',context) # 1.what for custom? 2.template name is not confirmed
 
@@ -150,6 +154,7 @@ def build_package(request):
     if request.method == "POST":    
         material = request.POST.get('ownpackage')
         print(material)
+        return redirect('/select_countertop')
     return render(request, 'build_package.html')    
 
 def build_package_hdhmr(request):
@@ -170,6 +175,7 @@ def select_countertop(request):
         c_top = request.POST.get('countertop')
         countertop = kitchen_details(Countertop = c_top)
         countertop.save()
+        return redirect('/select_finish')
     return render(request, 'select_countertop.html')
 
 def select_finish(request):
@@ -178,6 +184,7 @@ def select_finish(request):
         print(f)
         finish = kitchen_details(Finish = f)
         finish.save()
+        return redirect('/select_accessories')
     return render(request, 'select_finish.html')
 
 def select_finish_laminate(request):
@@ -198,6 +205,7 @@ def select_accessories(request):
         print(acc)
         accessories = kitchen_details(Accessories = acc)
         accessories.save()
+        return redirect('/select_services')
     return render(request, 'select_accessories.html')
 
 def select_accessories_basic(request):
@@ -221,3 +229,9 @@ def select_appliances(request):
         app_list = []
         # work inprogress
     return render(request, 'select_appliances.html')
+
+def kitchen_summary(request):
+    return render(request, 'kitchen_summary.html')
+
+def kitchen_summary_buildpkg(request):
+    return render(request, 'kitchen_summary_buildpkg.html')
