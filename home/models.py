@@ -10,22 +10,23 @@ class c_details(models.Model):
         return self.name
 
 class calculation(models.Model):
-    a_feet = models.CharField(max_length=3, default="0")
-    a_inch = models.CharField(max_length=3, default="0")
-    b_feet = models.CharField(max_length=3, default="0")
-    b_inch = models.CharField(max_length=3, default="0")
-    c_feet = models.CharField(max_length=3, default="0")
-    c_inch = models.CharField(max_length=3, default="0")
-    loft = models.CharField(max_length=12, default="0")
-    
+    a_feet = models.IntegerField(default=0)
+    a_inch = models.IntegerField(default=0)
+    b_feet = models.IntegerField(default=0)
+    b_inch = models.IntegerField(default=0)
+    c_feet = models.IntegerField(default=0)
+    c_inch = models.IntegerField(default=0)
+
 
 class kitchen_details(models.Model):
+
+    loft = models.IntegerField(default=0)
     layout = models.CharField(max_length=30, default="0")
     Shape = models.CharField(max_length=12, default="0")
     Size : dict
     Material = models.CharField(max_length=12, default="0")
     Countertop = models.CharField(max_length=12, default="0")
-    Loft = models.CharField(max_length=12, default="0")
+    # Loft = models.CharField(max_length=12, default="0")
     Finish = models.CharField(max_length=12, default="0")
     Accessories = models.CharField(max_length=12, default="0")
     Services : dict
