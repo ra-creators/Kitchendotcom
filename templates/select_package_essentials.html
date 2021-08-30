@@ -13,12 +13,16 @@
             <h1 class="text-light">Kitchen Price Estimate Steps</h1>
         </div>  
 
+        <form method="POST">
+
+            {% csrf_token %}
+
         <div class="text-center justify-content-center col-sm-12">
             
             <div class="row p-3 gx-3 gy-3 justify-content-center">
                 <div class="col-lg-6 border-teal col-md-10 col-sm-12 white-container p-3 text-start">
                     <div class="form-check float-start">
-                        <input class="form-check-input" type="radio" name="package" id="essentials">
+                        <input class="form-check-input" type="radio" name="package" id="essentials" value="essentials" required>
                     </div>
                     <h3 class="ps-5">Essentials <a href="/select_package" class="text-decoration-none"><span class="float-end"><i class="bi bi-arrow-return-left"></i></span></a> </h3>
                     <p class="ps-5 lead fs-5">A range that has the basic unit and accessories necessary for a comfortable modular kitchen.</p>
@@ -38,7 +42,7 @@
                     <div class="row g-4">
                         <div class="white-container p-3 text-start">
                             <div class="form-check float-start">
-                                <input class="form-check-input" type="radio" name="package" id="premium">
+                                <input class="form-check-input" type="radio" name="package" id="premium" value="premium">
                             </div>
                             <h3 class="ps-5">Premium <a href="/select_package/premium" class="text-decoration-none"><span class="float-end"><i class="bi bi-info-circle"></i></span></a> </h3>
                             <p class="ps-5 lead fs-5">An exquisite kitchen with sleek features, hardware, cabinets and fittings for an elegant and smooth cooking experience.</p>
@@ -46,7 +50,7 @@
     
                         <div class="white-container p-3 text-start">
                             <div class="form-check float-start">
-                                <input class="form-check-input" type="radio" name="package" id="luxe">
+                                <input class="form-check-input" type="radio" name="package" id="luxe" value="luxe">
                             </div>
                             <h3 class="ps-5">Luxe <a href="/select_package/luxe" class="text-decoration-none"><span class="float-end"><i class="bi bi-info-circle"></i></span></a> </h3>
                             <p class="ps-5 lead fs-5">Luxurious dream kitchen that's a fine blend of aesthetics and high functionality complete with swanky units and accessories.</p>
@@ -54,7 +58,7 @@
     
                         <div class="white-container p-3 text-start">
                             <div class="form-check float-start">
-                                <input class="form-check-input" type="radio" name="package" id="ownpackage">
+                                <input class="form-check-input" type="radio" name="package" id="ownpackage" value="ownpackage">
                             </div>
                             <h3 class="ps-5">Build your own package <a href="/select_package/buildpackage" class="text-decoration-none"><span class="float-end"><i class="bi bi-info-circle"></i></span></a> </h3>
                             <p class="ps-5 lead fs-5">Select materials, finishes, accessories and more of your choices from a range of collections for your kitchen.</p>
@@ -72,9 +76,11 @@
                 <a href="#" class="btn btn-lg bg-light text-teal border-teal px-5 py-2 rounded" role="button"><h4>Back</h4></a>   
             </div>
             <div class="offset-lg-4 col-lg-2 text-md-center col-md-12">
-                <a href="#" class="btn btn-lg btn-opacity bg-teal text-light px-5 py-2 rounded" role="button"><h4>Next</h4></a>   
+                <button class="btn btn-lg btn-opacity bg-teal text-light px-5 py-2 rounded" type="submit" role="button"><h4>Next</h4></button>      
             </div>
         </div>
+
+    </form>
 
     </div>
 </div>

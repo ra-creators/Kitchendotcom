@@ -126,10 +126,12 @@ def select_package(request):  # fqname is not confirmed
     "deluxe" : (a+b+c) * (3+l) * 2500
     }
     
+    # to be entered in followinf 4 function
     if request.method == "POST":    
         package = request.POST.get('package') # "package" <- this name might be different
         
         print(package)
+    # 
     # custom calculation remaining
 
     return render(request, 'select_package.html',context) # 1.what for custom? 2.template name is not confirmed
@@ -175,16 +177,46 @@ def select_countertop(request):
 def select_finish(request):
     if request.method == "POST":
         f = request.POST.get('finish')
+        print(f)
         finish = kitchen_details(Finish = f)
         finish.save()
     return render(request, 'select_finish.html')
 
+def select_finish_laminate(request):
+    return render(request, 'select_finish_laminate.html')
+
+def select_finish_pvclaminate(request):
+    return render(request, 'select_finish_pvclaminate.html')
+
+def select_finish_asacrylic(request):
+    return render(request, 'select_finish_asacrylic.html')
+
+def select_finish_glossypu(request):
+    return render(request, 'select_finish_glossypu.html')
+
 def select_accessories(request):
     if request.method == "POST":
         acc = request.POST.get('accessories')
+        print(acc)
         accessories = kitchen_details(Accessories = acc)
         accessories.save()
     return render(request, 'select_accessories.html')
+
+def select_accessories_basic(request):
+    return render(request, 'select_accessories_basic.html')
+
+def select_accessories_intermediate(request):
+    return render(request, 'select_accessories_intermediate.html')
+
+def select_accessories_premium(request):
+    return render(request, 'select_accessories_premium.html')
+
+def select_services(request):
+    if request.method == "POST":
+        app_list = []
+        # work inprogress
+    return render(request, 'select_services.html')
+
 
 def select_appliances(request):
     if request.method == "POST":

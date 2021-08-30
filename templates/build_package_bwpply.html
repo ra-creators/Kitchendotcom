@@ -13,12 +13,16 @@
             <h1 class="text-light">Kitchen Price Estimate Steps</h1>
         </div>  
 
+        <form method="POST">
+
+            {% csrf_token %}
+
         <div class="text-center justify-content-center col-sm-12 p-3">
             
             <div class="row p-3 gx-3 gy-3 justify-content-center">
                 <div class="col-lg-6 border-teal col-md-10 col-sm-12 white-container p-3 text-start">
                     <div class="form-check float-start">
-                        <input class="form-check-input" type="radio" name="ownpackage" id="bwpply">
+                        <input class="form-check-input" type="radio" name="ownpackage" id="bwpply" value="bwpply" required>
                     </div>
                     <h3 class="ps-5">BWP Plywood <a href="/build_package" class="text-decoration-none"><span class="float-end"><i class="bi bi-arrow-return-left"></i></span></a> </h3>
                     <p class="ps-5 lead fs-5">Is waterproof and withstands prolonged exposure to water and moisture.</p>
@@ -38,7 +42,7 @@
                     <div class="row g-4">
                         <div class="white-container p-3 text-start">
                             <div class="form-check float-start">
-                                <input class="form-check-input" type="radio" name="ownpackage" id="hdhmr">
+                                <input class="form-check-input" type="radio" name="ownpackage" id="hdhmr" value="hdhmr">
                             </div>
                             <h3 class="ps-5">HDHMR <a href="/build_package/hdhmr" class="text-decoration-none"><span class="float-end"><i class="bi bi-info-circle"></i></span></a> </h3>
                             <p class="ps-5 lead fs-5">Has high strength and density, and a solid screw-holding capacity.</p>
@@ -46,7 +50,7 @@
     
                         <div class="white-container p-3 text-start">
                             <div class="form-check float-start">
-                                <input class="form-check-input" type="radio" name="ownpackage" id="mrply">
+                                <input class="form-check-input" type="radio" name="ownpackage" id="mrply" value="mrply">
                             </div>
                             <h3 class="ps-5">MR Plywood <a href="/build_package/mrplywood" class="text-decoration-none"><span class="float-end"><i class="bi bi-info-circle"></i></span></a></h3>
                             <p class="ps-5 lead fs-5">Is moisture and termite resistant and does not wear off easily.</p>
@@ -54,7 +58,7 @@
     
                         <div class="white-container p-3 text-start">
                             <div class="form-check float-start">
-                                <input class="form-check-input" type="radio" name="ownpackage" id="bwrply">
+                                <input class="form-check-input" type="radio" name="ownpackage" id="bwrply" value="bwrply">
                             </div>
                             <h3 class="ps-5">BWR Plywood <a href="/build_package/bwrplywood" class="text-decoration-none"><span class="float-end"><i class="bi bi-info-circle"></i></span></a></h3>
                             <p class="ps-5 lead fs-5">Is water resistant and works well in areas prone to water exposure.</p>
@@ -72,9 +76,11 @@
                 <a href="#" class="btn btn-lg bg-light text-teal border-teal px-5 py-2 rounded" role="button"><h4>Back</h4></a>   
             </div>
             <div class="offset-lg-4 col-lg-2 text-md-center col-md-12">
-                <a href="#" class="btn btn-lg btn-opacity bg-teal text-light px-5 py-2 rounded" role="button"><h4>Next</h4></a>   
+                <button class="btn btn-lg btn-opacity bg-teal text-light px-5 py-2 rounded" role="button" type="submit"><h4>Next</h4></button>  
             </div>
         </div>
+
+    </form>
 
     </div>
 </div>

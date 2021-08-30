@@ -12,6 +12,10 @@
         <div class="ps-md-5">
             <h1 class="text-light">Kitchen Price Estimate Steps</h1>
         </div>  
+        
+        <form method="POST">
+
+            {% csrf_token %}
 
         <div class="container-lg text-center px-3 my-3 py-3 justify-content-center col-lg-9 col-sm-12" id="select">
             
@@ -19,25 +23,25 @@
                 <div class="col-lg-9 px-5 col-sm-12"><h1>Now choose the accessories for your kitchen</h1></div>
                 <div class="col-lg-5 border-teal col-md-8 col-sm-12 white-container p-3 text-start">
                     <div class="form-check float-start">
-                        <input class="form-check-input" type="radio" name="accessories" id="acc_basic">
+                        <input class="form-check-input" type="radio" name="accessories" id="acc_basic" value="basic" required>
                     </div>
-                    <h3 class="ps-5">Basic <a href="/select_accessories_basic.html" class="text-decoration-none"><span class="float-end"><i class="bi bi-info-circle"></i></span></a> </h3>
+                    <h3 class="ps-5">Basic <a href="/select_accessories/basic" class="text-decoration-none"><span class="float-end"><i class="bi bi-info-circle"></i></span></a> </h3>
                     <p class="ps-5 lead fs-5">A basic range of accessories usually required to get your ideal kitchen started.</p>
                 </div>
     
                 <div class="offset-lg-1 col-lg-5 border-teal col-md-8 col-sm-12 white-container p-3 text-start">
                     <div class="form-check float-start">
-                        <input class="form-check-input" type="radio" name="accessories" id="acc_intermediate">
+                        <input class="form-check-input" type="radio" name="accessories" id="acc_intermediate" value="intermediate"> 
                     </div>
-                    <h3 class="ps-5">Intermediate <a href="/select_accessories_intermediate.html" class="text-decoration-none"><span class="float-end"><i class="bi bi-info-circle"></i></span></a> </h3>
+                    <h3 class="ps-5">Intermediate <a href="/select_accessories/intermediate" class="text-decoration-none"><span class="float-end"><i class="bi bi-info-circle"></i></span></a> </h3>
                     <p class="ps-5 lead fs-5">A fine range of fittings, cabinets, and more for a smooth culinary experience.</p>
                 </div>
     
                 <div class="col-lg-5 border-teal col-md-8 col-sm-12 white-container p-3 text-start">
                     <div class="form-check float-start">
-                        <input class="form-check-input" type="radio" name="accessories" id="acc_premium">
+                        <input class="form-check-input" type="radio" name="accessories" id="acc_premium" value="premium">
                     </div>
-                    <h3 class="ps-5">Premium <a href="/select_accessories_premium.html" class="text-decoration-none"><span class="float-end"><i class="bi bi-info-circle"></i></span></a> </h3>
+                    <h3 class="ps-5">Premium <a href="/select_accessories/premium" class="text-decoration-none"><span class="float-end"><i class="bi bi-info-circle"></i></span></a> </h3>
                     <p class="ps-5 lead fs-5">A showstopper kitchen with an exclusive range you were always looking for.</p>
                 </div>
                
@@ -49,9 +53,11 @@
                 <a href="#" class="btn btn-lg bg-light text-teal border-teal px-5 py-2 rounded" role="button"><h4>Back</h4></a>   
             </div>
             <div class="offset-lg-4 col-lg-2 text-md-center col-md-12">
-                <a href="#" class="btn btn-lg btn-opacity bg-teal text-light px-5 py-2 rounded" role="button"><h4>Next</h4></a>   
+                <button class="btn btn-lg btn-opacity bg-teal text-light px-5 py-2 rounded" type="submit" role="button"><h4>Next</h4></button>      
             </div>
         </div>
+
+    </form>
 
     </div>
 </div>
