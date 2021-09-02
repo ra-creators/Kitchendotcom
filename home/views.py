@@ -332,15 +332,19 @@ def select_accessories_premium(request):
 
 def select_services(request):
     if request.method == "POST":
-        app_list = []
+        app_list = request.POST.get('service[]')
+        print(app_list)
+        return redirect('/select_appliances')
         # work inprogress
     return render(request, 'select_services.html')
 
 
 def select_appliances(request):
     if request.method == "POST":
-        app_list = []
+        app_list = request.POST.get('appliance[]')
+        print(app_list)
         # work inprogress
+        return redirect('/summary/buildpkg')
     return render(request, 'select_appliances.html')
 
 def kitchen_summary(request):

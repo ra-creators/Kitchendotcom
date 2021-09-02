@@ -13,6 +13,10 @@
             <h1 class="text-light">Kitchen Price Estimate Steps</h1>
         </div>  
 
+        <form method="POST">
+
+            {% csrf_token %}
+
         <div class="container-lg text-center p-3 justify-content-center col-lg-7 col-sm-12 text-center" id="select">
             <div class=""><h3>Select the on-site services you would require.</h3></div>
             
@@ -21,7 +25,7 @@
                     <div class="card" onclick="checkbox_check('#service1')">
                             <img src="{%static "/assets/img/Painting.png" %}" class="card-img img-thumbnail relative" alt="Painting">
                             <div class="form-check topright">
-                                <input class="form-check-input" type="checkbox" name="service" id="service1">
+                                <input class="form-check-input" type="checkbox" name="service[]" id="service1" value="painting">
                             </div>
                           <div class="card-body text-dark p-0">
                             <p class="fw-bold">Painting</h5>
@@ -32,7 +36,7 @@
                     <div class="card" onclick="checkbox_check('#service2')">
                             <img src="{%static "/assets/img/Plumbing.png" %}" class="card-img img-thumbnail relative" alt="Plumbing">
                             <div class="form-check topright">
-                                <input class="form-check-input" type="checkbox" name="service" id="service2">
+                                <input class="form-check-input" type="checkbox" name="service[]" id="service2" value="plumbing">
                             </div>
                           <div class="card-body text-dark p-0">
                             <p class="fw-bold">Plumbing</h5>
@@ -43,7 +47,7 @@
                     <div class="card" onclick="checkbox_check('#service3')">
                             <img src="{%static "/assets/img/Electrical.png" %}" class="card-img img-thumbnail relative" alt="Electrical">
                             <div class="form-check topright">
-                                <input class="form-check-input" type="checkbox" name="service" id="service3">
+                                <input class="form-check-input" type="checkbox" name="service[]" id="service3" value="electrical">
                             </div>
                           <div class="card-body text-dark p-0">
                             <p class="fw-bold">Electrical</h5>
@@ -55,7 +59,7 @@
                             
                             <img src="{%static "/assets/img/Platform.png" %}" class="card-img img-thumbnail relative" alt="Platform">
                             <div class="form-check topright">
-                                <input class="form-check-input" type="checkbox" name="service" id="service4">
+                                <input class="form-check-input" type="checkbox" name="service[]" id="service4" value="platform">
                             </div>
                           <div class="card-body text-dark p-0">
                             <p class="fw-bold">Platform</h5>
@@ -68,7 +72,7 @@
                         
                         <img src="{%static "/assets/img/Dado.png" %}" class="card-img img-thumbnail relative" alt="Dado">
                         <div class="form-check topright">
-                            <input class="form-check-input"  type="checkbox" name="service" id="service5">
+                            <input class="form-check-input"  type="checkbox" name="service[]" id="service5" value="dado">
                         </div>
                         <div class="card-body text-dark p-0">
                             <p class="fw-bold">Dado</h5>
@@ -85,8 +89,12 @@
             <a href="/select_accessories" class="btn btn-lg bg-light text-teal border-teal px-5 py-2 rounded" role="button"><h4>Back</h4></a>   
         </div>
         <div class="offset-lg-3 col-lg-3 text-md-center col-md-12">
-            <a href="/select_appliances" class="btn btn-lg btn-opacity bg-teal text-light px-5 py-2 rounded" role="button"><h4>Next</h4></a>   
+            <button class="btn btn-lg btn-opacity bg-teal text-light px-5 py-2 rounded" type="submit" role="button"><h4>Next</h4></button>   
         </div>
     </div>
+
+    </form>
+
+  </div>
 </div>
 {% endblock body %}
