@@ -332,7 +332,7 @@ def select_accessories_premium(request):
 
 def select_services(request):
     if request.method == "POST":
-        app_list = request.POST.get('service[]')
+        app_list = request.POST.getlist('service[]')
         print(app_list)
         return redirect('/select_appliances')
         # work inprogress
@@ -341,7 +341,7 @@ def select_services(request):
 
 def select_appliances(request):
     if request.method == "POST":
-        app_list = request.POST.get('appliance[]')
+        app_list = request.POST.getlist('appliance[]')
         print(app_list)
         # work inprogress
         return redirect('/summary/buildpkg')
