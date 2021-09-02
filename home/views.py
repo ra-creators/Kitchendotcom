@@ -168,7 +168,20 @@ def select_package(request):  # fqname is not confirmed
     # custom calculation remaining
         if package == "ownpackage":
             return redirect('/build_package')
-        else:
+        elif package == "essentials":
+            request.session['material'] = "MR Plywood"
+            request.session['finish'] = "Laminate"
+            request.session['accessories'] = "Wire Basket"
+            return redirect('/summary')
+        elif package == "premium":
+            request.session['material'] = "HDHMR"
+            request.session['finish'] = "PVC"
+            request.session['accessories'] = "Tandem Basket"
+            return redirect('/summary')
+        elif package == "luxe":
+            request.session['material'] = "MR Plywood"
+            request.session['finish'] = "Acrylic"
+            request.session['accessories'] = "Wire Basket"
             return redirect('/summary')
 
     return render(request, 'select_package.html',context) # 1.what for custom? 2.template name is not confirmed
@@ -331,18 +344,43 @@ def select_appliances(request):
     return render(request, 'select_appliances.html')
 
 def kitchen_summary(request):
+    # key names are as per summary page
     context = {
-    'layout' : request.session.get('layout'),
+    'shape' : request.session.get('layout'),  
     'name' : request.session.get('name'),
-    'loft1' : request.session.get('loft'),
-    'package' : request.session.get('package'),
+    'a_feet' : request.session.get('a_feet'),
+    'a_inch' : request.session.get('a_inch'),
+    'b_feet' : request.session.get('b_feet'),
+    'b_inch' : request.session.get('b_inch'),
+    'c_feet' : request.session.get('c_feet'),
+    'c_inch' : request.session.get('c_inch'),
+    'loft' : request.session.get('loft'),
+    'type' : request.session.get('package'),
     'material' : request.session.get('material'),
     'countertop' : request.session.get('countertop'),
     'finish' : request.session.get('finsh'),
     'accessories' : request.session.get('accessories')
     }
     print(context)
-    return render(request, 'kitchen_summary.html')
+    return render(request, 'kitchen_summary.html', context)
 
 def kitchen_summary_buildpkg(request):
-    return render(request, 'kitchen_summary_buildpkg.html')
+    # key names are as per summary page
+    context = {
+    'shape' : request.session.get('layout'),  
+    'name' : request.session.get('name'),
+    'a_feet' : request.session.get('a_feet'),
+    'a_inch' : request.session.get('a_inch'),
+    'b_feet' : request.session.get('b_feet'),
+    'b_inch' : request.session.get('b_inch'),
+    'c_feet' : request.session.get('c_feet'),
+    'c_inch' : request.session.get('c_inch'),
+    'loft' : request.session.get('loft'),
+    'type' : request.session.get('package'),
+    'material' : request.session.get('material'),
+    'countertop' : request.session.get('countertop'),
+    'finish' : request.session.get('finsh'),
+    'accessories' : request.session.get('accessories')
+    }
+    print(context)
+    return render(request, 'kitchen_summary_buildpkg.html',context)
