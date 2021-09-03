@@ -1,7 +1,7 @@
 from django.http.response import HttpResponse
 from django.http import HttpResponseRedirect  
 from django.shortcuts import redirect, render  
-from home.models import c_details, calculation, kitchen_details
+from home.models import c_details, calculation, kitchen_details, Constants
 
 # Create your views here.
 def kitchen_price_steps(request):
@@ -14,9 +14,9 @@ def select_layout(request):
     if request.method == "POST":
         layout = request.POST.get('kitchenLayout')
         request.session['layout'] = layout 
-        print(layout)
-        select_layout = kitchen_details(layout = layout)
-        select_layout.save()
+        # print(layout)
+        # select_layout = kitchen_details(layout = layout)
+        # select_layout.save()
         return redirect('/customer_details')
       
     return render(request, 'select_layout.html')
@@ -24,7 +24,7 @@ def select_layout(request):
 def customer_details(request):
     layout = request.session.get('layout')
     # store the choise and details of customer here
-    context = kitchen_details.objects.all().last()
+    # context = kitchen_details.objects.all().last()
     # selected_layout = sizeof(context)
     
     # print(context)
@@ -36,8 +36,11 @@ def customer_details(request):
         email = request.POST.get('email')
         phone = request.POST.get('phone')
         request.session['name'] = name
-        c_detail = c_details(name=name, email=email, phone=phone)  
-        c_detail.save()
+        request.session['email'] = email
+        request.session['phone'] = phone
+
+        # c_detail = c_details(name=name, email=email, phone=phone)  
+        # c_detail.save()
         if layout == "L":
             return redirect('/select_lshape')
         elif(layout == 'S'):
@@ -62,8 +65,8 @@ def lshape(request):
         request.session['b_inch'] = b_inch 
         request.session['c_feet'] = 0
         request.session['c_inch'] = 0
-        cal1 = calculation(a_feet = a_feet, a_inch = a_inch, b_feet = b_feet, b_inch = b_inch, c_feet = 0, c_inch = 0)
-        cal1.save()
+        # cal1 = calculation(a_feet = a_feet, a_inch = a_inch, b_feet = b_feet, b_inch = b_inch, c_feet = 0, c_inch = 0)
+        # cal1.save()
         return redirect('/select_loft_type')
     return render(request, 'select_lshape.html')
 
@@ -79,8 +82,8 @@ def parallel(request):
         request.session['b_inch'] = b_inch 
         request.session['c_feet'] = 0
         request.session['c_inch'] = 0
-        cal2 = calculation(a_feet = a_feet, a_inch = a_inch, b_feet = b_feet, b_inch = b_inch, c_feet = 0, c_inch = 0)
-        cal2.save()
+        # cal2 = calculation(a_feet = a_feet, a_inch = a_inch, b_feet = b_feet, b_inch = b_inch, c_feet = 0, c_inch = 0)
+        # cal2.save()
         return redirect('/select_loft_type')
     return render(request, 'select_parallel.html')
 
@@ -94,9 +97,8 @@ def straight(request):
         request.session['b_inch'] = 0
         request.session['c_feet'] = 0
         request.session['c_inch'] = 0
-        cal3 = calculation(a_feet = a_feet, a_inch = a_inch, b_feet = 0, b_inch = 0, c_feet = 0, c_inch = 0)
-        # print(cal3)
-        cal3.save()
+        # cal3 = calculation(a_feet = a_feet, a_inch = a_inch, b_feet = 0, b_inch = 0, c_feet = 0, c_inch = 0)
+        # cal3.save()
         return redirect('/select_loft_type')
     return render(request, 'select_straight.html')
 
@@ -114,17 +116,11 @@ def ushape(request):
         request.session['b_inch'] = b_inch
         request.session['c_feet'] = c_feet
         request.session['c_inch'] = c_inch
-        cal1 = calculation(a_feet = a_feet, a_inch = a_inch, b_feet = b_feet, b_inch = b_inch, c_feet = c_feet, c_inch = c_inch)
-        cal1.save()
+        # cal1 = calculation(a_feet = a_feet, a_inch = a_inch, b_feet = b_feet, b_inch = b_inch, c_feet = c_feet, c_inch = c_inch)
+        # cal1.save()
         return redirect('/select_loft_type')
     return render(request, 'select_ushape.html')
 
-# def select_loft(request):
-#     if request.method == "POST":
-#         ans = request.POST.get('loft')
-#         loft = kitchen_details(loft = ans)
-#         loft.save()
-#     return render(request, "select_loft_type")
 
 def select_loft_type(request):
     # final_cal = calculation.objects.all().last()
@@ -135,37 +131,18 @@ def select_loft_type(request):
             loft1 = request.POST.get('loft')
             request.session['loft'] = loft1 # for if condition
         request.session['loft'] = loft1     # for else condition
-        select_layout = kitchen_details(loft = loft1)
-        select_layout.save()
+        # select_layout = kitchen_details(loft = loft1)
+        # select_layout.save()
         return redirect('/select_package')
     return render(request, "select_loft_type.html")
 
 def select_package(request):  # fqname is not confirmed
     
-    final_cal = calculation.objects.all().last()
-    s_loft = kitchen_details.objects.all().last()
-    print(int(final_cal.a_feet))
-    print(int(s_loft.loft))
-    a = int(final_cal.a_feet) + (int(final_cal.a_inch) / 12)
-    b = int(final_cal.b_feet) + (int(final_cal.b_inch) / 12)
-    l = int(s_loft.loft)
-    # if condition will be here for case of Ushape selection by user
-    c = int(final_cal.c_feet) + (int(final_cal.c_inch) / 12)
-    # custom calculation remaining
-
-    context = {
-    "essentials" : (a+b+c) * (3+l) * 1800,
-    "premium" : (a+b+c) * (3+l) * 2100,
-    "deluxe" : (a+b+c) * (3+l) * 2500
-    }
-    
-    # to be entered in followinf 4 function
+    # to be entered in following 4 function
     if request.method == "POST":    
         package = request.POST.get('package') # "package" <- this name might be different
         request.session['package'] = package
-        print(package)
-    # 
-    # custom calculation remaining
+    
         if package == "ownpackage":
             return redirect('/build_package')
         elif package == "essentials":
@@ -184,7 +161,7 @@ def select_package(request):  # fqname is not confirmed
             request.session['accessories'] = "Wire Basket"
             return redirect('/summary')
 
-    return render(request, 'select_package.html',context) # 1.what for custom? 2.template name is not confirmed
+    return render(request, 'select_package.html') # 1.template name is not confirmed
 
 def select_package_essentials(request):
     if request.method == "POST":
@@ -256,8 +233,8 @@ def select_countertop(request):
     if request.method == "POST":
         c_top = request.POST.get('countertop')
         request.session['countertop'] = c_top
-        countertop = kitchen_details(Countertop = c_top)
-        countertop.save()
+        # countertop = kitchen_details(Countertop = c_top)
+        # countertop.save()
         return redirect('/select_finish')
     return render(request, 'select_countertop.html')
 
@@ -265,9 +242,8 @@ def select_finish(request):
     if request.method == "POST":
         f = request.POST.get('finish')
         request.session['finish'] = f
-        print(f)
-        finish = kitchen_details(Finish = f)
-        finish.save()
+        # finish = kitchen_details(Finish = f)
+        # finish.save()
         return redirect('/select_accessories')
     return render(request, 'select_finish.html')
 
@@ -303,9 +279,8 @@ def select_accessories(request):
     if request.method == "POST":
         acc = request.POST.get('accessories')
         request.session['accessories'] = acc
-        print(acc)
-        accessories = kitchen_details(Accessories = acc)
-        accessories.save()
+        # accessories = kitchen_details(Accessories = acc)
+        # accessories.save()
         return redirect('/select_services')
     return render(request, 'select_accessories.html')
 
@@ -332,7 +307,7 @@ def select_accessories_premium(request):
 
 def select_services(request):
     if request.method == "POST":
-        app_list = request.POST.get('service[]')
+        app_list = (request.POST.get('service[]'))
         print(app_list)
         return redirect('/select_appliances')
         # work inprogress
@@ -348,6 +323,8 @@ def select_appliances(request):
     return render(request, 'select_appliances.html')
 
 def kitchen_summary(request):
+    constant = Constants.objects.all().last()
+    print(constant)
     # key names are as per summary page
     context = {
     'shape' : request.session.get('layout'),  
@@ -362,13 +339,26 @@ def kitchen_summary(request):
     'type' : request.session.get('package'),
     'material' : request.session.get('material'),
     'countertop' : request.session.get('countertop'),
-    'finish' : request.session.get('finsh'),
+    'finish' : request.session.get('finish'),
     'accessories' : request.session.get('accessories')
     }
     print(context)
-    return render(request, 'kitchen_summary.html', context)
+    a = int(context['a_feet']) + (int(context['a_inch']) / 12)
+    b = int(context['b_feet']) + (int(context['b_inch']) / 12)
+    c = int(context['c_feet']) + (int(context['c_inch']) / 12)
+    l = int(context['loft'])
+    if context['type'] == "essentials":
+        calculation = (a+b+c) * (3+l) * int(constant.essentials) # last value should be fetched from model
+    elif context['type'] == "premium":
+        calculation = (a+b+c) * (3+l) * int(constant.premium) # last value should be fetched from model
+    elif context['type'] == "luxe":
+        calculation = (a+b+c) * (3+l) * int(constant.luxe) # last value should be fetched from model
+    print(calculation)
+    return render(request, 'kitchen_summary.html', context, {'calculation' : int(calculation)}) # whether int or float 
 
 def kitchen_summary_buildpkg(request):
+    constant = Constants.objects.all().last()
+    print(constant)
     # key names are as per summary page
     context = {
     'shape' : request.session.get('layout'),  
@@ -383,8 +373,16 @@ def kitchen_summary_buildpkg(request):
     'type' : request.session.get('package'),
     'material' : request.session.get('material'),
     'countertop' : request.session.get('countertop'),
-    'finish' : request.session.get('finsh'),
+    'finish' : request.session.get('finish'),
     'accessories' : request.session.get('accessories')
     }
     print(context)
-    return render(request, 'kitchen_summary_buildpkg.html',context)
+    a = int(context['a_feet']) + (int(context['a_inch']) / 12)
+    b = int(context['b_feet']) + (int(context['b_inch']) / 12)
+    c = int(context['c_feet']) + (int(context['c_inch']) / 12)
+    l = int(context['loft'])
+    if context['countertop'] == "Yes":
+        calculation = ((a+b+c) * (3+l) * (int(constant.material)+int(constant.finish)+int(constant.accessories))) + int(constant.countertop)
+    else:
+        calculation = ((a+b+c) * (3+l) * (int(constant.material)+int(constant.finish)+int(constant.accessories)))
+    return render(request, 'kitchen_summary_buildpkg.html',context, {'calculation' : calculation})

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from home.models import c_details,kitchen_details,calculation
+from home.models import c_details,kitchen_details,calculation, Constants
 
 # Displaying Models
 # class Kd_Admin(admin.ModelAdmin):
@@ -17,3 +17,4 @@ from home.models import c_details,kitchen_details,calculation
 admin.site.register(c_details)
 admin.site.register(kitchen_details)
 admin.site.register(calculation)
+admin.site.register(Constants)

@@ -36,3 +36,21 @@ class kitchen_details(models.Model):
 
     def __str__(self):
         return self.layout
+
+# Model after adding sessions
+class Constants(models.Model):
+    essentials = models.CharField(max_length=12, default="0")
+    premium = models.CharField(max_length=12, default="0")
+    luxe = models.CharField(max_length=12, default="0")
+    hdhmr = models.CharField(max_length=12, default="0")
+    mrply = models.CharField(max_length=12, default="0")
+    bwrply = models.CharField(max_length=12, default="0")
+    bwpply = models.CharField(max_length=12, default="0")
+    laminate = models.CharField(max_length=12, default="0")
+    pvclaminate = models.CharField(max_length=12, default="0")
+    asacrylic = models.CharField(max_length=12, default="0")
+    glossypu = models.CharField(max_length=12, default="0")
+    basic_accessories = models.CharField(max_length=12, default="0")
+    intermediate_accessories = models.CharField(max_length=12, default="0")
+    premium_accessories = models.CharField(max_length=12, default="0")
+    countertop = models.CharField(max_length=12, default="0")
