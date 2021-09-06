@@ -9,48 +9,28 @@ class c_details(models.Model):
     def __str__(self):
         return self.name
 
-class calculation(models.Model):
-    a_feet = models.IntegerField(default=0)
-    a_inch = models.IntegerField(default=0)
-    b_feet = models.IntegerField(default=0)
-    b_inch = models.IntegerField(default=0)
-    c_feet = models.IntegerField(default=0)
-    c_inch = models.IntegerField(default=0)
-
 
 class kitchen_details(models.Model):
 
-    loft = models.IntegerField(default=0)
-    layout = models.CharField(max_length=30, default="0")
-    Shape = models.CharField(max_length=12, default="0")
-    Size : dict
-    Material = models.CharField(max_length=12, default="0")
-    Countertop = models.CharField(max_length=12, default="0")
-    # Loft = models.CharField(max_length=12, default="0")
-    Finish = models.CharField(max_length=12, default="0")
-    Accessories = models.CharField(max_length=12, default="0")
-    Services : dict
-    Appliances : dict
-    customer = models.ForeignKey(c_details, blank=True, null=True, on_delete=models.CASCADE )
-    cal = models.ForeignKey(calculation, blank=True, null=True, on_delete=models.CASCADE)
-
+    Shape = models.CharField(max_length=12, default="NA")
+    Size = models.CharField(max_length=30, null=True, default="NA")
+    Type = models.CharField(max_length=30, default="NA")
+    Material = models.CharField(max_length=12, default="NA")
+    Countertop = models.CharField(max_length=12, default="NA")
+    Loft = models.CharField(max_length=12, default="NA")
+    Finish = models.CharField(max_length=12, default="NA")
+    Accessories = models.CharField(max_length=12, default="NA")
+    Services = models.TextField(max_length=32, default="NA")
+    Appliances = models.TextField(max_length=32, default="NA")
+    # customer = models.ForeignKey(c_details, blank=True, null=True, on_delete=models.CASCADE )
+    Price = models.CharField(max_length=12, default="NA")
+    
     def __str__(self):
-        return self.layout
+        return self.Type
 
 # Model after adding sessions
 class Constants(models.Model):
-    essentials = models.CharField(max_length=12, default="0")
-    premium = models.CharField(max_length=12, default="0")
-    luxe = models.CharField(max_length=12, default="0")
-    hdhmr = models.CharField(max_length=12, default="0")
-    mrply = models.CharField(max_length=12, default="0")
-    bwrply = models.CharField(max_length=12, default="0")
-    bwpply = models.CharField(max_length=12, default="0")
-    laminate = models.CharField(max_length=12, default="0")
-    pvclaminate = models.CharField(max_length=12, default="0")
-    asacrylic = models.CharField(max_length=12, default="0")
-    glossypu = models.CharField(max_length=12, default="0")
-    basic_accessories = models.CharField(max_length=12, default="0")
-    intermediate_accessories = models.CharField(max_length=12, default="0")
-    premium_accessories = models.CharField(max_length=12, default="0")
-    countertop = models.CharField(max_length=12, default="0")
+    essentials = models.CharField(max_length=12, default="NA")
+    premium = models.CharField(max_length=12, default="NA")
+    luxe = models.CharField(max_length=12, default="NA")
+    countertop = models.CharField(max_length=12, default="NA")

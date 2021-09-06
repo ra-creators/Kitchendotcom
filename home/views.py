@@ -1,7 +1,22 @@
 from django.http.response import HttpResponse
 from django.http import HttpResponseRedirect  
 from django.shortcuts import redirect, render  
-from home.models import c_details, calculation, kitchen_details, Constants
+from home .models import c_details, kitchen_details, Constants # importing calculation model is removed
+# FOR STORING LIST IN DATABASE FIELDS NAMELY APPLIANCES AND SERVICES
+# import simplejson as jsons
+
+rate = {
+'hdhmr' : 1200,
+'mrply' : 1000,
+'bwrply' : 1200,
+'bwpply' : 1500,
+'laminate' : 400,
+'pvclaminate' : 700 ,
+'asacrylic' : 1000, 
+'glossypu' : 1200, 
+'basic' : 300,
+'intermediate' : 500,
+'premium' : 1000}
 
 # Create your views here.
 def kitchen_price_steps(request):
@@ -39,8 +54,8 @@ def customer_details(request):
         request.session['email'] = email
         request.session['phone'] = phone
 
-        # c_detail = c_details(name=name, email=email, phone=phone)  
-        # c_detail.save()
+        c_detail = c_details(name=name, email=email, phone=phone)  
+        c_detail.save()
         if layout == "L":
             return redirect('/select_lshape')
         elif(layout == 'S'):
@@ -307,10 +322,9 @@ def select_accessories_premium(request):
 
 def select_services(request):
     if request.method == "POST":
-        app_list = request.POST.getlist('service[]')
-        print(app_list)
+        services_list = request.POST.getlist('service[]')
+        request.session['services'] = services_list
         return redirect('/select_appliances')
-        # work inprogress
     return render(request, 'select_services.html')
 
 
@@ -318,47 +332,54 @@ def select_appliances(request):
     if request.method == "POST":
         app_list = request.POST.getlist('appliance[]')
         print(app_list)
-        # work inprogress
+        request.session['appliances'] = app_list
         return redirect('/summary/buildpkg')
     return render(request, 'select_appliances.html')
 
 def kitchen_summary(request):
     constant = Constants.objects.all().last()
-    print(constant)
     # key names are as per summary page
     context = {
-    'shape' : request.session.get('layout'),  
-    'name' : request.session.get('name'),
-    'a_feet' : request.session.get('a_feet'),
-    'a_inch' : request.session.get('a_inch'),
-    'b_feet' : request.session.get('b_feet'),
-    'b_inch' : request.session.get('b_inch'),
-    'c_feet' : request.session.get('c_feet'),
-    'c_inch' : request.session.get('c_inch'),
-    'loft' : request.session.get('loft'),
-    'type' : request.session.get('package'),
-    'material' : request.session.get('material'),
-    'countertop' : request.session.get('countertop'),
-    'finish' : request.session.get('finish'),
-    'accessories' : request.session.get('accessories')
+        'name' : request.session.get('name'),
+        'shape' : request.session.get('layout'),  
+        'a_feet' : request.session.get('a_feet'),
+        'a_inch' : request.session.get('a_inch'),
+        'b_feet' : request.session.get('b_feet'),
+        'b_inch' : request.session.get('b_inch'),
+        'c_feet' : request.session.get('c_feet'),
+        'c_inch' : request.session.get('c_inch'),
+        'loft' : request.session.get('loft'),
+        'type' : request.session.get('package'),
+        'material' : request.session.get('material'),
+        # 'countertop' : request.session.get('countertop'),
+        'finish' : request.session.get('finish'),
+        'accessories' : request.session.get('accessories')
     }
-    print(context)
+    # print(context)
+    # Calculation part begins
+
     a = int(context['a_feet']) + (int(context['a_inch']) / 12)
     b = int(context['b_feet']) + (int(context['b_inch']) / 12)
     c = int(context['c_feet']) + (int(context['c_inch']) / 12)
     l = int(context['loft'])
+
     if context['type'] == "essentials":
-        calculation = (a+b+c) * (3+l) * int(constant.essentials) # last value should be fetched from model
+        cal = (a+b+c) * (3+l) * int(constant.essentials) # last value should be fetched from model
     elif context['type'] == "premium":
-        calculation = (a+b+c) * (3+l) * int(constant.premium) # last value should be fetched from model
+        cal = (a+b+c) * (3+l) * int(constant.premium) # last value should be fetched from model
     elif context['type'] == "luxe":
-        calculation = (a+b+c) * (3+l) * int(constant.luxe) # last value should be fetched from model
-    print(calculation)
-    return render(request, 'kitchen_summary.html', context, {'calculation' : int(calculation)}) # whether int or float 
+        cal = (a+b+c) * (3+l) * int(constant.luxe) # last value should be fetched from model
+   
+    # Calculation part ends
+    size = str(round(a,2)) + "ft x " + str(round(b,2)) + "ft x " + str(round(c,2)) + "ft"
+    details = kitchen_details(Shape = context['shape'], Size = size, Loft = context['loft'], Type = context['type'], Accessories = context['accessories'], Material = context['material'], Finish = context['finish'],Price = cal) # Is countertop needed? 
+    details.save()
+
+    return render(request, 'kitchen_summary.html', context, {'Price' : cal}) # whether int or float 
 
 def kitchen_summary_buildpkg(request):
     constant = Constants.objects.all().last()
-    print(constant)
+    # print(constant)
     # key names are as per summary page
     context = {
     'shape' : request.session.get('layout'),  
@@ -374,15 +395,26 @@ def kitchen_summary_buildpkg(request):
     'material' : request.session.get('material'),
     'countertop' : request.session.get('countertop'),
     'finish' : request.session.get('finish'),
-    'accessories' : request.session.get('accessories')
+    'accessories' : request.session.get('accessories'),
+    'services' :  request.session.get('services'),
+    'appliances' :  request.session.get('appliances')
     }
-    print(context)
+    # print(context)
+    # Calculation part begins
     a = int(context['a_feet']) + (int(context['a_inch']) / 12)
     b = int(context['b_feet']) + (int(context['b_inch']) / 12)
     c = int(context['c_feet']) + (int(context['c_inch']) / 12)
     l = int(context['loft'])
+    
+    size = str(round(a,2)) + "ft x " + str(round(b,2)) + "ft x " + str(round(c,2)) + "ft"
+    # calculation of pricing
     if context['countertop'] == "Yes":
-        calculation = ((a+b+c) * (3+l) * (int(constant.material)+int(constant.finish)+int(constant.accessories))) + int(constant.countertop)
+         cal = ((a+b+c) * (3+l) * (rate[context['material']] + rate[context['finish']] + rate[context['accessories']])+ int(constant.countertop))
     else:
-        calculation = ((a+b+c) * (3+l) * (int(constant.material)+int(constant.finish)+int(constant.accessories)))
-    return render(request, 'kitchen_summary_buildpkg.html',context, {'calculation' : calculation})
+        cal = ((a+b+c) * (3+l) * (rate[context['material']]+rate[context['finish']]+ rate[context['accessories']]))
+    # Calculation part end
+
+    details = kitchen_details(Shape = context['shape'], Size = size, Type = context['type'], Material = context['material'], Countertop = context['countertop'], Loft = context['loft'], Finish = context['finish'], Accessories = context['accessories'], Price = cal)
+    details.save()
+    # print(cal)
+    return render(request, 'kitchen_summary_buildpkg.html', context, {'price' : cal})
