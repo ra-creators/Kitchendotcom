@@ -369,13 +369,14 @@ def kitchen_summary(request):
         cal = round((a+b+c) * (3+l) * int(constant.premium), 2) # last value should be fetched from model
     elif context['type'] == "luxe":
         cal = round((a+b+c) * (3+l) * int(constant.luxe), 2) # last value should be fetched from model
-    print(a,b,c,l,constant.luxe, cal)
+    print(a,b,c,l, cal)
     # Calculation part ends
     size = str(round(a,2)) + "ft x " + str(round(b,2)) + "ft x " + str(round(c,2)) + "ft"
     details = kitchen_details(Shape = context['shape'], Size = size, Loft = context['loft'], Type = context['type'], Accessories = context['accessories'], Material = context['material'], Finish = context['finish'],Price = cal)
     details.save()
-
-    return render(request, 'kitchen_summary.html', context, {'Price' : cal, 'size' : size}) # whether int or float 
+    context['size'] = size
+    context['price'] = cal
+    return render(request, 'kitchen_summary.html', context) 
 
 def kitchen_summary_buildpkg(request):
     constant = Constants.objects.all().last()
@@ -399,7 +400,7 @@ def kitchen_summary_buildpkg(request):
     'services' :  request.session.get('services'),
     'appliances' :  request.session.get('appliances')
     }
-    # print(context)
+
     # Calculation part begins
     a = round(int(context['a_feet']) + (int(context['a_inch']) / 12), 2)
     b = round(int(context['b_feet']) + (int(context['b_inch']) / 12), 2)
@@ -416,5 +417,6 @@ def kitchen_summary_buildpkg(request):
     print(a,b,c,l, cal)
     details = kitchen_details(Shape = context['shape'], Size = size, Type = context['type'], Material = context['material'], Countertop = context['countertop'], Loft = context['loft'], Finish = context['finish'], Accessories = context['accessories'], Price = cal)
     details.save()
-    # print(cal)
-    return render(request, 'kitchen_summary_buildpkg.html', context, {'price' : cal, 'size' : size})
+    context['size'] = size
+    context['price'] = cal
+    return render(request, 'kitchen_summary_buildpkg.html', context)
