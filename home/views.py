@@ -419,7 +419,7 @@ def kitchen_summary(request):
     details.save()
     context['size'] = size
     context['price'] = cal
-    return render(request, 'kitchen_summary.html', context) 
+    return render(request, 'kitchen_summary.html', {'context': context}) 
 
 def kitchen_summary_buildpkg(request):
     constant = Constants.objects.all().last()
@@ -461,4 +461,4 @@ def kitchen_summary_buildpkg(request):
     details.save()
     context['size'] = size
     context['price'] = cal
-    return render(request, 'kitchen_summary_buildpkg.html', context)
+    return render(request, 'kitchen_summary_buildpkg.html', {'context': context})

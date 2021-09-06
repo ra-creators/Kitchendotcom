@@ -20,7 +20,7 @@
                <h1 class="text-teal">You’re done and so are we!</h1>
                <h4 class="fw-normal">Your Estimated modular kitchen cost</h4>
                <form action="">
-                   <div class="btn border-teal dashed px-5 p-3 bg-paleturquoise text-start"><h6 class="text-dark"> Starts from: ₹ </h6></div>
+                   <div class="btn border-teal dashed px-5 p-3 bg-paleturquoise text-start"><h6 class="text-dark"> Starts from: ₹ {{ context.price }} </h6></div>
                </form>
             </div>
 
@@ -34,19 +34,37 @@
                                         <h6>Shape</h6>
                                     </div>
                                     <div class="col-6 text-end">
-                                        <p>Straight</p>
+                                        <p> {{ context.shape }}</p>
                                     </div>
                                     <div class="col-6 text-start">
                                         <h6>Size</h6>
                                     </div>
                                     <div class="col-6 text-end">
-                                        <p>10 ft x 0 ft x 0 ft</p>
+                                        <p> {{ context.size }}</p>
                                     </div>
                                     <div class="col-6 text-start">
                                         <h6>Type</h6>
                                     </div>
                                     <div class="col-6 text-end">
-                                        <p>Essentials</p>
+                                        <p> {{ context.type }}</p>
+                                    </div>
+                                    <div class="col-6 text-start">
+                                        <h6>Material</h6>
+                                    </div>
+                                    <div class="col-6 text-end">
+                                        <p> {{ context.material }}</p>
+                                    </div>
+                                    <div class="col-6 text-start">
+                                        <h6>Finish</h6>
+                                    </div>
+                                    <div class="col-6 text-end">
+                                        <p> {{ context.finish }}</p>
+                                    </div>
+                                    <div class="col-6 text-start">
+                                        <h6>Accessories</h6>
+                                    </div>
+                                    <div class="col-6 text-end">
+                                        <p> {{ context.accessories }}</p>
                                     </div>
                                 </div>
                             </div>
