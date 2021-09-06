@@ -364,18 +364,18 @@ def kitchen_summary(request):
     l = int(context['loft'])
 
     if context['type'] == "essentials":
-        cal = (a+b+c) * (3+l) * int(constant.essentials) # last value should be fetched from model
+        cal = round((a+b+c) * (3+l) * int(constant.essentials), 2) # last value should be fetched from model
     elif context['type'] == "premium":
-        cal = (a+b+c) * (3+l) * int(constant.premium) # last value should be fetched from model
+        cal = round((a+b+c) * (3+l) * int(constant.premium), 2) # last value should be fetched from model
     elif context['type'] == "luxe":
-        cal = (a+b+c) * (3+l) * int(constant.luxe) # last value should be fetched from model
-    print(a,b,c,l,constant.luxe)
+        cal = round((a+b+c) * (3+l) * int(constant.luxe), 2) # last value should be fetched from model
+    print(a,b,c,l,constant.luxe, cal)
     # Calculation part ends
     size = str(round(a,2)) + "ft x " + str(round(b,2)) + "ft x " + str(round(c,2)) + "ft"
-    details = kitchen_details(Shape = context['shape'], Size = size, Loft = context['loft'], Type = context['type'], Accessories = context['accessories'], Material = context['material'], Finish = context['finish'],Price = cal) # Is countertop needed? 
+    details = kitchen_details(Shape = context['shape'], Size = size, Loft = context['loft'], Type = context['type'], Accessories = context['accessories'], Material = context['material'], Finish = context['finish'],Price = cal)
     details.save()
 
-    return render(request, 'kitchen_summary.html', context, {'Price' : cal}) # whether int or float 
+    return render(request, 'kitchen_summary.html', context, {'Price' : cal, 'size' : size}) # whether int or float 
 
 def kitchen_summary_buildpkg(request):
     constant = Constants.objects.all().last()
@@ -401,20 +401,20 @@ def kitchen_summary_buildpkg(request):
     }
     # print(context)
     # Calculation part begins
-    a = int(context['a_feet']) + (int(context['a_inch']) / 12)
-    b = int(context['b_feet']) + (int(context['b_inch']) / 12)
-    c = int(context['c_feet']) + (int(context['c_inch']) / 12)
+    a = round(int(context['a_feet']) + (int(context['a_inch']) / 12), 2)
+    b = round(int(context['b_feet']) + (int(context['b_inch']) / 12), 2)
+    c = round(int(context['c_feet']) + (int(context['c_inch']) / 12), 2)
     l = int(context['loft'])
     
     size = str(round(a,2)) + "ft x " + str(round(b,2)) + "ft x " + str(round(c,2)) + "ft"
     # calculation of pricing
     if context['countertop'] == "Yes":
-         cal = ((a+b+c) * (3+l) * (rate[context['material']] + rate[context['finish']] + rate[context['accessories']])+ int(constant.countertop))
+         cal = round(((a+b+c) * (3+l) * (rate[context['material']] + rate[context['finish']] + rate[context['accessories']])+ int(constant.countertop)), 2)
     else:
-        cal = ((a+b+c) * (3+l) * (rate[context['material']]+rate[context['finish']]+ rate[context['accessories']]))
+        cal = round(((a+b+c) * (3+l) * (rate[context['material']]+rate[context['finish']]+ rate[context['accessories']])), 2)
     # Calculation part end
-
+    print(a,b,c,l, cal)
     details = kitchen_details(Shape = context['shape'], Size = size, Type = context['type'], Material = context['material'], Countertop = context['countertop'], Loft = context['loft'], Finish = context['finish'], Accessories = context['accessories'], Price = cal)
     details.save()
     # print(cal)
-    return render(request, 'kitchen_summary_buildpkg.html', context, {'price' : cal})
+    return render(request, 'kitchen_summary_buildpkg.html', context, {'price' : cal, 'size' : size})
