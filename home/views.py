@@ -160,20 +160,20 @@ def select_package(request):  # fqname is not confirmed
     
         if package == "ownpackage":
             return redirect('/build_package')
-        elif package == "essentials":
+        if package == "essentials":
             request.session['material'] = "MR Plywood"
             request.session['finish'] = "Laminate"
             request.session['accessories'] = "Wire Basket"
             return redirect('/summary')
-        elif package == "premium":
+        if package == "premium":
             request.session['material'] = "HDHMR"
             request.session['finish'] = "PVC"
             request.session['accessories'] = "Tandem Basket"
             return redirect('/summary')
-        elif package == "luxe":
-            request.session['material'] = "MR Plywood"
+        if package == "luxe":
+            request.session['material'] = "HDHMR"
             request.session['finish'] = "Acrylic"
-            request.session['accessories'] = "Wire Basket"
+            request.session['accessories'] = "Tandem Basket"
             return redirect('/summary')
 
     return render(request, 'select_package.html') # 1.template name is not confirmed
@@ -358,9 +358,9 @@ def kitchen_summary(request):
     # print(context)
     # Calculation part begins
 
-    a = int(context['a_feet']) + (int(context['a_inch']) / 12)
-    b = int(context['b_feet']) + (int(context['b_inch']) / 12)
-    c = int(context['c_feet']) + (int(context['c_inch']) / 12)
+    a = round(int(context['a_feet']) + (int(context['a_inch']) / 12), 2)
+    b = round(int(context['b_feet']) + (int(context['b_inch']) / 12), 2)
+    c = round(int(context['c_feet']) + (int(context['c_inch']) / 12), 2)
     l = int(context['loft'])
 
     if context['type'] == "essentials":
@@ -369,7 +369,7 @@ def kitchen_summary(request):
         cal = (a+b+c) * (3+l) * int(constant.premium) # last value should be fetched from model
     elif context['type'] == "luxe":
         cal = (a+b+c) * (3+l) * int(constant.luxe) # last value should be fetched from model
-   
+    print(a,b,c,l,constant.luxe)
     # Calculation part ends
     size = str(round(a,2)) + "ft x " + str(round(b,2)) + "ft x " + str(round(c,2)) + "ft"
     details = kitchen_details(Shape = context['shape'], Size = size, Loft = context['loft'], Type = context['type'], Accessories = context['accessories'], Material = context['material'], Finish = context['finish'],Price = cal) # Is countertop needed? 
