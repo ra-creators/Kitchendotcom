@@ -375,7 +375,7 @@ def kitchen_summary(request):
     details = kitchen_details(Shape = context['shape'], Size = size, Loft = context['loft'], Type = context['type'], Accessories = context['accessories'], Material = context['material'], Finish = context['finish'],Price = cal)
     details.save()
 
-    return render(request, 'kitchen_summary.html', context, {'Price' : cal, 'size' : size}) # whether int or float 
+    return render(request, 'kitchen_summary.html', {'context': context, 'Price' : cal, 'size' : size}) # whether int or float 
 
 def kitchen_summary_buildpkg(request):
     constant = Constants.objects.all().last()
@@ -417,4 +417,4 @@ def kitchen_summary_buildpkg(request):
     details = kitchen_details(Shape = context['shape'], Size = size, Type = context['type'], Material = context['material'], Countertop = context['countertop'], Loft = context['loft'], Finish = context['finish'], Accessories = context['accessories'], Price = cal)
     details.save()
     # print(cal)
-    return render(request, 'kitchen_summary_buildpkg.html', context, {'price' : cal, 'size' : size})
+    return render(request, 'kitchen_summary_buildpkg.html', {'context': context, 'Price' : cal, 'size' : size})
