@@ -370,7 +370,7 @@ def kitchen_summary_buildpkg(request):
     'services' :  request.session.get('services'),
     'appliances' :  request.session.get('appliances')
     }
-
+  
     # Calculation part begins
     a = round(int(context['a_feet']) + (int(context['a_inch']) / 12), 2)
     b = round(int(context['b_feet']) + (int(context['b_inch']) / 12), 2)
@@ -385,7 +385,7 @@ def kitchen_summary_buildpkg(request):
         cal = round(((a+b+c) * (3+l) * (rate[context['material']]+rate[context['finish']]+ rate[context['accessories']])), 2)
     # Calculation part end
     print(a,b,c,l, cal)
-    details = kitchen_details(Shape = context['shape'], Size = size, Type = context['type'], Material = context['material'], Countertop = context['countertop'], Loft = context['loft'], Finish = context['finish'], Accessories = context['accessories'], Price = cal)
+    details = kitchen_details(Shape = context['shape'], Size = size, Type = context['type'], Material = context['material'], Countertop = context['countertop'], Loft = context['loft'], Finish = context['finish'], Accessories = context['accessories'], Appliances = context['appliances'], Services = context['services'], Price = cal)
     details.save()
     context['size'] = size
     context['price'] = cal
