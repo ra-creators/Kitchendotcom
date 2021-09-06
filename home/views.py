@@ -161,7 +161,24 @@ def select_package_essentials(request):
     if request.method == "POST":
         package = request.POST.get('package') # "package" <- this name might be different
         request.session['package'] = package
-        return redirect('/summary')
+       
+        if package == "ownpackage":
+            return redirect('/build_package')
+        if package == "essentials":
+            request.session['material'] = "MR Plywood"
+            request.session['finish'] = "Laminate"
+            request.session['accessories'] = "Wire Basket"
+            return redirect('/summary')
+        if package == "premium":
+            request.session['material'] = "HDHMR"
+            request.session['finish'] = "PVC"
+            request.session['accessories'] = "Tandem Basket"
+            return redirect('/summary')
+        if package == "luxe":
+            request.session['material'] = "HDHMR"
+            request.session['finish'] = "Acrylic"
+            request.session['accessories'] = "Tandem Basket"
+            return redirect('/summary')
     
     return render(request, 'select_package_essentials.html')
 
@@ -169,21 +186,76 @@ def select_package_luxe(request):
     if request.method == "POST":
         package = request.POST.get('package') # "package" <- this name might be different
         request.session['package'] = package
-        return redirect('/summary')
+        
+        if package == "ownpackage":
+            return redirect('/build_package')
+        if package == "essentials":
+            request.session['material'] = "MR Plywood"
+            request.session['finish'] = "Laminate"
+            request.session['accessories'] = "Wire Basket"
+            return redirect('/summary')
+        if package == "premium":
+            request.session['material'] = "HDHMR"
+            request.session['finish'] = "PVC"
+            request.session['accessories'] = "Tandem Basket"
+            return redirect('/summary')
+        if package == "luxe":
+            request.session['material'] = "HDHMR"
+            request.session['finish'] = "Acrylic"
+            request.session['accessories'] = "Tandem Basket"
+            return redirect('/summary')
+        
     return render(request, 'select_package_luxe.html')
 
 def select_package_premium(request):
     if request.method == "POST":
         package = request.POST.get('package') # "package" <- this name might be different
         request.session['package'] = package
-        return redirect('/summary')
+        
+        if package == "ownpackage":
+            return redirect('/build_package')
+        if package == "essentials":
+            request.session['material'] = "MR Plywood"
+            request.session['finish'] = "Laminate"
+            request.session['accessories'] = "Wire Basket"
+            return redirect('/summary')
+        if package == "premium":
+            request.session['material'] = "HDHMR"
+            request.session['finish'] = "PVC"
+            request.session['accessories'] = "Tandem Basket"
+            return redirect('/summary')
+        if package == "luxe":
+            request.session['material'] = "HDHMR"
+            request.session['finish'] = "Acrylic"
+            request.session['accessories'] = "Tandem Basket"
+            return redirect('/summary')
+
     return render(request, 'select_package_premium.html')
 
 def select_package_buildpkg(request):
     if request.method == "POST":
         package = request.POST.get('package') # "package" <- this name might be different
         request.session['package'] = package
-        return redirect('/build_package')
+        
+        if package == "ownpackage":
+            return redirect('/build_package')
+        if package == "essentials":
+            request.session['material'] = "MR Plywood"
+            request.session['finish'] = "Laminate"
+            request.session['accessories'] = "Wire Basket"
+            return redirect('/summary')
+        if package == "premium":
+            request.session['material'] = "HDHMR"
+            request.session['finish'] = "PVC"
+            request.session['accessories'] = "Tandem Basket"
+            return redirect('/summary')
+        if package == "luxe":
+            request.session['material'] = "HDHMR"
+            request.session['finish'] = "Acrylic"
+            request.session['accessories'] = "Tandem Basket"
+            return redirect('/summary')
+
+
     return render(request, 'select_package_buildpkg.html')
 
 def build_package(request):
