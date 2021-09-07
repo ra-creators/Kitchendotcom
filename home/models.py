@@ -12,6 +12,7 @@ class c_details(models.Model):
 
 class kitchen_details(models.Model):
 
+    Name = models.CharField(max_length=122)
     Shape = models.CharField(max_length=12, default="NA")
     Size = models.CharField(max_length=30, null=True, default="NA")
     Type = models.CharField(max_length=30, default="NA")
@@ -26,7 +27,7 @@ class kitchen_details(models.Model):
     Price = models.CharField(max_length=12, default="NA")
     
     def __str__(self):
-        return self.Type
+        return self.Name
 
 # Model after adding sessions
 class Constants(models.Model):
