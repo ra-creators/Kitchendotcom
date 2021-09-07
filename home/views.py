@@ -419,6 +419,7 @@ def kitchen_summary(request):
     details.save()
     context['size'] = size
     context['price'] = cal
+    context['loft'] = request.session.get('loft') + ' feet loft'
     return render(request, 'kitchen_summary.html', {'context': context}) 
 
 def kitchen_summary_buildpkg(request):
@@ -433,8 +434,8 @@ def kitchen_summary_buildpkg(request):
     'b_inch' : request.session.get('b_inch'),
     'c_feet' : request.session.get('c_feet'),
     'c_inch' : request.session.get('c_inch'),
-    'name' : request.session.get('name'),
     'loft' : request.session.get('loft'),
+    'name' : request.session.get('name'),
     'type' : request.session.get('package'),
     'material' : request.session.get('material'),
     'countertop' : request.session.get('countertop'),
@@ -462,4 +463,5 @@ def kitchen_summary_buildpkg(request):
     details.save()
     context['size'] = size
     context['price'] = cal
+    context['loft'] = request.session.get('loft') + ' feet loft'
     return render(request, 'kitchen_summary_buildpkg.html', {'context': context})
