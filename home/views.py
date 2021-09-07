@@ -198,7 +198,6 @@ def build_package_hdhmr(request):
         material = request.POST.get('ownpackage')
         request.session['material'] = material
         return redirect('/select_countertop')
-
     return render(request, 'build_package_hdhmr.html')
 
 def build_package_mrply(request):
