@@ -5,17 +5,17 @@ from home .models import c_details, kitchen_details, Constants # importing calcu
 # FOR STORING LIST IN DATABASE FIELDS NAMELY APPLIANCES AND SERVICES
 
 rate = {
-'hdhmr' : 1200,
-'mrply' : 1000,
-'bwrply' : 1200,
-'bwpply' : 1500,
-'laminate' : 400,
-'pvclaminate' : 700 ,
-'asacrylic' : 1000, 
-'glossypu' : 1200, 
-'basic' : 300,
-'intermediate' : 500,
-'premium' : 1000}
+'HDHMR' : 1200,
+'MR Plywood' : 1000,
+'BWR Plywood' : 1200,
+'BWP Plywood' : 1500,
+'Laminate' : 400,
+'PVC Laminate' : 700 ,
+'Anti-scratch Acrylic' : 1000, 
+'Glossy PU' : 1200, 
+'Basic' : 300,
+'Intermediate' : 500,
+'Premium' : 1000}
 
 # Create your views here.
 def kitchen_price_steps(request):
@@ -137,19 +137,19 @@ def select_package(request):  # fqname is not confirmed
         package = request.POST.get('package') # "package" <- this name might be different
         request.session['package'] = package
     
-        if package == "ownpackage":
+        if package == "Build your own package":
             return redirect('/build_package')
-        if package == "essentials":
+        if package == "Essentials":
             request.session['material'] = "MR Plywood"
             request.session['finish'] = "Laminate"
             request.session['accessories'] = "Wire Basket"
             return redirect('/summary')
-        if package == "premium":
+        if package == "Premium":
             request.session['material'] = "HDHMR"
             request.session['finish'] = "PVC"
             request.session['accessories'] = "Tandem Basket"
             return redirect('/summary')
-        if package == "luxe":
+        if package == "Luxe":
             request.session['material'] = "HDHMR"
             request.session['finish'] = "Acrylic"
             request.session['accessories'] = "Tandem Basket"
@@ -162,19 +162,19 @@ def select_package_essentials(request):
         package = request.POST.get('package') # "package" <- this name might be different
         request.session['package'] = package
        
-        if package == "ownpackage":
+        if package == "Build your own package":
             return redirect('/build_package')
-        if package == "essentials":
+        if package == "Essentials":
             request.session['material'] = "MR Plywood"
             request.session['finish'] = "Laminate"
             request.session['accessories'] = "Wire Basket"
             return redirect('/summary')
-        if package == "premium":
+        if package == "Premium":
             request.session['material'] = "HDHMR"
             request.session['finish'] = "PVC"
             request.session['accessories'] = "Tandem Basket"
             return redirect('/summary')
-        if package == "luxe":
+        if package == "Luxe":
             request.session['material'] = "HDHMR"
             request.session['finish'] = "Acrylic"
             request.session['accessories'] = "Tandem Basket"
@@ -187,19 +187,19 @@ def select_package_luxe(request):
         package = request.POST.get('package') # "package" <- this name might be different
         request.session['package'] = package
         
-        if package == "ownpackage":
+        if package == "Build your own package":
             return redirect('/build_package')
-        if package == "essentials":
+        if package == "Essentials":
             request.session['material'] = "MR Plywood"
             request.session['finish'] = "Laminate"
             request.session['accessories'] = "Wire Basket"
             return redirect('/summary')
-        if package == "premium":
+        if package == "Premium":
             request.session['material'] = "HDHMR"
             request.session['finish'] = "PVC"
             request.session['accessories'] = "Tandem Basket"
             return redirect('/summary')
-        if package == "luxe":
+        if package == "Luxe":
             request.session['material'] = "HDHMR"
             request.session['finish'] = "Acrylic"
             request.session['accessories'] = "Tandem Basket"
@@ -212,19 +212,19 @@ def select_package_premium(request):
         package = request.POST.get('package') # "package" <- this name might be different
         request.session['package'] = package
         
-        if package == "ownpackage":
+        if package == "Build your own package":
             return redirect('/build_package')
-        if package == "essentials":
+        if package == "Essentials":
             request.session['material'] = "MR Plywood"
             request.session['finish'] = "Laminate"
             request.session['accessories'] = "Wire Basket"
             return redirect('/summary')
-        if package == "premium":
+        if package == "Premium":
             request.session['material'] = "HDHMR"
             request.session['finish'] = "PVC"
             request.session['accessories'] = "Tandem Basket"
             return redirect('/summary')
-        if package == "luxe":
+        if package == "Luxe":
             request.session['material'] = "HDHMR"
             request.session['finish'] = "Acrylic"
             request.session['accessories'] = "Tandem Basket"
@@ -237,19 +237,19 @@ def select_package_buildpkg(request):
         package = request.POST.get('package') # "package" <- this name might be different
         request.session['package'] = package
         
-        if package == "ownpackage":
+        if package == "Build your own package":
             return redirect('/build_package')
-        if package == "essentials":
+        if package == "Essentials":
             request.session['material'] = "MR Plywood"
             request.session['finish'] = "Laminate"
             request.session['accessories'] = "Wire Basket"
             return redirect('/summary')
-        if package == "premium":
+        if package == "Premium":
             request.session['material'] = "HDHMR"
             request.session['finish'] = "PVC"
             request.session['accessories'] = "Tandem Basket"
             return redirect('/summary')
-        if package == "luxe":
+        if package == "Luxe":
             request.session['material'] = "HDHMR"
             request.session['finish'] = "Acrylic"
             request.session['accessories'] = "Tandem Basket"
@@ -406,11 +406,11 @@ def kitchen_summary(request):
     c = round(int(context['c_feet']) + (int(context['c_inch']) / 12), 2)
     l = int(context['loft'])
 
-    if context['type'] == "essentials":
+    if context['type'] == "Essentials":
         cal = round((a+b+c) * (3+l) * int(constant.essentials), 2) # last value should be fetched from model
-    elif context['type'] == "premium":
+    elif context['type'] == "Premium":
         cal = round((a+b+c) * (3+l) * int(constant.premium), 2) # last value should be fetched from model
-    elif context['type'] == "luxe":
+    elif context['type'] == "Luxe":
         cal = round((a+b+c) * (3+l) * int(constant.luxe), 2) # last value should be fetched from model
     print(a,b,c,l, cal)
     # Calculation part ends
@@ -458,7 +458,7 @@ def kitchen_summary_buildpkg(request):
     else:
         cal = round(((a+b+c) * (3+l) * (rate[context['material']]+rate[context['finish']]+ rate[context['accessories']])), 2)
     # Calculation part end
-    print(a,b,c,l, cal)
+    # print(a,b,c,l, cal)
     details = kitchen_details(Name = context['name'], Shape = context['shape'], Size = size, Type = context['type'], Material = context['material'], Countertop = context['countertop'], Loft = context['loft'], Finish = context['finish'], Accessories = context['accessories'], Appliances = context['appliances'], Services = context['services'], Price = cal)
     details.save()
     context['size'] = size
