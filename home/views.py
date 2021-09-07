@@ -46,13 +46,13 @@ def customer_details(request):
 
         c_detail = c_details(name=name, email=email, phone=phone)  
         c_detail.save()
-        if layout == "L":
+        if layout == "L-Shaped":
             return redirect('/select_lshape')
-        elif(layout == 'S'):
+        elif(layout == 'Straight'):
             return redirect('/select_straight')
-        elif(layout == 'U'):
+        elif(layout == 'U-Shaped'):
             return redirect('/select_ushape')
-        elif(layout == 'P'):
+        elif(layout == 'Parallel'):
             return redirect('/select_parallel')
     return render(request, 'customer_details.html')
 
