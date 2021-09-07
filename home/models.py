@@ -12,7 +12,7 @@ class c_details(models.Model):
 
 class kitchen_details(models.Model):
 
-    Name = models.CharField(max_length=122)
+    Name = models.CharField(max_length=122, default = "NA")
     Shape = models.CharField(max_length=12, default="NA")
     Size = models.CharField(max_length=30, null=True, default="NA")
     Type = models.CharField(max_length=30, default="NA")

@@ -392,6 +392,7 @@ def kitchen_summary(request):
         'b_inch' : request.session.get('b_inch'),
         'c_feet' : request.session.get('c_feet'),
         'c_inch' : request.session.get('c_inch'),
+        'name' : request.session.get('name'),
         'loft' : request.session.get('loft'),
         'type' : request.session.get('package'),
         'material' : request.session.get('material'),
@@ -414,7 +415,7 @@ def kitchen_summary(request):
     print(a,b,c,l, cal)
     # Calculation part ends
     size = str(round(a,2)) + "ft x " + str(round(b,2)) + "ft x " + str(round(c,2)) + "ft"
-    details = kitchen_details(Shape = context['shape'], Size = size, Loft = context['loft'], Type = context['type'], Accessories = context['accessories'], Material = context['material'], Finish = context['finish'],Price = cal)
+    details = kitchen_details(Name = context['name'], Shape = context['shape'], Size = size, Loft = context['loft'], Type = context['type'], Accessories = context['accessories'], Material = context['material'], Finish = context['finish'],Price = cal)
     details.save()
     context['size'] = size
     context['price'] = cal
