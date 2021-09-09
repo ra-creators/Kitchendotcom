@@ -2,7 +2,7 @@ from django.http.response import HttpResponse
 from django.http import HttpResponseRedirect  
 from django.shortcuts import redirect, render  
 from home .models import c_details, kitchen_details, Constants # importing calculation model is removed
-# FOR STORING LIST IN DATABASE FIELDS NAMELY APPLIANCES AND SERVICES
+from datetime import datetime
 
 rate = {
 'HDHMR' : 1200,
@@ -415,7 +415,7 @@ def kitchen_summary(request):
     print(a,b,c,l, cal)
     # Calculation part ends
     size = str(round(a,2)) + "ft x " + str(round(b,2)) + "ft x " + str(round(c,2)) + "ft"
-    details = kitchen_details(Name = context['name'], Shape = context['shape'], Size = size, Loft = context['loft'], Type = context['type'], Accessories = context['accessories'], Material = context['material'], Finish = context['finish'],Price = cal)
+    details = kitchen_details(Name = context['name'], Shape = context['shape'], Size = size, Loft = context['loft'], Type = context['type'], Accessories = context['accessories'], Material = context['material'], Finish = context['finish'],Price = cal, date = datetime.today())
     details.save()
     context['size'] = size
     context['price'] = cal
@@ -458,8 +458,8 @@ def kitchen_summary_buildpkg(request):
     else:
         cal = round(((a+b+c) * (3+l) * (rate[context['material']]+rate[context['finish']]+ rate[context['accessories']])), 2)
     # Calculation part end
-    # print(a,b,c,l, cal)
-    details = kitchen_details(Name = context['name'], Shape = context['shape'], Size = size, Type = context['type'], Material = context['material'], Countertop = context['countertop'], Loft = context['loft'], Finish = context['finish'], Accessories = context['accessories'], Appliances = context['appliances'], Services = context['services'], Price = cal)
+    
+    details = kitchen_details(Name = context['name'], Shape = context['shape'], Size = size, Type = context['type'], Material = context['material'], Countertop = context['countertop'], Loft = context['loft'], Finish = context['finish'], Accessories = context['accessories'], Appliances = context['appliances'], Services = context['services'], Price = cal, date = datetime.today())
     details.save()
     context['size'] = size
     context['price'] = cal

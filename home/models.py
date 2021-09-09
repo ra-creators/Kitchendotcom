@@ -25,6 +25,7 @@ class kitchen_details(models.Model):
     Appliances = models.TextField(max_length=32, default="NA")
     # customer = models.ForeignKey(c_details, blank=True, null=True, on_delete=models.CASCADE )
     Price = models.CharField(max_length=12, default="NA")
+    date = models.DateField(default=1111-11-11)
     
     def __str__(self):
         return self.Name
