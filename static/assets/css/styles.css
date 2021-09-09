@@ -214,3 +214,15 @@ input[type='checkbox']:checked:after {
 .dashed {
     border: dashed;
 }
+
+/* Hide Scrolling  */
+
+html {
+    overflow-y: hidden;
+}
+
+@media (max-width: 991.98px) { 
+    html {
+        overflow-y: auto;
+    }
+ }
