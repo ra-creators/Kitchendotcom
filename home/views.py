@@ -464,3 +464,9 @@ def kitchen_summary_buildpkg(request):
     context['price'] = cal
     context['loft'] = request.session.get('loft') + ' feet loft'
     return render(request, 'kitchen_summary_buildpkg.html', {'context': context})
+
+# def crm(request):
+#     fields = kitchen_details.objects.all().filter(location = subAdmin.location)
+
+# to do
+# fetch and add location field from customer_details template to kitchen_detils model
