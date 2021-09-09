@@ -435,7 +435,6 @@ def kitchen_summary_buildpkg(request):
     'c_feet' : request.session.get('c_feet'),
     'c_inch' : request.session.get('c_inch'),
     'loft' : request.session.get('loft'),
-    'name' : request.session.get('name'),
     'type' : request.session.get('package'),
     'material' : request.session.get('material'),
     'countertop' : request.session.get('countertop'),
