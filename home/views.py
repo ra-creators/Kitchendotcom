@@ -1,21 +1,40 @@
 from django.http.response import HttpResponse
 from django.http import HttpResponseRedirect  
 from django.shortcuts import redirect, render  
-from home .models import c_details, kitchen_details, Constants # importing calculation model is removed
+from home.models import c_details, kitchen_details, Constant, City1, City2, City3, City4, City5, City6, City7, City8, City9, City10 # importing calculation model is removed
 from datetime import datetime
 
+values = Constant.objects.all().last()
 rate = {
-'HDHMR' : 1200,
-'MR Plywood' : 1000,
-'BWR Plywood' : 1200,
-'BWP Plywood' : 1500,
-'Laminate' : 400,
-'PVC Laminate' : 700 ,
-'Anti-scratch Acrylic' : 1000, 
-'Glossy PU' : 1200, 
-'Basic' : 300,
-'Intermediate' : 500,
-'Premium' : 1000}
+'Essentials' : int(values.essentials),
+'Premium' : int(values.premium),
+'Luxe' : int(values.luxe),
+'Yes' : int(values.countertop),
+'HDHMR' : int(values.HDHMR),
+'MR Plywood' : int(values.MR_Plywood),
+'BWR Plywood' : int(values.BWR_Plywood),
+'BWP Plywood' : int(values.BWP_Plywood),
+'Laminate' : int(values.Laminate),
+'PVC Laminate' : int(values.PVC_Laminate),
+'Anti-scratch Acrylic' : int(values.Anti_scratch_Acrylic), 
+'Glossy PU' : int(values.Glossy_PU), 
+'Basic' : int(values.Basic_Acc),
+'Intermediate' : int(values.Intermediate_Acc),
+'Premium' : int(values.Prem_Acc)
+}
+
+city = {
+    'City 1' : City1(),
+    'City 2' : City2(),
+    'City 3' : City3(),
+    'City 4' : City4(),
+    'City 5' : City5(),
+    'City 6' : City6(),
+    'City 7' : City7(),
+    'City 8' : City8(),
+    'City 9' : City9(),
+    'City 10' : City10()
+}
 
 # Create your views here.
 def kitchen_price_steps(request):
@@ -40,9 +59,13 @@ def customer_details(request):
         name = request.POST.get('name')
         email = request.POST.get('email')
         phone = request.POST.get('phone')
+        location1 = request.POST.get('location')
+        # print(location1)
         request.session['name'] = name
         request.session['email'] = email
         request.session['phone'] = phone
+        request.session['location'] = location1
+
 
         c_detail = c_details(name=name, email=email, phone=phone)  
         c_detail.save()
@@ -375,13 +398,13 @@ def select_services(request):
 def select_appliances(request):
     if request.method == "POST":
         app_list = request.POST.getlist('appliance[]')
-        print(app_list)
+        # print(app_list)
         request.session['appliances'] = app_list
         return redirect('/summary/buildpkg')
     return render(request, 'select_appliances.html')
 
 def kitchen_summary(request):
-    constant = Constants.objects.all().last()
+    constant = Constant.objects.all().last()
     # key names are as per summary page
     context = {
         'name' : request.session.get('name'),
@@ -397,7 +420,8 @@ def kitchen_summary(request):
         'type' : request.session.get('package'),
         'material' : request.session.get('material'),
         'finish' : request.session.get('finish'),
-        'accessories' : request.session.get('accessories')
+        'accessories' : request.session.get('accessories'),
+        'location' : request.session.get('location')
     }
     # Calculation part begins
 
@@ -406,24 +430,32 @@ def kitchen_summary(request):
     c = round(int(context['c_feet']) + (int(context['c_inch']) / 12), 2)
     l = int(context['loft'])
 
-    if context['type'] == "Essentials":
-        cal = round((a+b+c) * (3+l) * int(constant.essentials), 2) # last value should be fetched from model
-    elif context['type'] == "Premium":
-        cal = round((a+b+c) * (3+l) * int(constant.premium), 2) # last value should be fetched from model
-    elif context['type'] == "Luxe":
-        cal = round((a+b+c) * (3+l) * int(constant.luxe), 2) # last value should be fetched from model
-    print(a,b,c,l, cal)
+    # if context['type'] == "Essentials":
+    cal = round(((a+b+c) * (3+l) * rate[context['type']]), 2) # last value should be fetched from model
+    # elif context['type'] == "Premium":
+    #     cal = round((a+b+c) * (3+l) * int(constant.premium), 2) # last value should be fetched from model
+    # elif context['type'] == "Luxe":
+    #     cal = round((a+b+c) * (3+l) * int(constant.luxe), 2) # last value should be fetched from model
+    # print(a,b,c,l, cal)
     # Calculation part ends
     size = str(round(a,2)) + "ft x " + str(round(b,2)) + "ft x " + str(round(c,2)) + "ft"
-    details = kitchen_details(Name = context['name'], Shape = context['shape'], Size = size, Loft = context['loft'], Type = context['type'], Accessories = context['accessories'], Material = context['material'], Finish = context['finish'],Price = cal, date = datetime.today())
+    # Saving data in main table
+    details = kitchen_details(Name = context['name'], Shape = context['shape'], Size = size, Loft = context['loft'], Type = context['type'], Accessories = context['accessories'], Material = context['material'], Finish = context['finish'],Price = cal, Location = context['location'], date = datetime.today())
     details.save()
+    # Saving data in specific location table
+    # city_object = city[request.session.get('location')]
     context['size'] = size
     context['price'] = cal
     context['loft'] = request.session.get('loft') + ' feet loft'
+    # for testing
+    f = kitchen_details.objects.all()
+    fields = f.filter(Location = 'City 10')
+    print(fields)
+    # print(f)
     return render(request, 'kitchen_summary.html', {'context': context}) 
 
 def kitchen_summary_buildpkg(request):
-    constant = Constants.objects.all().last()
+    constant = Constant.objects.all().last()
     # key names are as per summary page
     context = {
     'shape' : request.session.get('layout'),  
@@ -441,7 +473,8 @@ def kitchen_summary_buildpkg(request):
     'finish' : request.session.get('finish'),
     'accessories' : request.session.get('accessories'),
     'services' :  request.session.get('services'),
-    'appliances' :  request.session.get('appliances')
+    'appliances' :  request.session.get('appliances'),
+    'location' : request.session.get('location')
     }
   
     # Calculation part begins
@@ -453,20 +486,26 @@ def kitchen_summary_buildpkg(request):
     size = str(round(a,2)) + "ft x " + str(round(b,2)) + "ft x " + str(round(c,2)) + "ft"
     # calculation of pricing
     if context['countertop'] == "Yes":
-         cal = round(((a+b+c) * (3+l) * (rate[context['material']] + rate[context['finish']] + rate[context['accessories']])+ int(constant.countertop)), 2)
+         cal = round(((a+b+c) * (3+l) * (rate[context['material']] + rate[context['finish']] + rate[context['accessories']])+ rate[context['countertop']]), 2)
     else:
         cal = round(((a+b+c) * (3+l) * (rate[context['material']]+rate[context['finish']]+ rate[context['accessories']])), 2)
     # Calculation part end
     
-    details = kitchen_details(Name = context['name'], Shape = context['shape'], Size = size, Type = context['type'], Material = context['material'], Countertop = context['countertop'], Loft = context['loft'], Finish = context['finish'], Accessories = context['accessories'], Appliances = context['appliances'], Services = context['services'], Price = cal, date = datetime.today())
+    details = kitchen_details(Name = context['name'], Shape = context['shape'], Size = size, Type = context['type'], Material = context['material'], Countertop = context['countertop'], Loft = context['loft'], Finish = context['finish'], Accessories = context['accessories'], Appliances = context['appliances'], Services = context['services'], Price = cal, Location = context['location'], date = datetime.today())
     details.save()
     context['size'] = size
     context['price'] = cal
     context['loft'] = request.session.get('loft') + ' feet loft'
+    f = kitchen_details.objects.all()
+    fields = f.filter(Location = 'City 7')
+    print(fields)
+    # print(f)
     return render(request, 'kitchen_summary_buildpkg.html', {'context': context})
 
 # def crm(request):
-#     fields = kitchen_details.objects.all().filter(location = subAdmin.location)
-
+#     f = kitchen_details.objects.all()
+#     fields = f.filter(location = 'City 7')
+#     print(fields+"haribhaiya")
+#     print(f)
 # to do
 # fetch and add location field from customer_details template to kitchen_detils model
