@@ -5,10 +5,11 @@ from home.models import c_details, kitchen_details, Constant, City1, City2, City
 from datetime import datetime
 
 values = Constant.objects.all().last()
-rate = {
-'Essentials' : int(values.essentials),
-'Premium' : int(values.premium),
-'Luxe' : int(values.luxe),
+print(values.Premium)
+rate = {'1':{
+'Essentials' : int(values.Essentials),
+'Premium' : int(values.Premium),
+'Luxe' : int(values.Luxe)},
 'Yes' : int(values.countertop),
 'HDHMR' : int(values.HDHMR),
 'MR Plywood' : int(values.MR_Plywood),
@@ -21,19 +22,6 @@ rate = {
 'Basic' : int(values.Basic_Acc),
 'Intermediate' : int(values.Intermediate_Acc),
 'Premium' : int(values.Prem_Acc)
-}
-
-city = {
-    'City 1' : City1(),
-    'City 2' : City2(),
-    'City 3' : City3(),
-    'City 4' : City4(),
-    'City 5' : City5(),
-    'City 6' : City6(),
-    'City 7' : City7(),
-    'City 8' : City8(),
-    'City 9' : City9(),
-    'City 10' : City10()
 }
 
 # Create your views here.
@@ -404,6 +392,7 @@ def select_appliances(request):
     return render(request, 'select_appliances.html')
 
 def kitchen_summary(request):
+ 
     constant = Constant.objects.all().last()
     # key names are as per summary page
     context = {
@@ -423,15 +412,16 @@ def kitchen_summary(request):
         'accessories' : request.session.get('accessories'),
         'location' : request.session.get('location')
     }
-    # Calculation part begins
 
+    # Calculation part begins
     a = round(int(context['a_feet']) + (int(context['a_inch']) / 12), 2)
     b = round(int(context['b_feet']) + (int(context['b_inch']) / 12), 2)
     c = round(int(context['c_feet']) + (int(context['c_inch']) / 12), 2)
     l = int(context['loft'])
 
     # if context['type'] == "Essentials":
-    cal = round(((a+b+c) * (3+l) * rate[context['type']]), 2) # last value should be fetched from model
+    cal = round(((a+b+c) * (3+l) * rate['1'][context['type']]), 2) # last value should be fetched from model
+    print(a,b,c,l,rate[context['type']])
     # elif context['type'] == "Premium":
     #     cal = round((a+b+c) * (3+l) * int(constant.premium), 2) # last value should be fetched from model
     # elif context['type'] == "Luxe":
@@ -442,16 +432,27 @@ def kitchen_summary(request):
     # Saving data in main table
     details = kitchen_details(Name = context['name'], Shape = context['shape'], Size = size, Loft = context['loft'], Type = context['type'], Accessories = context['accessories'], Material = context['material'], Finish = context['finish'],Price = cal, Location = context['location'], date = datetime.today())
     details.save()
+
     # Saving data in specific location table
-    # city_object = city[request.session.get('location')]
+    
+    city = {
+    'City 1' : City1(Name = context['name'], Shape = context['shape'], Size = size, Loft = context['loft'], Type = context['type'], Accessories = context['accessories'], Material = context['material'], Finish = context['finish'],Price = cal, Location = context['location'], date = datetime.today()),
+    'City 2' : City2(Name = context['name'], Shape = context['shape'], Size = size, Loft = context['loft'], Type = context['type'], Accessories = context['accessories'], Material = context['material'], Finish = context['finish'],Price = cal, Location = context['location'], date = datetime.today()),
+    'City 3' : City3(Name = context['name'], Shape = context['shape'], Size = size, Loft = context['loft'], Type = context['type'], Accessories = context['accessories'], Material = context['material'], Finish = context['finish'],Price = cal, Location = context['location'], date = datetime.today()),
+    'City 4' : City4(Name = context['name'], Shape = context['shape'], Size = size, Loft = context['loft'], Type = context['type'], Accessories = context['accessories'], Material = context['material'], Finish = context['finish'],Price = cal, Location = context['location'], date = datetime.today()),
+    'City 5' : City5(Name = context['name'], Shape = context['shape'], Size = size, Loft = context['loft'], Type = context['type'], Accessories = context['accessories'], Material = context['material'], Finish = context['finish'],Price = cal, Location = context['location'], date = datetime.today()),
+    'City 6' : City6(Name = context['name'], Shape = context['shape'], Size = size, Loft = context['loft'], Type = context['type'], Accessories = context['accessories'], Material = context['material'], Finish = context['finish'],Price = cal, Location = context['location'], date = datetime.today()),
+    'City 7' : City7(Name = context['name'], Shape = context['shape'], Size = size, Loft = context['loft'], Type = context['type'], Accessories = context['accessories'], Material = context['material'], Finish = context['finish'],Price = cal, Location = context['location'], date = datetime.today()),
+    'City 8' : City8(Name = context['name'], Shape = context['shape'], Size = size, Loft = context['loft'], Type = context['type'], Accessories = context['accessories'], Material = context['material'], Finish = context['finish'],Price = cal, Location = context['location'], date = datetime.today()),
+    'City 9' : City9(Name = context['name'], Shape = context['shape'], Size = size, Loft = context['loft'], Type = context['type'], Accessories = context['accessories'], Material = context['material'], Finish = context['finish'],Price = cal, Location = context['location'], date = datetime.today()),
+    'City 10' : City10(Name = context['name'], Shape = context['shape'], Size = size, Loft = context['loft'], Type = context['type'], Accessories = context['accessories'], Material = context['material'], Finish = context['finish'],Price = cal, Location = context['location'], date = datetime.today())
+    }
+    city_obj = city[request.session.get('location')]
+    city_obj.save()
+    
     context['size'] = size
     context['price'] = cal
     context['loft'] = request.session.get('loft') + ' feet loft'
-    # for testing
-    f = kitchen_details.objects.all()
-    fields = f.filter(Location = 'City 10')
-    print(fields)
-    # print(f)
     return render(request, 'kitchen_summary.html', {'context': context}) 
 
 def kitchen_summary_buildpkg(request):
@@ -493,19 +494,23 @@ def kitchen_summary_buildpkg(request):
     
     details = kitchen_details(Name = context['name'], Shape = context['shape'], Size = size, Type = context['type'], Material = context['material'], Countertop = context['countertop'], Loft = context['loft'], Finish = context['finish'], Accessories = context['accessories'], Appliances = context['appliances'], Services = context['services'], Price = cal, Location = context['location'], date = datetime.today())
     details.save()
+    # Saving data in specific location table
+    city = {
+    'City 1' : City1(Name = context['name'], Shape = context['shape'], Size = size, Loft = context['loft'], Type = context['type'], Accessories = context['accessories'], Material = context['material'], Finish = context['finish'],Price = cal, Location = context['location'], date = datetime.today()),
+    'City 2' : City2(Name = context['name'], Shape = context['shape'], Size = size, Loft = context['loft'], Type = context['type'], Accessories = context['accessories'], Material = context['material'], Finish = context['finish'],Price = cal, Location = context['location'], date = datetime.today()),
+    'City 3' : City3(Name = context['name'], Shape = context['shape'], Size = size, Loft = context['loft'], Type = context['type'], Accessories = context['accessories'], Material = context['material'], Finish = context['finish'],Price = cal, Location = context['location'], date = datetime.today()),
+    'City 4' : City4(Name = context['name'], Shape = context['shape'], Size = size, Loft = context['loft'], Type = context['type'], Accessories = context['accessories'], Material = context['material'], Finish = context['finish'],Price = cal, Location = context['location'], date = datetime.today()),
+    'City 5' : City5(Name = context['name'], Shape = context['shape'], Size = size, Loft = context['loft'], Type = context['type'], Accessories = context['accessories'], Material = context['material'], Finish = context['finish'],Price = cal, Location = context['location'], date = datetime.today()),
+    'City 6' : City6(Name = context['name'], Shape = context['shape'], Size = size, Loft = context['loft'], Type = context['type'], Accessories = context['accessories'], Material = context['material'], Finish = context['finish'],Price = cal, Location = context['location'], date = datetime.today()),
+    'City 7' : City7(Name = context['name'], Shape = context['shape'], Size = size, Loft = context['loft'], Type = context['type'], Accessories = context['accessories'], Material = context['material'], Finish = context['finish'],Price = cal, Location = context['location'], date = datetime.today()),
+    'City 8' : City8(Name = context['name'], Shape = context['shape'], Size = size, Loft = context['loft'], Type = context['type'], Accessories = context['accessories'], Material = context['material'], Finish = context['finish'],Price = cal, Location = context['location'], date = datetime.today()),
+    'City 9' : City9(Name = context['name'], Shape = context['shape'], Size = size, Loft = context['loft'], Type = context['type'], Accessories = context['accessories'], Material = context['material'], Finish = context['finish'],Price = cal, Location = context['location'], date = datetime.today()),
+    'City 10' : City10(Name = context['name'], Shape = context['shape'], Size = size, Loft = context['loft'], Type = context['type'], Accessories = context['accessories'], Material = context['material'], Finish = context['finish'],Price = cal, Location = context['location'], date = datetime.today())
+    }
+    city_obj = city[request.session.get('location')]
+    city_obj.save()
+
     context['size'] = size
     context['price'] = cal
     context['loft'] = request.session.get('loft') + ' feet loft'
-    f = kitchen_details.objects.all()
-    fields = f.filter(Location = 'City 7')
-    print(fields)
-    # print(f)
     return render(request, 'kitchen_summary_buildpkg.html', {'context': context})
-
-# def crm(request):
-#     f = kitchen_details.objects.all()
-#     fields = f.filter(location = 'City 7')
-#     print(fields+"haribhaiya")
-#     print(f)
-# to do
-# fetch and add location field from customer_details template to kitchen_detils model

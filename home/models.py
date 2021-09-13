@@ -33,9 +33,9 @@ class kitchen_details(models.Model):
 
 # Model after adding sessions
 class Constant(models.Model):
-    essentials = models.CharField(max_length=12, default="NA")
-    premium = models.CharField(max_length=12, default="NA")
-    luxe = models.CharField(max_length=12, default="NA")
+    Essentials = models.CharField(max_length=12, default="NA")
+    Premium = models.CharField(max_length=12, default="NA")
+    Luxe = models.CharField(max_length=12, default="NA")
     countertop = models.CharField(max_length=12, default="NA")
     HDHMR = models.CharField(max_length=12, default="NA")
     MR_Plywood = models.CharField(max_length=12, default="NA")
@@ -49,6 +49,8 @@ class Constant(models.Model):
     Intermediate_Acc = models.CharField(max_length=12, default="NA")
     Prem_Acc = models.CharField(max_length=12, default="NA")
 
+    def __str__(self):
+        return "Rates"
 
 class City1(models.Model):
     Name = models.CharField(max_length=122, default = "NA")
@@ -66,6 +68,9 @@ class City1(models.Model):
     Price = models.CharField(max_length=12, default="NA")
     Location = models.CharField(max_length=12, default="NA")
     date = models.DateField(default=1111-11-11)
+
+    def __str__(self):
+        return self.Name
 
 
 class City2(models.Model):
@@ -85,6 +90,9 @@ class City2(models.Model):
     Location = models.CharField(max_length=12, default="NA")
     date = models.DateField(default=1111-11-11)
 
+    def __str__(self):
+        return self.Name
+
 
 class City3(models.Model):
     Name = models.CharField(max_length=122, default = "NA")
@@ -102,6 +110,9 @@ class City3(models.Model):
     Price = models.CharField(max_length=12, default="NA")
     Location = models.CharField(max_length=12, default="NA")
     date = models.DateField(default=1111-11-11)
+
+    def __str__(self):
+        return self.Name
 
 
 class City4(models.Model):
@@ -121,6 +132,9 @@ class City4(models.Model):
     Location = models.CharField(max_length=12, default="NA")
     date = models.DateField(default=1111-11-11)
 
+    def __str__(self):
+        return self.Name
+
 
 class City5(models.Model):
     Name = models.CharField(max_length=122, default = "NA")
@@ -138,6 +152,9 @@ class City5(models.Model):
     Price = models.CharField(max_length=12, default="NA")
     Location = models.CharField(max_length=12, default="NA")
     date = models.DateField(default=1111-11-11)
+
+    def __str__(self):
+        return self.Name
 
 
 class City6(models.Model):
@@ -157,6 +174,9 @@ class City6(models.Model):
     Location = models.CharField(max_length=12, default="NA")
     date = models.DateField(default=1111-11-11)
 
+    def __str__(self):
+        return self.Name
+
 
 class City7(models.Model):
     Name = models.CharField(max_length=122, default = "NA")
@@ -174,6 +194,9 @@ class City7(models.Model):
     Price = models.CharField(max_length=12, default="NA")
     Location = models.CharField(max_length=12, default="NA")
     date = models.DateField(default=1111-11-11)
+
+    def __str__(self):
+        return self.Name
 
 
 class City8(models.Model):
@@ -193,6 +216,9 @@ class City8(models.Model):
     Location = models.CharField(max_length=12, default="NA")
     date = models.DateField(default=1111-11-11)
 
+    def __str__(self):
+        return self.Name
+
 
 class City9(models.Model):
     Name = models.CharField(max_length=122, default = "NA")
@@ -211,6 +237,9 @@ class City9(models.Model):
     Location = models.CharField(max_length=12, default="NA")
     date = models.DateField(default=1111-11-11)
 
+    def __str__(self):
+        return self.Name
+
 
 class City10(models.Model):
     Name = models.CharField(max_length=122, default = "NA")
@@ -228,3 +257,6 @@ class City10(models.Model):
     Price = models.CharField(max_length=12, default="NA")
     Location = models.CharField(max_length=12, default="NA")
     date = models.DateField(default=1111-11-11)
+
+    def __str__(self):
+        return self.Name
