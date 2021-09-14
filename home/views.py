@@ -5,23 +5,23 @@ from home.models import c_details, kitchen_details, Constant, City1, City2, City
 from datetime import datetime
 
 values = Constant.objects.all().last()
-print(values.Premium)
-rate = {'1':{
-'Essentials' : int(values.Essentials),
-'Premium' : int(values.Premium),
-'Luxe' : int(values.Luxe)},
-'Yes' : int(values.countertop),
-'HDHMR' : int(values.HDHMR),
-'MR Plywood' : int(values.MR_Plywood),
-'BWR Plywood' : int(values.BWR_Plywood),
-'BWP Plywood' : int(values.BWP_Plywood),
-'Laminate' : int(values.Laminate),
-'PVC Laminate' : int(values.PVC_Laminate),
-'Anti-scratch Acrylic' : int(values.Anti_scratch_Acrylic), 
-'Glossy PU' : int(values.Glossy_PU), 
-'Basic' : int(values.Basic_Acc),
-'Intermediate' : int(values.Intermediate_Acc),
-'Premium' : int(values.Prem_Acc)
+rate = {
+    '1':{
+        'Essentials' : int(values.Essentials),
+        'Premium' : int(values.Premium),
+        'Luxe' : int(values.Luxe)},
+    'Yes' : int(values.countertop),
+    'HDHMR' : int(values.HDHMR),
+    'MR Plywood' : int(values.MR_Plywood),
+    'BWR Plywood' : int(values.BWR_Plywood),
+    'BWP Plywood' : int(values.BWP_Plywood),
+    'Laminate' : int(values.Laminate),
+    'PVC Laminate' : int(values.PVC_Laminate),
+    'Anti-scratch Acrylic' : int(values.Anti_scratch_Acrylic), 
+    'Glossy PU' : int(values.Glossy_PU), 
+    'Basic' : int(values.Basic_Acc),
+    'Intermediate' : int(values.Intermediate_Acc),
+    'Premium' : int(values.Prem_Acc)
 }
 
 # Create your views here.
@@ -421,7 +421,7 @@ def kitchen_summary(request):
 
     # if context['type'] == "Essentials":
     cal = round(((a+b+c) * (3+l) * rate['1'][context['type']]), 2) # last value should be fetched from model
-    print(a,b,c,l,rate[context['type']])
+    # print(a,b,c,l,rate[context['type']])
     # elif context['type'] == "Premium":
     #     cal = round((a+b+c) * (3+l) * int(constant.premium), 2) # last value should be fetched from model
     # elif context['type'] == "Luxe":
