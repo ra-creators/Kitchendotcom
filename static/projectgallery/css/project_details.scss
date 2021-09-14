@@ -1,0 +1,32 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border: 0 0 0 0;
+}
+
+body {
+  min-height: 100vh;
+  width: 100vw;
+
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  p {
+    position: absolute;
+    width: 424px;
+    height: 102px;
+    left: 167px;
+    top: 59px;
+
+    font-family: Playfair Display;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 36px;
+    line-height: 48px;
+
+    color: #006665;
+  }
+}

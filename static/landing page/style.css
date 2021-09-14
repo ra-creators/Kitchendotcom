@@ -1,0 +1,252 @@
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  height: 100vh;
+  width: 100vw;
+  max-width: 100%;
+  background-color: rgba(0, 102, 101, 0.9);
+  color: #ffd9bf;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+section {
+  margin: 1rem 0;
+}
+
+nav {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  text-decoration: none;
+  height: 14rem;
+  padding: 1rem 3rem;
+}
+
+nav .brand {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: inherit;
+      -ms-flex-align: inherit;
+          align-items: inherit;
+}
+
+nav .brand img {
+  position: absolute;
+  margin-top: -1rem;
+  margin-left: -3rem;
+}
+
+nav .brand .brand-name {
+  margin-left: 3rem;
+  font-family: Open Sans;
+  font-size: 2.2rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 3rem;
+  letter-spacing: 0em;
+  text-align: left;
+}
+
+nav .links {
+  list-style: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+nav .links li {
+  padding: 0 2.5rem;
+}
+
+nav .links li a {
+  color: #ffd9bf;
+  font-family: "Poppins", sans-serif;
+  font-size: 1.6rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 3rem;
+  letter-spacing: 0em;
+  text-align: left;
+}
+
+nav .links li a:hover {
+  outline: #bd855f;
+}
+
+nav .icon {
+  display: none;
+}
+
+#punch-line {
+  width: 100%;
+  margin-top: 0;
+  margin-bottom: 5rem;
+  padding-right: 25vw;
+}
+
+#punch-line p {
+  font-family: "Alegreya", serif;
+  font-size: 3.2rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 65px;
+  letter-spacing: 0em;
+  text-align: center;
+}
+
+#contents {
+  width: 50%;
+  padding: 0 2rem;
+}
+
+#contents .content {
+  margin: 3rem 1rem;
+}
+
+#contents .content .heading {
+  padding-bottom: 0.5rem;
+  font-family: "Alegreya", serif;
+  font-size: 2.4rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 48px;
+  letter-spacing: 0em;
+  text-align: left;
+}
+
+#contents .description {
+  color: #ffffff;
+  font-family: Open Sans;
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 19px;
+  letter-spacing: 0em;
+  text-align: left;
+  text-align: justify;
+}
+
+footer {
+  width: 100%;
+  margin-top: auto;
+  padding: 1rem 4rem;
+}
+
+footer ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  list-style: none;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+
+footer ul li {
+  font-size: 1.5rem;
+  padding: 0 1rem;
+}
+
+#decorators {
+  z-index: -1;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  margin: 0 0;
+  top: 0;
+}
+
+#decorators .bg-left {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+}
+
+#decorators .bg-right {
+  position: absolute;
+  display: none;
+  right: 0;
+  height: inherit;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+#decorators .bg-right svg {
+  position: absolute;
+  height: inherit;
+  right: 0;
+}
+
+#decorators .bg-right img {
+  position: absolute;
+  right: 0;
+}
+
+@media only screen and (max-width: 760px) {
+  #punch-line {
+    padding-right: 0;
+  }
+  #contents {
+    width: 100%;
+  }
+  nav .links {
+    display: none;
+  }
+  nav .links li {
+    padding: 0;
+  }
+  nav .links li a {
+    padding: 0 1rem;
+    font-size: 1rem;
+  }
+  nav .icon {
+    display: block;
+    position: absolute;
+    right: 1rem;
+    font-size: 1.5rem;
+    cursor: pointer;
+  }
+  nav .responsive {
+    display: block;
+    background-color: rgba(247, 247, 247, 0.3);
+  }
+  nav .responsive a {
+    float: none;
+    display: block;
+    text-align: left;
+  }
+  nav .responsive a:hover {
+    background-color: rgba(49, 47, 47, 0.3);
+  }
+  #decorators {
+    opacity: 60%;
+  }
+  #decorators .bg-right {
+    display: none;
+  }
+  footer {
+    padding: 0 0;
+  }
+}
+/*# sourceMappingURL=style.css.map */
