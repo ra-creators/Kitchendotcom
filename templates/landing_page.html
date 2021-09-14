@@ -24,7 +24,7 @@
   <body>
     <nav>
       <div class="brand">
-        <img src="./img/nav_lamp.png" alt="" />
+        <img src="{%static "landing page/img/nav_lamp.png" %}" alt="" />
         <a href="/"> <p class="brand-name">Kitchendotcom</p> </a>
       </div>
       <ul id="nav-links" class="links">
@@ -49,15 +49,9 @@
 
     <section id="contents">
       <div class="content">
-        <a href="/kitchen_price_steps"><p class="heading">Kitchen Price Estimator</p></a>
-        <p class="description">
-          Risus facilisis mauris, vestibulum eget id a. Amet vestibulum nibh at
-          et semper id rutrum curabitur.<br/>Turpis a ut aliquam posuere quam
-          fringilla.
+        <p class="heading">
+          <a href="/kitchen_price_steps">Kitchen Price Estimator </a>
         </p>
-      </div>
-      <div class="content">
-        <a href="project_gallery"><p class="heading">Project Gallery</p></a>
         <p class="description">
           Risus facilisis mauris, vestibulum eget id a. Amet vestibulum nibh at
           et semper id rutrum curabitur.<br />Turpis a ut aliquam posuere quam
@@ -65,7 +59,19 @@
         </p>
       </div>
       <div class="content">
-        <a href="design_gallery"><p class="heading">Design Gallery</p></a>
+        <p class="heading">
+          <a href="project_gallery"> Project Gallery </a>
+        </p>
+        <p class="description">
+          Risus facilisis mauris, vestibulum eget id a. Amet vestibulum nibh at
+          et semper id rutrum curabitur.<br />Turpis a ut aliquam posuere quam
+          fringilla.
+        </p>
+      </div>
+      <div class="content">
+        <p class="heading">
+          <a href="design_gallery"> Design Gallery </a>
+        </p>
         <p class="description">
           Risus facilisis mauris, vestibulum eget id a. Amet vestibulum nibh at
           et semper id rutrum curabitur.<br />Turpis a ut aliquam posuere quam
@@ -97,7 +103,7 @@
 
     <section id="decorators">
       <div class="bg-left">
-        <img src="./img/bg_graphics_C.svg" alt="" />
+        <img src="{%static "landing page/img/bg_graphics_C.svg" %}" alt="" />
       </div>
       <div class="bg-right">
         <svg
@@ -129,7 +135,7 @@
             stroke-width="2"
           />
         </svg>
-        <img src="./img/bg.png" alt="" />
+        <img src="{%static "landing page/img/bg.png" %}" alt="" />
       </div>
     </section>
 
