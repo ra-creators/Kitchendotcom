@@ -24,6 +24,15 @@ rate = {
     'Premium' : int(values.Prem_Acc)
 }
 
+def landing_page(request):
+    return render(request, 'landing_page.html')
+
+def project_gallery(request):
+    return render(request, 'project_gallery.html')
+
+def design_gallery(request):
+    return render(request, 'design_gallery.html')
+
 # Create your views here.
 def kitchen_price_steps(request):
     # request.session['name'] = 'test'

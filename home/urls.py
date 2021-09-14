@@ -17,7 +17,10 @@ from django.contrib import admin
 from django.urls import path, include
 from home import views
 urlpatterns = [
-    path("", views.kitchen_price_steps, name='home'),
+    path("", views.landing_page, name='home'),
+    path("project_gallery", views.project_gallery, name='project_gallery'),
+    path("design_gallery", views.design_gallery, name='design_gallery'),
+    path("kitchen_price_steps", views.kitchen_price_steps, name='kitchen_price_steps'),
     path("select_layout", views.select_layout, name='select_layout'),
     path("customer_details", views.customer_details, name='customer_details'),
     path("select_lshape", views.lshape, name='select_lshape'), 

@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -5,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Kitchendotcom | Home</title>
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="{%static "/landing page/style.css" %}" />
 
     <!-- fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -48,7 +49,15 @@
 
     <section id="contents">
       <div class="content">
-        <a href=""><p class="heading">Kitchen Price Estimator</p></a>
+        <a href="/kitchen_price_steps"><p class="heading">Kitchen Price Estimator</p></a>
+        <p class="description">
+          Risus facilisis mauris, vestibulum eget id a. Amet vestibulum nibh at
+          et semper id rutrum curabitur.<br/>Turpis a ut aliquam posuere quam
+          fringilla.
+        </p>
+      </div>
+      <div class="content">
+        <a href="project_gallery"><p class="heading">Project Gallery</p></a>
         <p class="description">
           Risus facilisis mauris, vestibulum eget id a. Amet vestibulum nibh at
           et semper id rutrum curabitur.<br />Turpis a ut aliquam posuere quam
@@ -56,15 +65,7 @@
         </p>
       </div>
       <div class="content">
-        <a href=""><p class="heading">Project Gallery</p></a>
-        <p class="description">
-          Risus facilisis mauris, vestibulum eget id a. Amet vestibulum nibh at
-          et semper id rutrum curabitur.<br />Turpis a ut aliquam posuere quam
-          fringilla.
-        </p>
-      </div>
-      <div class="content">
-        <a href=""><p class="heading">Design Gallery</p></a>
+        <a href="design_gallery"><p class="heading">Design Gallery</p></a>
         <p class="description">
           Risus facilisis mauris, vestibulum eget id a. Amet vestibulum nibh at
           et semper id rutrum curabitur.<br />Turpis a ut aliquam posuere quam
