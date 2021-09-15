@@ -18,6 +18,7 @@ from django.urls import path, include
 from home import views
 urlpatterns = [
     path("", views.landing_page, name='home'),
+    path("contactus/", views.contact_us, name="contact_us"),
     path("project_gallery", views.project_gallery, name='project_gallery'),
     path("design_gallery", views.design_gallery, name='design_gallery'),
     path("kitchen_price_steps", views.kitchen_price_steps, name='kitchen_price_steps'),
