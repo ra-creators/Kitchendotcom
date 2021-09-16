@@ -1,7 +1,6 @@
 
 #first {
-
-  background: url(/projectgallery/img/gallery_bg11.png);
+  background: url(/static/projectgallery/img/gallery_bg11.png);
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -9,7 +8,7 @@
 
 #first2 {
 
-  background-image: url(/projectgallery/img/gallery_bg12.png);
+  background-image: url(/static/projectgallery/img/gallery_bg12.png);
   background-repeat: no-repeat;
   background-size: cover;
   min-height: 100%;
@@ -307,21 +306,21 @@ hr
 
 #second
 {
-  background: url(/projectgallery/img/gallery_bg21.png);
+  background: url(/static/projectgallery/img/gallery_bg21.png);
   background-repeat: no-repeat;
   background-size: cover;
 }
 
 #second2
 {
-  background: url(/projectgallery/img/gallery_bg22.png);
+  background: url(/static/projectgallery/img/gallery_bg22.png);
   background-repeat: no-repeat;
   background-size: cover;
   min-height: 100%;
 }
 
 #jhu {
-  background: url(/projectgallery/img/jhu.png);
+  background: url(/static/projectgallery/img/jhu.png);
   background-repeat: no-repeat;
   background-size: 20%;
   background-position: top right;
