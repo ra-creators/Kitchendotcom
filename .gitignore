@@ -1,0 +1,10 @@
+Kitchendotcomenv
+
+**/Kitchendotcomenv
+**/migrations
+**/__pycache__
+
+assets
+media/
+
+**/*.css.map
