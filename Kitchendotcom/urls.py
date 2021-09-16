@@ -24,9 +24,10 @@ admin.site.index_title = "Welcome to Kitchendotcom Portal"
 
 
 urlpatterns = [
+    path('', include('home.urls')),
     path('admin/', admin.site.urls),
     path('projects/', include('project.urls')),
-    path('', include('home.urls'))
+    path('blogandnews/', include('blogandnews.urls')),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -1,0 +1,269 @@
+{%load static%}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blogs and News</title>
+  <!-- bootstrap CSS only -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous" />
+  <!-- custom css -->
+  <link rel="stylesheet" href="{%static "common/css/style.css"%}">
+  <link rel="stylesheet" href="{%static "common/css/nav.css"%}">
+  <link rel="stylesheet" href="{%static "blogandnews/css/blogandnews.css"%}">
+</head>
+
+<body>
+  <nav>
+    <div class="brand">
+      <a href="/">
+        <p class="brand-name">Kitchendotcom</p>
+      </a>
+    </div>
+    <ul id="nav-links" class="links">
+      <li>
+        <a href="">Aboutus</a>
+      </li>
+      <li>
+        <a href="/blogandnews" class="active">Blog & news</a>
+      </li>
+      <li>
+        <a href="/contactus">Contactus</a>
+      </li>
+    </ul>
+    <div class="icon" onclick="navButton()">
+      <i class="fa fa-bars"></i>
+    </div>
+  </nav>
+
+  <section id="sec-one" class="row">
+    <div class="col-sm-8">
+      <img class="img-fluid" src="{%static "blogandnews/img/blog.png"%}" alt="">
+    </div>
+    <div class="col-sm-4">
+      <h6 class="text-muted">ADMIN . 1 day ago</h6>
+      <h2>
+        Eget accumsan consequat arcu vitae. Non vulputate diam sed tortor.
+      </h2>
+      <p>
+        Neque, sit sapien id viverra erat dignissim tellus nulla. Quis ornare
+        commodo auctor facilisi sed malesuada volutpat, egestas dui. At
+        ultricies nulla sed lectus natoque quam. Egestas in tellus.
+      </p>
+      <a class="btn btn-primary styled-btn">Read More</a>
+    </div>
+  </section>
+
+  <section id="sec-two" class="row mt-5">
+
+    <section id="blogs" class="col-sm-7">
+      <div>
+        <h1 class="section-title">Blogs</h1>
+      </div>
+      <div class="row">
+        <div class="col-sm-6 my-4">
+          <div class="blog card">
+            <img class="card-img-top" src="{%static "blogandnews/img/blog.png"%}" alt="">
+            <div class="card-body">
+              <h6 class="card-subtitle mb-2 text-muted">ADMIN . 1 day ago</h6>
+              <h5 class="card-title">
+                Eget accumsan consequat arcu vitae. Non vulputate diam sed
+                tortor.
+              </h5>
+              <p class="card-text">
+                Neque, sit sapien id viverra erat dignissim tellus nulla. Quis
+                ornare commodo auctor facilisi sed malesuada volutpat, egestas
+                dui. At ultricies nulla sed lectus natoque quam. Egestas in
+                tellus.
+              </p>
+              <a class="btn btn-primary styled-btn">Read More</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6 my-4">
+          <div class="blog card">
+            <img class="card-img-top" src="{%static "blogandnews/img/blog.png"%}" alt="">
+            <div class="card-body">
+              <h6 class="card-subtitle mb-2 text-muted">ADMIN . 1 day ago</h6>
+              <h5 class="card-title">
+                Eget accumsan consequat arcu vitae. Non vulputate diam sed
+                tortor.
+              </h5>
+              <p class="card-text">
+                Neque, sit sapien id viverra erat dignissim tellus nulla. Quis
+                ornare commodo auctor facilisi sed malesuada volutpat, egestas
+                dui. At ultricies nulla sed lectus natoque quam. Egestas in
+                tellus.
+              </p>
+              <a class="btn btn-primary styled-btn">Read More</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6 my-4">
+          <div class="blog card">
+            <img class="card-img-top" src="{%static "blogandnews/img/blog.png"%}" alt="">
+            <div class="card-body">
+              <h6 class="card-subtitle mb-2 text-muted">ADMIN . 1 day ago</h6>
+              <h5 class="card-title">
+                Eget accumsan consequat arcu vitae. Non vulputate diam sed
+                tortor.
+              </h5>
+              <p class="card-text">
+                Neque, sit sapien id viverra erat dignissim tellus nulla. Quis
+                ornare commodo auctor facilisi sed malesuada volutpat, egestas
+                dui. At ultricies nulla sed lectus natoque quam. Egestas in
+                tellus.
+              </p>
+              <a class="btn btn-primary styled-btn">Read More</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6 my-4">
+          <div class="blog card">
+            <img class="card-img-top" src="{%static "blogandnews/img/blog.png"%}" alt="">
+            <div class="card-body">
+              <h6 class="card-subtitle mb-2 text-muted">ADMIN . 1 day ago</h6>
+              <h5 class="card-title">
+                Eget accumsan consequat arcu vitae. Non vulputate diam sed
+                tortor.
+              </h5>
+              <p class="card-text">
+                Neque, sit sapien id viverra erat dignissim tellus nulla. Quis
+                ornare commodo auctor facilisi sed malesuada volutpat, egestas
+                dui. At ultricies nulla sed lectus natoque quam. Egestas in
+                tellus.
+              </p>
+              <a class="btn btn-primary styled-btn">Read More</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6 my-4">
+          <div class="blog card">
+            <img class="card-img-top" src="{%static "blogandnews/img/blog.png"%}" alt="">
+            <div class="card-body">
+              <h6 class="card-subtitle mb-2 text-muted">ADMIN . 1 day ago</h6>
+              <h5 class="card-title">
+                Eget accumsan consequat arcu vitae. Non vulputate diam sed
+                tortor.
+              </h5>
+              <p class="card-text">
+                Neque, sit sapien id viverra erat dignissim tellus nulla. Quis
+                ornare commodo auctor facilisi sed malesuada volutpat, egestas
+                dui. At ultricies nulla sed lectus natoque quam. Egestas in
+                tellus.
+              </p>
+              <a class="btn btn-primary styled-btn">Read More</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <section id="news" class="col-sm-5">
+      <div>
+        <h1 class="section-title">News</h1>
+      </div>
+      <div class="news row my-4">
+        <div class="col-4">
+          <img class="img-fluid" src="{%static "blogandnews/img/news.png"%}" alt="">
+        </div>
+        <div class="col-8">
+          <div class="d-flex justify-content-between">
+            <h4 class="heading">7 Skills of Highly Effective Programmers</h4>
+            <p class="time text-muted">3 days ago</p>
+          </div>
+          <p class="content">Our team was inspired by the seven skills of highly effective programmers created by the
+            TechLead. We
+            wanted to provide our own take on the topic. Here are our seven skills of effective programmers...</p>
+          <div class="news-footer d-flex justify-content-between">
+            <div class="writer">Glen Williams</div>
+            <a href="">read more -></a>
+          </div>
+        </div>
+      </div>
+      <div class="news row my-4">
+        <div class="col-4">
+          <img class="img-fluid" src="{%static "blogandnews/img/news.png"%}" alt="">
+        </div>
+        <div class="col-8">
+          <div class="d-flex justify-content-between">
+            <h4 class="heading">7 Skills of Highly Effective Programmers</h4>
+            <p class="time text-muted">3 days ago</p>
+          </div>
+          <p class="content">Our team was inspired by the seven skills of highly effective programmers created by the
+            TechLead. We
+            wanted to provide our own take on the topic. Here are our seven skills of effective programmers...</p>
+          <div class="news-footer d-flex justify-content-between">
+            <div class="writer">Glen Williams</div>
+            <a href="">read more -></a>
+          </div>
+        </div>
+      </div>
+      <div class="news row my-4">
+        <div class="col-4">
+          <img class="img-fluid" src="{%static "blogandnews/img/news.png"%}" alt="">
+        </div>
+        <div class="col-8">
+          <div class="d-flex justify-content-between">
+            <h4 class="heading">7 Skills of Highly Effective Programmers</h4>
+            <p class="time text-muted">3 days ago</p>
+          </div>
+          <p class="content">Our team was inspired by the seven skills of highly effective programmers created by the
+            TechLead. We
+            wanted to provide our own take on the topic. Here are our seven skills of effective programmers...</p>
+          <div class="news-footer d-flex justify-content-between">
+            <div class="writer">Glen Williams</div>
+            <a href="">read more -></a>
+          </div>
+        </div>
+      </div>
+      <div class="news row my-4">
+        <div class="col-4">
+          <img class="img-fluid" src="{%static "blogandnews/img/news.png"%}" alt="">
+        </div>
+        <div class="col-8">
+          <div class="d-flex justify-content-between">
+            <h4 class="heading">7 Skills of Highly Effective Programmers</h4>
+            <p class="time text-muted">3 days ago</p>
+          </div>
+          <p class="content">Our team was inspired by the seven skills of highly effective programmers created by the
+            TechLead. We
+            wanted to provide our own take on the topic. Here are our seven skills of effective programmers...</p>
+          <div class="news-footer d-flex justify-content-between">
+            <div class="writer">Glen Williams</div>
+            <a href="">read more -></a>
+          </div>
+        </div>
+      </div>
+      <div class="news row my-4">
+        <div class="col-4">
+          <img class="img-fluid" src="{%static "blogandnews/img/news.png"%}" alt="">
+        </div>
+        <div class="col-8">
+          <div class="d-flex justify-content-between">
+            <h4 class="heading">7 Skills of Highly Effective Programmers</h4>
+            <p class="time text-muted">3 days ago</p>
+          </div>
+          <p class="content">Our team was inspired by the seven skills of highly effective programmers created by the
+            TechLead. We
+            wanted to provide our own take on the topic. Here are our seven skills of effective programmers...</p>
+          <div class="news-footer d-flex justify-content-between">
+            <div class="writer">Glen Williams</div>
+            <a href="">read more -></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </section>
+
+  <div id="decorators"></div>
+  <script src="{%static "common/js/nav.js"%}"></script>
+</body>
+
+</html>
