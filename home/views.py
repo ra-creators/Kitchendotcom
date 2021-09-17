@@ -28,6 +28,14 @@ def landing_page(request):
     return render(request, 'landing_page.html')
 
 def contact_us(request):
+    if request.method == "POST":
+        name = (request.POST.get('firstName') + " " + request.POST.get('secondName'))
+        email = request.POST.get('email')
+        # phone = request.POST.get('phone') 
+        location1 = request.POST.get('location')
+        # message field
+        c = c_details()
+        c.save()
     return render(request, "contact_us.html")
 
 def project_gallery(request):

@@ -5,6 +5,8 @@ class c_details(models.Model):
     name = models.CharField(max_length=122)
     phone = models.CharField(max_length=12)
     email = models.CharField(max_length=122)
+    # location
+    # message
 
     def __str__(self):
         return self.name

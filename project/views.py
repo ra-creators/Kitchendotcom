@@ -6,7 +6,7 @@ def projectList(request):
     projects = Project.objects.all()
     for project in projects:
         print(project)
-    return render( request, "project_gallery.html")
+    return render( request, "project_gallery.html", {project:projects})
 
 def projectDetails(request, projectId):
     try:
