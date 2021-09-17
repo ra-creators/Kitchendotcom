@@ -23,7 +23,7 @@ class kitchen_details(models.Model):
     Loft = models.CharField(max_length=12, default="NA")
     Finish = models.CharField(max_length=12, default="NA")
     Accessories = models.CharField(max_length=12, default="NA")
-    Services = models.TextField(max_length=32, default="NA")
+    Services = models.TextField(max_length=132, default="NA")
     Appliances = models.TextField(max_length=32, default="NA")
     # customer = models.ForeignKey(c_details, blank=True, null=True, on_delete=models.CASCADE )
     Price = models.CharField(max_length=12, default="NA")
