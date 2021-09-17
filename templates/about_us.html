@@ -1,0 +1,127 @@
+{%load static%}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+    <!-- bootstrap CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous" />
+    <!-- custom css -->
+    <link rel="stylesheet" href="{%static "common/css/style.css"%}">
+    <link rel="stylesheet" href="{%static "common/css/nav.css"%}">
+    <link rel="stylesheet" href="{%static "aboutus/aboutus.css"%}">
+
+</head>
+
+<body>
+    <nav>
+        <div class="brand">
+            <a href="/">
+                <p class="brand-name">Kitchendotcom</p>
+            </a>
+        </div>
+        <ul id="nav-links" class="links">
+            <li>
+                <a href="" class="active">Aboutus</a>
+            </li>
+            <li>
+                <a href="/blogandnews">Blog & News</a>
+            </li>
+            <li>
+                <a href="/contactus">Contactus</a>
+            </li>
+        </ul>
+        <div class="icon" onclick="navButton()">
+            <i class="fa fa-bars"></i>
+        </div>
+    </nav>
+    <div class="container">
+        <section id="sec-one" class="container bg-green">
+            <h1>About Us</h1>
+            <div class="row"> <img class="img-fluid" src="{%static "aboutus/img/top_img.png"%}" alt=""> </div>
+        </section>
+
+        <section id="sec-two" class="row">
+            <div class="col-md-6">
+                <img class="img-fluid" src="{%static "aboutus/img/middle_img.png"%}" alt="">
+                <p>Clients’ priorities and choices have also been the top-most priority for us. We intend to design the
+                    best
+                    for them keeping in mind their budgets.</p>
+                <img id="graphics-2" src="{%static "aboutus/img/Component 10.svg"%}" alt="">
+            </div>
+            <div class="col-md-6">
+                <div class="row bg-green">
+                    <h2 class="section-title">OUR VISION</h2>
+                    <p>Our vision is to be a reputable, sustainable, and desirable premier modular kitchen service
+                        provider of the global marketplace providing state-of-the-art innovative designs and superior
+                        quality finishing. We aim to be able to give our best services in each city. We seek to provide
+                        such services which make kitchen chores a hassle-free task. We are a one-stop solution to all
+                        your needs for a modular kitchen with all the updated features.
+                    </p>
+                </div>
+                <div class="row">
+                    <img id="graphics-5" src="{%static "aboutus/img/Group 14.svg"%}" alt="">
+                    <img id="graphics-1" src="{%static "aboutus/img/Doodle Dots.svg"%}" alt="">
+                    <h2 class="section-title">
+                        OUR MISSION
+                    </h2>
+                    <p>
+                        Our mission is to positively influence the lives of all customers with whom we have the pleasure
+                        of working, and leave a lasting impression on their minds and imagination. We aim to achieve our
+                        goal of having one showroom in each city. We seek to define the most <strong> sophisticated and
+                            superior standard of quality kitchens.</p>
+                    </strong>
+                </div>
+            </div>
+        </section>
+
+        <section id="sec-three" class="container">
+            <div class="row justify-content-center">
+                <h2 class="section-title text-center">HOW IT STARTED</h2>
+                <p class="text-center">Established in 2020, KitchenDotCom is a unit of Ideago Interiors. It aims to
+                    become a brand in the
+                    industry of modular kitchens. With more than 200 happy and satisfied clients so far, we wish to
+                    expand our client base in the whole country. Our work is creative as well as pocket-friendly. The
+                    designers and other workers at KitchenDotCom work together in a coordinated manner to achieve the
+                    common goal of the company. We are best known for our innovative designs and products, creative
+                    layouts for the kitchen, cooperative workforce for amazing customer service, our on-time delivery
+                    and our easy-to-maintain products. We keep on updating our products and services according to the
+                    invaluable feedback from our clients.
+                </p>
+                <p class="text-center">We also offer an array of designs for tiles, compartments, chimneys, etc. We are
+                    a one-stop
+                    destination for material selection, products, fitting and installation, repairing ,etc.</p>
+            </div>
+            <div class="row justify-content-center">
+                <img id="graphics-4" src="{%static "aboutus/img/Group 14.svg"%}" alt="">
+                <h2 class="section-title text-center">DIRECTOR’S DESK</h2>
+                <p class="text-center">Our director Mr. Abhishek Gupta who is the creative mind behind this firm, has
+                    been leading it since
+                    its establishment in 2018. A man of great experience and owner of numerous artistic innovations has
+                    put in all his dedication for the growth of the company and its employees. His art works are famous
+                    worldwide, marking their presence in exhibitions across the seas. His artworks have always been
+                    praised by clients for telling a different story of their own. Ranging from Monochrome to
+                    Multichrome paintings , from still life to portrait paintings – he has proved his excellence in all
+                    dimensions of art. It is due to his invaluable leadership and efforts that the firm has been able to
+                    deliver the services to all the clients up to their satisfaction.
+                </p>
+                <div class="col-sm-4">
+                    <img class="img-fluid" src="{%static "aboutus/img/director.png"%}" alt="">
+                    <h2 class="text-center"> Mr. Abhishek Gupta</h2>
+                </div>
+            </div>
+
+
+        </section>
+
+        <img id="graphics-3" src="{%static "aboutus/img/Component 7.svg"%}" alt="">
+
+    </div>
+</body>
+
+</html>
