@@ -21,7 +21,7 @@ body {
 }
 
 #heading {
-  background-image: url("../img/gallery_2.svg");
+  background-image: url(/design_gallery/img/gallery_2.svg);
   background-repeat: no-repeat;
   background-size: 25rem;
   height: 10rem;
