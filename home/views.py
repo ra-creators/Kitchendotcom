@@ -29,7 +29,7 @@ def landing_page(request):
 
 def contact_us(request):
     if request.method == "POST":
-        name = (request.POST.get('firstName') + " " + request.POST.get('secondName'))
+        name = (request.POST.get('firstName') + request.POST.get('secondName'))
         email = request.POST.get('email')
         # phone = request.POST.get('phone') 
         location1 = request.POST.get('location')
