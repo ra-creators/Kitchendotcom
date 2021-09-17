@@ -27,6 +27,9 @@ rate = {
 def landing_page(request):
     return render(request, 'landing_page.html')
 
+def contact_us(request):
+    return render(request, "contact_us.html")
+
 def project_gallery(request):
     return render(request, 'project_gallery.html')
 

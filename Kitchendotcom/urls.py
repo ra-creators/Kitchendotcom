@@ -15,6 +15,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path,include
+from django.conf import settings
+from django.conf.urls.static import static
 
 admin.site.site_header = "Kitchendotcom Admin"
 admin.site.site_title = "Kitchendotcom Admin Portal"
@@ -22,6 +24,10 @@ admin.site.index_title = "Welcome to Kitchendotcom Portal"
 
 
 urlpatterns = [
+    path('', include('home.urls')),
     path('admin/', admin.site.urls),
-    path('', include('home.urls'))
+    path('projects/', include('project.urls')),
+    path('blogandnews/', include('blogandnews.urls')),
 ]
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

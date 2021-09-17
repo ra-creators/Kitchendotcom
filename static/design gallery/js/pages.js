@@ -1,6 +1,6 @@
 console.log('hei')
 var container = "#carouselExampleCaptions";
-var dir = "img/gallery/Kitchen/";
+var dir = "static/design%20gallery/img/gallery/Kitchen/";
 var fileextension = ".svg";
 var page = 0;
 var numberItemPerPage=  Math.floor(($("#fourth .carousel-inner").width()-200)/300)*2 ;
@@ -37,13 +37,13 @@ function newPage(pageNumber) {
             </svg>
           </div>
           <div class="item-2">
-            <img src="./img/gallery_topleft.png" alt="" />
+            <img src="/static/design gallery/img/gallery_topleft.png" alt="" />
           </div>
           <div class="item-0">
-            <img src="./img/gallery_0.svg" alt="" />
+            <img src="/static/design gallery/img/gallery_0.svg" alt="" />
           </div>
           <div class="item-1">
-            <img src="./img/gallery_1.svg" alt="" />
+            <img src="/static/design gallery/img/gallery_1.svg" alt="" />
           </div>
         </div>
         <div

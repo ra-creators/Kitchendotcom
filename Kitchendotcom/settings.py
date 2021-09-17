@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 import os
 from pathlib import Path
-
+import django_heroku
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -33,6 +33,8 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'home.apps.HomeConfig',
+    'project.apps.ProjectConfig',
+    'blogandnews.apps.BlogandnewsConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -133,3 +135,11 @@ STATICFILES_DIRS = [
 ]
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'assets')
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+
+# Activate Django-Heroku.
+django_heroku.settings(locals())
+

@@ -2,7 +2,7 @@
 body {
   margin: 20px;
   padding: 0px;
-  background: url(/img/gallery_bg.png);
+  background: url(/static/projectgallery/img/gallery_bg.png);
   background-repeat: no-repeat;
   background-size: cover;
 
