@@ -1,18 +1,25 @@
 /* Price_Estimator */
 
+/* body {
+    background-color: rgba(0, 102, 101, 0.93);
+    min-height: 100vh;
+} */
+
 #steps {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.8),rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.8)) , url(/assets/img/mkitchen2.png);
+    background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.8)), url(/assets/img/mkitchen2.png);
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     filter: drop-shadow(0px 30px 0px yellow);
 }
+
 #button {
     border: white 4px solid;
     border-radius: 12px;
     padding: 10px 40px 10px 40px;
 }
+
 #button:hover {
     box-shadow: 2px 2px white;
 }
@@ -20,7 +27,9 @@
 /* Teal Bg, White Container */
 
 #main-theme {
-    background-image: url('/assets/img/bg-image.jpg');
+    /* background-image: url('/assets/img/bg-image.jpg'); */
+    background-color: rgba(0, 102, 101, 0.93);
+    min-height: 100vh;
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
@@ -29,18 +38,21 @@
 }
 
 #layout {
-    background-image: url('/assets/img/bg-image.jpg');
+    /* background-image: url('/assets/img/bg-image.jpg'); */
+    background-color: rgba(0, 102, 101, 0.93);
+    min-height: 100vh;
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     filter: drop-shadow(0px 60px 0px white);
 }
+
 #select {
     background-color: white;
     color: teal;
     border-radius: 25px;
-} 
+}
 
 .white-container {
     background-color: white;
@@ -52,17 +64,17 @@
 
 
 input[type='radio']:after {
-width: 30px;
-height: 30px;
-border-radius: 15px;
-top: -5px;
-left: -5px;
-position: relative;
-background-color: white;
-content: '';
-display: inline-block;
-visibility: visible;
-border: 2px solid teal;
+    width: 30px;
+    height: 30px;
+    border-radius: 15px;
+    top: -5px;
+    left: -5px;
+    position: relative;
+    background-color: white;
+    content: '';
+    display: inline-block;
+    visibility: visible;
+    border: 2px solid teal;
 }
 
 input[type='radio']:checked:after {
@@ -92,8 +104,8 @@ input[type='checkbox']:after {
     display: inline-block;
     visibility: visible;
     border: 2px solid teal;
-    }
-    
+}
+
 input[type='checkbox']:checked:after {
     position: relative;
     background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" fill="teal" class="bi bi-check-lg" viewBox="0 0 16 16"><path d="M13.485 1.431a1.473 1.473 0 0 1 2.104 2.062l-7.84 9.801a1.473 1.473 0 0 1-2.12.04L.431 8.138a1.473 1.473 0 0 1 2.084-2.083l4.111 4.112 6.82-8.69a.486.486 0 0 1 .04-.045z"/></svg>');
@@ -101,7 +113,7 @@ input[type='checkbox']:checked:after {
     content: '';
     display: inline-block;
     visibility: visible;
-    }
+}
 
 /* Select_Layout */
 
@@ -117,6 +129,7 @@ input[type='checkbox']:checked:after {
 #layout .card:hover .card-footer {
     border-top: 2px solid black;
 }
+
 #layout .card-footer {
     border-top: 2px solid grey;
 }
@@ -125,12 +138,14 @@ input[type='checkbox']:checked:after {
 
 #details {
     background-image: linear-gradient(white, white);
+    min-height: 100vh;
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     filter: drop-shadow(0px 30px 0px teal);
 }
+
 #kitchen1 {
     box-shadow: -20px 20px teal;
 }
@@ -147,13 +162,13 @@ input[type='checkbox']:checked:after {
 
 .relative {
     position: relative;
-  }
-  
+}
+
 .topright {
     position: absolute;
     top: 10px;
     right: 10px;
-  }
+}
 
 
 /* Colors */
@@ -178,27 +193,27 @@ input[type='checkbox']:checked:after {
     background-color: lightgrey;
 }
 
-.opacity-0{
+.opacity-0 {
     opacity: 0;
 }
 
-.opacity-1{
+.opacity-1 {
     opacity: 0.2;
 }
 
-.opacity-2{
+.opacity-2 {
     opacity: 0.4;
 }
 
-.opacity-3{
+.opacity-3 {
     opacity: 0.6;
 }
 
-.opacity-4{
+.opacity-4 {
     opacity: 0.8;
 }
 
-.opacity-5{
+.opacity-5 {
     opacity: 1;
 }
 
@@ -208,7 +223,7 @@ input[type='checkbox']:checked:after {
 }
 
 .btn-opacity {
-    background-image: linear-gradient(rgba(255, 255, 255, 0.2),teal, rgba(255, 255, 255, 0.2));
+    background-image: linear-gradient(rgba(255, 255, 255, 0.2), teal, rgba(255, 255, 255, 0.2));
 }
 
 .dashed {
@@ -221,8 +236,8 @@ html {
     overflow-y: hidden;
 }
 
-@media (max-width: 991.98px) { 
+@media (max-width: 991.98px) {
     html {
         overflow-y: auto;
     }
- }
+}
