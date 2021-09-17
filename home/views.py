@@ -30,12 +30,12 @@ def landing_page(request):
 def contact_us(request):
     if request.method == "POST":
         name = (request.POST.get('firstName') + request.POST.get('secondName'))
+        print(name)
         email = request.POST.get('email')
-        # phone = request.POST.get('phone') 
-        location1 = request.POST.get('location')
-        # message field
-        c = c_details()
-        c.save()
+        location = request.POST.get('cities')
+        message = request.POST.get('message')
+        details = c_details(name = name, email = email, location = location, message = message)
+        details.save()
     return render(request, "contact_us.html")
 
 def about_us(request):
@@ -78,7 +78,7 @@ def customer_details(request):
         request.session['location'] = location1
 
 
-        c_detail = c_details(name=name, email=email, phone=phone)  
+        c_detail = c_details(name=name, email=email, phone=phone, location = location1)  
         c_detail.save()
         if layout == "L-Shaped":
             return redirect('/select_lshape')

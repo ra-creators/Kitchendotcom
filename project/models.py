@@ -16,7 +16,7 @@ class Feedback(models.Model):
 class Project(models.Model):
     name = models.CharField(max_length=100, null=False, default="Modular Kitchen")
     tagline = models.CharField(max_length=300, default="NA")
-    descriptiom = models.TextField(default="NA")
+    description = models.TextField(default="NA")
     project_img = models.FileField(upload_to='projects/')
     design_complete = models.BooleanField(default=False)
     building_complete = models.BooleanField(default=False)

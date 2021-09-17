@@ -64,7 +64,8 @@
           Have an inquiry or some feedback for us?<br />Fill out the form below
           to contact our team.
         </p>
-        <form class="row g-3" action="#">
+        <form class="row g-3" action="" method="POST">
+        {% csrf_token %}
           <div class="col-md-6">
             <label for="firstName" class="form-label">First Name</label>
             <input type="text" class="form-control" id="firstName" name="firstName" />
@@ -75,15 +76,15 @@
           </div>
           <div class="col-12">
             <label for="email" class="form-label">Email Address</label>
-            <input type="email" class="form-control" id="email" placeholder="abc@abc.com" />
+            <input type="email" class="form-control" id="email" name="email" placeholder="abc@abc.com" />
           </div>
           <div class="col-12">
             <label for="cities" class="form-label">Cities</label>
-            <input type="text" class="form-control" id="cities" placeholder="City 1, City 2, .." />
+            <input type="text" class="form-control" id="cities" name="cities" placeholder="City 1, City 2, .." />
           </div>
           <div class="col-12">
             <label for="message" class="form-label">Message</label>
-            <textarea type="text" class="form-control" id="message"> </textarea>
+            <textarea type="text" class="form-control" id="message" name="message"> </textarea>
           </div>
 
           <div class="col-12">

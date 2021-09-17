@@ -2,11 +2,11 @@ from django.db import models
 
 # Create your models here.
 class c_details(models.Model):
-    name = models.CharField(max_length=122)
-    phone = models.CharField(max_length=12)
-    email = models.CharField(max_length=122)
-    # location
-    # message
+    name = models.CharField(max_length=122, default="NA")
+    phone = models.CharField(max_length=12, default="NA")
+    email = models.CharField(max_length=122, default="NA")
+    location = models.CharField(max_length=12, default="NA")
+    message = models.TextField(default="NA")
 
     def __str__(self):
         return self.name
