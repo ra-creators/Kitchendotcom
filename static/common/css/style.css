@@ -30,4 +30,13 @@ a:hover {
   color: #114d0c;
   background-color: #f7b68b;
 }
+
+.section-title {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  color: #006665;
+  padding-bottom: 5px;
+  border-bottom: #006665 5px solid;
+}
 /*# sourceMappingURL=style.css.map */

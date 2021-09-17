@@ -38,6 +38,9 @@ def contact_us(request):
         c.save()
     return render(request, "contact_us.html")
 
+def about_us(request):
+    return render(request, "about_us.html")
+
 def project_gallery(request):
     return render(request, 'project_gallery.html')
 
