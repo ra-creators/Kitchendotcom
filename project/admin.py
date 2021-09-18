@@ -9,6 +9,7 @@ admin.site.register(Feedback)
 # admin.site.register(Project)
 # admin.site.register(PostImage)
 
+#  For adding multipleimages in Project Model
 class PostImageAdmin(admin.StackedInline):
     model = PostImage
  
