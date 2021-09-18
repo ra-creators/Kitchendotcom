@@ -79,7 +79,7 @@ body {
 #second {
   background-color: rgba(0, 102, 101, 0.79);
   color: white;
-  height: 60vh;
+  min-height: 60vh;
 }
 
 #second .decorators {
