@@ -1,9 +1,9 @@
 /* Price_Estimator */
 
-/* body {
+body {
     background-color: rgba(0, 102, 101, 0.93);
-    min-height: 100vh;
-} */
+    /* min-height: 100vh; */
+}
 
 #steps {
     background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.8)), url(/assets/img/mkitchen2.png);
@@ -28,24 +28,26 @@
 
 #main-theme {
     /* background-image: url('/assets/img/bg-image.jpg'); */
-    background-color: rgba(0, 102, 101, 0.93);
+    /* position: relative; */
+    /* background-color: rgba(0, 102, 101, 0.93); */
     min-height: 100vh;
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    filter: drop-shadow(0px 60px 0px white);
+    /* filter: drop-shadow(0px 60px 0px white); */
+    /* z-index: 5; */
 }
 
 #layout {
     /* background-image: url('/assets/img/bg-image.jpg'); */
-    background-color: rgba(0, 102, 101, 0.93);
+    /* background-color: rgba(0, 102, 101, 0.93); */
     min-height: 100vh;
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    filter: drop-shadow(0px 60px 0px white);
+    /* filter: drop-shadow(0px 60px 0px white); */
 }
 
 #select {
@@ -240,4 +242,48 @@ html {
     html {
         overflow-y: auto;
     }
+}
+
+#decorators {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    z-index: 0;
+}
+
+#decorators img {
+    position: absolute;
+    height: 20vh;
+}
+
+#decorators .top-left {
+    top: 0;
+    left: 0;
+    height: 60vh;
+    transform: translate(-50%, -50%);
+}
+
+#decorators .top-right {
+    top: 0;
+    right: 0;
+}
+
+#decorators .bottom-left {
+    bottom: 0;
+    left: 0;
+    rotate: -90deg;
+}
+
+#decorators .bottom-right {
+    bottom: 0;
+    right: 0;
+    rotate: 90deg;
+}
+
+#main-content {
+    position: relative;
+    z-index: 10;
 }
