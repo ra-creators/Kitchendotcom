@@ -27,9 +27,10 @@ def projectList(request):
     return render(request, 'project_gallery.html', {'posts':posts})
  
 def projectDetails(request, id):
-    post = get_object_or_404(Project, id=id)
-    photos = PostImage.objects.filter(post=post)
+    project = get_object_or_404(Project, id=id)
+    print(project.name)
+    photos = PostImage.objects.filter(project=project)
     return render(request, 'project_details.html', {
-        'post':post,
+        'project':project,
         'photos':photos
     })

@@ -26,7 +26,7 @@ class Project(models.Model):
         return self.name
     
 class PostImage(models.Model):
-    post = models.ForeignKey(Project, default=None, on_delete=models.CASCADE)
+    project = models.ForeignKey(Project, default=None, on_delete=models.CASCADE)
     images = models.FileField(upload_to = 'images/progress/')
 
     def __str__(self):
