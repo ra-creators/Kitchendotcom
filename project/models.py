@@ -16,7 +16,7 @@ class Feedback(models.Model):
 class Project(models.Model):
     name = models.CharField(max_length=100, null=False, default="Modular Kitchen")
     tagline = models.CharField(max_length=300, default="NA")
-    descriptiom = models.TextField(default="NA")
+    description = models.TextField(default="NA")
     project_img = models.FileField(upload_to='projects/')
     design_complete = models.BooleanField(default=False)
     building_complete = models.BooleanField(default=False)
@@ -24,3 +24,10 @@ class Project(models.Model):
 
     def __str__(self):
         return self.name
+    
+class PostImage(models.Model):
+    post = models.ForeignKey(Project, default=None, on_delete=models.CASCADE)
+    images = models.FileField(upload_to = 'images/progress/')
+
+    def __str__(self):
+        return self.post.name
