@@ -9,7 +9,12 @@ def projectList(request):
     projects = Project.objects.all()
     for project in projects:
         print(project)
-    return render( request, "project_gallery.html", {project:projects}, {video:video}, {design:design}, {feedback:feedback})
+    return render( request, "project_gallery.html", {
+        'project':projects, 
+        'video':video, 
+        'design':design, 
+        'feedback':feedback
+        })
  
 def projectDetails(request, id):
     project = get_object_or_404(Project, id=id)
