@@ -33,6 +33,10 @@ a:hover {
   color: inherit;
 }
 
+section {
+  z-index: 1;
+}
+
 nav {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -44,7 +48,7 @@ nav {
       -ms-flex-pack: justify;
           justify-content: space-between;
   text-decoration: none;
-  height: 14rem;
+  height: 15vh;
   padding: 1rem 3rem;
 }
 
@@ -61,6 +65,7 @@ nav .brand img {
   position: absolute;
   margin-top: -1rem;
   margin-left: -3rem;
+  z-index: 0;
 }
 
 nav .brand .brand-name {
@@ -107,6 +112,7 @@ nav .icon {
 #punch-line {
   width: 50%;
   margin-top: 0;
+  margin-left: 6rem;
 }
 
 #punch-line p {
@@ -120,7 +126,7 @@ nav .icon {
 }
 
 #contents {
-  width: 50%;
+  width: 60%;
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
           flex-grow: 1;
@@ -138,6 +144,7 @@ nav .icon {
 
 #contents .content .heading {
   padding-bottom: 0.5rem;
+  margin-bottom: 0;
   font-family: "Alegreya", serif;
   font-size: 2.4rem;
   font-style: normal;
@@ -148,6 +155,7 @@ nav .icon {
 }
 
 #contents .description {
+  margin-bottom: 0;
   color: #ffffff;
   font-family: Open Sans;
   font-size: 1rem;
@@ -160,11 +168,13 @@ nav .icon {
 }
 
 footer {
-  -webkit-transform: translateY(-100%);
-          transform: translateY(-100%);
-  width: 100%;
-  margin-top: auto;
-  padding: 1rem 4rem;
+  bottom: 0;
+  right: 0;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin-left: auto;
+  padding-right: 1rem;
 }
 
 footer ul {
@@ -223,20 +233,7 @@ footer ul li {
   right: 0;
 }
 
-@media only screen and (max-width: 900px) {
-  body {
-    overflow: auto;
-  }
-  #punch-line {
-    width: 100%;
-    padding-right: 0;
-  }
-  #punch-line p {
-    font-size: 2.8rem;
-  }
-  #contents {
-    width: 100%;
-  }
+@media only screen and (max-width: 1000px) {
   nav .links {
     display: none;
   }
@@ -266,6 +263,24 @@ footer ul li {
   nav .responsive a:hover {
     background-color: rgba(49, 47, 47, 0.3);
   }
+}
+
+@media only screen and (max-width: 900px) {
+  body {
+    overflow: auto;
+  }
+  #punch-line {
+    margin-top: 120px;
+    margin-left: 0;
+    width: 100%;
+    padding-right: 0;
+  }
+  #punch-line p {
+    font-size: 2.8rem;
+  }
+  #contents {
+    width: 100%;
+  }
   #decorators {
     position: unset;
     height: 70vh;
@@ -284,9 +299,8 @@ footer ul li {
   #decorators .bg-right svg {
     display: none;
   }
-  footer {
-    -webkit-transform: none;
-            transform: none;
+  footer footer {
+    position: unset;
   }
 }
 
