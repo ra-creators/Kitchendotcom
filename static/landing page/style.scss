@@ -17,7 +17,7 @@ body {
   color: $font-color;
   display: flex;
   flex-direction: column;
-  overflow: hidden;
+  // overflow: hidden;
   justify-content: space-between;
 }
 
@@ -103,6 +103,7 @@ nav {
 
   p {
     font-family: "Alegreya", serif;
+    // font-size: 4vw;
     font-size: 3.2rem;
     font-style: normal;
     font-weight: 700;
@@ -127,6 +128,7 @@ nav {
       padding-bottom: 0.5rem;
 
       font-family: "Alegreya", serif;
+      // font-size: 3vw;
       font-size: 2.4rem;
       font-style: normal;
       font-weight: 700;
