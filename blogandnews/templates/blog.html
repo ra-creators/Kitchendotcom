@@ -43,29 +43,15 @@
   </nav>
 
   <div class="container" id="post-item">
-    <h1 class="text-center">Eget accumsan consequat arcu vitae. Non vulputate diam sed tortor.</h1>
-    <h5 class="text-center text-muted mt-3">ADMIN . 1 day ago</h5>
+    <h1 class="text-center">{{blog.title}}</h1>
+    <h5 class="text-center text-muted mt-3">{{blog.author}} . 1 day ago</h5>
     <div class="row my-5">
       <div class="d-flex justify-content-center">
-        <img class="img-fluid" src="{%static "blogandnews/img/blog.png"%}" alt="">
+        <img class="img-fluid" src="/media/{{blog.image}}" alt="{{blog.title}}">
       </div>
     </div>
     <div class="container content">
-      <p>
-        Gravida pellentesque ut ipsum elit adipiscing. Dolor amet nunc vitae ultricies tempus pharetra et leo ultricies.
-        Sit enim neque, feugiat at. Amet venenatis morbi sed condimentum aliquam aliquam. Lectus bibendum euismod
-        pharetra, malesuada pulvinar. Nec commodo adipiscing tincidunt sed. Sodales eget vestibulum mauris placerat
-        senectus. Eget rhoncus nullam mi convallis id gravida faucibus. Sed eu in magna ac fermentum sed. Senectus quam
-        ut
-        turpis arcu condimentum lacinia at in sed. Viverra sed placerat scelerisque elementum. Malesuada arcu
-        consectetur
-        ultricies neque at amet aliquet augue.
-        Nunc donec amet elit a sed. At proin scelerisque ultrices semper in nisl iaculis semper. Dictum habitant at
-        vestibulum volutpat sit commodo duis. Semper integer sit maecenas at dolor id sed. Commodo imperdiet nibh velit
-        ornare placerat ac est hac viverra. Aenean erat gravida morbi nibh eget. Tristique convallis congue augue sem
-        leo
-        nunc eleifend felis, sed. Consequat tortor iaculis faucibus faucibus in. In tempus pellentesque vitae quisque
-        etiam lobortis. Pulvinar felis vel et sed.
+      <p>{{blog.content}}
       </p>
       <div class="d-flex align-items-center justify-content-between">
         <i class="far fa-thumbs-up"></i>

@@ -6,14 +6,17 @@ def projectList(request):
     video = Video.objects.all()
     design = Design.objects.all()
     feedback = Feedback.objects.all()
-    projects = Project.objects.all()
-    for project in projects:
-        print(project)
+    ongoing_projects = Project.objects.filter(full_complete=False)
+    complete_projects = Project.objects.filter(full_complete=True)
+    complete_projects =  [complete_projects[i:i+3] for i in range(0, len(complete_projects), 3)]
+    # for complete_project in complete_projects:
+    #     print(complete_project)
     return render( request, "project_gallery.html", {
-        'project':projects, 
-        'video':video, 
-        'design':design, 
-        'feedback':feedback
+        'ongoing_projects':ongoing_projects, 
+        'complete_projects':complete_projects, 
+        'videos':video, 
+        'designs':design, 
+        'feedbacks':feedback
         })
  
 def projectDetails(request, id):

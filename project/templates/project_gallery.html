@@ -26,7 +26,7 @@
 </head>
 
 <body>
-  <div id="first">
+  <div id="heading">
     <div class="row justify-content-center p-3 m-3">
       <div class="col-lg-2 justify-content-start col-12">
         <div class="d-flex">
@@ -35,36 +35,29 @@
         <h1 class="h1 display-1">Project Gallery</h1>
       </div>
     </div>
+  </div>
 
+  <div id="first">
     <!-- slide iamge section start -->
+    <div class="slide hi-slide">
+      <div class="hi-prev"></div>
+      <div class="hi-next"></div>
+      <div class="row">
+        <div class="col-8">
+          <ul class="slImag">
+            {% for video in videos %}
+            <li>
+              {% comment %} <iframe src="https://www.youtube.com/embed/tgbNymZ7vqY"> </iframe> {% endcomment %}
+              <video class="img-fluid" src="/media/{{video.video}}" controls></video>
+            </li>
+            {% endfor %}
 
-    <div class="col-12">
-      <div class="slide hi-slide">
-        <div class="hi-prev"></div>
-        <div class="hi-next"></div>
-        <ul class="slImag">
-          <li>
-            <iframe src="https://www.youtube.com/embed/tgbNymZ7vqY"> </iframe>
-          </li>
-          <li>
-            <iframe src="https://www.youtube.com/embed/tgbNymZ7vqY"> </iframe>
-          </li>
-          <li>
-            <iframe src="https://www.youtube.com/embed/tgbNymZ7vqY"> </iframe>
-          </li>
-          <li>
-            <iframe src="https://www.youtube.com/embed/tgbNymZ7vqY"> </iframe>
-          </li>
-          <li>
-            <iframe src="https://www.youtube.com/embed/tgbNymZ7vqY"> </iframe>
-          </li>
-          <li>
-            <iframe src="https://www.youtube.com/embed/tgbNymZ7vqY"> </iframe>
-          </li>
-          <li>
-            <iframe src="https://www.youtube.com/embed/tgbNymZ7vqY"> </iframe>
-          </li>
-        </ul>
+            {% comment %} <li>
+              <iframe src="https://www.youtube.com/embed/tgbNymZ7vqY"> </iframe>
+            </li>{% endcomment %}
+          </ul>
+        </div>
+
       </div>
     </div>
   </div>
@@ -90,15 +83,17 @@
         <div class="offset-lg-1 col-lg-5 col-12">
           <div id="carouselExampleControls" class="carousel carousel-dark slide" data-bs-ride="carousel">
             <div class="carousel-inner">
-              <div class="carousel-item active">
+              {% comment %} <div class="carousel-item active">
                 <img src="{% static "/projectgallery/img/proDes1.png" %}" class="img-fluid w-100" alt="..." />
               </div>
               <div class="carousel-item">
                 <img src="{% static "/projectgallery/img/proDes1.png" %}" class="img-fluid w-100" alt="..." />
+              </div> {% endcomment %}
+              {% for design in designs %}
+              <div class="carousel-item {% if forloop.first %} active {% endif %}">
+                <img src="/media/{{design.image}}" class="img-fluid w-100" alt="..." />
               </div>
-              <div class="carousel-item">
-                <img src="{% static "/projectgallery/img/proDes1.png" %}" class="img-fluid w-100" alt="..." />
-              </div>
+              {% endfor %}
             </div>
             <button class="carousel-control-prev bg-peach" type="button" data-bs-target="#carouselExampleControls"
               data-bs-slide="prev">
@@ -128,17 +123,51 @@
 
         <div id="carouselExampleIndicators" class="carousel carousel-dark slide" data-bs-ride="carousel">
           <div class="carousel-indicators">
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
-              aria-current="true" aria-label="Slide 1"></button>
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+            {% for feedback in feedbacks %}
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="{{forloop.counter0}}"
+              class="active" aria-current="true" aria-label="Slide {{forloop.counter}}"></button>
+            {% endfor %}
+            {% comment %} <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
               aria-label="Slide 2"></button>
             <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
               aria-label="Slide 3"></button>
             <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3"
               aria-label="Slide 4"></button>
+            {% endcomment %}
           </div>
           <div class="carousel-inner">
-            <div class="carousel-item active">
+
+            {% for feedback in feedbacks %}
+            <div class="carousel-item {% if forloop.first %} active {% endif %} ">
+              <div class="row justify-content-center p-3 m-3 g-3 px-5">
+                <div class="
+                      offset-lg-1
+                      col-lg-6 col-12
+                      text-center
+                      py-lg-5
+                      my-lg-5
+                      py-3
+                      my-3
+                    ">
+                  <video class="img-fluid embed-responsive" controls src="/media/{{feedback.video}}"></video>
+                </div>
+                <div class="col-lg-5 col-sm-12 border-teal">
+                  <div class="text-center p-lg-5 mx-lg-5 py-5">
+                    <img src="/media/{{feedback.image}}" class="rounded rounded-circle" alt="User" />
+                    <h3 class="h3 text-teal py-3 my-3">
+                      {{feedback.project_name}} <br />
+                    </h3>
+                    <p class="lead py-3 my-3">
+                      {{feedback.feedback}}
+                    </p>
+                    <p class="text-teal h3">{{feedback.user_name}}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            {% endfor %}
+
+            {% comment %} <div class="carousel-item active">
               <div class="row justify-content-center p-3 m-3 g-3 px-5">
                 <div class="
                       offset-lg-1
@@ -273,6 +302,8 @@
                 </div>
               </div>
             </div>
+            {% endcomment %}
+
           </div>
           <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
             data-bs-slide="prev">
@@ -297,282 +328,33 @@
 
     <div id="carouselExampleIndicators3" class="carousel carousel-dark slide" data-bs-ride="carousel">
       <div class="carousel-indicators">
-        <button type="button" data-bs-target="#carouselExampleIndicators3" data-bs-slide-to="0" class="active"
-          aria-current="true" aria-label="Slide 1"></button>
-        <button type="button" data-bs-target="#carouselExampleIndicators3" data-bs-slide-to="1"
+        {% for project in ongoing_projects %}
+        <button type="button" data-bs-target="#carouselExampleIndicators3" data-bs-slide-to="{{forloop.counter0}}"
+          class="active" aria-current="true" aria-label="Slide {{forloop.counter}}"></button>
+        {% endfor %}
+        {% comment %} <button type="button" data-bs-target="#carouselExampleIndicators3" data-bs-slide-to="1"
           aria-label="Slide 2"></button>
         <button type="button" data-bs-target="#carouselExampleIndicators3" data-bs-slide-to="2"
-          aria-label="Slide 3"></button>
+          aria-label="Slide 3"></button> {% endcomment %}
       </div>
       <div class="carousel-inner">
-        <div class="carousel-item active">
+        {% for project in ongoing_projects %}
+        <div class="carousel-item {% if forloop.first %} active {% endif %}">
           <div class="row justify-content-center p-3 m-3 g-5">
             <div class="col-lg-4 col-md-6 col-sm-8 col-12">
-              <div class="tinder">
-                <div class="tinder--cards">
-                  <div class="tinder--card">
-                    <img src="{%static "/projectgallery/img/Rectangle 211.png" %}" />
-                    <h3>Site 1</h3>
-                    <p>1 day ago</p>
-                  </div>
-                  <div class="tinder--card">
-                    <img src="{%static "/projectgallery/img/Rectangle 211.png" %}" />
-                    <h3>Site 2</h3>
-                    <p>1 day ago</p>
-                  </div>
-                  <div class="tinder--card">
-                    <img src="{%static "/projectgallery/img/Rectangle 211.png" %}" />
-                    <h3>Site 3</h3>
-                    <p>1 day ago</p>
-                  </div>
-                  <div class="tinder--card">
-                    <img src="{%static "/projectgallery/img/Rectangle 211.png" %}" />
-                    <h3>Site 4</h3>
-                    <p>1 day ago</p>
-                  </div>
-                  <div class="tinder--card">
-                    <img src="{%static "/projectgallery/img/Rectangle 211.png" %}" />
-                    <h3>Site 5</h3>
-                    <p>1 day ago</p>
-                  </div>
-                </div>
-              </div>
+              <a href="{% url 'projectDetails' project.id %}">
+                <img src="/media/{{project.project_img}}" />
+              </a>
             </div>
             <div class="offset-lg-1 col-lg-5 col-12">
-              <h1 class="h1 text-capitalize CH">Peter and Alex</h1>
+              <h1 class="h1 text-capitalize CH">{{project.name}}</h1>
               <div class="badge text-wrap">
-                <p class="lead CP">
-                  This kitchen by Romanek Design Studio proves that balance is
-                  everything. The dark, moody tile walls, sleek backsplash.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <!-- second card -->
-          <div class="row justify-content-center p-3 m-3 g-5">
-            <div class="col-lg-5 col-12">
-              <h1 class="h1 text-capitalize SCH">Molloy Kitchen Remodel</h1>
-              <div class="badge text-wrap">
-                <p class="lead SCP">
-                  This kitchen by Romanek Design Studio proves that balance is
-                  everything. The dark, moody tile walls, sleek backsplash..
-                </p>
-              </div>
-            </div>
-
-            <div class="offset-lg-1 col-lg-4 col-md-6 col-sm-8 col-12">
-              <div class="tinder2">
-                <div class="tinder--cards2">
-                  <div class="tinder--card2">
-                    <img src="{%static "/projectgallery/img/Rectangle 211.png" %}" />
-                    <h3>Site 1</h3>
-                    <p>1 day ago</p>
-                  </div>
-                  <div class="tinder--card2">
-                    <img src="{%static "/projectgallery/img/Rectangle 211.png" %}" />
-                    <h3>Site 2</h3>
-                    <p>1 day ago</p>
-                  </div>
-                  <div class="tinder--card2">
-                    <img src="{%static "/projectgallery/img/Rectangle 211.png" %}" />
-                    <h3>Site 3</h3>
-                    <p>1 day ago</p>
-                  </div>
-                  <div class="tinder--card2">
-                    <img src="{%static "/projectgallery/img/Rectangle 211.png" %}" />
-                    <h3>Site 4</h3>
-                    <p>1 day ago</p>
-                  </div>
-                  <div class="tinder--card2">
-                    <img src="{%static "/projectgallery/img/Rectangle 211.png" %}" />
-                    <h3>Site 5</h3>
-                    <p>1 day ago</p>
-                  </div>
-                </div>
+                <p class="lead CP">{{project.tagline}}</p>
               </div>
             </div>
           </div>
         </div>
-        <div class="carousel-item">
-          <div class="row justify-content-center p-3 m-3 g-5">
-            <div class="col-lg-5 col-12">
-              <h1 class="h1 text-capitalize CH">Peter and Alex</h1>
-              <div class="badge text-wrap">
-                <p class="lead CP">
-                  This kitchen by Romanek Design Studio proves that balance is
-                  everything. The dark, moody tile walls, sleek backsplash.
-                </p>
-              </div>
-            </div>
-
-            <div class="offset-lg-1 col-lg-4 col-md-6 col-sm-8 col-12">
-              <div class="tinder3">
-                <div class="tinder--cards3">
-                  <div class="tinder--card3">
-                    <img src="{%static "/projectgallery/img/Rectangle 211.png" %}" />
-                    <h3>Site 1</h3>
-                    <p>1 day ago</p>
-                  </div>
-                  <div class="tinder--card3">
-                    <img src="{%static "/projectgallery/img/Rectangle 211.png" %}" />
-                    <h3>Site 2</h3>
-                    <p>1 day ago</p>
-                  </div>
-                  <div class="tinder--card3">
-                    <img src="{%static "/projectgallery/img/Rectangle 211.png" %}" />
-                    <h3>Site 3</h3>
-                    <p>1 day ago</p>
-                  </div>
-                  <div class="tinder--card3">
-                    <img src="{%static "/projectgallery/img/Rectangle 211.png" %}" />
-                    <h3>Site 4</h3>
-                    <p>1 day ago</p>
-                  </div>
-                  <div class="tinder--card3">
-                    <img src="{%static "/projectgallery/img/Rectangle 211.png" %}" />
-                    <h3>Site 5</h3>
-                    <p>1 day ago</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- second card -->
-          <div class="row justify-content-center p-3 m-3 g-5">
-            <div class="col-lg-4 col-md-6 col-sm-8 col-12">
-              <div class="tinder4">
-                <div class="tinder--cards4">
-                  <div class="tinder--card4">
-                    <img src="{%static "/projectgallery/img/Rectangle 211.png" %}" />
-                    <h3>Site 1</h3>
-                    <p>1 day ago</p>
-                  </div>
-                  <div class="tinder--card4">
-                    <img src="{%static "/projectgallery/img/Rectangle 211.png" %}" />
-                    <h3>Site 2</h3>
-                    <p>1 day ago</p>
-                  </div>
-                  <div class="tinder--card4">
-                    <img src="{%static "/projectgallery/img/Rectangle 211.png" %}" />
-                    <h3>Site 3</h3>
-                    <p>1 day ago</p>
-                  </div>
-                  <div class="tinder--card4">
-                    <img src="{%static "/projectgallery/img/Rectangle 211.png" %}" />
-                    <h3>Site 4</h3>
-                    <p>1 day ago</p>
-                  </div>
-                  <div class="tinder--card4">
-                    <img src="{%static "/projectgallery/img/Rectangle 211.png" %}" />
-                    <h3>Site 5</h3>
-                    <p>1 day ago</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="offset-lg-1 col-lg-5 col-12">
-              <h1 class="h1 text-capitalize SCH">Molloy Kitchen Remodel</h1>
-              <div class="badge text-wrap">
-                <p class="lead SCP">
-                  This kitchen by Romanek Design Studio proves that balance is
-                  everything. The dark, moody tile walls, sleek backsplash..
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="carousel-item">
-          <div class="row justify-content-center p-3 m-3 g-5">
-            <div class="col-lg-4 col-md-6 col-sm-8 col-12">
-              <div class="tinder5">
-                <div class="tinder--cards5">
-                  <div class="tinder--card5">
-                    <img src="{%static "/projectgallery/img/Rectangle 211.png" %}" />
-                    <h3>Site 1</h3>
-                    <p>1 day ago</p>
-                  </div>
-                  <div class="tinder--card5">
-                    <img src="{%static "/projectgallery/img/Rectangle 211.png" %}" />
-                    <h3>Site 2</h3>
-                    <p>1 day ago</p>
-                  </div>
-                  <div class="tinder--card5">
-                    <img src="{%static "/projectgallery/img/Rectangle 211.png" %}" />
-                    <h3>Site 3</h3>
-                    <p>1 day ago</p>
-                  </div>
-                  <div class="tinder--card5">
-                    <img src="{%static "/projectgallery/img/Rectangle 211.png" %}" />
-                    <h3>Site 4</h3>
-                    <p>1 day ago</p>
-                  </div>
-                  <div class="tinder--card5">
-                    <img src="{%static "/projectgallery/img/Rectangle 211.png" %}" />
-                    <h3>Site 5</h3>
-                    <p>1 day ago</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="offset-lg-1 col-lg-5 col-12">
-              <h1 class="h1 text-capitalize CH">Peter and Alex</h1>
-              <div class="badge text-wrap">
-                <p class="lead CP">
-                  This kitchen by Romanek Design Studio proves that balance is
-                  everything. The dark, moody tile walls, sleek backsplash.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <!-- second card -->
-          <div class="row justify-content-center p-3 m-3 g-5">
-            <div class="col-lg-5 col-12">
-              <h1 class="h1 text-capitalize SCH">Molloy Kitchen Remodel</h1>
-              <div class="badge text-wrap">
-                <p class="lead SCP">
-                  This kitchen by Romanek Design Studio proves that balance is
-                  everything. The dark, moody tile walls, sleek backsplash..
-                </p>
-              </div>
-            </div>
-
-            <div class="offset-lg-1 col-lg-4 col-md-6 col-sm-8 col-12">
-              <div class="tinder6">
-                <div class="tinder--cards6">
-                  <div class="tinder--card6">
-                    <img src="{%static "/projectgallery/img/Rectangle 211.png" %}" />
-                    <h3>Site 1</h3>
-                    <p>1 day ago</p>
-                  </div>
-                  <div class="tinder--card6">
-                    <img src="{%static "/projectgallery/img/Rectangle 211.png" %}" />
-                    <h3>Site 2</h3>
-                    <p>1 day ago</p>
-                  </div>
-                  <div class="tinder--card6">
-                    <img src="{%static "/projectgallery/img/Rectangle 211.png" %}" />
-                    <h3>Site 3</h3>
-                    <p>1 day ago</p>
-                  </div>
-                  <div class="tinder--card6">
-                    <img src="{%static "/projectgallery/img/Rectangle 211.png" %}" />
-                    <h3>Site 4</h3>
-                    <p>1 day ago</p>
-                  </div>
-                  <div class="tinder--card6">
-                    <img src="{%static "/projectgallery/img/Rectangle 211.png" %}" />
-                    <h3>Site 5</h3>
-                    <p>1 day ago</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        {% endfor %}
       </div>
       <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators3"
         data-bs-slide="prev">
@@ -607,45 +389,19 @@
       <div class="col-lg-12 col-12">
         <div id="carouselExampleIndicators2" class="carousel carousel-dark slide" data-bs-ride="carousel">
           <div class="carousel-inner text-center">
-            <div class="carousel-item active">
+            {% for complete_project in complete_projects %}
+            <div class="carousel-item {% if forloop.first %} active {% endif %}">
               <div class="row justify-content-center g-3">
+                {% for itr_project in complete_project %}
                 <div class="col-4">
-                  <img src="{% static "projectgallery/img/Rectangle 198.png" %}" class="img-fluid" alt="..." />
+                  <a href="{% url 'projectDetails' itr_project.id %}">
+                    <img src="/media/{{itr_project.project_img}}" class="img-fluid" alt="..." />
+                  </a>
                 </div>
-                <div class="col-4">
-                  <img src="{% static "projectgallery/img/Rectangle 199.png" %}" class="img-fluid" alt="..." />
-                </div>
-                <div class="col-4">
-                  <img src="{% static "projectgallery/img/Rectangle 200.png" %}" class="img-fluid" alt="..." />
-                </div>
+                {% endfor %}
               </div>
             </div>
-            <div class="carousel-item">
-              <div class="row justify-content-center g-3">
-                <div class="col-4">
-                  <img src="{% static "projectgallery/img/Rectangle 201.png" %}" class="img-fluid" alt="..." />
-                </div>
-                <div class="col-4">
-                  <img src="{% static "projectgallery/img/Rectangle 198.png" %}" class="img-fluid" alt="..." />
-                </div>
-                <div class="col-4">
-                  <img src="{% static "projectgallery/img/Rectangle 199.png" %}" class="img-fluid" alt="..." />
-                </div>
-              </div>
-            </div>
-            <div class="carousel-item">
-              <div class="row justify-content-center g-3">
-                <div class="col-4">
-                  <img src="{% static "projectgallery/img/Rectangle 200.png" %}" class="img-fluid" alt="..." />
-                </div>
-                <div class="col-4">
-                  <img src="{% static "projectgallery/img/Rectangle 201.png" %}" class="img-fluid" alt="..." />
-                </div>
-                <div class="col-4">
-                  <img src="{% static "projectgallery/img/Rectangle 198.png" %}" class="img-fluid" alt="..." />
-                </div>
-              </div>
-            </div>
+            {% endfor %}
           </div>
           <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators2"
             data-bs-slide="prev">

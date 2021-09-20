@@ -65,101 +65,23 @@
         <h1 class="section-title">Blogs</h1>
       </div>
       <div class="row">
+        {% for blog in blogs %}
         <div class="col-sm-6 my-4">
           <div class="blog card">
-            <img class="card-img-top" src="{%static "blogandnews/img/blog.png"%}" alt="">
+            <img class="card-img-top img-fluid" src="/media/{{blog.image}}" alt="{{blog.title}}">
             <div class="card-body">
-              <h6 class="card-subtitle mb-2 text-muted">ADMIN . 1 day ago</h6>
+              <h6 class="card-subtitle mb-2 text-muted">{{blog.author}} . 1 day ago</h6>
               <h5 class="card-title">
-                Eget accumsan consequat arcu vitae. Non vulputate diam sed
-                tortor.
+                {{blog.title}}
               </h5>
               <p class="card-text">
-                Neque, sit sapien id viverra erat dignissim tellus nulla. Quis
-                ornare commodo auctor facilisi sed malesuada volutpat, egestas
-                dui. At ultricies nulla sed lectus natoque quam. Egestas in
-                tellus.
+                {{blog.content|truncatewords:30}}
               </p>
-              <a class="btn btn-primary styled-btn">Read More</a>
+              <a href={% url 'blog' blog.id %} class="btn btn-primary styled-btn">Read More</a>
             </div>
           </div>
         </div>
-        <div class="col-sm-6 my-4">
-          <div class="blog card">
-            <img class="card-img-top" src="{%static "blogandnews/img/blog.png"%}" alt="">
-            <div class="card-body">
-              <h6 class="card-subtitle mb-2 text-muted">ADMIN . 1 day ago</h6>
-              <h5 class="card-title">
-                Eget accumsan consequat arcu vitae. Non vulputate diam sed
-                tortor.
-              </h5>
-              <p class="card-text">
-                Neque, sit sapien id viverra erat dignissim tellus nulla. Quis
-                ornare commodo auctor facilisi sed malesuada volutpat, egestas
-                dui. At ultricies nulla sed lectus natoque quam. Egestas in
-                tellus.
-              </p>
-              <a class="btn btn-primary styled-btn">Read More</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-6 my-4">
-          <div class="blog card">
-            <img class="card-img-top" src="{%static "blogandnews/img/blog.png"%}" alt="">
-            <div class="card-body">
-              <h6 class="card-subtitle mb-2 text-muted">ADMIN . 1 day ago</h6>
-              <h5 class="card-title">
-                Eget accumsan consequat arcu vitae. Non vulputate diam sed
-                tortor.
-              </h5>
-              <p class="card-text">
-                Neque, sit sapien id viverra erat dignissim tellus nulla. Quis
-                ornare commodo auctor facilisi sed malesuada volutpat, egestas
-                dui. At ultricies nulla sed lectus natoque quam. Egestas in
-                tellus.
-              </p>
-              <a class="btn btn-primary styled-btn">Read More</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-6 my-4">
-          <div class="blog card">
-            <img class="card-img-top" src="{%static "blogandnews/img/blog.png"%}" alt="">
-            <div class="card-body">
-              <h6 class="card-subtitle mb-2 text-muted">ADMIN . 1 day ago</h6>
-              <h5 class="card-title">
-                Eget accumsan consequat arcu vitae. Non vulputate diam sed
-                tortor.
-              </h5>
-              <p class="card-text">
-                Neque, sit sapien id viverra erat dignissim tellus nulla. Quis
-                ornare commodo auctor facilisi sed malesuada volutpat, egestas
-                dui. At ultricies nulla sed lectus natoque quam. Egestas in
-                tellus.
-              </p>
-              <a class="btn btn-primary styled-btn">Read More</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-6 my-4">
-          <div class="blog card">
-            <img class="card-img-top" src="{%static "blogandnews/img/blog.png"%}" alt="">
-            <div class="card-body">
-              <h6 class="card-subtitle mb-2 text-muted">ADMIN . 1 day ago</h6>
-              <h5 class="card-title">
-                Eget accumsan consequat arcu vitae. Non vulputate diam sed
-                tortor.
-              </h5>
-              <p class="card-text">
-                Neque, sit sapien id viverra erat dignissim tellus nulla. Quis
-                ornare commodo auctor facilisi sed malesuada volutpat, egestas
-                dui. At ultricies nulla sed lectus natoque quam. Egestas in
-                tellus.
-              </p>
-              <a class="btn btn-primary styled-btn">Read More</a>
-            </div>
-          </div>
-        </div>
+        {% endfor %}
 
       </div>
     </section>
@@ -168,91 +90,24 @@
       <div>
         <h1 class="section-title">News</h1>
       </div>
+      {% for news in newss %}
       <div class="news row my-4">
         <div class="col-4">
-          <img class="img-fluid" src="{%static "blogandnews/img/news.png"%}" alt="">
+          <img class="img-fluid" src="/media/{{news.image}}" alt="">
         </div>
         <div class="col-8">
           <div class="d-flex justify-content-between">
-            <h4 class="heading">7 Skills of Highly Effective Programmers</h4>
+            <h4 class="heading">{{news.heading}}</h4>
             <p class="time text-muted">3 days ago</p>
           </div>
-          <p class="content">Our team was inspired by the seven skills of highly effective programmers created by the
-            TechLead. We
-            wanted to provide our own take on the topic. Here are our seven skills of effective programmers...</p>
+          <p class="content">{{news.content|truncatewords:30 }}</p>
           <div class="news-footer d-flex justify-content-between">
-            <div class="writer">Glen Williams</div>
+            <div class="writer">{{news.author}}</div>
           </div>
         </div>
       </div>
-      <div class="news row my-4">
-        <div class="col-4">
-          <img class="img-fluid" src="{%static "blogandnews/img/news.png"%}" alt="">
-        </div>
-        <div class="col-8">
-          <div class="d-flex justify-content-between">
-            <h4 class="heading">7 Skills of Highly Effective Programmers</h4>
-            <p class="time text-muted">3 days ago</p>
-          </div>
-          <p class="content">Our team was inspired by the seven skills of highly effective programmers created by the
-            TechLead. We
-            wanted to provide our own take on the topic. Here are our seven skills of effective programmers...</p>
-          <div class="news-footer d-flex justify-content-between">
-            <div class="writer">Glen Williams</div>
-          </div>
-        </div>
-      </div>
-      <div class="news row my-4">
-        <div class="col-4">
-          <img class="img-fluid" src="{%static "blogandnews/img/news.png"%}" alt="">
-        </div>
-        <div class="col-8">
-          <div class="d-flex justify-content-between">
-            <h4 class="heading">7 Skills of Highly Effective Programmers</h4>
-            <p class="time text-muted">3 days ago</p>
-          </div>
-          <p class="content">Our team was inspired by the seven skills of highly effective programmers created by the
-            TechLead. We
-            wanted to provide our own take on the topic. Here are our seven skills of effective programmers...</p>
-          <div class="news-footer d-flex justify-content-between">
-            <div class="writer">Glen Williams</div>
-          </div>
-        </div>
-      </div>
-      <div class="news row my-4">
-        <div class="col-4">
-          <img class="img-fluid" src="{%static "blogandnews/img/news.png"%}" alt="">
-        </div>
-        <div class="col-8">
-          <div class="d-flex justify-content-between">
-            <h4 class="heading">7 Skills of Highly Effective Programmers</h4>
-            <p class="time text-muted">3 days ago</p>
-          </div>
-          <p class="content">Our team was inspired by the seven skills of highly effective programmers created by the
-            TechLead. We
-            wanted to provide our own take on the topic. Here are our seven skills of effective programmers...</p>
-          <div class="news-footer d-flex justify-content-between">
-            <div class="writer">Glen Williams</div>
-          </div>
-        </div>
-      </div>
-      <div class="news row my-4">
-        <div class="col-4">
-          <img class="img-fluid" src="{%static "blogandnews/img/news.png"%}" alt="">
-        </div>
-        <div class="col-8">
-          <div class="d-flex justify-content-between">
-            <h4 class="heading">7 Skills of Highly Effective Programmers</h4>
-            <p class="time text-muted">3 days ago</p>
-          </div>
-          <p class="content">Our team was inspired by the seven skills of highly effective programmers created by the
-            TechLead. We
-            wanted to provide our own take on the topic. Here are our seven skills of effective programmers...</p>
-          <div class="news-footer d-flex justify-content-between">
-            <div class="writer">Glen Williams</div>
-          </div>
-        </div>
-      </div>
+      {% endfor %}
+
     </section>
 
   </section>

@@ -12,6 +12,9 @@ class Design(models.Model):
 class Feedback(models.Model):
     feedback = models.TextField(max_length=1024, default="NA")
     image = models.FileField(upload_to='feedbacks/')
+    video = models.FileField(upload_to="feedbacks/vid", default="NA")
+    user_name = models.CharField(max_length=100, default="Client")
+    project_name = models.CharField(max_length=100, default="Project")
 
 class Project(models.Model):
     name = models.CharField(max_length=100, null=False, default="Modular Kitchen")
