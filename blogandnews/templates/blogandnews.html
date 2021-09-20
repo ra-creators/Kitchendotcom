@@ -41,21 +41,21 @@
   </nav>
 
   <section id="sec-one" class="row">
-    <div class="col-sm-8">
-      <img class="img-fluid" src="{%static "blogandnews/img/blog.png"%}" alt="">
+    {% with blogs|first as blog %}
+    <div class="col-sm-6">
+      <img class="img-fluid" src="/media/{{blog.image}}" alt="{{blog.title}}">
     </div>
-    <div class="col-sm-4">
-      <h6 class="text-muted">ADMIN . 1 day ago</h6>
+    <div class="col">
+      <h6 class="text-muted">{{blog.author}} . 1 day ago</h6>
       <h2>
-        Eget accumsan consequat arcu vitae. Non vulputate diam sed tortor.
+        {{blog.title}}
       </h2>
       <p>
-        Neque, sit sapien id viverra erat dignissim tellus nulla. Quis ornare
-        commodo auctor facilisi sed malesuada volutpat, egestas dui. At
-        ultricies nulla sed lectus natoque quam. Egestas in tellus.
+        {{blog.content|truncatewords:90}}
       </p>
-      <a class="btn btn-primary styled-btn">Read More</a>
+      <a href={% url 'blog' blog.id %} class="btn btn-primary styled-btn">Read More</a>
     </div>
+    {% endwith %}
   </section>
 
   <section id="sec-two" class="row mt-5">
