@@ -91,6 +91,7 @@ header {
 
     svg {
       height: 50%;
+      background-color: inherit;
 
       path {
         fill: gray;
@@ -109,6 +110,7 @@ header {
     background-color: #006665;
 
     svg {
+
       path {
         fill: white;
       }
@@ -128,23 +130,23 @@ footer {
     padding: 0.8rem 1.6rem;
     text-align: center;
 
-    p {
-      font-family: Poppins;
-      font-style: normal;
-      font-weight: 600;
-      font-size: 24px;
-      line-height: 36px;
-      color: #ffdabf;
-    }
+    // p {
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 36px;
+    color: #ffdabf;
+    // }
   }
 
   button:hover {
     box-shadow: rgba(0, 102, 101, 0.83) 0 0 15px;
 
-    p {
-      color: #daa784;
+    // p {
+    color: #daa784;
 
-    }
+    // }
   }
 }
 

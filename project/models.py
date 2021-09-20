@@ -33,4 +33,4 @@ class PostImage(models.Model):
     images = models.FileField(upload_to = 'images/progress/')
 
     def __str__(self):
-        return self.post.name
+        return self.project.name

@@ -9,10 +9,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Kitchendotcom | Project Details</title>
   {% comment %} bootstrap css {% endcomment %}
-  {% comment %}
+
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
-  {% endcomment %}
+
   {% comment %} custom css {% endcomment %}
   <link rel="stylesheet" href="{%static "projectgallery/css/details.css"%}" />
 </head>
@@ -21,8 +21,8 @@
   <header class="">
     <p>Ongoing Projects</p>
   </header>
-  <section id="details" class="row">
-    <div class="col-6">
+  <section id="details">
+    <div>
       <div class="content">
         <div class="project-name">
           {{project.name}}
@@ -32,9 +32,9 @@
         </div>
       </div>
     </div>
-    <div class="col-6">
+    <div>
       <div class="project-img">
-        <img ALIGN="left" class="img-fluid" src="/media/{{project.project_img}}" alt="" />
+        <img ALIGN="left" src="/media/{{project.project_img}}" alt="" />
       </div>
     </div>
   </section>
@@ -68,14 +68,21 @@
   </section>
 
   <section id="gallery">
-    {% for photo in photos %}
-    <img src="photo.images" alt="">
-    {% endfor %}
-
+    <div class="row g-0 text-center justify-content-evenly align-items-center">
+      {% for photo in photos %}
+      <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 text-center align-items-center">
+        <img class="img-fluid" src="/media/{{photo.images}}" alt="">
+      </div>
+      {% comment %} <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+        <img class="img-fluid px-2 py-3" src="/media/images/progress/Rectangle_211.png" alt="">
+      </div> {% endcomment %}
+      {% endfor %}
+    </div>
   </section>
+
   <footer>
     <button class="styled-btn">
-      <p>Back</p>
+      Back
     </button>
   </footer>
 </body>
