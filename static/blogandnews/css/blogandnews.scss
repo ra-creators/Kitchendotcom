@@ -11,8 +11,10 @@
     }
 
     #news {
-        height: 50vh;
+        // height: 50vh;
         // overflow-y: auto;
+        background: #F0F6F6;
+        border-radius: 18px;
 
         .img-fluid {
             width: 100%;

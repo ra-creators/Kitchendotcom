@@ -7,7 +7,8 @@
 }
 
 #sec-two #news {
-  height: 50vh;
+  background: #F0F6F6;
+  border-radius: 18px;
 }
 
 #sec-two #news .img-fluid {
