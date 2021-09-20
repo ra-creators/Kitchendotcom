@@ -116,6 +116,7 @@ header p {
 
 #progress .state svg {
   height: 50%;
+  background-color: inherit;
 }
 
 #progress .state svg path {
@@ -151,9 +152,6 @@ footer button {
   border-radius: 1rem;
   padding: 0.8rem 1.6rem;
   text-align: center;
-}
-
-footer button p {
   font-family: Poppins;
   font-style: normal;
   font-weight: 600;
@@ -165,9 +163,6 @@ footer button p {
 footer button:hover {
   -webkit-box-shadow: rgba(0, 102, 101, 0.83) 0 0 15px;
           box-shadow: rgba(0, 102, 101, 0.83) 0 0 15px;
-}
-
-footer button:hover p {
   color: #daa784;
 }
 

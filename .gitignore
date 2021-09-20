@@ -2,7 +2,4 @@ Kitchendotcomenv
 
 **/Kitchendotcomenv
 
-assets
-media/
-
 **/*.css.map
