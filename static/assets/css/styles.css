@@ -235,7 +235,7 @@ input[type='checkbox']:checked:after {
 /* Hide Scrolling  */
 
 html {
-    /* overflow-y: hidden; */
+    overflow-y: hidden; 
 }
 
 @media (max-width: 1399.98px) {
