@@ -46,7 +46,7 @@
       <img class="img-fluid" src="/media/{{blog.image}}" alt="{{blog.title}}">
     </div>
     <div class="col">
-      <h6 class="text-muted">{{blog.author}} . 1 day ago</h6>
+      <h6 class="text-muted">{{blog.author | upper}} . 1 day ago</h6>
       <h2>
         {{blog.title}}
       </h2>
@@ -70,7 +70,7 @@
           <div class="blog card">
             <img class="card-img-top img-fluid" src="/media/{{blog.image}}" alt="{{blog.title}}">
             <div class="card-body">
-              <h6 class="card-subtitle mb-2 text-muted">{{blog.author}} . 1 day ago</h6>
+              <h6 class="card-subtitle mb-2 text-muted">{{blog.author | upper}} . 1 day ago</h6>
               <h5 class="card-title">
                 {{blog.title}}
               </h5>

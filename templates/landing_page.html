@@ -101,6 +101,16 @@
   </section>
 
   <footer>
+    <div 
+      data-bs-toggle="modal" 
+      data-bs-target="#userFormModal"
+      class="row text-end px-3 my-4 " 
+      data-bs-toggle="tooltip"  
+      title="Enquiry" 
+      style="font-size:1.8rem;cursor:pointer;"
+    >
+      <i class="far fa-question-circle"></i>
+    </div>
     <ul>
       <li class="icon">
         <a href="#"><i class="fab fa-facebook-f"></i> </a>
@@ -184,8 +194,6 @@
     }
     let myModal = new bootstrap.Modal(document.getElementById('userFormModal'))
     let userRegiseterd = localStorage.getItem('userRegiseterd')
-    if (!userRegiseterd)
-      myModal.show();
 
     let form = document.getElementById("customerDetailsForm")
     let formButton = document.getElementById("customerDetailsFormButton")

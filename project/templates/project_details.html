@@ -38,7 +38,8 @@
       </div>
     </div>
   </section>
-  <section id="progress">
+
+  <section id="progress" class="py-5">
     <div class="state 
       {%if project.design_complete %}complete{%else%}{%endif%}">
       <svg class="design" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -71,7 +72,7 @@
     <div class="row g-0 text-center justify-content-evenly align-items-center">
       {% for photo in photos %}
       <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 text-center align-items-center">
-        <img class="img-fluid" src="/media/{{photo.images}}" alt="">
+        <img class="img-fluid px-2 py-3" src="/media/{{photo.images}}" alt="">
       </div>
       {% comment %} <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
         <img class="img-fluid px-2 py-3" src="/media/images/progress/Rectangle_211.png" alt="">
