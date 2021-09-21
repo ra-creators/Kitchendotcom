@@ -6,15 +6,10 @@
 
 #first {
   width: 100vw;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  align-items: center;
+  justify-content: center;
+
   height: auto;
 }
 
@@ -25,49 +20,48 @@
   background-color: #006665;
   min-height: 100%;
   z-index: 2;
-}
 
-#first2 .bg-graphics-container {
-  height: 100%;
-  width: 100%;
-  position: absolute;
-  padding: 5px;
-  z-index: 0;
-  overflow: hidden;
-}
+  .bg-graphics-container {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    padding: 5px;
+    z-index: 0;
+    overflow: hidden;
 
-#first2 .bg-graphics-container img {
-  position: absolute;
-}
+    img {
+      position: absolute;
+    }
 
-#first2 .bg-graphics-container .top-left {
-  position: absolute;
-  top: 0;
-  left: 5%;
-}
+    .top-left {
+      position: absolute;
+      top: 0;
+      left: 5%;
+    }
 
-#first2 .bg-graphics-container .top-right {
-  top: 0;
-  right: 0;
-  -webkit-transform: translate(0, -50%);
-          transform: translate(0, -50%);
-}
+    .top-right {
+      top: 0;
+      right: 0;
+      transform: translate(0, -50%);
+    }
 
-#first2 .bg-graphics-container .middle-left {
-  top: 50%;
-  left: 0;
-}
+    .middle-left {
+      top: 50%;
+      left: 0;
+    }
 
-#first2 .bg-graphics-container .bottom-left {
-  bottom: 0;
-  left: 0;
+    .bottom-left {
+      bottom: 0;
+      left: 0;
+    }
+  }
 }
 
 /* first section start */
+
 .d-flex {
   border: 6px solid #006665;
-  -webkit-transform: rotate(89.22deg);
-          transform: rotate(89.22deg);
+  transform: rotate(89.22deg);
   border-radius: 2px;
   overflow: hidden;
 }
@@ -92,6 +86,7 @@
 }
 
 /* First section end  */
+
 h1 {
   margin: 150px auto 30px auto;
   color: #fff;
@@ -102,20 +97,20 @@ h1 {
   color: #333;
 }
 
-.hi-slide ul > li > video {
+.hi-slide ul>li>video {
   width: 100%;
   /* height: 100%; */
   background-position: center;
 }
 
 /* Professinal Designers start  */
+
 .pro-des {
   width: 800px;
   margin: 1px auto;
   top: 600px;
   margin-bottom: 200px;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   background: teal;
 }
 
@@ -146,6 +141,7 @@ h1 {
   font-weight: bold;
   font-size: 36px;
   line-height: 48px;
+
   color: #ffffff;
 }
 
@@ -156,6 +152,7 @@ h1 {
   font-size: 18px;
   line-height: 27px;
   margin-top: 35px;
+
   color: #ffffff;
 }
 
@@ -176,11 +173,13 @@ h3 {
   top: 1460px;
   margin-left: 25px;
   margin-left: 25px;
+
   font-family: Playfair Display;
   font-style: normal;
   font-weight: bold;
   font-size: 26px;
   line-height: 32px;
+
   color: #006665;
 }
 
@@ -210,11 +209,13 @@ h3 {
   top: 1540px;
   margin-left: 25px;
   margin-left: 25px;
+
   font-family: Alegreya;
   font-style: normal;
   font-weight: bold;
   font-size: 30.871px;
   line-height: 42px;
+
   color: #000000;
 }
 
@@ -223,8 +224,7 @@ hr {
   width: 520px;
   color: #006665;
   margin-right: 205px;
-  -ms-flex-line-pack: left;
-      align-content: left;
+  align-content: left;
   margin-top: 730px;
   /* margin-bottom: 25px; */
 }
@@ -236,14 +236,17 @@ hr {
   top: 1600px;
   left: 53%;
   padding-bottom: 18px;
+
   font-family: Alegreya;
   font-style: normal;
   font-weight: 500;
   font-size: 13.8919px;
   line-height: 19px;
   text-align: justify;
+
   color: #000000;
 }
+
 
 #second {
   background: url(/static/projectgallery/img/gallery_bg21.png);
@@ -271,11 +274,13 @@ hr {
   height: 6.3rem;
   left: 5.4rem;
   top: 114.1rem;
+
   font-family: Playfair Display;
   font-style: normal;
   font-weight: 900;
   font-size: 2.25rem;
   line-height: 3rem;
+
   color: #333;
 }
 
@@ -306,6 +311,7 @@ hr {
 
 .PI1 {
   height: 16rem;
+
 }
 
 .FC {
@@ -335,6 +341,7 @@ hr {
 }
 
 /* second card */
+
 .SfirstC {
   width: 23.3rem;
   height: 24rem;
@@ -380,6 +387,7 @@ hr {
       font-size: 2rem;
     }
   } */
+
 #last {
   font-family: Playfair Display;
   font-style: normal;
@@ -390,6 +398,7 @@ hr {
   margin-bottom: 1rem;
   margin-left: 5rem;
   color: #006665;
+
 }
 
 #last2 {
@@ -411,6 +420,7 @@ html {
 }
 
 /* colors */
+
 .bg-peach {
   background-color: transparent;
 }
@@ -419,6 +429,7 @@ html {
   background-color: peachpuff;
 }
 
+
 .text-teal {
   color: teal;
 }
@@ -426,4 +437,3 @@ html {
 .border-teal {
   border-top: 25px solid teal;
 }
-/*# sourceMappingURL=style3.css.map */

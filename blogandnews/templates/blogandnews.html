@@ -11,6 +11,9 @@
   <!-- bootstrap CSS only -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous" />
+  <!-- fontawesome icons -->
+  <script src="https://kit.fontawesome.com/fecc50ad8e.js" crossorigin="anonymous"></script>
+
   <!-- custom css -->
   <link rel="stylesheet" href="{%static "common/css/style.css"%}">
   <link rel="stylesheet" href="{%static "common/css/nav.css"%}">
@@ -18,27 +21,7 @@
 </head>
 
 <body>
-  <nav>
-    <div class="brand">
-      <a href="/">
-        <p class="brand-name">Kitchendotcom</p>
-      </a>
-    </div>
-    <ul id="nav-links" class="links">
-      <li>
-        <a href="/aboutus">Aboutus</a>
-      </li>
-      <li>
-        <a href="/blogandnews" class="active">Blog&News</a>
-      </li>
-      <li>
-        <a href="/contactus">Contactus</a>
-      </li>
-    </ul>
-    <div class="icon" onclick="navButton()">
-      <i class="fa fa-bars"></i>
-    </div>
-  </nav>
+  {% include 'includes/nav.html' %}
 
   <section id="sec-one" class="row">
     {% with blogs|first as blog %}

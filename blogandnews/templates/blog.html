@@ -15,32 +15,11 @@
   <script src="https://kit.fontawesome.com/fecc50ad8e.js" crossorigin="anonymous"></script>
   <!-- custom css -->
   <link rel="stylesheet" href="{%static "common/css/style.css"%}">
-  <link rel="stylesheet" href="{%static "common/css/nav.css"%}">
   <link rel="stylesheet" href="{%static "blogandnews/css/blogandnews.css"%}">
 </head>
 
 <body>
-  <nav>
-    <div class="brand">
-      <a href="/">
-        <p class="brand-name">Kitchendotcom</p>
-      </a>
-    </div>
-    <ul id="nav-links" class="links">
-      <li>
-        <a href="/aboutus">Aboutus</a>
-      </li>
-      <li>
-        <a href="/blogandnews" class="active">Blog&News</a>
-      </li>
-      <li>
-        <a href="/contactus">Contactus</a>
-      </li>
-    </ul>
-    <div class="icon" onclick="navButton()">
-      <i class="fa fa-bars"></i>
-    </div>
-  </nav>
+  {% include 'includes/nav.html' %}
 
   <div class="container" id="post-item">
     <h1 class="text-center">{{blog.title}}</h1>

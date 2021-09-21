@@ -16,27 +16,7 @@
 </head>
 
 <body class="container d-flex flex-column">
-  <nav>
-    <div class="brand">
-      <a href="/">
-        <p class="brand-name">Kitchendotcom</p>
-      </a>
-    </div>
-    <ul id="nav-links" class="links">
-      <li>
-        <a href="/aboutus">Aboutus</a>
-      </li>
-      <li>
-        <a href="/blogandnews">Blog&News</a>
-      </li>
-      <li>
-        <a href="/contactus" class="active">Contactus</a>
-      </li>
-    </ul>
-    <div class="icon" onclick="navButton()">
-      <i class="fa fa-bars"></i>
-    </div>
-  </nav>
+  {% include 'includes/nav.html' %}
 
   <div class="flex-grow-1 d-flex align-center">
     <section id="content" class="my-auto row">
