@@ -78,6 +78,7 @@ nav .icon {
 @media only screen and (max-width: 760px) {
   nav .links {
     display: none;
+    padding: 0;
   }
   nav .links li {
     padding: 0;
@@ -85,6 +86,9 @@ nav .icon {
   nav .links li a {
     padding: 0 1rem;
     font-size: 1rem;
+  }
+  nav #nav-links .active {
+    border: none;
   }
   nav .icon {
     display: block;
@@ -115,17 +119,13 @@ nav .icon {
   font-family: Open Sans;
 }
 
-body {
-  margin: 1rem 2rem;
-}
-
 a {
   text-decoration: none !important;
   color: inherit;
 }
 
 a:hover {
-  text-decoration: underline;
+  text-decoration: underline !important;
 }
 
 .styled-btn {
@@ -147,5 +147,53 @@ a:hover {
   color: #006665;
   padding-bottom: 5px;
   border-bottom: #006665 5px solid;
+}
+
+#common-footer {
+  background-image: url("/static/common/img/Rectangle 32.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  font-family: Open Sans;
+}
+
+#common-footer .bg {
+  width: 100%;
+  position: absolute;
+}
+
+#common-footer * {
+  font-family: inherit;
+}
+
+#common-footer .link-list {
+  list-style: none;
+}
+
+#common-footer .link-list li {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#common-footer .link-list li::before {
+  content: "\2022";
+  color: rgba(0, 102, 101, 0.76);
+  font-size: 1.5rem;
+  font-weight: bold;
+  display: inline-block;
+  width: 1rem;
+}
+
+#common-footer .middle-row {
+  border: 0.97982px solid rgba(0, 102, 101, 0.81);
+  border-left: 0;
+  border-right: 0;
+}
+
+#common-footer a {
+  text-decoration: underline;
 }
 /*# sourceMappingURL=style.css.map */

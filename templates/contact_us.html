@@ -9,18 +9,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Contact us</title>
   <!-- custom css  -->
+  <link rel="stylesheet" href="{%static "common/css/style.css"%}">
   <link rel="stylesheet" href="{%static "/contactus/contactus.css" %}" />
   <!-- bootstrap CSS only -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous" />
+  <!-- fontawesome icons -->
+  <script src="https://kit.fontawesome.com/fecc50ad8e.js" crossorigin="anonymous"></script>
+
 </head>
 
-<body class="container d-flex flex-column">
-  {% include 'includes/nav.html' %}
+<body class="d-flex flex-column">
 
-  <div class="flex-grow-1 d-flex align-center">
+  <div class="px-4">
+    {% include 'includes/nav.html' %}
+  </div>
+
+  <div class="flex-grow-1 d-flex align-center px-4">
     <section id="content" class="my-auto row">
-      <div class="col-8 d-flex flex-column justify-content-between" id="others">
+      <div class="col-md-8 d-flex flex-column justify-content-between" id="others">
         <img src="{%static "contactus/img/contactus.png" %}" class="img-fluid" alt="" />
         <div class="cities d-flex mt-3">
           <div class="city ps-2">
@@ -38,7 +45,7 @@
         </div>
       </div>
 
-      <div class="col-4" id="form">
+      <div class="col-md-4" id="form">
         <h1 class="heading">Get in touch</h1>
         <p class="description">
           Have an inquiry or some feedback for us?<br />Fill out the form below
@@ -81,7 +88,7 @@
           </div>
 
           <div class="col-12">
-            <button type="submit" id="submit-btn" class="btn btn-primary">
+            <button type="submit" id="submit-btn" class="btn btn-primary styled-btn">
               GET IN TOUCH
             </button>
           </div>
@@ -96,6 +103,9 @@
       src="{%static "contactus/img/bg-topright.png" %}" class="bg-topright" alt="" /> <img
       src="{%static "contactus/img/bg.png"%}" class="bg-full" alt="" />
   </div>
+
+  {% include 'includes/footer.html' %}
+
 </body>
 
 </html>

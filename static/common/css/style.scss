@@ -11,7 +11,7 @@ $font-color: rgb(252, 182, 133);
 }
 
 body {
-  margin: 1rem 2rem;
+  // margin: 1rem 2rem;
   // padding: 1rem 0;
 }
 
@@ -21,7 +21,7 @@ a {
 }
 
 a:hover {
-  text-decoration: underline;
+  text-decoration: underline !important;
 }
 
 .styled-btn {
@@ -41,4 +41,52 @@ a:hover {
   color: rgba(0, 102, 101, 1);
   padding-bottom: 5px;
   border-bottom: rgba(0, 102, 101, 1) 5px solid;
+}
+
+
+// footer
+#common-footer {
+  // background-color: rgba(255, 210, 178, 0.92);
+  background-image: url("/static/common/img/Rectangle\ 32.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  font-family: Open Sans;
+
+  .bg {
+    // height: 100%;
+    width: 100%;
+    position: absolute;
+  }
+
+  * {
+    font-family: inherit;
+  }
+
+  .link-list {
+    list-style: none;
+
+    li {
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  .link-list li::before {
+    content: "\2022";
+    color: rgba(0, 102, 101, 0.76);
+    font-size: 1.5rem;
+    font-weight: bold;
+    display: inline-block;
+    width: 1rem;
+  }
+
+  .middle-row {
+    border: 0.979821px solid rgba(0, 102, 101, 0.81);
+    border-left: 0;
+    border-right: 0;
+  }
+
+  a {
+    text-decoration: underline;
+  }
 }

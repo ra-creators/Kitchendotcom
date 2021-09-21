@@ -15,7 +15,7 @@
   <script src="https://kit.fontawesome.com/fecc50ad8e.js" crossorigin="anonymous"></script>
 
   {% comment %} custom css {% endcomment %}
-  <link rel="stylesheet" href="{%static "common/css/nav.css"%}">
+  <link rel="stylesheet" href="{%static "common/css/style.css"%}">
   <link rel="stylesheet" href="{%static "projectgallery/css/details.css"%}" />
 </head>
 
@@ -86,11 +86,14 @@
     </div>
   </section>
 
-  <footer>
+  <section id="back-btn">
     <button class="styled-btn">
       Back
     </button>
-  </footer>
+  </section>
+
+  {% include 'includes/footer.html' %}
+
 </body>
 
 </html>

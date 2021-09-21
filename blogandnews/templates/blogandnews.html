@@ -21,9 +21,11 @@
 </head>
 
 <body>
-  {% include 'includes/nav.html' %}
+  <div class="px-4">
+    {% include 'includes/nav.html' %}
+  </div>
 
-  <section id="sec-one" class="row">
+  <section id="sec-one" class="row px-4">
     {% with blogs|first as blog %}
     <div class="col-sm-6">
       <img class="img-fluid" src="/media/{{blog.image}}" alt="{{blog.title}}">
@@ -41,7 +43,7 @@
     {% endwith %}
   </section>
 
-  <section id="sec-two" class="row mt-5">
+  <section id="sec-two" class="row mt-5 px-4">
 
     <section id="blogs" class="col-sm-7">
       <div>
@@ -96,6 +98,9 @@
   </section>
 
   <div id="decorators"></div>
+
+  {% include 'includes/footer.html' %}
+
   <script src="{%static "common/js/nav.js"%}"></script>
 </body>
 

@@ -140,11 +140,11 @@ header p {
   fill: white;
 }
 
-footer {
+#back-btn {
   padding: 3.5rem 10.5rem;
 }
 
-footer button {
+#back-btn button {
   background: rgba(0, 102, 101, 0.83);
   border: 3px solid rgba(60, 121, 118, 0.91);
   -webkit-box-shadow: 0px 10px 10px rgba(78, 133, 130, 0.24);
@@ -160,7 +160,7 @@ footer button {
   color: #ffdabf;
 }
 
-footer button:hover {
+#back-btn button:hover {
   -webkit-box-shadow: rgba(0, 102, 101, 0.83) 0 0 15px;
           box-shadow: rgba(0, 102, 101, 0.83) 0 0 15px;
   color: #daa784;

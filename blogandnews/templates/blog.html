@@ -19,7 +19,9 @@
 </head>
 
 <body>
-  {% include 'includes/nav.html' %}
+  <div class="px-4">
+    {% include 'includes/nav.html' %}
+  </div>
 
   <div class="container" id="post-item">
     <h1 class="text-center">{{blog.title}}</h1>
@@ -41,6 +43,9 @@
       </div>
     </div>
   </div>
+
+  {% include 'includes/footer.html' %}
+
 
   <script src="{%static "common/js/nav.js"%}"></script>
 </body>

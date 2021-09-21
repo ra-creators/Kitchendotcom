@@ -78,6 +78,7 @@ nav .icon {
 @media only screen and (max-width: 760px) {
   nav .links {
     display: none;
+    padding: 0;
   }
   nav .links li {
     padding: 0;
@@ -85,6 +86,9 @@ nav .icon {
   nav .links li a {
     padding: 0 1rem;
     font-size: 1rem;
+  }
+  nav #nav-links .active {
+    border: none;
   }
   nav .icon {
     display: block;

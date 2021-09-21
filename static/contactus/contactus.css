@@ -7,8 +7,6 @@
 }
 
 body {
-  height: 100vh;
-  width: 100vw;
   max-width: 100%;
   background-color: rgba(0, 102, 101, 0.9);
   color: #fcb685;
@@ -21,78 +19,6 @@ a {
 
 a:hover {
   text-decoration: underline;
-}
-
-nav {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: start;
-      -ms-flex-align: start;
-          align-items: flex-start;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  text-decoration: none;
-  padding: 1rem 0;
-}
-
-nav .brand {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: inherit;
-      -ms-flex-align: inherit;
-          align-items: inherit;
-}
-
-nav .brand-name {
-  color: rgba(0, 102, 101, 0.9);
-  font-family: Open Sans;
-  font-size: 2.2rem;
-  font-style: normal;
-  font-weight: 600;
-  line-height: 3rem;
-  letter-spacing: 0em;
-  text-align: left;
-}
-
-nav #nav-links .active {
-  border-bottom: 4.0217px solid rgba(0, 102, 101, 0.79);
-}
-
-nav #nav-links li a:hover {
-  border-bottom: 4.0217px solid rgba(0, 102, 101, 0.79);
-}
-
-.links {
-  list-style: none;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.links li {
-  padding: 0 2.5rem;
-}
-
-.links li a {
-  color: #fcb685;
-  font-family: "Poppins", sans-serif;
-  font-size: 1.6rem;
-  font-style: normal;
-  font-weight: 700;
-  line-height: 3rem;
-  letter-spacing: 0em;
-  text-align: left;
-}
-
-.links li a:hover {
-  outline: #bd855f;
-}
-
-.icon {
-  display: none;
 }
 
 #content #others .cities {
