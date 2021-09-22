@@ -1,66 +1,76 @@
-(function($) {
-    var slide = function(ele,options) {
-        var $ele = $(ele);
-        var setting = {
-            speed: 1000,
-            interval:2000,
-            
-        };
-        $.extend(true, setting, options);
-        var states = [
-            { $zIndex: 1, height: 225, width: 400, top: 59, left: 100, $opacity: 0.4 },
-            { $zIndex: 2, height: 270, width: 480, top: 35, left: 290, $opacity: 0.7 },
-            { $zIndex: 3, height: 297, width: 528, top: 0, left: 520, $opacity: 1 },
-            { $zIndex: 2, height: 270, width: 480, top: 35, left: 830, $opacity: 0.7 },
-            { $zIndex: 1, height: 225, width: 400, top: 59, left: 1060, $opacity: 0.4 },
-        ];
+var carousel = document.querySelector(".carousel");
+var cells = carousel.querySelectorAll(".carousel__cell");
+var cellCount; // cellCount set from cells-range input value
+var selectedIndex = 0;
+var cellWidth = carousel.offsetWidth;
+var cellHeight = carousel.offsetHeight;
+var isHorizontal = true;
+var rotateFn = isHorizontal ? "rotateY" : "rotateX";
+var radius, theta;
+// console.log( cellWidth, cellHeight );
 
-        var $lis = $ele.find('li');
-        var timer = null;
+function rotateCarousel() {
+    var angle = theta * selectedIndex * -1;
+    carousel.style.transform =
+        "translateZ(" + -radius + "px) " + rotateFn + "(" + angle + "deg)";
+}
 
-        
-        $ele.find('.hi-next').on('click', function() {
-            next();
-        });
-        $ele.find('.hi-prev').on('click', function() {
-            states.push(states.shift());
-            move();
-        });
-        $ele.on('mouseenter', function() {
-            clearInterval(timer);
-            timer = null;
-        }).on('mouseleave', function() {
-            autoPlay();
-        });
+var prevButton = document.querySelector("#carosel-prev-btn");
+prevButton.addEventListener("click", function () {
+    selectedIndex++;
+    rotateCarousel();
+});
 
-        move();
-        autoPlay();
+var nextButton = document.querySelector("#carosel-nxt-btn");
+nextButton.addEventListener("click", function () {
+    selectedIndex--;
+    rotateCarousel();
+});
 
-       
-        function move() {
-            $lis.each(function(index, element) {
-                var state = states[index];
-                $(element).css('zIndex', state.$zIndex).finish().animate(state, setting.speed).find('img').css('opacity', state.$opacity);
-            });
-        }
+// var cellsRange = document.querySelector(".cells-range");
+// cellsRange.addEventListener("change", changeCarousel);
+// cellsRange.addEventListener("input", changeCarousel);
 
-       
-        function next() {
-            
-            states.unshift(states.pop());
-            move();
-        }
-
-        function autoPlay() {
-            timer = setInterval(next, setting.interval);
+function changeCarousel() {
+    //   cellCount = cellsRange.value;
+    cellCount = carousel.childElementCount;
+    theta = 360 / cellCount;
+    var cellSize = isHorizontal ? cellWidth : cellHeight;
+    radius = Math.round(cellSize / 2 / Math.tan(Math.PI / cellCount));
+    for (var i = 0; i < cells.length; i++) {
+        var cell = cells[i];
+        if (i < cellCount) {
+            // visible cell
+            cell.style.opacity = 1;
+            var cellAngle = theta * i;
+            cell.style.transform =
+                rotateFn + "(" + cellAngle + "deg) translateZ(" + radius + "px)";
+        } else {
+            // hidden cell
+            cell.style.opacity = 0;
+            cell.style.transform = "none";
         }
     }
-    
-    $.fn.hiSlide = function(options) {
-        $(this).each(function(index, ele) {
-            slide(ele,options);
-        });
-       
-        return this;
-    }
-})(jQuery);
+
+    rotateCarousel();
+}
+
+// var orientationRadios = document.querySelectorAll('input[name="orientation"]');
+// (function () {
+//     for (var i = 0; i < orientationRadios.length; i++) {
+//         var radio = orientationRadios[i];
+//         radio.addEventListener("change", onOrientationChange);
+//     }
+// })();
+
+function onOrientationChange() {
+    // var checkedRadio = document.querySelector(
+    //     'input[name="orientation"]:checked'
+    // );
+    // isHorizontal = checkedRadio.value == "horizontal";
+    rotateFn = "rotateY";
+    changeCarousel();
+}
+
+// set initials
+onOrientationChange();

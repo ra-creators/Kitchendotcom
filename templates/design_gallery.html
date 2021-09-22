@@ -9,18 +9,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Design Gallery</title>
 
-  <!-- custom css -->
-  <link rel="stylesheet" href="{%static "design gallery/css/style.css"%}" />
+
   <!-- CSS only -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
-  <!-- JavaScript Bundle with Popper -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous">
-  </script>
 
-  <!-- Bootstrap Icons-->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" />
+  <!-- custom css -->
+  <link rel="stylesheet" href="{%static "common/css/nav.css"%}">
+  <link rel="stylesheet" href="{%static "design gallery/css/style.css"%}" />
+  <!-- fontawesome icons -->
+  <script src="https://kit.fontawesome.com/fecc50ad8e.js" crossorigin="anonymous"></script>
 
   <!-- fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -30,6 +28,11 @@
 </head>
 
 <body>
+
+  <div class="px-4">
+    {% include 'includes/nav.html' %}
+  </div>
+
   <!-- heading -->
   <section id="heading">
     <div class="line mx-3"></div>
@@ -146,6 +149,10 @@
     </div>
   </section>
 
+  <!-- JavaScript Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous">
+  </script>
   <!-- slide image js -->
   <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
   <!-- sec 4th dynamic image render -->

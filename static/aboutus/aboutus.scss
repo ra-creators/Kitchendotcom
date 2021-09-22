@@ -1,5 +1,6 @@
 body {
     // background-color: rgba(51, 133, 132, 0.79);
+    margin: 0;
 }
 
 * {
@@ -20,6 +21,7 @@ nav {
         top: 40%;
         left: 0;
 
+        color: black;
         font-family: Playfair Display;
         font-size: 64px;
         font-style: normal;
@@ -32,12 +34,13 @@ nav {
 }
 
 .bg-green {
-    // color: white;
-    // background-color: rgba(51, 133, 132, 0.79);
+    color: white;
+    background-color: rgba(51, 133, 132, 0.79);
+    // position: relative;
 
-    // .section-title {
-    //     color: rgba(255, 210, 178, 1);
-    // }
+    .section-title {
+        color: rgba(255, 210, 178, 1);
+    }
 }
 
 #graphics-1 {

@@ -13,73 +13,68 @@
         integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous" />
     <!-- custom css -->
     <link rel="stylesheet" href="{%static "common/css/style.css"%}">
-    <link rel="stylesheet" href="{%static "common/css/nav.css"%}">
     <link rel="stylesheet" href="{%static "aboutus/aboutus.css"%}">
+    <!-- fontawesome icons -->
+    <script src="https://kit.fontawesome.com/fecc50ad8e.js" crossorigin="anonymous"></script>
 
 </head>
 
 <body>
-    <nav>
-        <div class="brand">
-            <a href="/">
-                <p class="brand-name">Kitchendotcom</p>
-            </a>
+    <div class="bg-green px-4">
+        {% include 'includes/nav.html' %}
+    </div>
+
+    <div class="bg-green">
+        <div class="container">
+            <section id="sec-one" class="container">
+                <h1>About Us</h1>
+                <div class="row"> <img class="img-fluid" src="{%static "aboutus/img/top_img.png"%}" alt=""> </div>
+            </section>
+
+            <section id="sec-two" class="row">
+                <div class="col-md-6">
+                    <img class="img-fluid" src="{%static "aboutus/img/middle_img.png"%}" alt="">
+                    <p>Clients’ priorities and choices have also been the top-most priority for us. We intend to design
+                        the
+                        best
+                        for them keeping in mind their budgets.</p>
+                    <img id="graphics-2" src="{%static "aboutus/img/Component 10.svg"%}" alt="">
+                </div>
+                <div class="col-md-6">
+                    <div class="row">
+                        <h2 class="section-title">OUR VISION</h2>
+                        <p>Our vision is to be a reputable, sustainable, and desirable premier modular kitchen service
+                            provider of the global marketplace providing state-of-the-art innovative designs and
+                            superior
+                            quality finishing. We aim to be able to give our best services in each city. We seek to
+                            provide
+                            such services which make kitchen chores a hassle-free task. We are a one-stop solution to
+                            all
+                            your needs for a modular kitchen with all the updated features.
+                        </p>
+                    </div>
+                    <div class="row">
+                        <img id="graphics-5" src="{%static "aboutus/img/Group 14.svg"%}" alt="">
+                        <img id="graphics-1" src="{%static "aboutus/img/Doodle Dots.svg"%}" alt="">
+                        <h2 class="section-title">
+                            OUR MISSION
+                        </h2>
+                        <p>
+                            Our mission is to positively influence the lives of all customers with whom we have the
+                            pleasure
+                            of working, and leave a lasting impression on their minds and imagination. We aim to achieve
+                            our
+                            goal of having one showroom in each city. We seek to define the most <strong> sophisticated
+                                and
+                                superior standard of quality kitchens.</p>
+                        </strong>
+                    </div>
+                </div>
+            </section>
         </div>
-        <ul id="nav-links" class="links">
-            <li>
-                <a href="/aboutus" class="active">Aboutus</a>
-            </li>
-            <li>
-                <a href="/blogandnews">Blog&News</a>
-            </li>
-            <li>
-                <a href="/contactus">Contactus</a>
-            </li>
-        </ul>
-        <div class="icon" onclick="navButton()">
-            <i class="fa fa-bars"></i>
-        </div>
-    </nav>
+    </div>
+
     <div class="container">
-        <section id="sec-one" class="container bg-green">
-            <h1>About Us</h1>
-            <div class="row"> <img class="img-fluid" src="{%static "aboutus/img/top_img.png"%}" alt=""> </div>
-        </section>
-
-        <section id="sec-two" class="row">
-            <div class="col-md-6">
-                <img class="img-fluid" src="{%static "aboutus/img/middle_img.png"%}" alt="">
-                <p>Clients’ priorities and choices have also been the top-most priority for us. We intend to design the
-                    best
-                    for them keeping in mind their budgets.</p>
-                <img id="graphics-2" src="{%static "aboutus/img/Component 10.svg"%}" alt="">
-            </div>
-            <div class="col-md-6">
-                <div class="row bg-green">
-                    <h2 class="section-title">OUR VISION</h2>
-                    <p>Our vision is to be a reputable, sustainable, and desirable premier modular kitchen service
-                        provider of the global marketplace providing state-of-the-art innovative designs and superior
-                        quality finishing. We aim to be able to give our best services in each city. We seek to provide
-                        such services which make kitchen chores a hassle-free task. We are a one-stop solution to all
-                        your needs for a modular kitchen with all the updated features.
-                    </p>
-                </div>
-                <div class="row">
-                    <img id="graphics-5" src="{%static "aboutus/img/Group 14.svg"%}" alt="">
-                    <img id="graphics-1" src="{%static "aboutus/img/Doodle Dots.svg"%}" alt="">
-                    <h2 class="section-title">
-                        OUR MISSION
-                    </h2>
-                    <p>
-                        Our mission is to positively influence the lives of all customers with whom we have the pleasure
-                        of working, and leave a lasting impression on their minds and imagination. We aim to achieve our
-                        goal of having one showroom in each city. We seek to define the most <strong> sophisticated and
-                            superior standard of quality kitchens.</p>
-                    </strong>
-                </div>
-            </div>
-        </section>
-
         <section id="sec-three" class="container">
             <div class="row justify-content-center">
                 <h2 class="section-title text-center">HOW IT STARTED</h2>
@@ -115,13 +110,12 @@
                     <h2 class="text-center"> Mr. Abhishek Gupta</h2>
                 </div>
             </div>
-
-
         </section>
 
         <img id="graphics-3" src="{%static "aboutus/img/Component 7.svg"%}" alt="">
-
     </div>
+
+    {% include 'includes/footer.html' %}
 </body>
 
 </html>

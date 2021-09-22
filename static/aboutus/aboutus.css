@@ -1,3 +1,7 @@
+body {
+  margin: 0;
+}
+
 * {
   font-family: Playfair Display;
 }
@@ -11,6 +15,7 @@
   position: absolute;
   top: 40%;
   left: 0;
+  color: black;
   font-family: Playfair Display;
   font-size: 64px;
   font-style: normal;
@@ -18,6 +23,15 @@
   line-height: 85px;
   letter-spacing: 0em;
   text-align: left;
+}
+
+.bg-green {
+  color: white;
+  background-color: rgba(51, 133, 132, 0.79);
+}
+
+.bg-green .section-title {
+  color: #ffd2b2;
 }
 
 #graphics-1 {
