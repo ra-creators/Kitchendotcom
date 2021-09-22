@@ -144,6 +144,8 @@ a:hover {
   border-color: #1c7e13;
   color: #114d0c;
   background-color: #f7b68b;
+  -webkit-box-shadow: #cc763c 0 0 15px;
+          box-shadow: #cc763c 0 0 15px;
 }
 
 .section-title {

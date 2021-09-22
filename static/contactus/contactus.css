@@ -6,12 +6,6 @@
   font-family: Open Sans;
 }
 
-body {
-  max-width: 100%;
-  background-color: rgba(0, 102, 101, 0.9);
-  color: #fcb685;
-}
-
 a {
   text-decoration: none !important;
   color: inherit;
@@ -78,12 +72,6 @@ a:hover {
   font-weight: 600;
   font-size: 18px;
   line-height: 25px;
-}
-
-#content #form #submit-btn {
-  border-color: #1c7e13;
-  color: #1c7e13;
-  background-color: #ffd9bf;
 }
 
 #decorators {
