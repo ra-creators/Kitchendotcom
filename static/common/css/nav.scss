@@ -27,6 +27,10 @@ nav {
 
   #nav-links {
     .active {
+      a {
+        color: $font-color;
+      }
+
       border-bottom: 4.0217px solid rgba(0, 102, 101, 0.79);
     }
 
@@ -45,7 +49,7 @@ nav {
       padding: 0 2.5rem;
 
       a {
-        color: $font-color;
+        color: #fbc49e;
         text-decoration: none;
         font-family: "Poppins", sans-serif;
         font-size: 1.6rem;
@@ -54,10 +58,11 @@ nav {
         line-height: 3rem;
         letter-spacing: 0em;
         text-align: left;
+        transition: all 0.5s ease-in-out;
       }
 
       a:hover {
-        outline: rgb(189, 133, 95);
+        color: $font-color;
         // text-decoration: underline;
       }
     }

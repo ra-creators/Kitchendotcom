@@ -36,6 +36,10 @@ nav #nav-links .active {
   border-bottom: 4.0217px solid rgba(0, 102, 101, 0.79);
 }
 
+nav #nav-links .active a {
+  color: #fcb685;
+}
+
 nav #nav-links li a:hover {
   border-bottom: 4.0217px solid rgba(0, 102, 101, 0.79);
 }
@@ -52,7 +56,7 @@ nav .links li {
 }
 
 nav .links li a {
-  color: #fcb685;
+  color: #fbc49e;
   text-decoration: none;
   font-family: "Poppins", sans-serif;
   font-size: 1.6rem;
@@ -61,10 +65,12 @@ nav .links li a {
   line-height: 3rem;
   letter-spacing: 0em;
   text-align: left;
+  -webkit-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
 }
 
 nav .links li a:hover {
-  outline: #bd855f;
+  color: #fcb685;
 }
 
 nav li:last-child {
