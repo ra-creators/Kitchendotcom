@@ -113,3 +113,56 @@ a:hover {
     right: 0;
   }
 }
+
+//footer
+$footer-primary: rgba(0, 102, 101, 1);
+$footer-bg:rgba(255, 210, 178, 1);
+
+#contactus-footer {
+  // background-color: rgba(255, 210, 178, 0.92);
+  background-image: url("/static/contactus/img/Rectangle\ 32.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  font-family: Open Sans;
+
+  .bg {
+    // height: 100%;
+    width: 100%;
+    position: absolute;
+  }
+
+  * {
+    font-family: inherit;
+    color: black;
+  }
+
+  .social-list {
+    li {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 2rem;
+      width: 2rem;
+      background-color: $footer-primary;
+      border-radius: 50%;
+
+      i {
+
+        color: $footer-bg;
+      }
+    }
+  }
+
+  .link-list {
+    list-style: none;
+
+    li {
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  a {
+    text-decoration: underline;
+  }
+}

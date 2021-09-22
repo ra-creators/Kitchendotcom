@@ -45,6 +45,9 @@ a:hover {
 
 
 // footer
+$footer-bg: rgba(0, 102, 101, 1);
+$footer-primary:rgba(255, 210, 178, 1);
+
 #common-footer {
   // background-color: rgba(255, 210, 178, 0.92);
   background-image: url("/static/common/img/Rectangle\ 32.svg");
@@ -60,6 +63,24 @@ a:hover {
 
   * {
     font-family: inherit;
+    color: $footer-primary;
+  }
+
+  .social-list {
+    li {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 2rem;
+      width: 2rem;
+      background-color: $footer-primary;
+      border-radius: 50%;
+
+      i {
+
+        color: $footer-bg;
+      }
+    }
   }
 
   .link-list {
@@ -73,7 +94,7 @@ a:hover {
 
   .link-list li::before {
     content: "\2022";
-    color: rgba(0, 102, 101, 0.76);
+    color: $footer-primary;
     font-size: 1.5rem;
     font-weight: bold;
     display: inline-block;
@@ -81,7 +102,7 @@ a:hover {
   }
 
   .middle-row {
-    border: 0.979821px solid rgba(0, 102, 101, 0.81);
+    border: 0.979821px solid $footer-primary;
     border-left: 0;
     border-right: 0;
   }
