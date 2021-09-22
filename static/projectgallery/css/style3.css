@@ -1,5 +1,4 @@
 #heading {
-  background: url(/static/projectgallery/img/gallery_bg11.png);
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -425,5 +424,29 @@ html {
 
 .border-teal {
   border-top: 25px solid teal;
+}
+
+#bg-graphics {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  z-index: -1;
+}
+
+#bg-graphics .top-right {
+  position: absolute;
+  right: 0;
+}
+
+#bg-graphics .top-left {
+  position: absolute;
+  left: 0;
+}
+
+@media (max-width: 991.98px) {
+  .top-right {
+    display: none;
+  }
 }
 /*# sourceMappingURL=style3.css.map */

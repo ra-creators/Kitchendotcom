@@ -38,20 +38,31 @@
 
   <div id="first">
     <!-- slide iamge section start -->
-    <div class="slide hi-slide">
-      <div class="hi-prev"></div>
-      {% comment %} <div class="row">
-        <div class="col-8"> {% endcomment %}
-          <ul class="slImag">
-            {% for video in videos %}
-            <li>
-              <video class="img-fluid" src="/media/{{video.video}}" controls></video>
-            </li>
-            {% endfor %}
-          </ul>
-          {% comment %} </div>
-      </div> {% endcomment %}
-      <div class="hi-next"></div>
+    <div class="scene">
+      <div id="carosel-prev-btn" class="prev"></div>
+      <div class="carousel" id="special-carousel">
+        {% comment %} <div class="row">
+          <div class="col-8"> {% endcomment %}
+            {% comment %} <ul class="slImag"> {% endcomment %}
+              {% for video in videos %}
+              <div class="carousel__cell">
+                <video class="img-fluid" src="/media/{{video.video}}" controls></video>
+              </div>
+              {% comment %} <li> {% endcomment %}
+                {% comment %} </li> {% endcomment %}
+              {% endfor %}
+              {% for video in videos %}
+              <div class="carousel__cell">
+                <video class="img-fluid" src="/media/{{video.video}}" controls></video>
+              </div>
+              {% comment %} <li> {% endcomment %}
+                {% comment %} </li> {% endcomment %}
+              {% endfor %}
+              {% comment %} </ul> {% endcomment %}
+            {% comment %} </div>
+        </div> {% endcomment %}
+      </div>
+      <div id="carosel-nxt-btn" class="next"></div>
     </div>
   </div>
 
@@ -305,6 +316,11 @@
             </div>
           </div>
         </div>
+      </div>
+
+      <div id="bg-graphics">
+        <img src="{%static "projectgallery/img/Doodle Dots 3.svg" %}" alt="" class="top-left">
+        <img src="{%static "projectgallery/img/Group 16.svg" %}" alt="" class="top-right">
       </div>
 
       {% include 'includes/footer.html' %}
