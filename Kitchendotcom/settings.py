@@ -33,6 +33,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'home.apps.HomeConfig',
+    'jet_django',
     'project.apps.ProjectConfig',
     'blogandnews.apps.BlogandnewsConfig',
     'django.contrib.admin',
@@ -144,3 +145,6 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # Activate Django-Heroku.
 django_heroku.settings(locals())
 
+# Django-Jet for admin panel
+JET_PROJECT = 'kdotcom'
+JET_TOKEN = 'bd2217c5-2670-493b-94b2-22c700208410'
