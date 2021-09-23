@@ -6,8 +6,6 @@
 }
 
 body {
-  height: 100vh;
-  width: 100vw;
   font-family: Playfair Display;
 }
 
@@ -21,7 +19,7 @@ body {
 }
 
 #heading {
-  background-image: url("static/design gallery/img/gallery_2.svg");
+  background-image: url("/static/design gallery/img/gallery_2.svg");
   background-repeat: no-repeat;
   background-size: 25rem;
   height: 10rem;
@@ -56,7 +54,7 @@ body {
 }
 
 #first {
-  background-image: url("static/design gallery/img/section_1_bg.png");
+  background-image: url("/static/design gallery/img/section_1_bg.png");
   background-repeat: no-repeat;
   background-size: cover;
   height: 589px;
@@ -79,7 +77,7 @@ body {
 #second {
   background-color: rgba(0, 102, 101, 0.79);
   color: white;
-  height: 60vh;
+  min-height: 60vh;
 }
 
 #second .decorators {

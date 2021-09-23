@@ -1,0 +1,159 @@
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- CSS only -->
+  <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"> -->
+  <!-- Bootstrap Icons-->
+  <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"> -->
+
+    <link rel="stylesheet" href="css/style.css">
+    <title>Project Gallery!</title>
+</head>
+
+<body>
+    <div class="containe" id="F_section">
+        <div class="d-flex">
+            <div class="line"></div>
+        </div>
+        <h1 class=" h1 display-1 ">Project Gallery</h1>
+
+    </div>
+
+    <!-- slide iamge section start -->
+
+    <div class="slide hi-slide">
+        <div class="hi-prev "></div>
+        <div class=" bi bi-arrow-right hi-next "></div>
+        <i class="bi bi-arrow-right"></i>
+        <ul class="slImag">
+            <li>
+                <iframe width="420" height="315" src="https://www.youtube.com/embed/tgbNymZ7vqY">
+                </iframe>
+            </li>
+            <li>
+                <iframe width="420" height="315" src="https://www.youtube.com/embed/tgbNymZ7vqY">
+                </iframe>
+            </li>
+            <li>
+                <iframe width="420" height="315" src="https://www.youtube.com/embed/tgbNymZ7vqY">
+                </iframe>
+            </li>
+            <li>
+                <iframe width="420" height="315" src="https://www.youtube.com/embed/tgbNymZ7vqY">
+                </iframe>
+            </li>
+            <li>
+                <iframe width="420" height="315" src="https://www.youtube.com/embed/tgbNymZ7vqY">
+                </iframe>
+            </li>
+            <li>
+                <iframe width="420" height="315" src="https://www.youtube.com/embed/tgbNymZ7vqY">
+                </iframe>
+            </li>
+            <li>
+                <iframe width="420" height="315" src="https://www.youtube.com/embed/tgbNymZ7vqY">
+                </iframe>
+            </li>
+        </ul>
+    </div>
+
+
+    <!-- Professinal Designers start -->
+    <div class="pro-des" >
+        <div id="computer" class="item">
+            <h3 class="h3 cs">Creative Solution By <br> Professinal Designer</h3>
+            <p class="lead para1" id="computerpara" >Venenatis, vestibulum proin at condimentum. Diam tristique sapien ut
+                ipsum diam in ac sollicitudin. Tristique sociis vehicula ut lorem. Non nunc, leo eleifend dignissim
+                nisi, enim. Ut pellentesque mauris, in magnis in tempus ridiculus.</p>
+        </div>
+        <div id="fruit" class="item rounded float-end">
+            <div class="pimag"><img src="./img/proDes1.png" alt="Profssinal Image" ></div>
+        </div>
+    </div>
+
+
+    <div class="sayVideo">
+        <hr>
+        <h3 class="h3" id="say"> Here’s what they have to say</h3>
+        <div class="vidcon"> 
+        <div class="  embed-responsive embed-responsive-4by3">
+                <iframe width="420" height="315" class="embed-responsive-item akvideo" src="https://www.youtube.com/embed/tgbNymZ7vqY"></iframe>
+        </div>    
+        </div>
+    </div>
+
+    <div  class="saytype">
+        <h3 class="h3 ctype">Modern Kitc <br> </h3>
+        <p class="lead par"><b>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Dui pretium interdum sagittis sagittis faucibus. Et sit viverra pellentesque nulla ipsum. Eu, cursus pellentesque nunc proin urna justo est dignissim. Aliquet et cursus aliquet feugiat rhoncus, nunc et id. At pellentesque est nibh ultricies arcu in. Quis lectus arcu dictum mi. Commodo.</b></p>
+    </div>
+
+
+
+
+
+
+
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
+        crossorigin="anonymous"></script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js" integrity="sha384-eMNCOe7tC1doHpGoWe/6oMVemdAVTMs2xqW4mwXrXsW0L84Iytr2wi5v2QjrP/xp" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js" integrity="sha384-cn7l7gDp0eyniUwwAZgrzD06kc/tftFf19TOAs2zVinnD/C7E91j9yyk5//jjpt/" crossorigin="anonymous"></script>
+    -->
+
+    <!-- slide image js -->
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript" src="js/jquery.hislide.js"></script>
+    <script>
+        $('.slide').hiSlide();
+    </script>
+<!-- Code injected by live-server -->
+<script type="text/javascript">
+	// <![CDATA[  <-- For SVG support
+	if ('WebSocket' in window) {
+		(function () {
+			function refreshCSS() {
+				var sheets = [].slice.call(document.getElementsByTagName("link"));
+				var head = document.getElementsByTagName("head")[0];
+				for (var i = 0; i < sheets.length; ++i) {
+					var elem = sheets[i];
+					var parent = elem.parentElement || head;
+					parent.removeChild(elem);
+					var rel = elem.rel;
+					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+					}
+					parent.appendChild(elem);
+				}
+			}
+			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+			var address = protocol + window.location.host + window.location.pathname + '/ws';
+			var socket = new WebSocket(address);
+			socket.onmessage = function (msg) {
+				if (msg.data == 'reload') window.location.reload();
+				else if (msg.data == 'refreshcss') refreshCSS();
+			};
+			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+				console.log('Live reload enabled.');
+				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+			}
+		})();
+	}
+	else {
+		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+	}
+	// ]]>
+</script></body>
+
+</html>
