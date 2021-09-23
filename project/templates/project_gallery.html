@@ -159,7 +159,7 @@
               </div>
               <div class="col-lg-5 col-sm-12 border-teal">
                 <div class="text-center p-lg-5 py-5">
-                  <img src="/media/{{feedback.image}}" class="rounded rounded-circle" alt="User" />
+                  <img src="/media/{{feedback.image}}" class="img-fluid rounded rounded-circle" alt="User" />
                   <h3 class="h3 text-teal py-3 my-3">
                     {{feedback.project_name}} <br />
                   </h3>
@@ -243,7 +243,7 @@
               <div class="row justify-content-center p-3 m-3 g-5">
                 <div class="col-lg-4 col-md-6 col-sm-8 col-12">
                   <a href="{% url 'projectDetails' project.id %}">
-                    <img src="/media/{{project.project_img}}" />
+                    <img class="img-fluid" src="/media/{{project.project_img}}" />
                   </a>
                 </div>
                 <div class="offset-lg-1 col-lg-5 col-12">
