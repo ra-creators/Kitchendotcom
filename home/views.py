@@ -3,6 +3,7 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import redirect, render  
 from home.models import c_details, kitchen_details, Constant, City1, City2, City3, City4, City5, City6, City7, City8, City9, City10 # importing calculation model is removed
 from datetime import datetime
+from fpdf import FPDF
 
 values = Constant.objects.all().last()
 rate = {
@@ -476,6 +477,29 @@ def kitchen_summary(request):
     context['size'] = size
     context['price'] = cal
     context['loft'] = request.session.get('loft') + ' feet loft'
+
+    # Pdf generating script
+    pdf = FPDF()
+    pdf.add_page()
+    pdf.set_font("Arial", size=15)
+    pdf.cell(40,10,"Shape - ", ln=0, align="L")
+    pdf.cell(20,10,context['shape'], ln=1, align="L")
+    pdf.cell(40,10,"Size - ", ln=0, align="L")
+    pdf.cell(20,10, size, ln=1, align="L")
+    pdf.cell(40,10,"Loft - ", ln=0, align="L")
+    pdf.cell(20,10,context['loft'], ln=1, align="L")
+    pdf.cell(40,10,"Type - ", ln=0, align="L")
+    pdf.cell(20,10,context['type'],ln=1,align="L")
+    pdf.cell(40,10,"Accessories - ", ln=0, align="L")
+    pdf.cell(20,10,context['accessories'], ln=1, align="L")
+    pdf.cell(40,10,"Material - ", ln=0, align="L")
+    pdf.cell(20,10,context['material'], ln=1, align="L")
+    pdf.cell(40,10,"Countertop - ", ln=0, align="L")
+    pdf.cell(20,10,context['countertop'], ln=1, align="L")
+    pdf.cell(40,10,"Finish - ", ln=0, align="L")
+    pdf.cell(20,10,context['finish'], ln=1, align="L")
+    pdf.output('Summary.pdf')
+
     return render(request, 'kitchen_summary.html', {'context': context}) 
 
 def kitchen_summary_buildpkg(request):
@@ -536,4 +560,27 @@ def kitchen_summary_buildpkg(request):
     context['size'] = size
     context['price'] = cal
     context['loft'] = request.session.get('loft') + ' feet loft'
+
+    # Pdf generating script
+    pdf = FPDF()
+    pdf.add_page()
+    pdf.set_font("Arial", size=15)
+    pdf.cell(40,10,"Shape - ", ln=0, align="L")
+    pdf.cell(20,10,context['shape'], ln=1, align="L")
+    pdf.cell(40,10,"Size - ", ln=0, align="L")
+    pdf.cell(20,10, size, ln=1, align="L")
+    pdf.cell(40,10,"Type - ", ln=0, align="L")
+    pdf.cell(20,10,context['type'],ln=1,align="L")
+    pdf.cell(40,10,"Material - ", ln=0, align="L")
+    pdf.cell(20,10,context['material'], ln=1, align="L")
+    pdf.cell(40,10,"Countertop - ", ln=0, align="L")
+    pdf.cell(20,10,context['countertop'], ln=1, align="L")
+    pdf.cell(40,10,"Loft - ", ln=0, align="L")
+    pdf.cell(20,10,context['loft'], ln=1, align="L")
+    pdf.cell(40,10,"Finish - ", ln=0, align="L")
+    pdf.cell(20,10,context['finish'], ln=1, align="L")
+    pdf.cell(40,10,"Accessories - ", ln=0, align="L")
+    pdf.cell(20,10,context['accessories'], ln=1, align="L")
+    pdf.output('Summary.pdf')
+
     return render(request, 'kitchen_summary_buildpkg.html', {'context': context})
