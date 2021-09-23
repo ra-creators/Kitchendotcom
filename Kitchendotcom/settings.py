@@ -32,9 +32,10 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'home.apps.HomeConfig',
-    'jet_django',
+    # 'jet_django',
     'project.apps.ProjectConfig',
     'blogandnews.apps.BlogandnewsConfig',
+    'bootstrap_admin',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -144,5 +145,5 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Django-Jet for admin panel
-JET_PROJECT = 'kdotcom'
-JET_TOKEN = 'bd2217c5-2670-493b-94b2-22c700208410'
+# JET_PROJECT = 'kdotcom'
+# JET_TOKEN = 'bd2217c5-2670-493b-94b2-22c700208410'
