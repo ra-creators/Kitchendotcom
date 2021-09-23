@@ -17,6 +17,7 @@ from django.contrib import admin
 from django.urls import path,include
 from django.conf import settings
 from django.conf.urls.static import static
+# from django.conf.url import url
 
 admin.site.site_header = "Kitchendotcom Admin"
 admin.site.site_title = "Kitchendotcom Admin Portal"
@@ -25,7 +26,8 @@ admin.site.index_title = "Welcome to Kitchendotcom Portal"
 
 urlpatterns = [
     path('', include('home.urls')),
-    path('jet_api/', include('jet_django.urls')), # admin panel customisation
+    path('jet/', include('jet.urls', 'jet')),
+    path('jet/dashboard/', include('jet.dashboard.urls', 'jet-dashboard')),
     path('admin/', admin.site.urls),
     path('projects/', include('project.urls')),
     path('blogandnews/', include('blogandnews.urls')),
