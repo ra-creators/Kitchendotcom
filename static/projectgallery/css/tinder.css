@@ -11,9 +11,9 @@ body {
 }
 
 .tinder {
-  width: 50vw;
-  height: 50vh;
-  overflow: hidden;
+  /* width: 50vw;
+  height: 50vh; */
+  /* overflow: hidden; */
   position: relative;
   opacity: 0;
   transition: opacity 0.1s ease-in-out;

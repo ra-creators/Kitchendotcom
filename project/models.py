@@ -30,7 +30,9 @@ class Project(models.Model):
     
 class PostImage(models.Model):
     project = models.ForeignKey(Project, default=None, on_delete=models.CASCADE)
-    images = models.FileField(upload_to = 'images/progress/')
+    site = models.CharField(max_length=100, default="Site 1")
+    date = models.DateField(auto_now_add=True)
+    image = models.FileField(upload_to = 'images/progress/')
 
     def __str__(self):
         return self.project.name
