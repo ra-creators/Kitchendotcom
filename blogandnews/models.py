@@ -1,4 +1,5 @@
 from django.db import models
+from ckeditor.fields import RichTextField
 
 # Create your models here.
 class Blog(models.Model):
@@ -6,7 +7,7 @@ class Blog(models.Model):
     author = models.CharField(max_length=100, default="admin")
     date = models.DateField(auto_now=True)
     image = models.FileField(upload_to="blogs/", max_length=100)
-    content = models.TextField(default="NA")
+    content = RichTextField()
 
     def __str__(self):
         return self.title
@@ -17,7 +18,7 @@ class News(models.Model):
     author = models.CharField(max_length=100, default="admin")
     date = models.DateField(auto_now=True)
     image = models.FileField(upload_to="blogs/", max_length=100)
-    content = models.TextField(max_length=1000, default="NA")
+    content = RichTextField()
 
     def __str__(self):
         return self.heading

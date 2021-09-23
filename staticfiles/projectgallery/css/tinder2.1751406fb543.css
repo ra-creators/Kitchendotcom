@@ -1,0 +1,129 @@
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  overflow: hidden;
+}
+
+.tinder2, .tinder3, .tinder4, .tinder5, .tinder6 {
+  width: 50vw;
+  height: 50vh;
+  overflow: hidden;
+  position: relative;
+  opacity: 0;
+  transition: opacity 0.1s ease-in-out;
+}
+
+
+.loaded.tinder2, .loaded.tinder3, .loaded.tinder4, .loaded.tinder5, .loaded.tinder6 {
+  opacity: 1;
+}
+
+.tinder--status2, .tinder--status3, .tinder--status4, .tinder--status5, .tinder--status6 {
+  position: absolute;
+  top: 50%;
+  margin-top: -30px;
+  z-index: 2;
+  width: 100%;
+  text-align: center;
+  pointer-events: none;
+}
+
+.tinder--status2 i, .tinder--status3 i, .tinder--status4 i, .tinder--status5 i, .tinder--status6 i {
+  font-size: 100px;
+  opacity: 0;
+  transform: scale(0.3);
+  transition: all 0.2s ease-in-out;
+  position: absolute;
+  width: 100px;
+  margin-left: -50px;
+}
+
+.tinder_love2, .tinder_love3, .tinder_love4, .tinder_love5, .tinder_love6, .fa-heart {
+  opacity: 0.7;
+  transform: scale(1);
+}
+
+.tinder_nope2, .tinder_nope3, .tinder_nope4, .tinder_nope5, .tinder_nope6 .fa-remove {
+  opacity: 0.7;
+  transform: scale(1);
+}
+
+.tinder--cards2, .tinder--cards3, .tinder--cards4, .tinder--cards5, .tinder--cards6 {
+  z-index: 1;
+}
+
+.tinder--card2, .tinder--card3, .tinder--card4, .tinder--card5, .tinder--card6 {
+  display: inline-block;
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+  position: absolute;
+  will-change: transform;
+  transition: all 0.3s ease-in-out;
+  cursor: -webkit-grab;
+  cursor: -moz-grab;
+  cursor: grab;
+}
+
+.moving.tinder--card2, .moving.tinder--card3, .moving.tinder--card4, .moving.tinder--card5, .moving.tinder--card6 {
+  transition: none;
+  cursor: -webkit-grabbing;
+  cursor: -moz-grabbing;
+  cursor: grabbing;
+}
+
+.tinder--card2 img, .tinder--card3 img, .tinder--card4 img, .tinder--card5 img, .tinder--card6 img {
+  max-width: 100%;
+  pointer-events: none;
+}
+
+.tinder--card2 h3, .tinder--card3 h3, .tinder--card4 h3, .tinder--card5 h3, .tinder--card6 h3 {
+  margin-top: 32px;
+  padding: 0 16px;
+  pointer-events: none;
+}
+
+.tinder--card2 p, .tinder--card3 p, .tinder--card4 p, .tinder--card5 p, .tinder--card6 p {
+  margin-top: 24px;
+  padding: 0 16px;
+  pointer-events: none;
+}
+
+.tinder--buttons2, .tinder--buttons3, .tinder--buttons4, .tinder--buttons5, .tinder--buttons6 {
+  flex: 0 0 100px;
+  text-align: center;
+  padding-top: 20px;
+}
+
+.tinder--buttons2 button, .tinder--buttons3 button, .tinder--buttons4 button, .tinder--buttons5 button, .tinder--buttons6 button {
+  border-radius: 50%;
+  line-height: 60px;
+  width: 60px;
+  border: 0;
+  background: #ffffff;
+  display: inline-block;
+  margin: 0 8px;
+}
+
+.tinder--buttons2 button:focus, .tinder--buttons3 button:focus, .tinder--buttons4 button:focus, .tinder--buttons5 button:focus, .tinder--buttons6 button:focus {
+  outline: 0;
+}
+
+.tinder--buttons2 i, .tinder--buttons3 i, .tinder--buttons4 i, .tinder--buttons5 i, .tinder--buttons6 i {
+  font-size: 32px;
+  vertical-align: middle;
+}
+
+.fa-heart {
+  color: #fface4;
+}
+
+.fa-remove {
+  color: #cdd6dd;
+}

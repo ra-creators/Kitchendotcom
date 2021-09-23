@@ -1,0 +1,173 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border: 0 0 0 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  padding: 10vh 10vw;
+
+  p {
+    font-family: Playfair Display;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 36px;
+    line-height: 48px;
+
+    color: #006665;
+  }
+}
+
+#details {
+  display: flex;
+  padding: 5vh 10vw;
+
+  .content {
+    margin-right: 5rem;
+    flex-grow: 1;
+
+    .project-name {
+      font-family: Playfair Display;
+      font-style: normal;
+      font-weight: bold;
+      font-size: 36px;
+      line-height: 48px;
+      color: #006665;
+
+      margin-bottom: 4rem;
+      border-left: 0.4rem solid #ffdabf;
+      padding-left: 2rem;
+    }
+
+    .project-details {
+      font-family: Poppins;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 20px;
+      line-height: 30px;
+      text-align: justify;
+      color: #006665;
+    }
+  }
+
+
+
+  .project-img {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    img {
+      margin: 1vh 2vw;
+      height: 100%;
+      width: auto;
+    }
+  }
+}
+
+#progress {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  padding: 5vh 10vw;
+
+  .state {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid gray;
+    border-radius: 50%;
+
+    height: 20vh;
+    width: 20vh;
+
+    svg {
+      height: 50%;
+      background-color: inherit;
+
+      path {
+        fill: gray;
+      }
+    }
+  }
+
+  .line {
+    height: 5px;
+    flex-grow: 1;
+    background-color: gray;
+  }
+
+  .complete {
+    border: none;
+    background-color: #006665;
+
+    svg {
+
+      path {
+        fill: white;
+      }
+    }
+  }
+}
+
+#back-btn {
+  padding: 3.5rem 10.5rem;
+
+  button {
+    background: rgba(0, 102, 101, 0.83);
+    border: 3px solid rgba(60, 121, 118, 0.91);
+    box-shadow: 0px 10px 10px rgba(78, 133, 130, 0.24);
+    border-radius: 1rem;
+
+    padding: 0.8rem 1.6rem;
+    text-align: center;
+
+    // p {
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 36px;
+    color: #ffdabf;
+    // }
+  }
+
+  button:hover {
+    box-shadow: rgba(0, 102, 101, 0.83) 0 0 15px;
+
+    // p {
+    color: #daa784;
+
+    // }
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  #details {
+    padding: 1rem 3rem;
+    flex-direction: column;
+
+    .content {
+      margin-right: 0;
+    }
+  }
+
+  #progress {
+    padding: 1rem 3rem;
+    // rotate: 90deg;
+
+    .state {
+      // rotate: -90deg;
+      height: 15vh;
+      width: 15vh;
+    }
+  }
+}

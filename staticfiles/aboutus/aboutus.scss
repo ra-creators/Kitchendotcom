@@ -1,0 +1,94 @@
+body {
+    // background-color: rgba(51, 133, 132, 0.79);
+    margin: 0;
+}
+
+* {
+
+    font-family: Playfair Display;
+}
+
+nav {
+    // background-color: rgba(51, 133, 132, 0.79);
+}
+
+#sec-one {
+    h1 {
+        background-color: rgba(255, 217, 191, 1);
+        width: fit-content;
+        padding: 2rem 3rem;
+        position: absolute;
+        top: 40%;
+        left: 0;
+
+        color: black;
+        font-family: Playfair Display;
+        font-size: 64px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 85px;
+        letter-spacing: 0em;
+        text-align: left;
+
+    }
+}
+
+.bg-green {
+    color: white;
+    background-color: rgba(51, 133, 132, 0.79);
+    // position: relative;
+
+    .section-title {
+        color: rgba(255, 210, 178, 1);
+    }
+}
+
+#graphics-1 {
+    position: absolute;
+    width: fit-content;
+    right: 0;
+    transform: translateY(-50%);
+    height: 30vh;
+}
+
+#graphics-2 {
+    position: absolute;
+    width: fit-content;
+    left: 0;
+    height: 30vh;
+    transform: translateY(-50%);
+}
+
+#graphics-3 {
+    position: absolute;
+    width: fit-content;
+    right: 0;
+    height: 30vh;
+    transform: translateY(-50%);
+}
+
+#graphics-4 {
+    position: absolute;
+    width: fit-content;
+    right: 0;
+    height: 100%;
+    transform: translateY(-50%);
+    z-index: -1;
+}
+
+#graphics-5 {
+    position: absolute;
+    width: fit-content;
+    left: 0;
+    height: 100%;
+    transform: translateY(-50%);
+    z-index: -1;
+}
+
+.wrapper-bg {
+    width: 100vw;
+}
+
+.row {
+    padding: 1.5rem 0;
+}
