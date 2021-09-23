@@ -25,7 +25,7 @@ admin.site.index_title = "Welcome to Kitchendotcom Portal"
 
 urlpatterns = [
     path('', include('home.urls')),
-    path('jet_api/', include('jet_django.urls')), # admin panel customisation
+    # path('jet_api/', include('jet_django.urls')), # admin panel customisation
     path('admin/', admin.site.urls),
     path('projects/', include('project.urls')),
     path('blogandnews/', include('blogandnews.urls')),
