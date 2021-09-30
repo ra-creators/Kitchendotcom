@@ -31,3 +31,4 @@ sqlparse==0.4.2
 tzlocal==3.0
 urllib3==1.26.7
 wcwidth==0.2.5
+fpdf #version to be added
