@@ -1,5 +1,7 @@
+from ast import parse
 from django.db import models
 from ckeditor.fields import RichTextField
+from django.utils.timezone import now
 
 # Create your models here.
 class Blog(models.Model):
@@ -23,3 +25,11 @@ class News(models.Model):
     def __str__(self):
         return self.heading
 
+class BlogComment(models.Model):
+    sno = models.AutoField(primary_key=True)
+    comment = models.TextField(max_length=1000, default="NA")
+    name = models.CharField(max_length=50, default="NA")
+    email = models.CharField(max_length=32, default="NA")
+    post = models.ForeignKey(Blog, on_delete=models.CASCADE)
+    parent = models.ForeignKey('self', on_delete=models.CASCADE, null=True)
+    timestamp = models.DateTimeField(default=now)

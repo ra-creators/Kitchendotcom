@@ -29,6 +29,7 @@ class kitchen_details(models.Model):
     Price = models.FileField(max_length=12, default="NA")
     Location = models.CharField(max_length=12, default="NA")
     date = models.DateField(default=1111-11-11)
+    # Summary_Pdf = models.FileField()
     
     def __str__(self):
         return self.Name
