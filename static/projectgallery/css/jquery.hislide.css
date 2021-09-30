@@ -92,6 +92,10 @@ body {
   transition: transform 1s, opacity 1s, -webkit-transform 1s;
 }
 
+.scene .carousel__cell video {
+  max-height: 200px;
+}
+
 .scene .carousel__cell:nth-child(1) {
   -webkit-transform: rotateY(0deg) translateZ(288px);
           transform: rotateY(0deg) translateZ(288px);

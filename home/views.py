@@ -30,8 +30,7 @@ def landing_page(request):
 
 def contact_us(request):
     if request.method == "POST":
-        name = (request.POST.get('firstName') + request.POST.get('secondName'))
-        print(name)
+        name = request.POST.get('name')
         email = request.POST.get('email')
         location = request.POST.get('cities')
         message = request.POST.get('message')
