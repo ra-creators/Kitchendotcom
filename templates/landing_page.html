@@ -101,19 +101,13 @@
   </section>
 
   <footer>
-    <div 
-      data-bs-toggle="modal" 
-      data-bs-target="#userFormModal"
-      class="row text-end px-3 my-4 " 
-      data-bs-toggle="tooltip"  
-      title="Enquiry" 
-      style="font-size:1.8rem;cursor:pointer;"
-    >
+    <div data-bs-toggle="modal" data-bs-target="#userFormModal" class="row text-end px-3 my-4 " data-bs-toggle="tooltip"
+      title="Enquiry" style="font-size:1.8rem;cursor:pointer;">
       <i class="far fa-question-circle"></i>
     </div>
     <ul>
       <li class="icon">
-        <a href="#"><i class="fab fa-facebook-f"></i> </a>
+        <a href="https://www.facebook.com/kitchendotcom.in/"><i class="fab fa-facebook-f"></i> </a>
       </li>
       <li class="icon">
         <a href="#"><i class="fab fa-twitter"></i> </a>
@@ -124,7 +118,7 @@
         </a>
       </li>
       <li class="icon">
-        <a href="#">
+        <a href="https://www.instagram.com/kitchendesigner_vns/">
           <i style="font-weight: bold" class="fab fa-instagram"></i>
         </a>
       </li>
@@ -163,7 +157,8 @@
                 <option value="None">None</option>
               </select>
               <label for="phone" class="form-label mt-2">Phone</label>
-              <input type="text" class="form-control" id="phone" name="phone" placeholder="Enter Phone Number" required>
+              <input type="text" class="form-control" id="phone" pattern="[0-9]{10}" name="phone"
+                placeholder="Enter Phone Number" required>
               <label for="email" class="form-label mt-2">Email Address</label>
               <input type="email" class="form-control" id="email" name="email" placeholder="Enter Email" required>
             </form>
