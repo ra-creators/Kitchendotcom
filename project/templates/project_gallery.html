@@ -159,7 +159,7 @@
               </div>
               <div class="col-lg-5 col-sm-12 border-teal">
                 <div class="text-center p-lg-5 py-5">
-                  <img src="/media/{{feedback.image}}" class="rounded rounded-circle" alt="User" />
+                  <img src="/media/{{feedback.image}}" class="img-fluid rounded rounded-circle" alt="User" />
                   <h3 class="h3 text-teal py-3 my-3">
                     {{feedback.project_name}} <br />
                   </h3>
@@ -242,12 +242,22 @@
             <div class="carousel-item {% if forloop.first %} active {% endif %}">
               <div class="row justify-content-center p-3 m-3 g-5">
                 <div class="col-lg-4 col-md-6 col-sm-8 col-12">
-                  <a href="{% url 'projectDetails' project.id %}">
-                    <img src="/media/{{project.project_img}}" />
-                  </a>
+                  <div class="tinder">
+                    <div class="tinder--cards">
+                      {% for post in project.postimage_set.all %}
+                      <div class="tinder--card">
+                        <img class="img-fluid" src="/media/{{post.image}}" />
+                        <h3>{{post.site}}</h3>
+                        <p>{{post.date}}</p>
+                      </div>
+                      {% endfor %}
+                    </div>
+                  </div>
                 </div>
                 <div class="offset-lg-1 col-lg-5 col-12">
-                  <h1 class="h1 text-capitalize CH">{{project.name}}</h1>
+                  <a href="{% url 'projectDetails' project.id %}">
+                    <h1 class="h1 text-capitalize CH">{{project.name}}</h1>
+                  </a>
                   <div class="badge text-wrap">
                     <p class="lead CP">{{project.tagline}}</p>
                   </div>

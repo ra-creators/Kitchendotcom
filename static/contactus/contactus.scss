@@ -8,13 +8,13 @@ $font-color: rgb(252, 182, 133);
   font-family: Open Sans;
 }
 
-body {
-  // height: 100vh;
-  // width: 100vw;
-  max-width: 100%;
-  background-color: $primary-color;
-  color: $font-color;
-}
+// body {
+// height: 100vh;
+// width: 100vw;
+// max-width: 100%;
+// background-color: $primary-color;
+// color: $font-color;
+// }
 
 a {
   text-decoration: none !important;
@@ -78,12 +78,6 @@ a:hover {
       font-size: 18px;
       line-height: 25px;
     }
-
-    #submit-btn {
-      border-color: rgb(28, 126, 19);
-      color: rgb(28, 126, 19);
-      background-color: rgba(255, 217, 191, 1);
-    }
   }
 }
 
@@ -111,5 +105,58 @@ a:hover {
   .bg-full {
     top: 0;
     right: 0;
+  }
+}
+
+//footer
+$footer-primary: rgba(0, 102, 101, 1);
+$footer-bg:rgba(255, 210, 178, 1);
+
+#contactus-footer {
+  // background-color: rgba(255, 210, 178, 0.92);
+  background-image: url("/static/contactus/img/Rectangle\ 32.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  font-family: Open Sans;
+
+  .bg {
+    // height: 100%;
+    width: 100%;
+    position: absolute;
+  }
+
+  * {
+    font-family: inherit;
+    color: black;
+  }
+
+  .social-list {
+    li {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 2rem;
+      width: 2rem;
+      background-color: $footer-primary;
+      border-radius: 50%;
+
+      i {
+
+        color: $footer-bg;
+      }
+    }
+  }
+
+  .link-list {
+    list-style: none;
+
+    li {
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  a {
+    text-decoration: underline;
   }
 }

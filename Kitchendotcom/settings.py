@@ -12,7 +12,6 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 import os
 from pathlib import Path
-import django_heroku
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -33,15 +32,17 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'home.apps.HomeConfig',
-    'jet_django',
     'project.apps.ProjectConfig',
     'blogandnews.apps.BlogandnewsConfig',
+    'bootstrap_admin',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'ckeditor',
+    'ckeditor_uploader',
 ]
 
 MIDDLEWARE = [
@@ -71,6 +72,7 @@ TEMPLATES = [
         },
     },
 ]
+BOOTSTRAP_ADMIN_SIDEBAR_MENU = False
 
 WSGI_APPLICATION = 'Kitchendotcom.wsgi.application'
 
@@ -137,13 +139,10 @@ STATICFILES_DIRS = [
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'assets')
 
+CKEDITOR_UPLOAD_PATH = "ckuploads/"
 # Managing media
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-
-
-# Activate Django-Heroku.
-django_heroku.settings(locals())
 
 # Django-Jet for admin panel
 # JET_PROJECT = 'kdotcom'
