@@ -236,6 +236,7 @@ footer ul li {
 @media only screen and (max-width: 1000px) {
   nav .links {
     display: none;
+    padding: 0;
   }
   nav .links li {
     padding: 0;
@@ -247,6 +248,7 @@ footer ul li {
   nav .icon {
     display: block;
     position: absolute;
+    top: 3.5rem;
     right: 1rem;
     font-size: 1.5rem;
     cursor: pointer;
@@ -254,6 +256,9 @@ footer ul li {
   nav .responsive {
     display: block;
     background-color: rgba(247, 247, 247, 0.3);
+    position: absolute;
+    top: 5.5rem;
+    right: .5rem;
   }
   nav .responsive a {
     float: none;

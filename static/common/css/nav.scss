@@ -110,6 +110,9 @@ nav {
     .responsive {
       display: block;
       background-color: rgba(247, 247, 247, 0.3);
+      position: absolute;
+      top: 3.5rem;
+      right: .5rem;
 
       a {
         float: none;
