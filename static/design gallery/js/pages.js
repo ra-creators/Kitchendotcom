@@ -3,9 +3,9 @@ var container = "#carouselExampleCaptions";
 var dir = "static/design%20gallery/img/gallery/Kitchen/";
 var fileextension = ".svg";
 var page = 0;
-var numberItemPerPage=  Math.floor(($("#fourth .carousel-inner").width()-200)/300)*2 ;
+var numberItemPerPage = Math.floor(($("#fourth .carousel-inner").width() - 200) / 300) * 2 | 2;
 // console.log(numberItemPerPage)
-let pageItems=[];
+let pageItems = [];
 // console.log(container)
 
 function newPage(pageNumber) {
@@ -18,10 +18,10 @@ function newPage(pageNumber) {
     aria-current="true"
     aria-label="Page ${pageNumber}"
     ></button>`
-    )
-    
-    $(`${container} .carousel-inner`).append(
-      `
+  )
+
+  $(`${container} .carousel-inner`).append(
+    `
       <div class="carousel-item ${pageNumber===1?"active":""}">
         <div class="decorators">
           <div class="bg-holder">
@@ -54,22 +54,22 @@ function newPage(pageNumber) {
         </div>
       </div>
       `
-      )
+  )
 }
 
 for (let i = 1; i <= 50; i++) {
-    // console.log(i);
-    var filename = i + fileextension;
+  // console.log(i);
+  var filename = i + fileextension;
 
-    if (i % numberItemPerPage == 1) {
-      ++page;
-      // if(page===2)
-      // break;
-      newPage(page);
-    }
-    // console.log(filename)
-    $(`#page-${page}`).append(
-      `
+  if (i % numberItemPerPage === 1 || numberItemPerPage === 1) {
+    ++page;
+    // if(page===2)
+    // break;
+    newPage(page);
+  }
+  // console.log(filename)
+  $(`#page-${page}`).append(
+    `
             <img
             src="${dir + filename}"
             alt=""
@@ -77,8 +77,8 @@ for (let i = 1; i <= 50; i++) {
             style="background-color:transparent;"
             />
       `
-    )
-    
+  )
+
 }
 
 $(`${container} .carousel-inner`).append(
