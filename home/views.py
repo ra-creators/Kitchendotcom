@@ -30,8 +30,7 @@ def landing_page(request):
 
 def contact_us(request):
     if request.method == "POST":
-        name = (request.POST.get('firstName') + request.POST.get('secondName'))
-        print(name)
+        name = request.POST.get('name')
         email = request.POST.get('email')
         location = request.POST.get('cities')
         message = request.POST.get('message')
@@ -705,6 +704,8 @@ def kitchen_summary_buildpkg(request):
     # Rows
     pdf.set_text_color(128, 128, 128)
     pdf.cell(200,10,"www.kitchendotcom", ln=0, align="C")
-    pdf.output('Summary.pdf')
+    nam=context['name']
+    pdf.output(name = nam + ".pdf")
+    # i=pdf.output(name = nam + ".pdf")
 
     return render(request, 'kitchen_summary_buildpkg.html', {'context': context})

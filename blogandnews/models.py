@@ -26,10 +26,10 @@ class News(models.Model):
         return self.heading
 
 class BlogComment(models.Model):
-    sno = models.AutoField(primary_key=True)
+    sno = models.AutoField(primary_key = True)
     comment = models.TextField(max_length=1000, default="NA")
     name = models.CharField(max_length=50, default="NA")
     email = models.CharField(max_length=32, default="NA")
-    post = models.ForeignKey(Blog, on_delete=models.CASCADE)
+    blog = models.ForeignKey(Blog, on_delete=models.CASCADE)
     parent = models.ForeignKey('self', on_delete=models.CASCADE, null=True)
     timestamp = models.DateTimeField(default=now)

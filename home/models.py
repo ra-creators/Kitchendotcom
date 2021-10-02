@@ -11,7 +11,6 @@ class c_details(models.Model):
     def __str__(self):
         return self.name
 
-
 class kitchen_details(models.Model):
 
     Name = models.CharField(max_length=122, default = "NA")
@@ -26,10 +25,10 @@ class kitchen_details(models.Model):
     Services = models.TextField(max_length=132, default="NA")
     Appliances = models.TextField(max_length=32, default="NA")
     # customer = models.ForeignKey(c_details, blank=True, null=True, on_delete=models.CASCADE )
-    Price = models.FileField(max_length=12, default="NA")
+    Price = models.CharField(max_length=12, default="NA")
     Location = models.CharField(max_length=12, default="NA")
     date = models.DateField(default=1111-11-11)
-    # Summary_Pdf = models.FileField()
+    # Summary_Pdf = models.FileField(upload_to = 'pdf/',  default="/Summary.pdf")
     
     def __str__(self):
         return self.Name
