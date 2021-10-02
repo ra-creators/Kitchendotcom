@@ -453,8 +453,6 @@ def kitchen_summary(request):
     # Calculation part ends
     size = str(round(a,2)) + "ft x " + str(round(b,2)) + "ft x " + str(round(c,2)) + "ft"
     # Saving data in main table
-    details = kitchen_details(Name = context['name'], Shape = context['shape'], Size = size, Loft = context['loft'], Type = context['type'], Accessories = context['accessories'], Material = context['material'], Finish = context['finish'],Price = cal, Location = context['location'], date = datetime.today())
-    details.save()
 
     # Saving data in specific location table
     
@@ -497,8 +495,12 @@ def kitchen_summary(request):
     pdf.cell(20,10,context['countertop'], ln=1, align="L")
     pdf.cell(40,10,"Finish - ", ln=0, align="L")
     pdf.cell(20,10,context['finish'], ln=1, align="L")
-    pdf.output('Summary.pdf')
+    nam = context['name']
+    file = pdf.output(nam+'.pdf')
 
+    details = kitchen_details(Name = context['name'], Shape = context['shape'], Size = size, Loft = context['loft'], Type = context['type'], Accessories = context['accessories'], Material = context['material'], Finish = context['finish'],Price = cal, Location = context['location'], date = datetime.today(), 
+    )
+    details.save()
     return render(request, 'kitchen_summary.html', {'context': context}) 
 
 def kitchen_summary_buildpkg(request):
