@@ -28,8 +28,12 @@ class kitchen_details(models.Model):
     Price = models.CharField(max_length=12, default="NA")
     Location = models.CharField(max_length=12, default="NA")
     date = models.DateField(default=1111-11-11)
+<<<<<<< HEAD
     # Summary_Pdf = models.FileField(upload_to = 'pdf/',  default="/Summary.pdf")
     
+=======
+    pdf = models.FileField(upload_to='detaispdf', max_length=100)
+>>>>>>> d24870b94a1fef91165a83f301e3fad9083d418f
     def __str__(self):
         return self.Name
 
