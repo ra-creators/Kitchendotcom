@@ -25,9 +25,20 @@ rate = {
     'Premium' : int(values.Prem_Acc)
 }
 
-Essentials = {}
-Premium = {}
-Luxe = {}
+Essentials = {'Material': 'MR Plywood',
+              'Finish' : 'Laminate',
+              'accessories' : 'Wire Basket'
+              }
+
+Premium = {'Material': 'HDHMR',
+            'Finish' : 'PVC',
+            'accessories' : 'Tandem Basket'
+            }
+
+Luxe = {'Material': 'HDHMR',
+         'Finish' : 'Acrylic',
+         'accessories' : 'Tandem Basket'
+         }
 
 def landing_page(request):
     return render(request, 'landing_page.html')
@@ -446,14 +457,8 @@ def kitchen_summary(request):
     c = round(int(context['c_feet']) + (int(context['c_inch']) / 12), 2)
     l = int(context['loft'])
 
-    # if context['type'] == "Essentials":
-    cal = round(((a+b+c) * (3+l) * rate['1'][context['type']]), 2) # last value should be fetched from model
-    # print(a,b,c,l,rate[context['type']])
-    # elif context['type'] == "Premium":
-    #     cal = round((a+b+c) * (3+l) * int(constant.premium), 2) # last value should be fetched from model
-    # elif context['type'] == "Luxe":
-    #     cal = round((a+b+c) * (3+l) * int(constant.luxe), 2) # last value should be fetched from model
-    # print(a,b,c,l, cal)
+    cal = round(((a+b+c) * (3+l) * rate['1'][context['type']]), 2) # last value should be fetched from mode
+
     # Calculation part ends
     size = str(round(a,2)) + "ft x " + str(round(b,2)) + "ft x " + str(round(c,2)) + "ft"
     # Saving data in main table
