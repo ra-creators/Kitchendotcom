@@ -25,21 +25,6 @@ rate = {
     'Premium' : int(values.Prem_Acc)
 }
 
-Essentials = {'Material': 'MR Plywood',
-              'Finish' : 'Laminate',
-              'accessories' : 'Wire Basket'
-              }
-
-Premium = {'Material': 'HDHMR',
-            'Finish' : 'PVC',
-            'accessories' : 'Tandem Basket'
-            }
-
-Luxe = {'Material': 'HDHMR',
-         'Finish' : 'Acrylic',
-         'accessories' : 'Tandem Basket'
-         }
-
 def landing_page(request):
     return render(request, 'landing_page.html')
 
@@ -525,13 +510,13 @@ def kitchen_summary(request):
     pdf.cell(40,10,"Plan Deisgning", ln=0, border="", align="L", fill=1)
     pdf.cell(40,10,str(3*rate['1'][context['type']]), ln=0, border="", align="L", fill=1)
     pdf.cell(40,10,str(a+b+c), ln=0, border="", align="L", fill=1)
-    pdf.cell(40,10,"999999", ln=1, border="R", align="L", fill=1)
+    pdf.cell(40,10,str((a+b+c) * (3*rate['1'][context['type']])), ln=1, border="R", align="L", fill=1)
     # pdf.set_fill_color(0,102,101)
     pdf.cell(30,10,"2.", ln=0, border="L", align="C")
     pdf.cell(40,10,"Loft", ln=0, border="", align="L")
     pdf.cell(40,10,str(l*rate['1'][context['type']]), ln=0, border="", align="L")
     pdf.cell(40,10,str(a+b+c), ln=0, border="", align="L")
-    pdf.cell(40,10,str(cal), ln=1, border="R", align="L")
+    pdf.cell(40,10,str((a+b+c) * (l*rate['1'][context['type']])), ln=1, border="R", align="L")
     pdf.set_fill_color(255,255,255)
     pdf.cell(190,10,"", ln=1, border="L"+"R", align="C", fill=1)
     # pdf.set_fill_color(0,102,101)
@@ -549,7 +534,6 @@ def kitchen_summary(request):
     pdf.cell(200,4,"3. No hidden costs further of any kind of expenses likeDesigning, transportation or installation,etc in case of turnkey.", ln=1, align="L")
     pdf.cell(200,4,"4. Offers/schemes are marked as*For Free*.", ln=1, align="L")
     pdf.cell(200,4,"5. Appliances and Services(Ceiling light, Civil work,Plumbing and Flooring) are not counted in above quotaion i.e. it will be quoted as per selection", ln=1, align="L")
-    # pdf.cell(200,4,"6. Ceiling light, Civil work,Plumbing and Flooring not included . ", ln=1, align="L")
     pdf.cell(200,4,"6. Payment Schedule as prescribed by area manager.", ln=1, align="L")
 
     pdf.add_page()
@@ -578,19 +562,19 @@ def kitchen_summary(request):
     pdf.cell(80,10,"Material", ln=0, border="", align="C")
     pdf.cell(80,10,context['material'], ln=1, border="R", align="C")
     pdf.set_fill_color(255,255,255)
-    pdf.cell(30,10,"5.", ln=0, border="L", align="C", fill=1)
-    pdf.cell(80,10,"Countertop", ln=0, border="", align="C", fill=1)
-    pdf.cell(80,10,context['countertop'], ln=1, border="R", align="C", fill=1)
+    # pdf.cell(30,10,"5.", ln=0, border="L", align="C", fill=1)
+    # pdf.cell(80,10,"Countertop", ln=0, border="", align="C", fill=1)
+    # pdf.cell(80,10,context['countertop'], ln=1, border="R", align="C", fill=1)
     # pdf.set_fill_color(0, 102, 101)
-    pdf.cell(30,10,"6.", ln=0, border="L", align="C")
+    pdf.cell(30,10,"5.", ln=0, border="L", align="C")
     pdf.cell(80,10,"Loft", ln=0, border="", align="C")
     pdf.cell(80,10,context['loft'], ln=1, border="R", align="C")
     pdf.set_fill_color(255,255,255)
-    pdf.cell(30,10,"7.", ln=0, border="L", align="C", fill=1)
+    pdf.cell(30,10,"6.", ln=0, border="L", align="C", fill=1)
     pdf.cell(80,10,"Finish", ln=0, border="", align="C", fill=1)
     pdf.cell(80,10,context['finish'], ln=1, border="R", align="C", fill=1)
     # pdf.set_fill_color(0, 102, 101)
-    pdf.cell(30,10,"8.", ln=0, border="L", align="C")
+    pdf.cell(30,10,"7.", ln=0, border="L", align="C")
     pdf.cell(80,10,"Accessories", ln=0, border="", align="C")
     pdf.cell(80,10,context['accessories'], ln=1, border="R", align="C")
     pdf.set_fill_color(255,255,255)
@@ -737,13 +721,13 @@ def kitchen_summary_buildpkg(request):
     pdf.cell(40,10,"Plan Deisgning", ln=0, border="", align="L", fill=1)
     pdf.cell(40,10,str(3*pdf_variable), ln=0, border="", align="L", fill=1)
     pdf.cell(40,10,str(a+b+c), ln=0, border="", align="L", fill=1)
-    pdf.cell(40,10,"999999", ln=1, border="R", align="L", fill=1)
+    pdf.cell(40,10,str((a+b+c)*(3*pdf_variable)), ln=1, border="R", align="L", fill=1)
     # pdf.set_fill_color(0,102,101)
     pdf.cell(30,10,"2.", ln=0, border="L", align="C")
     pdf.cell(40,10,"Loft", ln=0, border="", align="L")
     pdf.cell(40,10,str(l*pdf_variable), ln=0, border="", align="L")
     pdf.cell(40,10,str(a+b+c), ln=0, border="", align="L")
-    pdf.cell(40,10,str(cal), ln=1, border="R", align="L")
+    pdf.cell(40,10,str((a+b+c)*(l*pdf_variable)), ln=1, border="R", align="L")
     pdf.set_fill_color(255,255,255)
     pdf.cell(190,10,"", ln=1, border="L"+"R", align="C", fill=1)
     # pdf.set_fill_color(0,102,101)
