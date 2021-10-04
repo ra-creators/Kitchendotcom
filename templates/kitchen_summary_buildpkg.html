@@ -2,100 +2,111 @@
 
 {% load static %}
 
-{% block title %} Kitchen Summary {% endblock title %}  
+{% block title %} Kitchen Summary {% endblock title %}
 
 {% block body %}
 
-<div id="" >
+<div id="">
     <div class="p-3">
-            
-            <div class="row justify-content-center">
-                        <div class="col-lg-8 col-sm-12">
-                            <img src="{%static "/assets/img/Summary.png" %}" class="img-fluid h-100" alt="Login Image">
-                        </div>
-                        
+
+        <div class="row justify-content-center">
+            <div class="col-lg-8 col-sm-12">
+                <img src="{%static "/assets/img/Summary.png" %}" class="img-fluid h-100" alt="Login Image">
             </div>
 
-            <div class="row justify-content-center text-center p-3 g-3">
-               <h1 class="text-teal">You’re done and so are we!</h1>
-               <h4 class="fw-normal">Your Estimated modular kitchen cost</h4>
-               <form action="">
-                   <div class="btn border-teal dashed px-5 p-3 bg-paleturquoise text-start"><h6 class="text-dark"> Starts from: ₹ {{ context.price }} </h6></div>
-               </form>
-            </div>
+        </div>
 
-            <div class="row justify-content-center p-3">
-                <div class="accordion accordion-flush" id="accordionExample">
-                    <div class="accordion-item offset-lg-3 col-lg-6 col-sm-12 align-self-center">
-                        <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-                            <div class="accordion-body">
-                                <div class="row">
-                                    <div class="col-6 text-start">
-                                        <h6>Shape</h6>
-                                    </div>
-                                    <div class="col-6 text-end">
-                                        <p> {{ context.shape }}</p>
-                                    </div>
-                                    <div class="col-6 text-start">
-                                        <h6>Size</h6>
-                                    </div>
-                                    <div class="col-6 text-end">
-                                        <p> {{ context.size }}</p>
-                                    </div>
-                                    <div class="col-6 text-start">
-                                        <h6>Type</h6>
-                                    </div>
-                                    <div class="col-6 text-end">
-                                        <p> {{ context.type }}</p>
-                                    </div>
-                                    <div class="col-6 text-start">
-                                        <h6>Material</h6>
-                                    </div>
-                                    <div class="col-6 text-end">
-                                        <p> {{ context.material }}</p>
-                                    </div>
-                                    <div class="col-6 text-start">
-                                        <h6>Countertop</h6>
-                                    </div>
-                                    <div class="col-6 text-end">
-                                        <p> {{ context.countertop}}</p>
-                                    </div>
-                                    <div class="col-6 text-start">
-                                        <h6>Loft</h6>
-                                    </div>
-                                    <div class="col-6 text-end">
-                                        <p> {{ context.loft}}</p>
-                                    </div>
-                                    <div class="col-6 text-start">
-                                        <h6>Finish</h6>
-                                    </div>
-                                    <div class="col-6 text-end">
-                                        <p> {{ context.finish }}</p>
-                                    </div>
-                                    <div class="col-6 text-start">
-                                        <h6>Accessories</h6>
-                                    </div>
-                                    <div class="col-6 text-end">
-                                        <p> {{ context.accessories }}</p>
-                                    </div>
+        <div class="row justify-content-center text-center p-3 g-3">
+            <h1 class="text-teal">You’re done and so are we!</h1>
+            <h4 class="fw-normal">Your Estimated modular kitchen cost</h4>
+            <form action="">
+                <div class="btn border-teal dashed px-5 p-3 bg-paleturquoise text-start">
+                    <h6 class="text-dark"> Starts from: ₹ {{ context.price }} </h6>
+                </div>
+            </form>
+        </div>
+
+        <div class="row justify-content-center p-3">
+            <div class="accordion accordion-flush" id="accordionExample">
+                <div class="accordion-item offset-lg-3 col-lg-6 col-sm-12 align-self-center">
+                    <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
+                        data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            <div class="row">
+                                <div class="col-6 text-start">
+                                    <h6>Shape</h6>
+                                </div>
+                                <div class="col-6 text-end">
+                                    <p> {{ context.shape }}</p>
+                                </div>
+                                <div class="col-6 text-start">
+                                    <h6>Size</h6>
+                                </div>
+                                <div class="col-6 text-end">
+                                    <p> {{ context.size }}</p>
+                                </div>
+                                <div class="col-6 text-start">
+                                    <h6>Type</h6>
+                                </div>
+                                <div class="col-6 text-end">
+                                    <p> {{ context.type }}</p>
+                                </div>
+                                <div class="col-6 text-start">
+                                    <h6>Material</h6>
+                                </div>
+                                <div class="col-6 text-end">
+                                    <p> {{ context.material }}</p>
+                                </div>
+                                <div class="col-6 text-start">
+                                    <h6>Countertop</h6>
+                                </div>
+                                <div class="col-6 text-end">
+                                    <p> {{ context.countertop}}</p>
+                                </div>
+                                <div class="col-6 text-start">
+                                    <h6>Loft</h6>
+                                </div>
+                                <div class="col-6 text-end">
+                                    <p> {{ context.loft}}</p>
+                                </div>
+                                <div class="col-6 text-start">
+                                    <h6>Finish</h6>
+                                </div>
+                                <div class="col-6 text-end">
+                                    <p> {{ context.finish }}</p>
+                                </div>
+                                <div class="col-6 text-start">
+                                    <h6>Accessories</h6>
+                                </div>
+                                <div class="col-6 text-end">
+                                    <p> {{ context.accessories }}</p>
                                 </div>
                             </div>
-                          </div>
-                    <div class="accordion-header offset-md-4 col-md-4 col-sm-12" id="headingOne">
-                        <a class="btn accordion-button bg-transparent nav-link text-teal" onclick="acc();" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                          <p id="summary">Show Summary</p>
-                        </a>
+                        </div>
                     </div>
+                    <div class="accordion-header offset-md-4 col-md-4 col-sm-12" id="headingOne">
+                        <a class="btn accordion-button bg-transparent nav-link text-teal" onclick="acc();"
+                            data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true"
+                            aria-controls="collapseOne">
+                            <p id="summary">Show Summary</p>
+                        </a>
                     </div>
                 </div>
             </div>
-                    <!-- <div class="row p-3 m-3 justify-content-center text-center">
+        </div>
+        <!-- <div class="row p-3 m-3 justify-content-center text-center">
                         <div class="col-lg-2 text-md-center col-md-12">
                                 <a href="/select_appliances" class="btn btn-lg bg-light text-teal border-teal px-5 py-2 rounded" role="button"><h4>Back</h4></a>   
                         </div>
                     </div> -->
-                        
+
     </div>
+</div>
+
+<div class="row text-center">
+    <a href="/summary_download" target="_blank">
+        <button class="btn btn-primary">Download</button>
+    </a>
 </div>
 
 {% endblock body %}
