@@ -8,6 +8,12 @@
     </div>
     <ul id="nav-links" class="links">
         <li>
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        </li>
+        <li>
+            <a href="/" {%if '/' == request.path  %} class="active" {%endif%}>Home</a>
+        </li>
+        <li>
             <a href="/aboutus" {%if '/aboutus' in request.path  %} class="active" {%endif%}>Aboutus</a>
         </li>
         <li>
@@ -30,5 +36,9 @@
         } else {
             x.className = "links";
         }
+    }
+
+    function closeNav() {
+        navButton();
     }
 </script>

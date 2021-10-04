@@ -51,6 +51,10 @@ nav .links {
   display: flex;
 }
 
+nav .links .closebtn {
+  display: none;
+}
+
 nav .links li {
   padding: 0 2.5rem;
 }
@@ -92,9 +96,13 @@ nav .icon {
   nav .links li a {
     padding: 0 1rem;
     font-size: 1rem;
+    text-align: center;
   }
-  nav #nav-links .active {
-    border: none;
+  nav .links li .active {
+    border-bottom: 4.0217px solid #fcb685 !important;
+  }
+  nav .links .closebtn {
+    display: block;
   }
   nav .icon {
     display: block;
@@ -105,18 +113,28 @@ nav .icon {
   }
   nav .responsive {
     display: block;
-    background-color: rgba(247, 247, 247, 0.3);
+    background-color: #097c7a;
     position: absolute;
     top: 3.5rem;
     right: .5rem;
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
   }
   nav .responsive a {
     float: none;
     display: block;
-    text-align: left;
+    text-align: center;
   }
-  nav .responsive a:hover {
-    background-color: rgba(49, 47, 47, 0.3);
+  nav .responsive .closebtn {
+    text-align: end;
+  }
+  nav .responsive li:hover {
+    background-color: rgba(66, 61, 61, 0.18);
+    border-bottom: 4.0217px solid #fcb685 !important;
   }
 }
 /*# sourceMappingURL=nav.css.map */

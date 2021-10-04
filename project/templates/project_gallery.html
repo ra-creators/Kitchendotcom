@@ -219,7 +219,7 @@
       <!-- Second Page -->
       <!-- <div id="second"> -->
 
-      <div id="jhu">
+      {% comment %} <div id="jhu">
         <h1 class="h2 p-3 m-3 py-5 my-5 text-teal"><b>Ongoing Projects</b></h1>
 
         <div id="carouselExampleIndicators3" class="carousel carousel-dark slide" data-bs-ride="carousel">
@@ -228,10 +228,6 @@
             <button type="button" data-bs-target="#carouselExampleIndicators3" data-bs-slide-to="{{forloop.counter0}}"
               class="active" aria-current="true" aria-label="Slide {{forloop.counter}}"></button>
             {% endfor %}
-            {% comment %} <button type="button" data-bs-target="#carouselExampleIndicators3" data-bs-slide-to="1"
-              aria-label="Slide 2"></button>
-            <button type="button" data-bs-target="#carouselExampleIndicators3" data-bs-slide-to="2"
-              aria-label="Slide 3"></button> {% endcomment %}
           </div>
           <div class="carousel-inner">
             {% for project in ongoing_projects %}
@@ -273,7 +269,7 @@
             <span class="visually-hidden">Next</span>
           </button>
         </div>
-      </div>
+      </div> {% endcomment %}
       <!-- last section -->
 
       <div id="second2">
