@@ -236,7 +236,7 @@ body {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  margin-bottom: -8rem;
+  margin-bottom: 5rem;
 }
 
 #fourth .decorators .item-0 {

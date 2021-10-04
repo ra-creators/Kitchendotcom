@@ -39,27 +39,32 @@
     </div>
   </div>
 
-  <div id="first">
+  <div id="first" class="container-fluid mb-5">
     <!-- slide iamge section start -->
-    <div class="scene">
-      <div id="carosel-prev-btn" class="prev"></div>
-      <div class="carousel" id="special-carousel">
-        {% comment %} <div class="row">
-          <div class="col-8"> {% endcomment %}
-            {% comment %} <ul class="slImag"> {% endcomment %}
-              {% for video in videos %}
-              <div class="carousel__cell">
-                <video class="img-fluid" src="/media/{{video.video}}" controls></video>
-              </div>
-              {% comment %} <li> {% endcomment %}
-                {% comment %} </li> {% endcomment %}
-              {% endfor %}
-              {% comment %} </ul> {% endcomment %}
-            {% comment %} </div>
-        </div> {% endcomment %}
+    <div class="row">
+      <div id="carouselVideos" class="carousel carousel-dark slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          {% for video in videos %}
+          <div class="carousel-item {% if forloop.first %} active {% endif %}">
+            <div class="embed-responsive">
+              <video style="height:60vh;" class="embed-responsive-item" src="/media/{{video.video}}" controls></video>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+        <button class="carousel-control-prev bg-peach" type="button" data-bs-target="#carouselVideos "
+          data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next bg-peach" type="button" data-bs-target="#carouselVideos "
+          data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
       </div>
-      <div id="carosel-nxt-btn" class="next"></div>
     </div>
+
   </div>
 
   <!-- Professinal Designers start -->
@@ -273,8 +278,8 @@
       <!-- last section -->
 
       <div id="second2">
-        <div class="row py-3 my-3">
-          <div class="col-4 ps-5">
+        <div class="row py-3">
+          <div class="ps-5">
             <h1 class="h2 text-teal fw-bold">
               We build more Projects Successfully
             </h1>
@@ -318,6 +323,7 @@
             </div>
           </div>
         </div>
+        {% include 'includes/footer.html' %}
       </div>
 
       <div id="bg-graphics">
@@ -325,7 +331,6 @@
         <img src="{%static "projectgallery/img/Group 16.svg" %}" alt="" class="top-right">
       </div>
 
-      {% include 'includes/footer.html' %}
 
 
       <!-- Optional JavaScript; choose one of the two! -->
