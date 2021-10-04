@@ -255,3 +255,15 @@ body {
     }
   }
 }
+
+@media only screen and (max-width: 900px) {
+  #first {
+    height: auto;
+
+    .punch-line {
+      font-size: 36px;
+      margin-bottom: 0 !important;
+      margin-top: 4rem;
+    }
+  }
+}
