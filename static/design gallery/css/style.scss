@@ -236,7 +236,7 @@ body {
     overflow: hidden;
     justify-content: space-between;
 
-    margin-bottom: -8rem;
+    margin-bottom: 5rem;
 
     .item-0 {
       position: relative;
@@ -252,6 +252,18 @@ body {
 
     .item-2 {
       position: absolute;
+    }
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  #first {
+    height: auto;
+
+    .punch-line {
+      font-size: 36px;
+      margin-bottom: 0 !important;
+      margin-top: 4rem;
     }
   }
 }

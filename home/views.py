@@ -1,10 +1,12 @@
-import os
-from django.http.response import FileResponse, HttpResponse
-from django.http import HttpResponseRedirect  
+from django.http.response import HttpResponse, FileResponse
+from django.http import HttpResponseRedirect
 from django.shortcuts import redirect, render  
 from home.models import c_details, kitchen_details, Constant, City1, City2, City3, City4, City5, City6, City7, City8, City9, City10 # importing calculation model is removed
 from datetime import datetime
 from fpdf import FPDF
+import os
+from django.core.mail import EmailMessage
+
 
 values = Constant.objects.all().last()
 rate = {
@@ -274,21 +276,23 @@ def select_package_buildpkg(request):
         
         if package == "Build your own package":
             return redirect('/build_package')
-        if package == "Essentials":
-            request.session['material'] = "MR Plywood"
-            request.session['finish'] = "Laminate"
-            request.session['accessories'] = "Wire Basket"
-            return redirect('/summary')
-        if package == "Premium":
-            request.session['material'] = "HDHMR"
-            request.session['finish'] = "PVC"
-            request.session['accessories'] = "Tandem Basket"
-            return redirect('/summary')
-        if package == "Luxe":
-            request.session['material'] = "HDHMR"
-            request.session['finish'] = "Acrylic"
-            request.session['accessories'] = "Tandem Basket"
-            return redirect('/summary')
+        else:
+            request.session['countertop'] = "No"
+            if package == "Essentials":
+                request.session['material'] = "MR Plywood"
+                request.session['finish'] = "Laminate"
+                request.session['accessories'] = "Wire Basket"
+                return redirect('/summary')
+            if package == "Premium":
+                request.session['material'] = "HDHMR"
+                request.session['finish'] = "PVC"
+                request.session['accessories'] = "Tandem Basket"
+                return redirect('/summary')
+            if package == "Luxe":
+                request.session['material'] = "HDHMR"
+                request.session['finish'] = "Acrylic"
+                request.session['accessories'] = "Tandem Basket"
+                return redirect('/summary')
 
 
     return render(request, 'select_package_buildpkg.html')
@@ -444,7 +448,7 @@ def kitchen_summary(request):
     l = int(context['loft'])
 
     cal = round(((a+b+c) * (3+l) * rate['1'][context['type']]), 2) # last value should be fetched from mode
-
+    pdf_variable = rate['1'][context['type']]
     # Calculation part ends
     size = str(round(a,2)) + "ft x " + str(round(b,2)) + "ft x " + str(round(c,2)) + "ft"
     # Saving data in main table
@@ -470,150 +474,9 @@ def kitchen_summary(request):
     context['price'] = cal
     context['loft'] = request.session.get('loft') + ' feet loft'
 
-    # Pdf generating script
-    pdf = FPDF()
-    pdf.add_page()
-    pdf.image("static/pdf/bg_1.png", 0 ,0 ,210, 297, 'png') # Background image
-    pdf.image("static/pdf/Group.png",100,10) # logo
-    pdf.set_text_color(0, 102, 101)
-    pdf.set_font("Arial", size=20)
-    pdf.cell(190, 40, "Kitchendotcom", ln=1, align="C")
-
-    pdf.set_text_color(0, 0, 0)
-    pdf.set_font("Arial", size=10)
-    pdf.cell(40,8,"Name : ", ln=0, align="L")
-    pdf.cell(20,8,context['name'], ln=1, align="L")
-    pdf.cell(40,8,"Address : ", ln=0, align="L")
-    pdf.cell(20,8,context['location'], ln=1, align="L")
-    pdf.cell(40,8,"Contact No. : ", ln=0, align="L")
-    pdf.cell(20,8,request.session.get('phone'), ln=1, align="L")
-
-    pdf.multi_cell(0, 10, "",align="L")
-
-    pdf.set_fill_color(255,255,255)
-    pdf.cell(190, 10, ln=1, border="L"+"T"+"R", fill=1)
-    pdf.cell(190, 10, " Kitchendotcom", ln=1, border="L"+"R", align="L")
-    pdf.cell(40,10," Address : ", ln=0, border="L", align="L",fill=1)
-    pdf.cell(150,10,"D65/245 Lahartara , Varanasi", ln=1, border="R", align="L", fill=1)
-    pdf.cell(40,10," Date : ", ln=0, border="L"+"B", align="L")
-    pdf.cell(150,10,"01/01/2021", ln=1, border="B"+"R", align="L")
-
-    pdf.set_font("Arial", size=15)
-    pdf.cell(190,20,"Quotation", ln=1, align="C")
-
-    pdf.set_font("Arial", size=10)
-    pdf.cell(30,15,"Sr.No.", ln=0, border="L"+"T", align="C", fill=1)
-    pdf.cell(40,15,"Particulars", ln=0, border="T", align="L", fill=1)
-    pdf.cell(40,15,"Rate", ln=0, border="T", align="L", fill=1)
-    pdf.cell(40,15,"Sqft.", ln=0, border="T", align="L", fill=1)
-    pdf.cell(40,15,"Amount", ln=1, border="T"+"R", align="L", fill=1)
-    pdf.cell(30,10,"1.", ln=0, border="L", align="C", fill=1)
-    pdf.cell(40,10,"Plan Deisgning", ln=0, border="", align="L", fill=1)
-    pdf.cell(40,10,str(3*rate['1'][context['type']]), ln=0, border="", align="L", fill=1)
-    pdf.cell(40,10,str(a+b+c), ln=0, border="", align="L", fill=1)
-    pdf.cell(40,10,str((a+b+c) * (3*rate['1'][context['type']])), ln=1, border="R", align="L", fill=1)
-    # pdf.set_fill_color(0,102,101)
-    pdf.cell(30,10,"2.", ln=0, border="L", align="C")
-    pdf.cell(40,10,"Loft", ln=0, border="", align="L")
-    pdf.cell(40,10,str(l*rate['1'][context['type']]), ln=0, border="", align="L")
-    pdf.cell(40,10,str(a+b+c), ln=0, border="", align="L")
-    pdf.cell(40,10,str((a+b+c) * (l*rate['1'][context['type']])), ln=1, border="R", align="L")
-    pdf.set_fill_color(255,255,255)
-    pdf.cell(190,10,"", ln=1, border="L"+"R", align="C", fill=1)
-    # pdf.set_fill_color(0,102,101)
-    pdf.cell(190,10,"", ln=1, border="L"+"R", align="C")
-    pdf.set_fill_color(255,255,255)
-    pdf.cell(10,20,"", ln=0, border="L"+"B", fill=1)
-    pdf.cell(140,20,"Total", ln=0, border="B", align="L", fill=1)
-    pdf.cell(40,20,str(cal), ln=1, border="B"+"R", align="L", fill=1)
-
-    pdf.multi_cell(0, 5, "",align="L")
-    pdf.cell(200,6,"Terms & Conditions :-", ln=1, align="L")
-    pdf.set_font("Arial", size=8)
-    pdf.cell(200,4,"1. Above quotation is just for noted job works/Materials.", ln=1, align="L")
-    pdf.cell(200,4,"2. Payment is expected Either in Cash or Account transfer", ln=1, align="L")
-    pdf.cell(200,4,"3. No hidden costs further of any kind of expenses likeDesigning, transportation or installation,etc in case of turnkey.", ln=1, align="L")
-    pdf.cell(200,4,"4. Offers/schemes are marked as*For Free*.", ln=1, align="L")
-    pdf.cell(200,4,"5. Appliances and Services(Ceiling light, Civil work,Plumbing and Flooring) are not counted in above quotaion i.e. it will be quoted as per selection", ln=1, align="L")
-    pdf.cell(200,4,"6. Payment Schedule as prescribed by area manager.", ln=1, align="L")
-
-    pdf.add_page()
-    pdf.image("static/pdf/bg_2.png", 0 ,0 ,210, 297, 'png')
-    pdf.set_font("Arial", size=15)
-    pdf.set_text_color(0, 0, 0)
-    pdf.cell(190,15,"Summary", ln=1, align="C")
-
-    pdf.set_font("Arial", size=10)
-    pdf.cell(10,15,"", ln=0, border="L"+"T", fill=1)
-    pdf.cell(50,15,"Sr.No.", ln=0, border="T", align="L", fill=1)
-    pdf.cell(130,15,"Particulars", ln=1, border="T"+"R", align="L", fill=1)
-    pdf.cell(30,10,"1.", ln=0, border="L", align="C", fill=1)
-    pdf.cell(80,10,"Shape", ln=0, border="", align="C", fill=1)
-    pdf.cell(80,10,context['shape'], ln=1, border="R", align="C", fill=1)
-    # pdf.set_fill_color(0, 102, 101)
-    pdf.cell(30,10,"2.", ln=0, border="L", align="C")
-    pdf.cell(80,10,"Size", ln=0, border="", align="C")
-    pdf.cell(80,10,str(a+b+c), ln=1, border="R", align="C")
-    pdf.set_fill_color(255,255,255)
-    pdf.cell(30,10,"3.", ln=0, border="L", align="C", fill=1)
-    pdf.cell(80,10,"Type", ln=0, border="", align="C", fill=1)
-    pdf.cell(80,10,context['type'], ln=1, border="R", align="C", fill=1)
-    # pdf.set_fill_color(0, 102, 101)
-    pdf.cell(30,10,"4.", ln=0, border="L", align="C")
-    pdf.cell(80,10,"Material", ln=0, border="", align="C")
-    pdf.cell(80,10,context['material'], ln=1, border="R", align="C")
-    pdf.set_fill_color(255,255,255)
-    # pdf.cell(30,10,"5.", ln=0, border="L", align="C", fill=1)
-    # pdf.cell(80,10,"Countertop", ln=0, border="", align="C", fill=1)
-    # pdf.cell(80,10,context['countertop'], ln=1, border="R", align="C", fill=1)
-    # pdf.set_fill_color(0, 102, 101)
-    pdf.cell(30,10,"5.", ln=0, border="L", align="C")
-    pdf.cell(80,10,"Loft", ln=0, border="", align="C")
-    pdf.cell(80,10,context['loft'], ln=1, border="R", align="C")
-    pdf.set_fill_color(255,255,255)
-    pdf.cell(30,10,"6.", ln=0, border="L", align="C", fill=1)
-    pdf.cell(80,10,"Finish", ln=0, border="", align="C", fill=1)
-    pdf.cell(80,10,context['finish'], ln=1, border="R", align="C", fill=1)
-    # pdf.set_fill_color(0, 102, 101)
-    pdf.cell(30,10,"7.", ln=0, border="L", align="C")
-    pdf.cell(80,10,"Accessories", ln=0, border="", align="C")
-    pdf.cell(80,10,context['accessories'], ln=1, border="R", align="C")
-    pdf.set_fill_color(255,255,255)
-    pdf.cell(20,20,"Total", ln=0, border="L"+"B", align="R", fill=1)
-    pdf.cell(135,20, str(cal), ln=0, border="B", align="R", fill=1)
-    pdf.cell(35,20,"", ln=1, border="B"+"R", align="C", fill=1)
-
-    pdf.set_font("Arial", size=15)
-    pdf.set_text_color(0, 0, 0)
-    pdf.cell(190,20,"Payment Schedule", ln=1, align="C")
-    pdf.set_font("Arial", size=10)
-    pdf.cell(35,15,"  Sr.No.", ln=0, border="L"+"T", align="L", fill=1)
-    pdf.cell(35,15,"Date/Day", ln=0, border="T", align="L", fill=1)
-    pdf.cell(35,15,"Paid By", ln=0, border="T", align="L", fill=1)
-    pdf.cell(35,15,"Amount", ln=0, border="T", align="L", fill=1)
-    pdf.cell(50,15,"Mode of Payment", ln=1, border="T"+"R", align="L", fill=1)
-    pdf.multi_cell(190,10,"   1.", border="L"+"R", fill=1)
-    # pdf.set_fill_color(0, 102, 101)
-    pdf.multi_cell(190,10,"   2.", border="L"+"R")
-    pdf.set_fill_color(255,255,255)
-    pdf.multi_cell(190,10,"   3.", border="L"+"R", fill=1)
-    # pdf.set_fill_color(0, 102, 101)
-    pdf.multi_cell(190,10,"   4.", border="L"+"R")
-    pdf.set_fill_color(255,255,255)
-    pdf.multi_cell(190,10,"   5.", border="L"+"R", fill=1)
-    # pdf.set_fill_color(0, 102, 101)
-    pdf.multi_cell(190,10,"   6.", border="L"+"R")
-    pdf.set_fill_color(255,255,255)
-    pdf.multi_cell(190,10,"   7.", border="L"+"R", fill=1)
-    # pdf.set_fill_color(0, 132, 153)
-    pdf.multi_cell(190,10,"   8.", border="L"+"R")
-    pdf.set_fill_color(255,255,255)
-    pdf.cell(190,10,ln=1, border="L"+"B"+"R", fill=1)
-    # Rows
-    pdf.set_text_color(128, 128, 128)
-    pdf.cell(200,10,"www.kitchendotcom", ln=0, align="C")
-    nam = context['name']
-    pdf.output(name = nam + ".pdf")
+    request.session['pdf_variable'] = pdf_variable
+    request.session['dimensions'] = a+b+c
+    request.session['price'] = cal
 
     details = kitchen_details(Name = context['name'], Shape = context['shape'], Size = size, Loft = context['loft'], Type = context['type'], Accessories = context['accessories'], Material = context['material'], Finish = context['finish'],Price = cal, Location = context['location'], date = datetime.today(), 
     )
@@ -624,7 +487,6 @@ def kitchen_summary_buildpkg(request):
     constant = Constant.objects.all().last()
     # key names are as per summary page
     context = {
-        'name' : request.session.get('name'), 
     'shape' : request.session.get('layout'),  
     'name' : request.session.get('name'),
     'a_feet' : request.session.get('a_feet'),
@@ -681,6 +543,9 @@ def kitchen_summary_buildpkg(request):
     context['size'] = size
     context['price'] = cal
     context['loft'] = request.session.get('loft') + ' feet loft'
+    request.session['pdf_variable'] = pdf_variable
+    request.session['dimensions'] = a+b+c
+    request.session['price'] = cal
 
     # Pdf generating script
     # pdf = FPDF()
@@ -806,7 +671,7 @@ def kitchen_summary_buildpkg(request):
     # pdf.cell(35,15,"Amount", ln=0, border="T", align="L", fill=1)
     # pdf.cell(50,15,"Mode of Payment", ln=1, border="T"+"R", align="L", fill=1)
     # pdf.multi_cell(190,10,"   1.", border="L"+"R", fill=1)
-    # # pdf.set_fill_color(0, 102, 101)
+    # pdf.set_fill_color(0, 102, 101)
     # pdf.multi_cell(190,10,"   2.", border="L"+"R")
     # pdf.set_fill_color(255,255,255)
     # pdf.multi_cell(190,10,"   3.", border="L"+"R", fill=1)
@@ -825,13 +690,8 @@ def kitchen_summary_buildpkg(request):
     # # Rows
     # pdf.set_text_color(128, 128, 128)
     # pdf.cell(200,10,"www.kitchendotcom", ln=0, align="C")
-    # nam=context['name'] + ".pdf"
-    # pd = pdf.output(nam, dest="I")
-    # response = HttpResponse(pd, content_type='application/pdf')
-    # response['Content-Disposition'] = "attachment; filename={{nam}}"
-    # return response
-    # # i = open(iott)
-    # pdf = open(i)
+    # nam=context['name']
+    # pdf.output(name = nam + ".pdf")
     # fp = open(pdf.output(name = nam + ".pdf"), 'rb')
     # data = fp.read()
     # variables = RequestContext(request, {'file': data})
@@ -839,9 +699,15 @@ def kitchen_summary_buildpkg(request):
     # return HttpResponse(output)
     # i=pdf.output(name = nam + ".pdf")
 
-    return render(request, 'kitchen_summary_buildpkg.html', {'context': context}) 
+    return render(request, 'kitchen_summary_buildpkg.html', {'context': context})
 
 def summary_download(request):
+
+    pdf_variable = request.session.get('pdf_variable')
+    dimensions = request.session.get('dimensions')
+    price = request.session.get('price')
+    loft = int(request.session.get('loft'))
+    date = datetime.now()
 
     pdf = FPDF()
     pdf.add_page()
@@ -854,9 +720,9 @@ def summary_download(request):
     pdf.set_text_color(0, 0, 0)
     pdf.set_font("Arial", size=10)
     pdf.cell(40,8,"Name : ", ln=0, align="L")
-    pdf.cell(20,8,'aaaaa', ln=1, align="L")
+    pdf.cell(20,8,request.session.get('name'), ln=1, align="L")
     pdf.cell(40,8,"Address : ", ln=0, align="L")
-    pdf.cell(20,8,'aaaaa', ln=1, align="L")
+    pdf.cell(20,8,request.session.get('location'), ln=1, align="L")
     pdf.cell(40,8,"Contact No. : ", ln=0, align="L")
     pdf.cell(20,8,request.session.get('phone'), ln=1, align="L")
 
@@ -868,7 +734,7 @@ def summary_download(request):
     pdf.cell(40,10," Address : ", ln=0, border="L", align="L",fill=1)
     pdf.cell(150,10,"D65/245 Lahartara , Varanasi", ln=1, border="R", align="L", fill=1)
     pdf.cell(40,10," Date : ", ln=0, border="L"+"B", align="L")
-    pdf.cell(150,10,"01/01/2021", ln=1, border="B"+"R", align="L")
+    pdf.cell(150,10,str(date), ln=1, border="B"+"R", align="L")
 
     pdf.set_font("Arial", size=15)
     pdf.cell(190,20,"Quotation", ln=1, align="C")
@@ -881,15 +747,15 @@ def summary_download(request):
     pdf.cell(40,15,"Amount", ln=1, border="T"+"R", align="L", fill=1)
     pdf.cell(30,10,"1.", ln=0, border="L", align="C", fill=1)
     pdf.cell(40,10,"Plan Deisgning", ln=0, border="", align="L", fill=1)
-    pdf.cell(40,10,'aaaa', ln=0, border="", align="L", fill=1)
-    pdf.cell(40,10,'aaaa', ln=0, border="", align="L", fill=1)
-    pdf.cell(40,10,'aaaa', ln=1, border="R", align="L", fill=1)
+    pdf.cell(40,10,str(3*pdf_variable), ln=0, border="", align="L", fill=1)
+    pdf.cell(40,10,str(dimensions), ln=0, border="", align="L", fill=1)
+    pdf.cell(40,10,str(dimensions * 3 * pdf_variable), ln=1, border="R", align="L", fill=1)
     # pdf.set_fill_color(0,102,101)
     pdf.cell(30,10,"2.", ln=0, border="L", align="C")
     pdf.cell(40,10,"Loft", ln=0, border="", align="L")
-    pdf.cell(40,10,'aaaaa', ln=0, border="", align="L")
-    pdf.cell(40,10,'aaa', ln=0, border="", align="L")
-    pdf.cell(40,10,'aaaaa', ln=1, border="R", align="L")
+    pdf.cell(40,10,str(loft * pdf_variable), ln=0, border="", align="L")
+    pdf.cell(40,10,str(dimensions), ln=0, border="", align="L")
+    pdf.cell(40,10,str(loft * pdf_variable * dimensions), ln=1, border="R", align="L")
     pdf.set_fill_color(255,255,255)
     pdf.cell(190,10,"", ln=1, border="L"+"R", align="C", fill=1)
     # pdf.set_fill_color(0,102,101)
@@ -897,7 +763,7 @@ def summary_download(request):
     pdf.set_fill_color(255,255,255)
     pdf.cell(10,20,"", ln=0, border="L"+"B", fill=1)
     pdf.cell(140,20,"Total", ln=0, border="B", align="L", fill=1)
-    pdf.cell(40,20,'aaa', ln=1, border="B"+"R", align="L", fill=1)
+    pdf.cell(40,20,str(price), ln=1, border="B"+"R", align="L", fill=1)
 
     pdf.multi_cell(0, 5, "",align="L")
     pdf.cell(200,6,"Terms & Conditions :-", ln=1, align="L")
@@ -907,7 +773,6 @@ def summary_download(request):
     pdf.cell(200,4,"3. No hidden costs further of any kind of expenses likeDesigning, transportation or installation,etc in case of turnkey.", ln=1, align="L")
     pdf.cell(200,4,"4. Offers/schemes are marked as*For Free*.", ln=1, align="L")
     pdf.cell(200,4,"5. Appliances and Services(Ceiling light, Civil work,Plumbing and Flooring) are not counted in above quotaion i.e. it will be quoted as per selection", ln=1, align="L")
-    # pdf.cell(200,4,"6. Ceiling light, Civil work,Plumbing and Flooring not included . ", ln=1, align="L")
     pdf.cell(200,4,"6. Payment Schedule as prescribed by area manager.", ln=1, align="L")
 
     pdf.add_page()
@@ -922,38 +787,38 @@ def summary_download(request):
     pdf.cell(130,15,"Particulars", ln=1, border="T"+"R", align="L", fill=1)
     pdf.cell(30,10,"1.", ln=0, border="L", align="C", fill=1)
     pdf.cell(80,10,"Shape", ln=0, border="", align="C", fill=1)
-    pdf.cell(80,10,'aaaa', ln=1, border="R", align="C", fill=1)
+    pdf.cell(80,10,request.session.get('layout'), ln=1, border="R", align="C", fill=1)
     # pdf.set_fill_color(0, 102, 101)
     pdf.cell(30,10,"2.", ln=0, border="L", align="C")
     pdf.cell(80,10,"Size", ln=0, border="", align="C")
-    pdf.cell(80,10,'aaaa', ln=1, border="R", align="C")
+    pdf.cell(80,10,str(dimensions), ln=1, border="R", align="C")
     pdf.set_fill_color(255,255,255)
     pdf.cell(30,10,"3.", ln=0, border="L", align="C", fill=1)
     pdf.cell(80,10,"Type", ln=0, border="", align="C", fill=1)
-    pdf.cell(80,10,'aaaaa', ln=1, border="R", align="C", fill=1)
+    pdf.cell(80,10,request.session.get('package'), ln=1, border="R", align="C", fill=1)
     # pdf.set_fill_color(0, 102, 101)
     pdf.cell(30,10,"4.", ln=0, border="L", align="C")
     pdf.cell(80,10,"Material", ln=0, border="", align="C")
-    pdf.cell(80,10,'aaaaa', ln=1, border="R", align="C")
+    pdf.cell(80,10,request.session.get('material'), ln=1, border="R", align="C")
     pdf.set_fill_color(255,255,255)
     pdf.cell(30,10,"5.", ln=0, border="L", align="C", fill=1)
     pdf.cell(80,10,"Countertop", ln=0, border="", align="C", fill=1)
-    pdf.cell(80,10,'aaaa', ln=1, border="R", align="C", fill=1)
+    pdf.cell(80,10,request.session.get('countertop'), ln=1, border="R", align="C", fill=1)
     # pdf.set_fill_color(0, 102, 101)
     pdf.cell(30,10,"6.", ln=0, border="L", align="C")
     pdf.cell(80,10,"Loft", ln=0, border="", align="C")
-    pdf.cell(80,10,'aaaaa', ln=1, border="R", align="C")
+    pdf.cell(80,10,request.session.get('loft'), ln=1, border="R", align="C")
     pdf.set_fill_color(255,255,255)
     pdf.cell(30,10,"7.", ln=0, border="L", align="C", fill=1)
     pdf.cell(80,10,"Finish", ln=0, border="", align="C", fill=1)
-    pdf.cell(80,10,'aaaaaa', ln=1, border="R", align="C", fill=1)
+    pdf.cell(80,10,request.session.get('finish'), ln=1, border="R", align="C", fill=1)
     # pdf.set_fill_color(0, 102, 101)
     pdf.cell(30,10,"8.", ln=0, border="L", align="C")
     pdf.cell(80,10,"Accessories", ln=0, border="", align="C")
-    pdf.cell(80,10,'aaaaaa', ln=1, border="R", align="C")
+    pdf.cell(80,10,request.session.get('accessories'), ln=1, border="R", align="C")
     pdf.set_fill_color(255,255,255)
     pdf.cell(20,20,"Total", ln=0, border="L"+"B", align="R", fill=1)
-    pdf.cell(135,20, '999', ln=0, border="B", align="R", fill=1)
+    pdf.cell(135,20,str(price), ln=0, border="B", align="R", fill=1)
     pdf.cell(35,20,"", ln=1, border="B"+"R", align="C", fill=1)
 
     pdf.set_font("Arial", size=15)
@@ -986,8 +851,10 @@ def summary_download(request):
     pdf.set_text_color(128, 128, 128)
     pdf.cell(200,10,"www.kitchendotcom", ln=0, align="C")
 
+# request.session.session_key
     file_name = str(request.session.get('name'))+".pdf"
     pdf.output(name=file_name)
     file = open(file_name,'rb')
     os.remove(file_name)
+    
     return FileResponse(file)

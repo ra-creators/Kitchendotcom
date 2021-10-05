@@ -52,8 +52,8 @@ urlpatterns = [
     path("select_accessories/premium", views.select_accessories_premium, name='select_accessories_premium'),
     path("select_appliances", views.select_appliances, name='select_appliances'),
     path("select_services", views.select_services, name='select_services'),
-    path("summary_download", views.summary_download, name='summary_download'),
     path("summary", views.kitchen_summary, name='kitchen_summary'),
+    path("summary_download", views.summary_download, name='summary_download'),
     path("summary/buildpkg", views.kitchen_summary_buildpkg, name='kitchen_summary_buildpkg')
     
 ]

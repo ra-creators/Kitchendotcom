@@ -236,7 +236,7 @@ body {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  margin-bottom: -8rem;
+  margin-bottom: 5rem;
 }
 
 #fourth .decorators .item-0 {
@@ -251,5 +251,16 @@ body {
 
 #fourth .decorators .item-2 {
   position: absolute;
+}
+
+@media only screen and (max-width: 900px) {
+  #first {
+    height: auto;
+  }
+  #first .punch-line {
+    font-size: 36px;
+    margin-bottom: 0 !important;
+    margin-top: 4rem;
+  }
 }
 /*# sourceMappingURL=style.css.map */
