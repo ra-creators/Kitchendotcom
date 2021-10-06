@@ -47,8 +47,8 @@ def contact_us(request):
 def about_us(request):
     return render(request, "about_us.html")
 
-# def project_gallery(request):
-#     return render(request, 'project_gallery.html')
+def project_gallery(request):
+    return render(request, 'project_gallery.html')
 
 def design_gallery(request):
     return render(request, 'design_gallery.html')
