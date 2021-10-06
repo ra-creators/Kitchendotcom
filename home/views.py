@@ -6,6 +6,8 @@ from datetime import datetime
 from fpdf import FPDF
 import os
 from django.core.mail import EmailMessage
+from django.conf import settings
+from django.template.loader import render_to_string
 
 
 values = Constant.objects.all().last()
@@ -28,6 +30,7 @@ rate = {
     'Premium' : int(values.Prem_Acc)
 }
 
+# Your views here.
 def landing_page(request):
     return render(request, 'landing_page.html')
 
@@ -44,13 +47,12 @@ def contact_us(request):
 def about_us(request):
     return render(request, "about_us.html")
 
-def project_gallery(request):
-    return render(request, 'project_gallery.html')
+# def project_gallery(request):
+#     return render(request, 'project_gallery.html')
 
 def design_gallery(request):
     return render(request, 'design_gallery.html')
 
-# Create your views here.
 def kitchen_price_steps(request):
     # request.session['name'] = 'test'
     return render(request, 'kitchen_price_steps.html')
@@ -154,7 +156,6 @@ def ushape(request):
         request.session['c_inch'] = c_inch
         return redirect('/select_loft_type')
     return render(request, 'select_ushape.html')
-
 
 def select_loft_type(request):
     
@@ -332,7 +333,6 @@ def build_package_bwpply(request):
         return redirect('/select_countertop')
     return render(request, 'build_package_bwpply.html')
 
-
 def select_countertop(request):
     if request.method == "POST":
         c_top = request.POST.get('countertop')
@@ -410,7 +410,6 @@ def select_services(request):
         return redirect('/select_appliances')
     return render(request, 'select_services.html')
 
-
 def select_appliances(request):
     if request.method == "POST":
         app_list = request.POST.getlist('appliance[]')
@@ -456,16 +455,16 @@ def kitchen_summary(request):
     # Saving data in specific location table
     
     city = {
-    'City 1' : City1(Name = context['name'], Shape = context['shape'], Size = size, Loft = context['loft'], Type = context['type'], Accessories = context['accessories'], Material = context['material'], Finish = context['finish'],Price = cal, Location = context['location'], date = datetime.today()),
-    'City 2' : City2(Name = context['name'], Shape = context['shape'], Size = size, Loft = context['loft'], Type = context['type'], Accessories = context['accessories'], Material = context['material'], Finish = context['finish'],Price = cal, Location = context['location'], date = datetime.today()),
-    'City 3' : City3(Name = context['name'], Shape = context['shape'], Size = size, Loft = context['loft'], Type = context['type'], Accessories = context['accessories'], Material = context['material'], Finish = context['finish'],Price = cal, Location = context['location'], date = datetime.today()),
-    'City 4' : City4(Name = context['name'], Shape = context['shape'], Size = size, Loft = context['loft'], Type = context['type'], Accessories = context['accessories'], Material = context['material'], Finish = context['finish'],Price = cal, Location = context['location'], date = datetime.today()),
-    'City 5' : City5(Name = context['name'], Shape = context['shape'], Size = size, Loft = context['loft'], Type = context['type'], Accessories = context['accessories'], Material = context['material'], Finish = context['finish'],Price = cal, Location = context['location'], date = datetime.today()),
-    'City 6' : City6(Name = context['name'], Shape = context['shape'], Size = size, Loft = context['loft'], Type = context['type'], Accessories = context['accessories'], Material = context['material'], Finish = context['finish'],Price = cal, Location = context['location'], date = datetime.today()),
-    'City 7' : City7(Name = context['name'], Shape = context['shape'], Size = size, Loft = context['loft'], Type = context['type'], Accessories = context['accessories'], Material = context['material'], Finish = context['finish'],Price = cal, Location = context['location'], date = datetime.today()),
-    'City 8' : City8(Name = context['name'], Shape = context['shape'], Size = size, Loft = context['loft'], Type = context['type'], Accessories = context['accessories'], Material = context['material'], Finish = context['finish'],Price = cal, Location = context['location'], date = datetime.today()),
-    'City 9' : City9(Name = context['name'], Shape = context['shape'], Size = size, Loft = context['loft'], Type = context['type'], Accessories = context['accessories'], Material = context['material'], Finish = context['finish'],Price = cal, Location = context['location'], date = datetime.today()),
-    'City 10' : City10(Name = context['name'], Shape = context['shape'], Size = size, Loft = context['loft'], Type = context['type'], Accessories = context['accessories'], Material = context['material'], Finish = context['finish'],Price = cal, Location = context['location'], date = datetime.today())
+    'Varanasi' : City1(Name = context['name'], Shape = context['shape'], Size = size, Loft = context['loft'], Type = context['type'], Accessories = context['accessories'], Material = context['material'], Finish = context['finish'],Price = cal, Location = context['location'], date = datetime.today()),
+    'Chandauli' : City2(Name = context['name'], Shape = context['shape'], Size = size, Loft = context['loft'], Type = context['type'], Accessories = context['accessories'], Material = context['material'], Finish = context['finish'],Price = cal, Location = context['location'], date = datetime.today()),
+    'Mirzapur' : City3(Name = context['name'], Shape = context['shape'], Size = size, Loft = context['loft'], Type = context['type'], Accessories = context['accessories'], Material = context['material'], Finish = context['finish'],Price = cal, Location = context['location'], date = datetime.today()),
+    'Sonbhadra' : City4(Name = context['name'], Shape = context['shape'], Size = size, Loft = context['loft'], Type = context['type'], Accessories = context['accessories'], Material = context['material'], Finish = context['finish'],Price = cal, Location = context['location'], date = datetime.today()),
+    'Ayodhya' : City5(Name = context['name'], Shape = context['shape'], Size = size, Loft = context['loft'], Type = context['type'], Accessories = context['accessories'], Material = context['material'], Finish = context['finish'],Price = cal, Location = context['location'], date = datetime.today()),
+    'Prayagraj' : City6(Name = context['name'], Shape = context['shape'], Size = size, Loft = context['loft'], Type = context['type'], Accessories = context['accessories'], Material = context['material'], Finish = context['finish'],Price = cal, Location = context['location'], date = datetime.today()),
+    'Lucknow' : City7(Name = context['name'], Shape = context['shape'], Size = size, Loft = context['loft'], Type = context['type'], Accessories = context['accessories'], Material = context['material'], Finish = context['finish'],Price = cal, Location = context['location'], date = datetime.today()),
+    'Bhadohi' : City8(Name = context['name'], Shape = context['shape'], Size = size, Loft = context['loft'], Type = context['type'], Accessories = context['accessories'], Material = context['material'], Finish = context['finish'],Price = cal, Location = context['location'], date = datetime.today()),
+    'Gorakhpur' : City9(Name = context['name'], Shape = context['shape'], Size = size, Loft = context['loft'], Type = context['type'], Accessories = context['accessories'], Material = context['material'], Finish = context['finish'],Price = cal, Location = context['location'], date = datetime.today()),
+    'Sonbhadra' : City10(Name = context['name'], Shape = context['shape'], Size = size, Loft = context['loft'], Type = context['type'], Accessories = context['accessories'], Material = context['material'], Finish = context['finish'],Price = cal, Location = context['location'], date = datetime.today())
     }
     city_obj = city[request.session.get('location')]
     city_obj.save()
@@ -474,13 +473,175 @@ def kitchen_summary(request):
     context['price'] = cal
     context['loft'] = request.session.get('loft') + ' feet loft'
 
-    request.session['pdf_variable'] = pdf_variable
-    request.session['dimensions'] = a+b+c
-    request.session['price'] = cal
+    # request.session['pdf_variable'] = pdf_variable
+    # request.session['dimensions'] = a+b+c
+    # request.session['price'] = cal
 
     details = kitchen_details(Name = context['name'], Shape = context['shape'], Size = size, Loft = context['loft'], Type = context['type'], Accessories = context['accessories'], Material = context['material'], Finish = context['finish'],Price = cal, Location = context['location'], date = datetime.today(), 
     )
     details.save()
+    
+    date = datetime.now().date()
+
+    pdf = FPDF()
+    pdf.add_page()
+    pdf.image("static/pdf/bg_1.png", 0 ,0 ,210, 297, 'png') # Background image
+    pdf.image("static/pdf/Group.png",100,10) # logo
+    pdf.set_text_color(0, 102, 101)
+    pdf.set_font("Arial", size=20)
+    pdf.cell(190, 40, "Kitchendotcom", ln=1, align="C")
+
+    pdf.set_text_color(0, 0, 0)
+    pdf.set_font("Arial", size=10)
+    pdf.cell(40,8,"Name : ", ln=0, align="L")
+    pdf.cell(20,8,request.session.get('name'), ln=1, align="L")
+    pdf.cell(40,8,"Address : ", ln=0, align="L")
+    pdf.cell(20,8,request.session.get('location'), ln=1, align="L")
+    pdf.cell(40,8,"Contact No. : ", ln=0, align="L")
+    pdf.cell(20,8,request.session.get('phone'), ln=1, align="L")
+
+    pdf.multi_cell(0, 10, "",align="L")
+
+    pdf.set_fill_color(255,255,255)
+    pdf.cell(190, 10, ln=1, border="L"+"T"+"R", fill=1)
+    pdf.cell(190, 10, " Kitchendotcom", ln=1, border="L"+"R", align="L")
+    pdf.cell(40,10," Address : ", ln=0, border="L", align="L",fill=1)
+    pdf.cell(150,10,"D65/245 Lahartara , Varanasi", ln=1, border="R", align="L", fill=1)
+    pdf.cell(40,10," Date : ", ln=0, border="L"+"B", align="L")
+    pdf.cell(150,10,str(date), ln=1, border="B"+"R", align="L")
+
+    pdf.set_font("Arial", size=15)
+    pdf.cell(190,20,"Quotation", ln=1, align="C")
+
+    pdf.set_font("Arial", size=10)
+    pdf.cell(30,15,"Sr.No.", ln=0, border="L"+"T", align="C", fill=1)
+    pdf.cell(40,15,"Particulars", ln=0, border="T", align="L", fill=1)
+    pdf.cell(40,15,"Rate", ln=0, border="T", align="L", fill=1)
+    pdf.cell(40,15,"Sqft.", ln=0, border="T", align="L", fill=1)
+    pdf.cell(40,15,"Amount", ln=1, border="T"+"R", align="L", fill=1)
+    pdf.cell(30,10,"1.", ln=0, border="L", align="C", fill=1)
+    pdf.cell(40,10,"Plan Deisgning", ln=0, border="", align="L", fill=1)
+    pdf.cell(40,10,str(3*pdf_variable), ln=0, border="", align="L", fill=1)
+    pdf.cell(40,10,str(a+b+c), ln=0, border="", align="L", fill=1)
+    pdf.cell(40,10,str((a+b+c) * 3 * pdf_variable), ln=1, border="R", align="L", fill=1)
+    # pdf.set_fill_color(0,102,101)
+    pdf.cell(30,10,"2.", ln=0, border="L", align="C")
+    pdf.cell(40,10,"Loft", ln=0, border="", align="L")
+    pdf.cell(40,10,str(l * pdf_variable), ln=0, border="", align="L")
+    pdf.cell(40,10,str(a+b+c), ln=0, border="", align="L")
+    pdf.cell(40,10,str(l * pdf_variable * (a+b+c)), ln=1, border="R", align="L")
+    pdf.set_fill_color(255,255,255)
+    pdf.cell(190,10,"", ln=1, border="L"+"R", align="C", fill=1)
+    # pdf.set_fill_color(0,102,101)
+    pdf.cell(190,10,"", ln=1, border="L"+"R", align="C")
+    pdf.set_fill_color(255,255,255)
+    pdf.cell(10,20,"", ln=0, border="L"+"B", fill=1)
+    pdf.cell(140,20,"Total", ln=0, border="B", align="L", fill=1)
+    pdf.cell(40,20,str(cal), ln=1, border="B"+"R", align="L", fill=1)
+
+    pdf.multi_cell(0, 5, "",align="L")
+    pdf.cell(200,6,"Terms & Conditions :-", ln=1, align="L")
+    pdf.set_font("Arial", size=8)
+    pdf.cell(200,4,"1. Above quotation is just for noted job works/Materials.", ln=1, align="L")
+    pdf.cell(200,4,"2. Payment is expected Either in Cash or Account transfer", ln=1, align="L")
+    pdf.cell(200,4,"3. No hidden costs further of any kind of expenses likeDesigning, transportation or installation,etc in case of turnkey.", ln=1, align="L")
+    pdf.cell(200,4,"4. Offers/schemes are marked as*For Free*.", ln=1, align="L")
+    pdf.cell(200,4,"5. Appliances and Services(Ceiling light, Civil work,Plumbing and Flooring) are not counted in above quotaion i.e. it will be quoted as per selection", ln=1, align="L")
+    pdf.cell(200,4,"6. Payment Schedule as prescribed by area manager.", ln=1, align="L")
+
+    pdf.add_page()
+    pdf.image("static/pdf/bg_2.png", 0 ,0 ,210, 297, 'png')
+    pdf.set_font("Arial", size=15)
+    pdf.set_text_color(0, 0, 0)
+    pdf.cell(190,15,"Summary", ln=1, align="C")
+
+    pdf.set_font("Arial", size=10)
+    pdf.cell(10,15,"", ln=0, border="L"+"T", fill=1)
+    pdf.cell(50,15,"Sr.No.", ln=0, border="T", align="L", fill=1)
+    pdf.cell(130,15,"Particulars", ln=1, border="T"+"R", align="L", fill=1)
+    pdf.cell(30,10,"1.", ln=0, border="L", align="C", fill=1)
+    pdf.cell(80,10,"Shape", ln=0, border="", align="C", fill=1)
+    pdf.cell(80,10,request.session.get('layout'), ln=1, border="R", align="C", fill=1)
+    # pdf.set_fill_color(0, 102, 101)
+    pdf.cell(30,10,"2.", ln=0, border="L", align="C")
+    pdf.cell(80,10,"Size", ln=0, border="", align="C")
+    pdf.cell(80,10,str(a+b+c), ln=1, border="R", align="C")
+    pdf.set_fill_color(255,255,255)
+    pdf.cell(30,10,"3.", ln=0, border="L", align="C", fill=1)
+    pdf.cell(80,10,"Type", ln=0, border="", align="C", fill=1)
+    pdf.cell(80,10,request.session.get('package'), ln=1, border="R", align="C", fill=1)
+    # pdf.set_fill_color(0, 102, 101)
+    pdf.cell(30,10,"4.", ln=0, border="L", align="C")
+    pdf.cell(80,10,"Material", ln=0, border="", align="C")
+    pdf.cell(80,10,request.session.get('material'), ln=1, border="R", align="C")
+    pdf.set_fill_color(255,255,255)
+    pdf.cell(30,10,"5.", ln=0, border="L", align="C", fill=1)
+    pdf.cell(80,10,"Countertop", ln=0, border="", align="C", fill=1)
+    pdf.cell(80,10,request.session.get('countertop'), ln=1, border="R", align="C", fill=1)
+    # pdf.set_fill_color(0, 102, 101)
+    pdf.cell(30,10,"6.", ln=0, border="L", align="C")
+    pdf.cell(80,10,"Loft", ln=0, border="", align="C")
+    pdf.cell(80,10,request.session.get('loft'), ln=1, border="R", align="C")
+    pdf.set_fill_color(255,255,255)
+    pdf.cell(30,10,"7.", ln=0, border="L", align="C", fill=1)
+    pdf.cell(80,10,"Finish", ln=0, border="", align="C", fill=1)
+    pdf.cell(80,10,request.session.get('finish'), ln=1, border="R", align="C", fill=1)
+    # pdf.set_fill_color(0, 102, 101)
+    pdf.cell(30,10,"8.", ln=0, border="L", align="C")
+    pdf.cell(80,10,"Accessories", ln=0, border="", align="C")
+    pdf.cell(80,10,request.session.get('accessories'), ln=1, border="R", align="C")
+    pdf.set_fill_color(255,255,255)
+    pdf.cell(20,20,"Total", ln=0, border="L"+"B", align="R", fill=1)
+    pdf.cell(135,20,str(cal), ln=0, border="B", align="R", fill=1)
+    pdf.cell(35,20,"", ln=1, border="B"+"R", align="C", fill=1)
+
+    pdf.set_font("Arial", size=15)
+    pdf.set_text_color(0, 0, 0)
+    pdf.cell(190,20,"Payment Schedule", ln=1, align="C")
+    pdf.set_font("Arial", size=10)
+    pdf.cell(35,15,"  Sr.No.", ln=0, border="L"+"T", align="L", fill=1)
+    pdf.cell(35,15,"Date/Day", ln=0, border="T", align="L", fill=1)
+    pdf.cell(35,15,"Paid By", ln=0, border="T", align="L", fill=1)
+    pdf.cell(35,15,"Amount", ln=0, border="T", align="L", fill=1)
+    pdf.cell(50,15,"Mode of Payment", ln=1, border="T"+"R", align="L", fill=1)
+    pdf.multi_cell(190,10,"   1.", border="L"+"R", fill=1)
+    # pdf.set_fill_color(0, 102, 101)
+    pdf.multi_cell(190,10,"   2.", border="L"+"R")
+    pdf.set_fill_color(255,255,255)
+    pdf.multi_cell(190,10,"   3.", border="L"+"R", fill=1)
+    # pdf.set_fill_color(0, 102, 101)
+    pdf.multi_cell(190,10,"   4.", border="L"+"R")
+    pdf.set_fill_color(255,255,255)
+    pdf.multi_cell(190,10,"   5.", border="L"+"R", fill=1)
+    # pdf.set_fill_color(0, 102, 101)
+    pdf.multi_cell(190,10,"   6.", border="L"+"R")
+    pdf.set_fill_color(255,255,255)
+    pdf.multi_cell(190,10,"   7.", border="L"+"R", fill=1)
+    # pdf.set_fill_color(0, 132, 153)
+    pdf.multi_cell(190,10,"   8.", border="L"+"R")
+    pdf.set_fill_color(255,255,255)
+    pdf.cell(190,10,ln=1, border="L"+"B"+"R", fill=1)
+    # Rows
+    pdf.set_text_color(128, 128, 128)
+    pdf.cell(200,10,"www.kitchendotcom", ln=0, align="C")
+
+    # request.session.session_key
+    # request.session.get('name')
+    file_name = "media/pdf/" + str(request.session.session_key)+".pdf"
+    pdf.output(name=file_name)
+    
+    # os.remove(file_name)
+    template = render_to_string('email_template.html',{'name':request.session.get('name')})
+    email = EmailMessage(
+        'Modular Kitchen Estimate',
+        template,
+        settings.EMAIL_HOST_USER,
+        [request.session.get('email')]
+        )
+    # name = request.session.get('name') + '_KichenEstimate.pdf'
+    email.attach_file(file_name)
+    email.fail_silently = True
+    email.send()
     return render(request, 'kitchen_summary.html', {'context': context}) 
 
 def kitchen_summary_buildpkg(request):
@@ -526,16 +687,16 @@ def kitchen_summary_buildpkg(request):
     details.save()
     # Saving data in specific location table
     city = {
-    'City 1' : City1(Name = context['name'], Shape = context['shape'], Size = size, Loft = context['loft'], Type = context['type'], Accessories = context['accessories'], Material = context['material'], Finish = context['finish'],Price = cal, Location = context['location'], date = datetime.today()),
-    'City 2' : City2(Name = context['name'], Shape = context['shape'], Size = size, Loft = context['loft'], Type = context['type'], Accessories = context['accessories'], Material = context['material'], Finish = context['finish'],Price = cal, Location = context['location'], date = datetime.today()),
-    'City 3' : City3(Name = context['name'], Shape = context['shape'], Size = size, Loft = context['loft'], Type = context['type'], Accessories = context['accessories'], Material = context['material'], Finish = context['finish'],Price = cal, Location = context['location'], date = datetime.today()),
-    'City 4' : City4(Name = context['name'], Shape = context['shape'], Size = size, Loft = context['loft'], Type = context['type'], Accessories = context['accessories'], Material = context['material'], Finish = context['finish'],Price = cal, Location = context['location'], date = datetime.today()),
-    'City 5' : City5(Name = context['name'], Shape = context['shape'], Size = size, Loft = context['loft'], Type = context['type'], Accessories = context['accessories'], Material = context['material'], Finish = context['finish'],Price = cal, Location = context['location'], date = datetime.today()),
-    'City 6' : City6(Name = context['name'], Shape = context['shape'], Size = size, Loft = context['loft'], Type = context['type'], Accessories = context['accessories'], Material = context['material'], Finish = context['finish'],Price = cal, Location = context['location'], date = datetime.today()),
-    'City 7' : City7(Name = context['name'], Shape = context['shape'], Size = size, Loft = context['loft'], Type = context['type'], Accessories = context['accessories'], Material = context['material'], Finish = context['finish'],Price = cal, Location = context['location'], date = datetime.today()),
-    'City 8' : City8(Name = context['name'], Shape = context['shape'], Size = size, Loft = context['loft'], Type = context['type'], Accessories = context['accessories'], Material = context['material'], Finish = context['finish'],Price = cal, Location = context['location'], date = datetime.today()),
-    'City 9' : City9(Name = context['name'], Shape = context['shape'], Size = size, Loft = context['loft'], Type = context['type'], Accessories = context['accessories'], Material = context['material'], Finish = context['finish'],Price = cal, Location = context['location'], date = datetime.today()),
-    'City 10' : City10(Name = context['name'], Shape = context['shape'], Size = size, Loft = context['loft'], Type = context['type'], Accessories = context['accessories'], Material = context['material'], Finish = context['finish'],Price = cal, Location = context['location'], date = datetime.today())
+    'Varanasi' : City1(Name = context['name'], Shape = context['shape'], Size = size, Loft = context['loft'], Type = context['type'], Accessories = context['accessories'], Material = context['material'], Finish = context['finish'],Price = cal, Location = context['location'], date = datetime.today()),
+    'Chandauli' : City2(Name = context['name'], Shape = context['shape'], Size = size, Loft = context['loft'], Type = context['type'], Accessories = context['accessories'], Material = context['material'], Finish = context['finish'],Price = cal, Location = context['location'], date = datetime.today()),
+    'Mirzapur' : City3(Name = context['name'], Shape = context['shape'], Size = size, Loft = context['loft'], Type = context['type'], Accessories = context['accessories'], Material = context['material'], Finish = context['finish'],Price = cal, Location = context['location'], date = datetime.today()),
+    'Sonbhadra' : City4(Name = context['name'], Shape = context['shape'], Size = size, Loft = context['loft'], Type = context['type'], Accessories = context['accessories'], Material = context['material'], Finish = context['finish'],Price = cal, Location = context['location'], date = datetime.today()),
+    'Ayodhya' : City5(Name = context['name'], Shape = context['shape'], Size = size, Loft = context['loft'], Type = context['type'], Accessories = context['accessories'], Material = context['material'], Finish = context['finish'],Price = cal, Location = context['location'], date = datetime.today()),
+    'Prayagraj' : City6(Name = context['name'], Shape = context['shape'], Size = size, Loft = context['loft'], Type = context['type'], Accessories = context['accessories'], Material = context['material'], Finish = context['finish'],Price = cal, Location = context['location'], date = datetime.today()),
+    'Lucknow' : City7(Name = context['name'], Shape = context['shape'], Size = size, Loft = context['loft'], Type = context['type'], Accessories = context['accessories'], Material = context['material'], Finish = context['finish'],Price = cal, Location = context['location'], date = datetime.today()),
+    'Bhadohi' : City8(Name = context['name'], Shape = context['shape'], Size = size, Loft = context['loft'], Type = context['type'], Accessories = context['accessories'], Material = context['material'], Finish = context['finish'],Price = cal, Location = context['location'], date = datetime.today()),
+    'Gorakhpur' : City9(Name = context['name'], Shape = context['shape'], Size = size, Loft = context['loft'], Type = context['type'], Accessories = context['accessories'], Material = context['material'], Finish = context['finish'],Price = cal, Location = context['location'], date = datetime.today()),
+    'Sonbhadra' : City10(Name = context['name'], Shape = context['shape'], Size = size, Loft = context['loft'], Type = context['type'], Accessories = context['accessories'], Material = context['material'], Finish = context['finish'],Price = cal, Location = context['location'], date = datetime.today())
     }
     city_obj = city[request.session.get('location')]
     city_obj.save()
@@ -543,172 +704,11 @@ def kitchen_summary_buildpkg(request):
     context['size'] = size
     context['price'] = cal
     context['loft'] = request.session.get('loft') + ' feet loft'
-    request.session['pdf_variable'] = pdf_variable
-    request.session['dimensions'] = a+b+c
-    request.session['price'] = cal
-
+    # request.session['pdf_variable'] = pdf_variable
+    # request.session['dimensions'] = a+b+c
+    # request.session['price'] = cal
+    date = datetime.now().date()
     # Pdf generating script
-    # pdf = FPDF()
-    # pdf.add_page()
-    # pdf.image("static/pdf/bg_1.png", 0 ,0 ,210, 297, 'png') # Background image
-    # pdf.image("static/pdf/Group.png",100,10) # logo
-    # pdf.set_text_color(0, 102, 101)
-    # pdf.set_font("Arial", size=20)
-    # pdf.cell(190, 40, "Kitchendotcom", ln=1, align="C")
-
-    # pdf.set_text_color(0, 0, 0)
-    # pdf.set_font("Arial", size=10)
-    # pdf.cell(40,8,"Name : ", ln=0, align="L")
-    # pdf.cell(20,8,context['name'], ln=1, align="L")
-    # pdf.cell(40,8,"Address : ", ln=0, align="L")
-    # pdf.cell(20,8,context['location'], ln=1, align="L")
-    # pdf.cell(40,8,"Contact No. : ", ln=0, align="L")
-    # pdf.cell(20,8,request.session.get('phone'), ln=1, align="L")
-
-    # pdf.multi_cell(0, 10, "",align="L")
-
-    # pdf.set_fill_color(255,255,255)
-    # pdf.cell(190, 10, ln=1, border="L"+"T"+"R", fill=1)
-    # pdf.cell(190, 10, " Kitchendotcom", ln=1, border="L"+"R", align="L")
-    # pdf.cell(40,10," Address : ", ln=0, border="L", align="L",fill=1)
-    # pdf.cell(150,10,"D65/245 Lahartara , Varanasi", ln=1, border="R", align="L", fill=1)
-    # pdf.cell(40,10," Date : ", ln=0, border="L"+"B", align="L")
-    # pdf.cell(150,10,"01/01/2021", ln=1, border="B"+"R", align="L")
-
-    # pdf.set_font("Arial", size=15)
-    # pdf.cell(190,20,"Quotation", ln=1, align="C")
-
-    # pdf.set_font("Arial", size=10)
-    # pdf.cell(30,15,"Sr.No.", ln=0, border="L"+"T", align="C", fill=1)
-    # pdf.cell(40,15,"Particulars", ln=0, border="T", align="L", fill=1)
-    # pdf.cell(40,15,"Rate", ln=0, border="T", align="L", fill=1)
-    # pdf.cell(40,15,"Sqft.", ln=0, border="T", align="L", fill=1)
-    # pdf.cell(40,15,"Amount", ln=1, border="T"+"R", align="L", fill=1)
-    # pdf.cell(30,10,"1.", ln=0, border="L", align="C", fill=1)
-    # pdf.cell(40,10,"Plan Deisgning", ln=0, border="", align="L", fill=1)
-    # pdf.cell(40,10,str(3*pdf_variable), ln=0, border="", align="L", fill=1)
-    # pdf.cell(40,10,str(a+b+c), ln=0, border="", align="L", fill=1)
-    # pdf.cell(40,10,str((a+b+c)*(3*pdf_variable)), ln=1, border="R", align="L", fill=1)
-    # # pdf.set_fill_color(0,102,101)
-    # pdf.cell(30,10,"2.", ln=0, border="L", align="C")
-    # pdf.cell(40,10,"Loft", ln=0, border="", align="L")
-    # pdf.cell(40,10,str(l*pdf_variable), ln=0, border="", align="L")
-    # pdf.cell(40,10,str(a+b+c), ln=0, border="", align="L")
-    # pdf.cell(40,10,str((a+b+c)*(l*pdf_variable)), ln=1, border="R", align="L")
-    # pdf.set_fill_color(255,255,255)
-    # pdf.cell(190,10,"", ln=1, border="L"+"R", align="C", fill=1)
-    # # pdf.set_fill_color(0,102,101)
-    # pdf.cell(190,10,"", ln=1, border="L"+"R", align="C")
-    # pdf.set_fill_color(255,255,255)
-    # pdf.cell(10,20,"", ln=0, border="L"+"B", fill=1)
-    # pdf.cell(140,20,"Total", ln=0, border="B", align="L", fill=1)
-    # pdf.cell(40,20,str(cal), ln=1, border="B"+"R", align="L", fill=1)
-
-    # pdf.multi_cell(0, 5, "",align="L")
-    # pdf.cell(200,6,"Terms & Conditions :-", ln=1, align="L")
-    # pdf.set_font("Arial", size=8)
-    # pdf.cell(200,4,"1. Above quotation is just for noted job works/Materials.", ln=1, align="L")
-    # pdf.cell(200,4,"2. Payment is expected Either in Cash or Account transfer", ln=1, align="L")
-    # pdf.cell(200,4,"3. No hidden costs further of any kind of expenses likeDesigning, transportation or installation,etc in case of turnkey.", ln=1, align="L")
-    # pdf.cell(200,4,"4. Offers/schemes are marked as*For Free*.", ln=1, align="L")
-    # pdf.cell(200,4,"5. Appliances and Services(Ceiling light, Civil work,Plumbing and Flooring) are not counted in above quotaion i.e. it will be quoted as per selection", ln=1, align="L")
-    # # pdf.cell(200,4,"6. Ceiling light, Civil work,Plumbing and Flooring not included . ", ln=1, align="L")
-    # pdf.cell(200,4,"6. Payment Schedule as prescribed by area manager.", ln=1, align="L")
-
-    # pdf.add_page()
-    # pdf.image("static/pdf/bg_2.png", 0 ,0 ,210, 297, 'png')
-    # pdf.set_font("Arial", size=15)
-    # pdf.set_text_color(0, 0, 0)
-    # pdf.cell(190,15,"Summary", ln=1, align="C")
-
-    # pdf.set_font("Arial", size=10)
-    # pdf.cell(10,15,"", ln=0, border="L"+"T", fill=1)
-    # pdf.cell(50,15,"Sr.No.", ln=0, border="T", align="L", fill=1)
-    # pdf.cell(130,15,"Particulars", ln=1, border="T"+"R", align="L", fill=1)
-    # pdf.cell(30,10,"1.", ln=0, border="L", align="C", fill=1)
-    # pdf.cell(80,10,"Shape", ln=0, border="", align="C", fill=1)
-    # pdf.cell(80,10,context['shape'], ln=1, border="R", align="C", fill=1)
-    # # pdf.set_fill_color(0, 102, 101)
-    # pdf.cell(30,10,"2.", ln=0, border="L", align="C")
-    # pdf.cell(80,10,"Size", ln=0, border="", align="C")
-    # pdf.cell(80,10,str(a+b+c), ln=1, border="R", align="C")
-    # pdf.set_fill_color(255,255,255)
-    # pdf.cell(30,10,"3.", ln=0, border="L", align="C", fill=1)
-    # pdf.cell(80,10,"Type", ln=0, border="", align="C", fill=1)
-    # pdf.cell(80,10,context['type'], ln=1, border="R", align="C", fill=1)
-    # # pdf.set_fill_color(0, 102, 101)
-    # pdf.cell(30,10,"4.", ln=0, border="L", align="C")
-    # pdf.cell(80,10,"Material", ln=0, border="", align="C")
-    # pdf.cell(80,10,context['material'], ln=1, border="R", align="C")
-    # pdf.set_fill_color(255,255,255)
-    # pdf.cell(30,10,"5.", ln=0, border="L", align="C", fill=1)
-    # pdf.cell(80,10,"Countertop", ln=0, border="", align="C", fill=1)
-    # pdf.cell(80,10,context['countertop'], ln=1, border="R", align="C", fill=1)
-    # # pdf.set_fill_color(0, 102, 101)
-    # pdf.cell(30,10,"6.", ln=0, border="L", align="C")
-    # pdf.cell(80,10,"Loft", ln=0, border="", align="C")
-    # pdf.cell(80,10,context['loft'], ln=1, border="R", align="C")
-    # pdf.set_fill_color(255,255,255)
-    # pdf.cell(30,10,"7.", ln=0, border="L", align="C", fill=1)
-    # pdf.cell(80,10,"Finish", ln=0, border="", align="C", fill=1)
-    # pdf.cell(80,10,context['finish'], ln=1, border="R", align="C", fill=1)
-    # # pdf.set_fill_color(0, 102, 101)
-    # pdf.cell(30,10,"8.", ln=0, border="L", align="C")
-    # pdf.cell(80,10,"Accessories", ln=0, border="", align="C")
-    # pdf.cell(80,10,context['accessories'], ln=1, border="R", align="C")
-    # pdf.set_fill_color(255,255,255)
-    # pdf.cell(20,20,"Total", ln=0, border="L"+"B", align="R", fill=1)
-    # pdf.cell(135,20, str(cal), ln=0, border="B", align="R", fill=1)
-    # pdf.cell(35,20,"", ln=1, border="B"+"R", align="C", fill=1)
-
-    # pdf.set_font("Arial", size=15)
-    # pdf.set_text_color(0, 0, 0)
-    # pdf.cell(190,20,"Payment Schedule", ln=1, align="C")
-    # pdf.set_font("Arial", size=10)
-    # pdf.cell(35,15,"  Sr.No.", ln=0, border="L"+"T", align="L", fill=1)
-    # pdf.cell(35,15,"Date/Day", ln=0, border="T", align="L", fill=1)
-    # pdf.cell(35,15,"Paid By", ln=0, border="T", align="L", fill=1)
-    # pdf.cell(35,15,"Amount", ln=0, border="T", align="L", fill=1)
-    # pdf.cell(50,15,"Mode of Payment", ln=1, border="T"+"R", align="L", fill=1)
-    # pdf.multi_cell(190,10,"   1.", border="L"+"R", fill=1)
-    # pdf.set_fill_color(0, 102, 101)
-    # pdf.multi_cell(190,10,"   2.", border="L"+"R")
-    # pdf.set_fill_color(255,255,255)
-    # pdf.multi_cell(190,10,"   3.", border="L"+"R", fill=1)
-    # # pdf.set_fill_color(0, 102, 101)
-    # pdf.multi_cell(190,10,"   4.", border="L"+"R")
-    # pdf.set_fill_color(255,255,255)
-    # pdf.multi_cell(190,10,"   5.", border="L"+"R", fill=1)
-    # # pdf.set_fill_color(0, 102, 101)
-    # pdf.multi_cell(190,10,"   6.", border="L"+"R")
-    # pdf.set_fill_color(255,255,255)
-    # pdf.multi_cell(190,10,"   7.", border="L"+"R", fill=1)
-    # # pdf.set_fill_color(0, 132, 153)
-    # pdf.multi_cell(190,10,"   8.", border="L"+"R")
-    # pdf.set_fill_color(255,255,255)
-    # pdf.cell(190,10,ln=1, border="L"+"B"+"R", fill=1)
-    # # Rows
-    # pdf.set_text_color(128, 128, 128)
-    # pdf.cell(200,10,"www.kitchendotcom", ln=0, align="C")
-    # nam=context['name']
-    # pdf.output(name = nam + ".pdf")
-    # fp = open(pdf.output(name = nam + ".pdf"), 'rb')
-    # data = fp.read()
-    # variables = RequestContext(request, {'file': data})
-    # output = kitchen_summary_buildpkg.html.render(variables, context)                
-    # return HttpResponse(output)
-    # i=pdf.output(name = nam + ".pdf")
-
-    return render(request, 'kitchen_summary_buildpkg.html', {'context': context})
-
-def summary_download(request):
-
-    pdf_variable = request.session.get('pdf_variable')
-    dimensions = request.session.get('dimensions')
-    price = request.session.get('price')
-    loft = int(request.session.get('loft'))
-    date = datetime.now()
-
     pdf = FPDF()
     pdf.add_page()
     pdf.image("static/pdf/bg_1.png", 0 ,0 ,210, 297, 'png') # Background image
@@ -720,9 +720,9 @@ def summary_download(request):
     pdf.set_text_color(0, 0, 0)
     pdf.set_font("Arial", size=10)
     pdf.cell(40,8,"Name : ", ln=0, align="L")
-    pdf.cell(20,8,request.session.get('name'), ln=1, align="L")
+    pdf.cell(20,8,context['name'], ln=1, align="L")
     pdf.cell(40,8,"Address : ", ln=0, align="L")
-    pdf.cell(20,8,request.session.get('location'), ln=1, align="L")
+    pdf.cell(20,8,context['location'], ln=1, align="L")
     pdf.cell(40,8,"Contact No. : ", ln=0, align="L")
     pdf.cell(20,8,request.session.get('phone'), ln=1, align="L")
 
@@ -734,7 +734,7 @@ def summary_download(request):
     pdf.cell(40,10," Address : ", ln=0, border="L", align="L",fill=1)
     pdf.cell(150,10,"D65/245 Lahartara , Varanasi", ln=1, border="R", align="L", fill=1)
     pdf.cell(40,10," Date : ", ln=0, border="L"+"B", align="L")
-    pdf.cell(150,10,str(date), ln=1, border="B"+"R", align="L")
+    pdf.cell(150,10,date, ln=1, border="B"+"R", align="L")
 
     pdf.set_font("Arial", size=15)
     pdf.cell(190,20,"Quotation", ln=1, align="C")
@@ -748,14 +748,14 @@ def summary_download(request):
     pdf.cell(30,10,"1.", ln=0, border="L", align="C", fill=1)
     pdf.cell(40,10,"Plan Deisgning", ln=0, border="", align="L", fill=1)
     pdf.cell(40,10,str(3*pdf_variable), ln=0, border="", align="L", fill=1)
-    pdf.cell(40,10,str(dimensions), ln=0, border="", align="L", fill=1)
-    pdf.cell(40,10,str(dimensions * 3 * pdf_variable), ln=1, border="R", align="L", fill=1)
+    pdf.cell(40,10,str(a+b+c), ln=0, border="", align="L", fill=1)
+    pdf.cell(40,10,str((a+b+c)*(3*pdf_variable)), ln=1, border="R", align="L", fill=1)
     # pdf.set_fill_color(0,102,101)
     pdf.cell(30,10,"2.", ln=0, border="L", align="C")
     pdf.cell(40,10,"Loft", ln=0, border="", align="L")
-    pdf.cell(40,10,str(loft * pdf_variable), ln=0, border="", align="L")
-    pdf.cell(40,10,str(dimensions), ln=0, border="", align="L")
-    pdf.cell(40,10,str(loft * pdf_variable * dimensions), ln=1, border="R", align="L")
+    pdf.cell(40,10,str(l*pdf_variable), ln=0, border="", align="L")
+    pdf.cell(40,10,str(a+b+c), ln=0, border="", align="L")
+    pdf.cell(40,10,str((a+b+c)*(l*pdf_variable)), ln=1, border="R", align="L")
     pdf.set_fill_color(255,255,255)
     pdf.cell(190,10,"", ln=1, border="L"+"R", align="C", fill=1)
     # pdf.set_fill_color(0,102,101)
@@ -763,7 +763,7 @@ def summary_download(request):
     pdf.set_fill_color(255,255,255)
     pdf.cell(10,20,"", ln=0, border="L"+"B", fill=1)
     pdf.cell(140,20,"Total", ln=0, border="B", align="L", fill=1)
-    pdf.cell(40,20,str(price), ln=1, border="B"+"R", align="L", fill=1)
+    pdf.cell(40,20,str(cal), ln=1, border="B"+"R", align="L", fill=1)
 
     pdf.multi_cell(0, 5, "",align="L")
     pdf.cell(200,6,"Terms & Conditions :-", ln=1, align="L")
@@ -773,6 +773,7 @@ def summary_download(request):
     pdf.cell(200,4,"3. No hidden costs further of any kind of expenses likeDesigning, transportation or installation,etc in case of turnkey.", ln=1, align="L")
     pdf.cell(200,4,"4. Offers/schemes are marked as*For Free*.", ln=1, align="L")
     pdf.cell(200,4,"5. Appliances and Services(Ceiling light, Civil work,Plumbing and Flooring) are not counted in above quotaion i.e. it will be quoted as per selection", ln=1, align="L")
+    # pdf.cell(200,4,"6. Ceiling light, Civil work,Plumbing and Flooring not included . ", ln=1, align="L")
     pdf.cell(200,4,"6. Payment Schedule as prescribed by area manager.", ln=1, align="L")
 
     pdf.add_page()
@@ -787,38 +788,38 @@ def summary_download(request):
     pdf.cell(130,15,"Particulars", ln=1, border="T"+"R", align="L", fill=1)
     pdf.cell(30,10,"1.", ln=0, border="L", align="C", fill=1)
     pdf.cell(80,10,"Shape", ln=0, border="", align="C", fill=1)
-    pdf.cell(80,10,request.session.get('layout'), ln=1, border="R", align="C", fill=1)
+    pdf.cell(80,10,context['shape'], ln=1, border="R", align="C", fill=1)
     # pdf.set_fill_color(0, 102, 101)
     pdf.cell(30,10,"2.", ln=0, border="L", align="C")
     pdf.cell(80,10,"Size", ln=0, border="", align="C")
-    pdf.cell(80,10,str(dimensions), ln=1, border="R", align="C")
+    pdf.cell(80,10,str(a+b+c), ln=1, border="R", align="C")
     pdf.set_fill_color(255,255,255)
     pdf.cell(30,10,"3.", ln=0, border="L", align="C", fill=1)
     pdf.cell(80,10,"Type", ln=0, border="", align="C", fill=1)
-    pdf.cell(80,10,request.session.get('package'), ln=1, border="R", align="C", fill=1)
+    pdf.cell(80,10,context['type'], ln=1, border="R", align="C", fill=1)
     # pdf.set_fill_color(0, 102, 101)
     pdf.cell(30,10,"4.", ln=0, border="L", align="C")
     pdf.cell(80,10,"Material", ln=0, border="", align="C")
-    pdf.cell(80,10,request.session.get('material'), ln=1, border="R", align="C")
+    pdf.cell(80,10,context['material'], ln=1, border="R", align="C")
     pdf.set_fill_color(255,255,255)
     pdf.cell(30,10,"5.", ln=0, border="L", align="C", fill=1)
     pdf.cell(80,10,"Countertop", ln=0, border="", align="C", fill=1)
-    pdf.cell(80,10,request.session.get('countertop'), ln=1, border="R", align="C", fill=1)
+    pdf.cell(80,10,context['countertop'], ln=1, border="R", align="C", fill=1)
     # pdf.set_fill_color(0, 102, 101)
     pdf.cell(30,10,"6.", ln=0, border="L", align="C")
     pdf.cell(80,10,"Loft", ln=0, border="", align="C")
-    pdf.cell(80,10,request.session.get('loft'), ln=1, border="R", align="C")
+    pdf.cell(80,10,context['loft'], ln=1, border="R", align="C")
     pdf.set_fill_color(255,255,255)
     pdf.cell(30,10,"7.", ln=0, border="L", align="C", fill=1)
     pdf.cell(80,10,"Finish", ln=0, border="", align="C", fill=1)
-    pdf.cell(80,10,request.session.get('finish'), ln=1, border="R", align="C", fill=1)
+    pdf.cell(80,10,context['finish'], ln=1, border="R", align="C", fill=1)
     # pdf.set_fill_color(0, 102, 101)
     pdf.cell(30,10,"8.", ln=0, border="L", align="C")
     pdf.cell(80,10,"Accessories", ln=0, border="", align="C")
-    pdf.cell(80,10,request.session.get('accessories'), ln=1, border="R", align="C")
+    pdf.cell(80,10,context['accessories'], ln=1, border="R", align="C")
     pdf.set_fill_color(255,255,255)
     pdf.cell(20,20,"Total", ln=0, border="L"+"B", align="R", fill=1)
-    pdf.cell(135,20,str(price), ln=0, border="B", align="R", fill=1)
+    pdf.cell(135,20, str(cal), ln=0, border="B", align="R", fill=1)
     pdf.cell(35,20,"", ln=1, border="B"+"R", align="C", fill=1)
 
     pdf.set_font("Arial", size=15)
@@ -831,7 +832,7 @@ def summary_download(request):
     pdf.cell(35,15,"Amount", ln=0, border="T", align="L", fill=1)
     pdf.cell(50,15,"Mode of Payment", ln=1, border="T"+"R", align="L", fill=1)
     pdf.multi_cell(190,10,"   1.", border="L"+"R", fill=1)
-    # pdf.set_fill_color(0, 102, 101)
+    pdf.set_fill_color(0, 102, 101)
     pdf.multi_cell(190,10,"   2.", border="L"+"R")
     pdf.set_fill_color(255,255,255)
     pdf.multi_cell(190,10,"   3.", border="L"+"R", fill=1)
@@ -850,11 +851,41 @@ def summary_download(request):
     # Rows
     pdf.set_text_color(128, 128, 128)
     pdf.cell(200,10,"www.kitchendotcom", ln=0, align="C")
-
-# request.session.session_key
-    file_name = str(request.session.get('name'))+".pdf"
-    pdf.output(name=file_name)
-    file = open(file_name,'rb')
-    os.remove(file_name)
+    file_name = "media/pdf/" + str(request.session.session_key)+".pdf"
+    pdf.output(name = file_name)
     
+    # os.remove(file_name)
+    # Email api
+    template = render_to_string('email_template.html',{'name':request.session.get('name')})
+    email = EmailMessage(
+        'Modular Kitchen Estimate',
+        template,
+        settings.EMAIL_HOST_USER,
+        [request.session.get('email')]
+        )
+    # name = request.session.get('name') + '_KichenEstimate.pdf'
+    email.attach_file(file_name)
+    email.fail_silently = True
+    email.send()
+
+    return render(request, 'kitchen_summary_buildpkg.html', {'context': context})
+
+def summary_download(request):
+
+    file_name = "media/pdf/" + str(request.session.session_key)+".pdf"
+    file = open(file_name,'rb')
+
     return FileResponse(file)
+
+# def email_api(request):
+#     template = render_to_string("/email_template.html" ,{'name':request.session.get('name')})
+#     email = EmailMessage(
+    #     'Thanks for visiting Kitchendotcom',
+    #     template,
+    #     settings.EMAIL_HOST_USER,
+    #     [request.session.get('email')]
+    #     )
+    # pdf_name = str(request.session.session_key)+".pdf"
+    # email.attach_file(pdf_name)
+    # email.fail_silently = False
+    # return email.send()

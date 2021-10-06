@@ -148,3 +148,11 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # Django-Jet for admin panel
 # JET_PROJECT = 'kdotcom'
 # JET_TOKEN = 'bd2217c5-2670-493b-94b2-22c700208410'
+
+# SMTP Configurations
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'info@kitchendotcom.in'
+EMAIL_HOST_PASSWORD = ''
