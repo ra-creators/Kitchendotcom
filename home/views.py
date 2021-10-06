@@ -523,13 +523,13 @@ def kitchen_summary(request):
     pdf.cell(40,10,"Plan Deisgning", ln=0, border="", align="L", fill=1)
     pdf.cell(40,10,str(3*pdf_variable), ln=0, border="", align="L", fill=1)
     pdf.cell(40,10,str(a+b+c), ln=0, border="", align="L", fill=1)
-    pdf.cell(40,10,str((a+b+c) * 3 * pdf_variable), ln=1, border="R", align="L", fill=1)
+    pdf.cell(40,10,str(round((a+b+c) * 3 * pdf_variable, 2)), ln=1, border="R", align="L", fill=1)
     # pdf.set_fill_color(0,102,101)
     pdf.cell(30,10,"2.", ln=0, border="L", align="C")
     pdf.cell(40,10,"Loft", ln=0, border="", align="L")
     pdf.cell(40,10,str(l * pdf_variable), ln=0, border="", align="L")
     pdf.cell(40,10,str(a+b+c), ln=0, border="", align="L")
-    pdf.cell(40,10,str(l * pdf_variable * (a+b+c)), ln=1, border="R", align="L")
+    pdf.cell(40,10,str(round((l * pdf_variable * (a+b+c)), 2)), ln=1, border="R", align="L")
     pdf.set_fill_color(255,255,255)
     pdf.cell(190,10,"", ln=1, border="L"+"R", align="C", fill=1)
     # pdf.set_fill_color(0,102,101)
@@ -734,7 +734,7 @@ def kitchen_summary_buildpkg(request):
     pdf.cell(40,10," Address : ", ln=0, border="L", align="L",fill=1)
     pdf.cell(150,10,"D65/245 Lahartara , Varanasi", ln=1, border="R", align="L", fill=1)
     pdf.cell(40,10," Date : ", ln=0, border="L"+"B", align="L")
-    pdf.cell(150,10,date, ln=1, border="B"+"R", align="L")
+    pdf.cell(150,10,str(date), ln=1, border="B"+"R", align="L")
 
     pdf.set_font("Arial", size=15)
     pdf.cell(190,20,"Quotation", ln=1, align="C")
@@ -749,13 +749,13 @@ def kitchen_summary_buildpkg(request):
     pdf.cell(40,10,"Plan Deisgning", ln=0, border="", align="L", fill=1)
     pdf.cell(40,10,str(3*pdf_variable), ln=0, border="", align="L", fill=1)
     pdf.cell(40,10,str(a+b+c), ln=0, border="", align="L", fill=1)
-    pdf.cell(40,10,str((a+b+c)*(3*pdf_variable)), ln=1, border="R", align="L", fill=1)
+    pdf.cell(40,10,str(round((a+b+c)*(3*pdf_variable), 2)), ln=1, border="R", align="L", fill=1)
     # pdf.set_fill_color(0,102,101)
     pdf.cell(30,10,"2.", ln=0, border="L", align="C")
     pdf.cell(40,10,"Loft", ln=0, border="", align="L")
     pdf.cell(40,10,str(l*pdf_variable), ln=0, border="", align="L")
     pdf.cell(40,10,str(a+b+c), ln=0, border="", align="L")
-    pdf.cell(40,10,str((a+b+c)*(l*pdf_variable)), ln=1, border="R", align="L")
+    pdf.cell(40,10,str(round((a+b+c)*(l*pdf_variable), 2)), ln=1, border="R", align="L")
     pdf.set_fill_color(255,255,255)
     pdf.cell(190,10,"", ln=1, border="L"+"R", align="C", fill=1)
     # pdf.set_fill_color(0,102,101)
@@ -876,16 +876,3 @@ def summary_download(request):
     file = open(file_name,'rb')
 
     return FileResponse(file)
-
-# def email_api(request):
-#     template = render_to_string("/email_template.html" ,{'name':request.session.get('name')})
-#     email = EmailMessage(
-    #     'Thanks for visiting Kitchendotcom',
-    #     template,
-    #     settings.EMAIL_HOST_USER,
-    #     [request.session.get('email')]
-    #     )
-    # pdf_name = str(request.session.session_key)+".pdf"
-    # email.attach_file(pdf_name)
-    # email.fail_silently = False
-    # return email.send()
