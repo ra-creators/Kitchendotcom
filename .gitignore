@@ -1,5 +1,4 @@
 Kitchendotcomenv
-
-**/Kitchendotcomenv
+**/__pycache__/**
 
 **/*.css.map
