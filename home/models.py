@@ -12,8 +12,9 @@ class c_details(models.Model):
         return self.name
 
 class kitchen_details(models.Model):
-
     Name = models.CharField(max_length=122, default = "NA")
+    Phone = models.CharField(max_length=12, default="NA")
+    Email = models.CharField(max_length=122, default="NA")
     Shape = models.CharField(max_length=12, default="NA")
     Size = models.CharField(max_length=30, null=True, default="NA")
     Type = models.CharField(max_length=30, default="NA")
@@ -55,7 +56,9 @@ class Constant(models.Model):
         return "Rates"
 
 class City1(models.Model):
-    Name = models.CharField(max_length=122, default = "NA")
+    # kitchen = models.OneToOneField(kitchen_details,on_delete=models.CASCADE, blank=True, null=True)
+    Name = models.OneToOneField(kitchen_details,on_delete=models.CASCADE, blank=True, null=True)
+    # Email = models.CharField(max_length=122, default="NA")
     Shape = models.CharField(max_length=12, default="NA")
     Size = models.CharField(max_length=30, null=True, default="NA")
     Type = models.CharField(max_length=30, default="NA")
@@ -70,13 +73,26 @@ class City1(models.Model):
     Price = models.CharField(max_length=12, default="NA")
     Location = models.CharField(max_length=12, default="NA")
     date = models.DateField(default=1111-11-11)
+
+    # def save(self, *args, **kwargs):
+    #     super().save(*args, **kwargs)
+    #     if not self.kitchen:
+    #         self.kitchen = kitchen_details.objects.create()
+    #         super().save(*args, **kwargs)
+
+    # def delete(self, *args, **kwargs):
+    #     super().delete(*args, **kwargs)
+    #     if self.kitchen:
+    #         self.kitchen.delete()
 
     def __str__(self):
         return self.Name
 
 
 class City2(models.Model):
-    Name = models.CharField(max_length=122, default = "NA")
+    # kitchen = models.OneToOneField(kitchen_details,on_delete=models.CASCADE, blank=True, null=True)
+    Name = models.OneToOneField(kitchen_details,on_delete=models.CASCADE, blank=True, null=True)
+    # Email = models.CharField(max_length=122, default="NA")
     Shape = models.CharField(max_length=12, default="NA")
     Size = models.CharField(max_length=30, null=True, default="NA")
     Type = models.CharField(max_length=30, default="NA")
@@ -91,13 +107,26 @@ class City2(models.Model):
     Price = models.CharField(max_length=12, default="NA")
     Location = models.CharField(max_length=12, default="NA")
     date = models.DateField(default=1111-11-11)
+
+    # def save(self, *args, **kwargs):
+    #     super().save(*args, **kwargs)
+    #     if not self.kitchen:
+    #         self.kitchen = kitchen_details.objects.create()
+    #         super().save(*args, **kwargs)
+
+    # def delete(self, *args, **kwargs):
+    #     super().delete(*args, **kwargs)
+    #     if self.kitchen:
+    #         self.kitchen.delete()
 
     def __str__(self):
         return self.Name
 
 
 class City3(models.Model):
-    Name = models.CharField(max_length=122, default = "NA")
+    # kitchen = models.OneToOneField(kitchen_details,on_delete=models.CASCADE, blank=True, null=True)
+    Name = models.OneToOneField(kitchen_details,on_delete=models.CASCADE, blank=True, null=True)    
+    # Email = models.CharField(max_length=122, default="NA")
     Shape = models.CharField(max_length=12, default="NA")
     Size = models.CharField(max_length=30, null=True, default="NA")
     Type = models.CharField(max_length=30, default="NA")
@@ -112,13 +141,26 @@ class City3(models.Model):
     Price = models.CharField(max_length=12, default="NA")
     Location = models.CharField(max_length=12, default="NA")
     date = models.DateField(default=1111-11-11)
+
+    # def save(self, *args, **kwargs):
+    #     super().save(*args, **kwargs)
+    #     if not self.kitchen:
+    #         self.kitchen = kitchen_details.objects.create()
+    #         super().save(*args, **kwargs)
+
+    # def delete(self, *args, **kwargs):
+    #     super().delete(*args, **kwargs)
+    #     if self.kitchen:
+    #         self.kitchen.delete()
 
     def __str__(self):
         return self.Name
 
 
 class City4(models.Model):
-    Name = models.CharField(max_length=122, default = "NA")
+    # kitchen = models.OneToOneField(kitchen_details,on_delete=models.CASCADE, blank=True, null=True)
+    Name = models.OneToOneField(kitchen_details,on_delete=models.CASCADE, blank=True, null=True)
+    # Email = models.CharField(max_length=122, default="NA")
     Shape = models.CharField(max_length=12, default="NA")
     Size = models.CharField(max_length=30, null=True, default="NA")
     Type = models.CharField(max_length=30, default="NA")
@@ -133,13 +175,26 @@ class City4(models.Model):
     Price = models.CharField(max_length=12, default="NA")
     Location = models.CharField(max_length=12, default="NA")
     date = models.DateField(default=1111-11-11)
+
+    # def save(self, *args, **kwargs):
+    #     super().save(*args, **kwargs)
+    #     if not self.kitchen:
+    #         self.kitchen = kitchen_details.objects.create()
+    #         super().save(*args, **kwargs)
+
+    # def delete(self, *args, **kwargs):
+    #     super().delete(*args, **kwargs)
+    #     if self.kitchen:
+    #         self.kitchen.delete()
 
     def __str__(self):
         return self.Name
 
 
 class City5(models.Model):
-    Name = models.CharField(max_length=122, default = "NA")
+    # kitchen = models.OneToOneField(kitchen_details,on_delete=models.CASCADE, blank=True, null=True)
+    Name = models.OneToOneField(kitchen_details,on_delete=models.CASCADE, blank=True, null=True)
+    # Email = models.CharField(max_length=122, default="NA")
     Shape = models.CharField(max_length=12, default="NA")
     Size = models.CharField(max_length=30, null=True, default="NA")
     Type = models.CharField(max_length=30, default="NA")
@@ -154,13 +209,26 @@ class City5(models.Model):
     Price = models.CharField(max_length=12, default="NA")
     Location = models.CharField(max_length=12, default="NA")
     date = models.DateField(default=1111-11-11)
+
+    # def save(self, *args, **kwargs):
+    #     super().save(*args, **kwargs)
+    #     if not self.kitchen:
+    #         self.kitchen = kitchen_details.objects.create()
+    #         super().save(*args, **kwargs)
+
+    # def delete(self, *args, **kwargs):
+    #     super().delete(*args, **kwargs)
+    #     if self.kitchen:
+    #         self.kitchen.delete()
 
     def __str__(self):
         return self.Name
 
 
 class City6(models.Model):
-    Name = models.CharField(max_length=122, default = "NA")
+    # kitchen = models.OneToOneField(kitchen_details,on_delete=models.CASCADE, blank=True, null=True)
+    Name = models.OneToOneField(kitchen_details,on_delete=models.CASCADE, blank=True, null=True)
+    # Email = models.CharField(max_length=122, default="NA")
     Shape = models.CharField(max_length=12, default="NA")
     Size = models.CharField(max_length=30, null=True, default="NA")
     Type = models.CharField(max_length=30, default="NA")
@@ -175,13 +243,26 @@ class City6(models.Model):
     Price = models.CharField(max_length=12, default="NA")
     Location = models.CharField(max_length=12, default="NA")
     date = models.DateField(default=1111-11-11)
+
+    # def save(self, *args, **kwargs):
+    #     super().save(*args, **kwargs)
+    #     if not self.kitchen:
+    #         self.kitchen = kitchen_details.objects.create()
+    #         super().save(*args, **kwargs)
+
+    # def delete(self, *args, **kwargs):
+    #     super().delete(*args, **kwargs)
+    #     if self.kitchen:
+    #         self.kitchen.delete()
 
     def __str__(self):
         return self.Name
 
 
 class City7(models.Model):
-    Name = models.CharField(max_length=122, default = "NA")
+    # kitchen = models.OneToOneField(kitchen_details,on_delete=models.CASCADE, blank=True, null=True)
+    Name = models.OneToOneField(kitchen_details,on_delete=models.CASCADE, blank=True, null=True)
+    # Email = models.CharField(max_length=122, default="NA")
     Shape = models.CharField(max_length=12, default="NA")
     Size = models.CharField(max_length=30, null=True, default="NA")
     Type = models.CharField(max_length=30, default="NA")
@@ -196,13 +277,26 @@ class City7(models.Model):
     Price = models.CharField(max_length=12, default="NA")
     Location = models.CharField(max_length=12, default="NA")
     date = models.DateField(default=1111-11-11)
+
+    # def save(self, *args, **kwargs):
+    #     super().save(*args, **kwargs)
+    #     if not self.kitchen:
+    #         self.kitchen = kitchen_details.objects.create()
+    #         super().save(*args, **kwargs)
+
+    # def delete(self, *args, **kwargs):
+    #     super().delete(*args, **kwargs)
+    #     if self.kitchen:
+    #         self.kitchen.delete()
 
     def __str__(self):
         return self.Name
 
 
 class City8(models.Model):
-    Name = models.CharField(max_length=122, default = "NA")
+    # kitchen = models.OneToOneField(kitchen_details,on_delete=models.CASCADE, blank=True, null=True)
+    Name = models.OneToOneField(kitchen_details,on_delete=models.CASCADE, blank=True, null=True)
+    # Email = models.CharField(max_length=122, default="NA")
     Shape = models.CharField(max_length=12, default="NA")
     Size = models.CharField(max_length=30, null=True, default="NA")
     Type = models.CharField(max_length=30, default="NA")
@@ -217,13 +311,26 @@ class City8(models.Model):
     Price = models.CharField(max_length=12, default="NA")
     Location = models.CharField(max_length=12, default="NA")
     date = models.DateField(default=1111-11-11)
+
+    # def save(self, *args, **kwargs):
+    #     super().save(*args, **kwargs)
+    #     if not self.kitchen:
+    #         self.kitchen = kitchen_details.objects.create()
+    #         super().save(*args, **kwargs)
+
+    # def delete(self, *args, **kwargs):
+    #     super().delete(*args, **kwargs)
+    #     if self.kitchen:
+    #         self.kitchen.delete()
 
     def __str__(self):
         return self.Name
 
 
 class City9(models.Model):
-    Name = models.CharField(max_length=122, default = "NA")
+    # kitchen = models.OneToOneField(kitchen_details,on_delete=models.CASCADE, blank=True, null=True)
+    Name = models.OneToOneField(kitchen_details,on_delete=models.CASCADE, blank=True, null=True)
+    # Email = models.CharField(max_length=122, default="NA")
     Shape = models.CharField(max_length=12, default="NA")
     Size = models.CharField(max_length=30, null=True, default="NA")
     Type = models.CharField(max_length=30, default="NA")
@@ -238,13 +345,26 @@ class City9(models.Model):
     Price = models.CharField(max_length=12, default="NA")
     Location = models.CharField(max_length=12, default="NA")
     date = models.DateField(default=1111-11-11)
+
+    # def save(self, *args, **kwargs):
+    #     super().save(*args, **kwargs)
+    #     if not self.kitchen:
+    #         self.kitchen = kitchen_details.objects.create()
+    #         super().save(*args, **kwargs)
+
+    # def delete(self, *args, **kwargs):
+    #     super().delete(*args, **kwargs)
+    #     if self.kitchen:
+    #         self.kitchen.delete()
 
     def __str__(self):
         return self.Name
 
 
 class City10(models.Model):
-    Name = models.CharField(max_length=122, default = "NA")
+    # kitchen = models.OneToOneField(kitchen_details,on_delete=models.CASCADE, blank=True, null=True)
+    Name = models.OneToOneField(kitchen_details,on_delete=models.CASCADE, blank=True, null=True)
+    # Email = models.CharField(max_length=122, default="NA")
     Shape = models.CharField(max_length=12, default="NA")
     Size = models.CharField(max_length=30, null=True, default="NA")
     Type = models.CharField(max_length=30, default="NA")
@@ -259,6 +379,17 @@ class City10(models.Model):
     Price = models.CharField(max_length=12, default="NA")
     Location = models.CharField(max_length=12, default="NA")
     date = models.DateField(default=1111-11-11)
+
+    # def save(self, *args, **kwargs):
+    #     super().save(*args, **kwargs)
+    #     if not self.kitchen:
+    #         self.kitchen = kitchen_details.objects.create()
+    #         super().save(*args, **kwargs)
+
+    # def delete(self, *args, **kwargs):
+    #     super().delete(*args, **kwargs)
+    #     if self.kitchen:
+    #         self.kitchen.delete()
 
     def __str__(self):
         return self.Name

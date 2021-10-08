@@ -1,5 +1,5 @@
 from django.contrib import admin
-from home.models import c_details,kitchen_details, Constant, City1, City2, City3, City4, City5, City6, City7, City8, City9, City10
+from home.models import c_details, kitchen_details, Constant, City1, City2, City3, City4, City5, City6, City7, City8, City9, City10
 
 # Displaying Models
 # class Kd_Admin(admin.ModelAdmin):

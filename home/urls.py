@@ -55,5 +55,4 @@ urlpatterns = [
     path("summary", views.kitchen_summary, name='kitchen_summary'),
     path("summary_download", views.summary_download, name='summary_download'),
     path("summary/buildpkg", views.kitchen_summary_buildpkg, name='kitchen_summary_buildpkg')
-    
 ]
