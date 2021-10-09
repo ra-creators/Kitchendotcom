@@ -14,5 +14,9 @@
             "html",
             "django-html"
         ]
-     },
+    },
+    "python.linting.flake8Enabled": true,
+    "python.linting.enabled": true,
+    "editor.formatOnSave": true,
+    "python.pythonPath": "Kitchendotcomenv/bin/python",
 }

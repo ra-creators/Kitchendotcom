@@ -1,6 +1,10 @@
 from django.db import models
-
+from django.db.models.deletion import CASCADE
+from uuid import uuid4
+from datetime import datetime
 # Create your models here.
+
+
 class c_details(models.Model):
     name = models.CharField(max_length=122, default="NA")
     phone = models.CharField(max_length=12, default="NA")
@@ -11,9 +15,10 @@ class c_details(models.Model):
     def __str__(self):
         return self.name
 
+
 class kitchen_details(models.Model):
 
-    Name = models.CharField(max_length=122, default = "NA")
+    Name = models.CharField(max_length=122, default="NA")
     Shape = models.CharField(max_length=12, default="NA")
     Size = models.CharField(max_length=30, null=True, default="NA")
     Type = models.CharField(max_length=30, default="NA")
@@ -23,17 +28,19 @@ class kitchen_details(models.Model):
     Finish = models.CharField(max_length=12, default="NA")
     Accessories = models.CharField(max_length=12, default="NA")
     Services = models.TextField(max_length=132, default="NA")
-    Appliances = models.TextField(max_length=32, default="NA")
+    Appliances = models.TextField(max_length=132, default="NA")
     # customer = models.ForeignKey(c_details, blank=True, null=True, on_delete=models.CASCADE )
     Price = models.CharField(max_length=12, default="NA")
     Location = models.CharField(max_length=12, default="NA")
     date = models.DateField(default=1111-11-11)
     # Summary_Pdf = models.FileField(upload_to = 'pdf/',  default="/Summary.pdf")
-    
+
     def __str__(self):
         return self.Name
 
 # Model after adding sessions
+
+
 class Constant(models.Model):
     Essentials = models.CharField(max_length=12, default="NA")
     Premium = models.CharField(max_length=12, default="NA")
@@ -54,8 +61,9 @@ class Constant(models.Model):
     def __str__(self):
         return "Rates"
 
+
 class City1(models.Model):
-    Name = models.CharField(max_length=122, default = "NA")
+    Name = models.CharField(max_length=122, default="NA")
     Shape = models.CharField(max_length=12, default="NA")
     Size = models.CharField(max_length=30, null=True, default="NA")
     Type = models.CharField(max_length=30, default="NA")
@@ -76,7 +84,7 @@ class City1(models.Model):
 
 
 class City2(models.Model):
-    Name = models.CharField(max_length=122, default = "NA")
+    Name = models.CharField(max_length=122, default="NA")
     Shape = models.CharField(max_length=12, default="NA")
     Size = models.CharField(max_length=30, null=True, default="NA")
     Type = models.CharField(max_length=30, default="NA")
@@ -97,7 +105,7 @@ class City2(models.Model):
 
 
 class City3(models.Model):
-    Name = models.CharField(max_length=122, default = "NA")
+    Name = models.CharField(max_length=122, default="NA")
     Shape = models.CharField(max_length=12, default="NA")
     Size = models.CharField(max_length=30, null=True, default="NA")
     Type = models.CharField(max_length=30, default="NA")
@@ -118,7 +126,7 @@ class City3(models.Model):
 
 
 class City4(models.Model):
-    Name = models.CharField(max_length=122, default = "NA")
+    Name = models.CharField(max_length=122, default="NA")
     Shape = models.CharField(max_length=12, default="NA")
     Size = models.CharField(max_length=30, null=True, default="NA")
     Type = models.CharField(max_length=30, default="NA")
@@ -139,7 +147,7 @@ class City4(models.Model):
 
 
 class City5(models.Model):
-    Name = models.CharField(max_length=122, default = "NA")
+    Name = models.CharField(max_length=122, default="NA")
     Shape = models.CharField(max_length=12, default="NA")
     Size = models.CharField(max_length=30, null=True, default="NA")
     Type = models.CharField(max_length=30, default="NA")
@@ -160,7 +168,7 @@ class City5(models.Model):
 
 
 class City6(models.Model):
-    Name = models.CharField(max_length=122, default = "NA")
+    Name = models.CharField(max_length=122, default="NA")
     Shape = models.CharField(max_length=12, default="NA")
     Size = models.CharField(max_length=30, null=True, default="NA")
     Type = models.CharField(max_length=30, default="NA")
@@ -181,7 +189,7 @@ class City6(models.Model):
 
 
 class City7(models.Model):
-    Name = models.CharField(max_length=122, default = "NA")
+    Name = models.CharField(max_length=122, default="NA")
     Shape = models.CharField(max_length=12, default="NA")
     Size = models.CharField(max_length=30, null=True, default="NA")
     Type = models.CharField(max_length=30, default="NA")
@@ -202,7 +210,7 @@ class City7(models.Model):
 
 
 class City8(models.Model):
-    Name = models.CharField(max_length=122, default = "NA")
+    Name = models.CharField(max_length=122, default="NA")
     Shape = models.CharField(max_length=12, default="NA")
     Size = models.CharField(max_length=30, null=True, default="NA")
     Type = models.CharField(max_length=30, default="NA")
@@ -223,7 +231,7 @@ class City8(models.Model):
 
 
 class City9(models.Model):
-    Name = models.CharField(max_length=122, default = "NA")
+    Name = models.CharField(max_length=122, default="NA")
     Shape = models.CharField(max_length=12, default="NA")
     Size = models.CharField(max_length=30, null=True, default="NA")
     Type = models.CharField(max_length=30, default="NA")
@@ -244,7 +252,7 @@ class City9(models.Model):
 
 
 class City10(models.Model):
-    Name = models.CharField(max_length=122, default = "NA")
+    Name = models.CharField(max_length=122, default="NA")
     Shape = models.CharField(max_length=12, default="NA")
     Size = models.CharField(max_length=30, null=True, default="NA")
     Type = models.CharField(max_length=30, default="NA")
@@ -262,3 +270,12 @@ class City10(models.Model):
 
     def __str__(self):
         return self.Name
+
+
+class TempLink(models.Model):
+    kitchen_details = models.OneToOneField(kitchen_details, on_delete=CASCADE)
+    link = models.UUIDField(default=uuid4, unique=True,)
+    date = models.DateField(auto_now=True)
+
+    def __str__(self):
+        return self.kitchen_details.Name
