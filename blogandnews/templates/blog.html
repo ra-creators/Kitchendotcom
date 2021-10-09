@@ -14,8 +14,8 @@
   <!-- fontawesome icons -->
   <script src="https://kit.fontawesome.com/fecc50ad8e.js" crossorigin="anonymous"></script>
   <!-- custom css -->
-  <link rel="stylesheet" href="{%static " common/css/style.css"%}">
-  <link rel="stylesheet" href="{%static " blogandnews/css/blogandnews.css"%}">
+  <link rel="stylesheet" href="{%static "common/css/style.css"%}">
+  <link rel="stylesheet" href="{%static "blogandnews/css/blogandnews.css"%}">
 </head>
 
 <body>
@@ -43,25 +43,47 @@
       </div>
     </div>
   </div>
-<!-- Comments section -->
-  <div class="Container">
-    <h2>Comment</h2>
-    <form action="blog/blogComment" method="post">
-    {% csrf_token %}
-    <input type="text" name="comment" placeholder="enter your comment">
-    <input type="hidden" name="blogSno" value="{{blog.id}}">
-    <input type="submit" value="Submit">
-    </form>
-    <div class="row my-3">
-        <div class="col-md-2 bg-success"> image here</div>
-        <div class="col-md-10 bg-primary"> <b> RohanDas </b> says This is best blog</div>
-    </div>
-    <div class="row my-3">
-        <div class="col-md-2 bg-success"> image here</div>
-        <div class="col-md-10 bg-primary"> <b> RohanDas </b> says This is best blog</div>
-    </div>
+  <!-- Comments section -->
+  <div class="container mt-5">
+    <div class="row d-flex justify-content-center">
+      <div class="col-md-8">
 
+        <div class="headings d-flex justify-content-between align-items-center mb-3">
+          <h5>Comments</h5>
+        </div>
+
+        {% for comment in comments %}
+        <div class="card p-3 my-2 comment">
+          <div class="d-flex justify-content-between align-items-center">
+            <span>
+              <small class="font-weight-bold text-primary">{{comment.mail}}</small>
+              <small class="font-weight-bold">{{comment.comment}}</small></span>
+          </div> <small class="text-muted">{{comment.timestamp | timesince}} ago</small>
+        </div>
+        {% endfor %}
+
+        <form action="{% url 'comments' blog.id %}" method="post">
+          {% csrf_token %}
+          <div class="row">
+            <div class="col-auto my-1">
+              <input type="text" class="form-control" name="mail" placeholder="enter your mail">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-auto my-1">
+              <textarea type="text" class="form-control" name="comment" placeholder="enter your comment"></textarea>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-auto my-1">
+              <input type="submit" class="btn btn-primary styled-btn" value="Submit">
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
   </div>
+
   {% include 'includes/footer.html' %}
 
 

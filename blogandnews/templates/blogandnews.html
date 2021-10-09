@@ -31,7 +31,7 @@
       <img class="img-fluid" src="/media/{{blog.image}}" alt="{{blog.title}}">
     </div>
     <div class="col">
-      <h6 class="text-muted">{{blog.author | upper}} . 1 day ago</h6>
+      <h6 class="text-muted">{{blog.author | upper}} . {{blog.date | timesince}}</h6>
       <h2>
         {{blog.title}}
       </h2>
@@ -55,7 +55,7 @@
           <div class="blog card">
             <img class="card-img-top img-fluid" src="/media/{{blog.image}}" alt="{{blog.title}}">
             <div class="card-body">
-              <h6 class="card-subtitle mb-2 text-muted">{{blog.author | upper}} . 1 day ago</h6>
+              <h6 class="card-subtitle mb-2 text-muted">{{blog.author | upper}} . {{blog.date | timesince}}</h6>
               <h5 class="card-title">
                 {{blog.title}}
               </h5>
@@ -83,7 +83,7 @@
         <div class="col-8">
           <div class="d-flex justify-content-between">
             <h4 class="heading">{{news.heading}}</h4>
-            <p class="time text-muted">3 days ago</p>
+            <p class="time text-muted"> {{news.date | timesince}}</p>
           </div>
           <p class="content">{{news.content|truncatewords:30|safe }}</p>
           <div class="news-footer d-flex justify-content-between">
