@@ -9,7 +9,6 @@ import django.utils.timezone
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('home', '0035_auto_20211009_1246'),
         ('blogandnews', '0008_merge_0006_auto_20210930_1405_0007_auto_20211002_1810'),
     ]
 

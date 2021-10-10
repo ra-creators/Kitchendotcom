@@ -201,16 +201,19 @@ def select_package(request):  # fqname is not confirmed
             request.session['material'] = "MR Plywood"
             request.session['finish'] = "Laminate"
             request.session['accessories'] = "Wire Basket"
+            request.session['countertop'] = "no"
             return redirect('/summary')
         if package == "Premium":
             request.session['material'] = "HDHMR"
             request.session['finish'] = "PVC"
             request.session['accessories'] = "Tandem Basket"
+            request.session['countertop'] = "no"
             return redirect('/summary')
         if package == "Luxe":
             request.session['material'] = "HDHMR"
             request.session['finish'] = "Acrylic"
             request.session['accessories'] = "Tandem Basket"
+            request.session['countertop'] = "no"
             return redirect('/summary')
 
     # 1.template name is not confirmed
@@ -229,16 +232,19 @@ def select_package_essentials(request):
             request.session['material'] = "MR Plywood"
             request.session['finish'] = "Laminate"
             request.session['accessories'] = "Wire Basket"
+            request.session['countertop'] = "no"
             return redirect('/summary')
         if package == "Premium":
             request.session['material'] = "HDHMR"
             request.session['finish'] = "PVC"
             request.session['accessories'] = "Tandem Basket"
+            request.session['countertop'] = "no"
             return redirect('/summary')
         if package == "Luxe":
             request.session['material'] = "HDHMR"
             request.session['finish'] = "Acrylic"
             request.session['accessories'] = "Tandem Basket"
+            request.session['countertop'] = "no"
             return redirect('/summary')
 
     return render(request, 'select_package_essentials.html')
@@ -256,16 +262,19 @@ def select_package_luxe(request):
             request.session['material'] = "MR Plywood"
             request.session['finish'] = "Laminate"
             request.session['accessories'] = "Wire Basket"
+            request.session['countertop'] = "no"
             return redirect('/summary')
         if package == "Premium":
             request.session['material'] = "HDHMR"
             request.session['finish'] = "PVC"
             request.session['accessories'] = "Tandem Basket"
+            request.session['countertop'] = "no"
             return redirect('/summary')
         if package == "Luxe":
             request.session['material'] = "HDHMR"
             request.session['finish'] = "Acrylic"
             request.session['accessories'] = "Tandem Basket"
+            request.session['countertop'] = "no"
             return redirect('/summary')
 
     return render(request, 'select_package_luxe.html')
@@ -283,16 +292,19 @@ def select_package_premium(request):
             request.session['material'] = "MR Plywood"
             request.session['finish'] = "Laminate"
             request.session['accessories'] = "Wire Basket"
+            request.session['countertop'] = "no"
             return redirect('/summary')
         if package == "Premium":
             request.session['material'] = "HDHMR"
             request.session['finish'] = "PVC"
             request.session['accessories'] = "Tandem Basket"
+            request.session['countertop'] = "no"
             return redirect('/summary')
         if package == "Luxe":
             request.session['material'] = "HDHMR"
             request.session['finish'] = "Acrylic"
             request.session['accessories'] = "Tandem Basket"
+            request.session['countertop'] = "no"
             return redirect('/summary')
 
     return render(request, 'select_package_premium.html')
@@ -312,16 +324,19 @@ def select_package_buildpkg(request):
                 request.session['material'] = "MR Plywood"
                 request.session['finish'] = "Laminate"
                 request.session['accessories'] = "Wire Basket"
+                request.session['countertop'] = "no"
                 return redirect('/summary')
             if package == "Premium":
                 request.session['material'] = "HDHMR"
                 request.session['finish'] = "PVC"
                 request.session['accessories'] = "Tandem Basket"
+                request.session['countertop'] = "no"
                 return redirect('/summary')
             if package == "Luxe":
                 request.session['material'] = "HDHMR"
                 request.session['finish'] = "Acrylic"
                 request.session['accessories'] = "Tandem Basket"
+                request.session['countertop'] = "no"
                 return redirect('/summary')
 
     return render(request, 'select_package_buildpkg.html')
@@ -485,8 +500,10 @@ def kitchen_summary(request):
         'material': request.session.get('material'),
         'finish': request.session.get('finish'),
         'accessories': request.session.get('accessories'),
-        'location': request.session.get('location')
+        'location': request.session.get('location'),
     }
+
+    # context['countertop'] = False
 
     # Calculation part begins
     a = round(int(context['a_feet']) + (int(context['a_inch']) / 12), 2)
@@ -634,7 +651,7 @@ def kitchen_summary(request):
     pdf.set_fill_color(255, 255, 255)
     pdf.cell(30, 10, "5.", ln=0, border="L", align="C", fill=1)
     pdf.cell(80, 10, "Countertop", ln=0, border="", align="C", fill=1)
-    pdf.cell(80, 10, request.session.get('countertop'),
+    pdf.cell(80, 10, 'No',
              ln=1, border="R", align="C", fill=1)
     # pdf.set_fill_color(0, 102, 101)
     pdf.cell(30, 10, "6.", ln=0, border="L", align="C")
