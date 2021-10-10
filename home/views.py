@@ -1,15 +1,9 @@
 from home.forms import KitchenDetailsForm
 from django.http.response import HttpResponse, FileResponse
 from django.http import HttpResponseRedirect
-<<<<<<< HEAD
 from django.shortcuts import redirect, render, get_object_or_404
 # importing calculation model is removed
 from home.models import c_details, kitchen_details, Constant, City1, City2, City3, City4, City5, City6, City7, City8, City9, City10, TempLink
-=======
-from django.shortcuts import redirect, render
-# importing calculation model is removed
-from home.models import c_details, kitchen_details, Constant, City1, City2, City3, City4, City5, City6, City7, City8, City9, City10
->>>>>>> Crm
 from datetime import datetime
 from fpdf import FPDF
 from datetime import datetime
@@ -780,7 +774,7 @@ def kitchen_summary_buildpkg(request):
         # 'Jaunpur' : City10(Phone = details, Shape = context['shape'], Size = size, Loft = context['loft'], Type = context['type'], Accessories = context['accessories'], Material = context['material'], Finish = context['finish'],Price = cal, Location = context['location'], date = datetime.today())
     }
     city_obj = city[request.session.get('location')]
-    # city_obj.kitchen = details
+    city_obj.kitchen = details
     city_obj.save()
 
     context['size'] = size

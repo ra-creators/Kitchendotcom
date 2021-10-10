@@ -33,7 +33,7 @@ class kitchen_details(models.Model):
     # customer = models.ForeignKey(c_details, blank=True, null=True, on_delete=models.CASCADE )
     Price = models.CharField(max_length=12, default="NA")
     Location = models.CharField(max_length=12, default="NA")
-    date = models.DateField(default=1111-11-11)
+    date = models.DateField(auto_created=True)
     # Summary_Pdf = models.FileField(upload_to = 'pdf/',  default="/Summary.pdf")
 
     def __str__(self):
@@ -67,7 +67,7 @@ class City1(models.Model):
     kitchen = models.OneToOneField(
         kitchen_details, on_delete=models.CASCADE, blank=True, null=True)
     Location = models.CharField(max_length=12, default="NA")
-    date = models.DateField(default=1111-11-11)
+    date = models.DateField(auto_created=True)
 
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)
@@ -88,7 +88,7 @@ class City2(models.Model):
     kitchen = models.OneToOneField(
         kitchen_details, on_delete=models.CASCADE, blank=True, null=True)
     Location = models.CharField(max_length=12, default="NA")
-    date = models.DateField(default=1111-11-11)
+    date = models.DateField(auto_created=True)
 
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)
@@ -109,7 +109,7 @@ class City3(models.Model):
     kitchen = models.OneToOneField(
         kitchen_details, on_delete=models.CASCADE, blank=True, null=True)
     Location = models.CharField(max_length=12, default="NA")
-    date = models.DateField(default=1111-11-11)
+    date = models.DateField(auto_created=True)
 
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)
@@ -130,7 +130,7 @@ class City4(models.Model):
     kitchen = models.OneToOneField(
         kitchen_details, on_delete=models.CASCADE, blank=True, null=True)
     Location = models.CharField(max_length=12, default="NA")
-    date = models.DateField(default=1111-11-11)
+    date = models.DateField(auto_created=True)
 
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)
@@ -151,7 +151,7 @@ class City5(models.Model):
     kitchen = models.OneToOneField(
         kitchen_details, on_delete=models.CASCADE, blank=True, null=True)
     Location = models.CharField(max_length=12, default="NA")
-    date = models.DateField(default=1111-11-11)
+    date = models.DateField(auto_created=True)
 
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)
@@ -172,7 +172,7 @@ class City6(models.Model):
     kitchen = models.OneToOneField(
         kitchen_details, on_delete=models.CASCADE, blank=True, null=True)
     Location = models.CharField(max_length=12, default="NA")
-    date = models.DateField(default=1111-11-11)
+    date = models.DateField(auto_created=True)
 
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)
@@ -193,7 +193,7 @@ class City7(models.Model):
     kitchen = models.OneToOneField(
         kitchen_details, on_delete=models.CASCADE, blank=True, null=True)
     Location = models.CharField(max_length=12, default="NA")
-    date = models.DateField(default=1111-11-11)
+    date = models.DateField(auto_created=True)
 
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)
@@ -214,7 +214,7 @@ class City8(models.Model):
     kitchen = models.OneToOneField(
         kitchen_details, on_delete=models.CASCADE, blank=True, null=True)
     Location = models.CharField(max_length=12, default="NA")
-    date = models.DateField(default=1111-11-11)
+    date = models.DateField(auto_created=True)
 
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)
@@ -235,7 +235,7 @@ class City9(models.Model):
     kitchen = models.OneToOneField(
         kitchen_details, on_delete=models.CASCADE, blank=True, null=True)
     Location = models.CharField(max_length=12, default="NA")
-    date = models.DateField(default=1111-11-11)
+    date = models.DateField(auto_created=True)
 
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)
@@ -256,7 +256,7 @@ class City10(models.Model):
     kitchen = models.OneToOneField(
         kitchen_details, on_delete=models.CASCADE, blank=True, null=True)
     Location = models.CharField(max_length=12, default="NA")
-    date = models.DateField(default=1111-11-11)
+    date = models.DateField(auto_created=True)
 
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)
@@ -271,3 +271,12 @@ class City10(models.Model):
 
     def __str__(self):
         return self.kitchen.Name
+
+
+class TempLink(models.Model):
+    kitchen_details = models.OneToOneField(kitchen_details, on_delete=CASCADE)
+    link = models.UUIDField(default=uuid4, unique=True,)
+    date = models.DateField(auto_now=True)
+
+    def __str__(self):
+        return self.kitchen_details.Name

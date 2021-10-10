@@ -4,9 +4,7 @@ from datetime import date, datetime, timedelta
 from home.models import c_details, kitchen_details, Constant, City1, City2, City3, City4, City5, City6, City7, City8, City9, City10, TempLink
 from django.db import models
 from django.contrib import admin
-<< << << < HEAD
-== == == =
->>>>>> > Crm
+
 
 # Displaying Models
 # class Kd_Admin(admin.ModelAdmin):
@@ -42,6 +40,12 @@ def create_link(modeladmin, request, queryset):
         TempLink.objects.create(kitchen_details=query)
 
 
+@admin.action(description="Create temp links")
+def create_link_city(modeladmin, request, queryset):
+    for query in queryset:
+        TempLink.objects.create(kitchen_details=query.kitchen)
+
+
 @admin.register(kitchen_details)
 class kitchen_detailsAdmin(admin.ModelAdmin):
     list_display = ['Name', 'Location', 'Price', 'getTempLink',  'link_expiry']
@@ -68,24 +72,10 @@ class kitchen_detailsAdmin(admin.ModelAdmin):
         js = ("admin/copy-btn.js",)
 
 
-@admin.register(TempLink)
-class TempLinkAdmin(admin.ModelAdmin):
-    list_display = ['__str__', 'getTempLink', 'expiry_date']
-
-    def getTempLink(self, x):
-        return x.link
-
-    def expiry_date(self, x):
-        return (x.date + timedelta(days=2))
-
-    class Media:
-        js = ("admin/copy-btn.js",)
-# admin.site.register(City10)
-
-
+@admin.register(City10)
 class City10Admin(admin.ModelAdmin):
     list_display = ['Location', 'customer_name',
-                    'kitchen_shape', 'kitchen_size', 'price']
+                    'kitchen_shape', 'kitchen_size', 'price', 'getTempLink', 'link_expiry']
 
     def customer_name(self, x):
         cust_name = x.kitchen.Name
@@ -104,7 +94,36 @@ class City10Admin(admin.ModelAdmin):
     def price(self, x):
         return x.kitchen.Price
 
+    def getTempLink(self, x):
+        tempLinkObj = TempLink.objects.get(kitchen_details=x.kitchen)
+        return tempLinkObj.link
 
-@admin.register(City10)
-class ExtendedCity10Admin(City10Admin):
-    inlines = City10Admin.inlines
+    def link_expiry(self, x):
+        tempLinkObj = TempLink.objects.get(kitchen_details=x.kitchen)
+        if tempLinkObj.date:
+            date_diff = (datetime.now().date() - tempLinkObj.date)
+            if(date_diff.days > 2):
+                return 'expired'
+            else:
+                return (tempLinkObj.date + timedelta(days=2))
+        else:
+            return '-'
+
+    actions = [create_link_city]
+
+    class Media:
+        js = ("admin/copy-btn.js",)
+
+
+@admin.register(TempLink)
+class TempLinkAdmin(admin.ModelAdmin):
+    list_display = ['__str__', 'getTempLink', 'expiry_date']
+
+    def getTempLink(self, x):
+        return x.link
+
+    def expiry_date(self, x):
+        return (x.date + timedelta(days=2))
+
+    class Media:
+        js = ("admin/copy-btn.js",)
