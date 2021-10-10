@@ -118,37 +118,36 @@
         </div>
         {% comment %} bill to {% endcomment %}
         <div class="cell">
+          <div class="row g-0">
+            <p>Buyer (Bill to)</p>
+          </div>
+          <!-- name -->
+          <p class="fw-bold">
+            <label for="bill_name">Name : </label>
+            <input type="text" name="bill_name" id="bill_name">
+          </p>
+          <!-- address -->
           <p>
-            <div class="row g-0">
-              <p>Buyer (Bill to)</p>
+            <label for="bill_address">Address</label>
+            <textarea type="text" name="bill_address" id="bill_address"> </textarea>
+          </p>
+          <div class="row g-0">
+            <label for="bill_gst" class="col">GSTIN/UIN</label>
+            <div class="col">
+              <input type="text" name="bill_gst" id="bill_gst">
             </div>
-            <!-- name -->
-            <p class="fw-bold">
-              <label for="bill_name">Name : </label>
-              <input type="text" name="bill_name" id="bill_name">
-            </p>
-            <!-- address -->
-            <p>
-              <label for="bill_address">Address</label>
-              <textarea type="text" name="bill_address" id="bill_address"> </textarea>
-            </p>
-            <div class="row g-0">
-              <label for="bill_gst" class="col">GSTIN/UIN</label>
-              <div class="col">
-                <input type="text" name="bill_gst" id="bill_gst">
-              </div>
+          </div>
+          <div class="row g-0">
+            <label for="bill_state" class="col">State Name</label>
+            <div class="col"> <input type="text" name="bill_state" id="bill_state">
             </div>
-            <div class="row g-0">
-              <label for="bill_state" class="col">State Name</label>
-              <div class="col"> <input type="text" name="bill_state" id="bill_state">
-              </div>
+          </div>
+          <div class="row g-0">
+            <label for="bill_statecode" class="col">State Code :</label>
+            <div class="col">
+              <input type="text" name="bill_statecode" id="bill_statecode">
             </div>
-            <div class="row g-0">
-              <label for="bill_statecode" class="col">State Code :</label>
-              <div class="col">
-                <input type="text" name="bill_statecode" id="bill_statecode">
-              </div>
-            </div>
+          </div>
         </div>
       </div>
       <div class="col d-flex flex-column">
@@ -164,56 +163,56 @@
         </div>
         <div class="row g-0">
           <div class="col cell h-100">
-            <label for="delivery_note" >Delivery Note</label>
+            <label for="delivery_note">Delivery Note</label>
             <input type="text" name="delivery_note" id="delivery_note">
           </div>
           <div class="col cell h-100">
-            <label for="payment_mode" >Mode/Terms of Payment</label>
+            <label for="payment_mode">Mode/Terms of Payment</label>
             <input type="text" name="payment_mode" id="payment_mode">
           </div>
         </div>
         <div class="row g-0">
           <div class="col cell h-100">
-            <label for="ref_no" >Reference No. & Date.</label>
+            <label for="ref_no">Reference No. & Date.</label>
             <input type="text" name="ref_no" id="ref_no">
           </div>
           <div class="col cell h-100">
-            <label for="other_ref" >Other References</label>
+            <label for="other_ref">Other References</label>
             <input type="text" name="other_ref" id="other_ref">
           </div>
         </div>
         <div class="row g-0">
           <div class="col cell h-100">
-            <label for="buy_ord_no" >Buyer's order no</label>
+            <label for="buy_ord_no">Buyer's order no</label>
             <input type="text" name="buy_ord_no" id="buy_ord_no">
           </div>
           <div class="col cell h-100">
-            <label for="buy_dated" >Dated</label>
+            <label for="buy_dated">Dated</label>
             <input type="text" name="buy_dated" id="buy_dated">
           </div>
         </div>
         <div class="row g-0">
           <div class="col cell h-100">
-            <label for="dispatch_date" >Dispatch Doc No</label>
+            <label for="dispatch_date">Dispatch Doc No</label>
             <input type="text" name="dispatch_date" id="dispatch_date">
           </div>
           <div class="col cell h-100">
-            <label for="delivery_date" >Delivery Note Date</label>
+            <label for="delivery_date">Delivery Note Date</label>
             <input type="text" name="delivery_date" id="delivery_date">
           </div>
         </div>
         <div class="row g-0">
           <div class="col cell h-100">
-            <label for="dispatch_through" >Dispatched throug</label>
+            <label for="dispatch_through">Dispatched throug</label>
             <input type="text" name="dispatch_through" id="dispatch_through">
           </div>
           <div class="col cell h-100">
-            <label for="destination" >Destination</label>
+            <label for="destination">Destination</label>
             <input type="text" name="destination" id="destination">
           </div>
         </div>
         <div class="col cell h-100">
-          <label for="delivery_terms" >Terms of delivery</label>
+          <label for="delivery_terms">Terms of delivery</label>
           <textarea type="text" name="delivery_terms" id="delivery_terms"></textarea>
         </div>
       </div>
@@ -244,7 +243,7 @@
           <td></td>
           <td>
             <input type="text" placeholder="Amount" name="amount" id="amount">
-            
+
           </td>
         </tr>
         <tr>
@@ -319,7 +318,7 @@
         <div class="row g-0">
           <p>Remarks :</p>
           <p>
-            nvestment for Digital Marketing for the period 15 August 2021 to
+            Investment for Digital Marketing for the period 15 August 2021 to
             14 September 2021
           </p>
         </div>
