@@ -1,9 +1,15 @@
 from home.forms import KitchenDetailsForm
 from django.http.response import HttpResponse, FileResponse
 from django.http import HttpResponseRedirect
+<<<<<<< HEAD
 from django.shortcuts import redirect, render, get_object_or_404
 # importing calculation model is removed
 from home.models import c_details, kitchen_details, Constant, City1, City2, City3, City4, City5, City6, City7, City8, City9, City10, TempLink
+=======
+from django.shortcuts import redirect, render
+# importing calculation model is removed
+from home.models import c_details, kitchen_details, Constant, City1, City2, City3, City4, City5, City6, City7, City8, City9, City10
+>>>>>>> Crm
 from datetime import datetime
 from fpdf import FPDF
 from datetime import datetime
@@ -470,6 +476,8 @@ def kitchen_summary(request):
     # key names are as per summary page
     context = {
         'name': request.session.get('name'),
+        'phone': request.session.get('phone'),
+        'email': request.session.get('email'),
         'shape': request.session.get('layout'),
         'a_feet': request.session.get('a_feet'),
         'a_inch': request.session.get('a_inch'),
@@ -499,36 +507,34 @@ def kitchen_summary(request):
     size = str(round(a, 2)) + "ft x " + str(round(b, 2)) + \
         "ft x " + str(round(c, 2)) + "ft"
     # Saving data in main table
+    details = kitchen_details(Phone=context['phone'], Name=context['name'], Email=context['email'], Shape=context['shape'], Size=size, Loft=context['loft'], Type=context['type'],
+                              Accessories=context['accessories'], Material=context['material'], Finish=context['finish'], Price=cal, Location=context['location'], date=datetime.today())
+    details.save()
 
     # Saving data in specific location table
-
     city = {
-        'Varanasi': City1(Name=context['name'], Shape=context['shape'], Size=size, Loft=context['loft'], Type=context['type'], Accessories=context['accessories'], Material=context['material'], Finish=context['finish'], Price=cal, Location=context['location'], date=datetime.today()),
-        'Chandauli': City2(Name=context['name'], Shape=context['shape'], Size=size, Loft=context['loft'], Type=context['type'], Accessories=context['accessories'], Material=context['material'], Finish=context['finish'], Price=cal, Location=context['location'], date=datetime.today()),
-        'Mirzapur': City3(Name=context['name'], Shape=context['shape'], Size=size, Loft=context['loft'], Type=context['type'], Accessories=context['accessories'], Material=context['material'], Finish=context['finish'], Price=cal, Location=context['location'], date=datetime.today()),
-        'Sonbhadra': City4(Name=context['name'], Shape=context['shape'], Size=size, Loft=context['loft'], Type=context['type'], Accessories=context['accessories'], Material=context['material'], Finish=context['finish'], Price=cal, Location=context['location'], date=datetime.today()),
-        'Ayodhya': City5(Name=context['name'], Shape=context['shape'], Size=size, Loft=context['loft'], Type=context['type'], Accessories=context['accessories'], Material=context['material'], Finish=context['finish'], Price=cal, Location=context['location'], date=datetime.today()),
-        'Prayagraj': City6(Name=context['name'], Shape=context['shape'], Size=size, Loft=context['loft'], Type=context['type'], Accessories=context['accessories'], Material=context['material'], Finish=context['finish'], Price=cal, Location=context['location'], date=datetime.today()),
-        'Lucknow': City7(Name=context['name'], Shape=context['shape'], Size=size, Loft=context['loft'], Type=context['type'], Accessories=context['accessories'], Material=context['material'], Finish=context['finish'], Price=cal, Location=context['location'], date=datetime.today()),
-        'Bhadohi': City8(Name=context['name'], Shape=context['shape'], Size=size, Loft=context['loft'], Type=context['type'], Accessories=context['accessories'], Material=context['material'], Finish=context['finish'], Price=cal, Location=context['location'], date=datetime.today()),
-        'Gorakhpur': City9(Name=context['name'], Shape=context['shape'], Size=size, Loft=context['loft'], Type=context['type'], Accessories=context['accessories'], Material=context['material'], Finish=context['finish'], Price=cal, Location=context['location'], date=datetime.today()),
-        'Sonbhadra': City10(Name=context['name'], Shape=context['shape'], Size=size, Loft=context['loft'], Type=context['type'], Accessories=context['accessories'], Material=context['material'], Finish=context['finish'], Price=cal, Location=context['location'], date=datetime.today())
+        'Varanasi': City1(Location=context['location'], date=datetime.today()),
+        'Chandauli': City2(Location=context['location'], date=datetime.today()),
+        'Mirzapur': City3(Location=context['location'], date=datetime.today()),
+        'Sonbhadra': City4(Location=context['location'], date=datetime.today()),
+        'Ayodhya': City5(Location=context['location'], date=datetime.today()),
+        'Prayagraj': City6(Location=context['location'], date=datetime.today()),
+        'Lucknow': City7(Location=context['location'], date=datetime.today()),
+        'Bhadohi': City8(Location=context['location'], date=datetime.today()),
+        'Gorakhpur': City9(Location=context['location'], date=datetime.today()),
+        'Sonbhadra': City10(Location=context['location'], date=datetime.today()),
+        # 'Ghazipur' : City10(Phone = details, Shape = context['shape'], Size = size, Loft = context['loft'], Type = context['type'], Accessories = context['accessories'], Material = context['material'], Finish = context['finish'],Price = cal, Location = context['location'], date = datetime.today()),
+        # 'Azamgarh' :City10(Phone = details, Shape = context['shape'], Size = size, Loft = context['loft'], Type = context['type'], Accessories = context['accessories'], Material = context['material'], Finish = context['finish'],Price = cal, Location = context['location'], date = datetime.today()),
+        # 'Kanpur' : City10(Phone = details, Shape = context['shape'], Size = size, Loft = context['loft'], Type = context['type'], Accessories = context['accessories'], Material = context['material'], Finish = context['finish'],Price = cal, Location = context['location'], date = datetime.today()),
+        # 'Jaunpur' : City10(Phone = details, Shape = context['shape'], Size = size, Loft = context['loft'], Type = context['type'], Accessories = context['accessories'], Material = context['material'], Finish = context['finish'],Price = cal, Location = context['location'], date = datetime.today())
     }
     city_obj = city[request.session.get('location')]
+    city_obj.kitchen = details
     city_obj.save()
 
     context['size'] = size
     context['price'] = cal
     context['loft'] = request.session.get('loft') + ' feet loft'
-
-    # request.session['pdf_variable'] = pdf_variable
-    # request.session['dimensions'] = a+b+c
-    # request.session['price'] = cal
-
-    details = kitchen_details(Name=context['name'], Shape=context['shape'], Size=size, Loft=context['loft'], Type=context['type'], Accessories=context['accessories'], Material=context['material'], Finish=context['finish'], Price=cal, Location=context['location'], date=datetime.today(),
-                              )
-    details.save()
-
     date = datetime.now().date()
 
     pdf = FPDF()
@@ -694,15 +700,15 @@ def kitchen_summary(request):
     # os.remove(file_name)
     template = render_to_string('email_template.html', {
                                 'name': request.session.get('name')})
-    # email = EmailMessage(
-    #     'Modular Kitchen Estimate',
-    #     template,
-    #     settings.EMAIL_HOST_USER,
-    #     [request.session.get('email')]
-    # )
-    # # name = request.session.get('name') + '_KichenEstimate.pdf'
-    # email.attach_file(file_name)
-    # email.fail_silently = True
+    email = EmailMessage(
+        'Modular Kitchen Estimate',
+        template,
+        settings.EMAIL_HOST_USER,
+        [request.session.get('email')]
+    )
+    # name = request.session.get('name') + '_KichenEstimate.pdf'
+    email.attach_file(file_name)
+    email.fail_silently = True
     # email.send()
     return render(request, 'kitchen_summary.html', {'context': context})
 
@@ -711,6 +717,8 @@ def kitchen_summary_buildpkg(request):
     constant = Constant.objects.all().last()
     # key names are as per summary page
     context = {
+        'phone': request.session.get('phone'),
+        'email': request.session.get('email'),
         'shape': request.session.get('layout'),
         'name': request.session.get('name'),
         'a_feet': request.session.get('a_feet'),
@@ -751,31 +759,33 @@ def kitchen_summary_buildpkg(request):
                         rate[context['finish']] + rate[context['accessories']])
     # Calculation part end
 
-    details = kitchen_details(Name=context['name'], Shape=context['shape'], Size=size, Type=context['type'], Material=context['material'], Countertop=context['countertop'], Loft=context['loft'],
-                              Finish=context['finish'], Accessories=context['accessories'], Appliances=context['appliances'], Services=context['services'], Price=cal, Location=context['location'], date=datetime.today())
+    details = kitchen_details(Phone=context['phone'], Name=context['name'], Email=context['email'], Shape=context['shape'], Size=size, Type=context['type'], Material=context['material'], Countertop=context['countertop'],
+                              Loft=context['loft'], Finish=context['finish'], Accessories=context['accessories'], Appliances=context['appliances'], Services=context['services'], Price=cal, Location=context['location'], date=datetime.today())
     details.save()
     # Saving data in specific location table
     city = {
-        'Varanasi': City1(Name=context['name'], Shape=context['shape'], Size=size, Loft=context['loft'], Type=context['type'], Accessories=context['accessories'], Material=context['material'], Finish=context['finish'], Price=cal, Location=context['location'], date=datetime.today()),
-        'Chandauli': City2(Name=context['name'], Shape=context['shape'], Size=size, Loft=context['loft'], Type=context['type'], Accessories=context['accessories'], Material=context['material'], Finish=context['finish'], Price=cal, Location=context['location'], date=datetime.today()),
-        'Mirzapur': City3(Name=context['name'], Shape=context['shape'], Size=size, Loft=context['loft'], Type=context['type'], Accessories=context['accessories'], Material=context['material'], Finish=context['finish'], Price=cal, Location=context['location'], date=datetime.today()),
-        'Sonbhadra': City4(Name=context['name'], Shape=context['shape'], Size=size, Loft=context['loft'], Type=context['type'], Accessories=context['accessories'], Material=context['material'], Finish=context['finish'], Price=cal, Location=context['location'], date=datetime.today()),
-        'Ayodhya': City5(Name=context['name'], Shape=context['shape'], Size=size, Loft=context['loft'], Type=context['type'], Accessories=context['accessories'], Material=context['material'], Finish=context['finish'], Price=cal, Location=context['location'], date=datetime.today()),
-        'Prayagraj': City6(Name=context['name'], Shape=context['shape'], Size=size, Loft=context['loft'], Type=context['type'], Accessories=context['accessories'], Material=context['material'], Finish=context['finish'], Price=cal, Location=context['location'], date=datetime.today()),
-        'Lucknow': City7(Name=context['name'], Shape=context['shape'], Size=size, Loft=context['loft'], Type=context['type'], Accessories=context['accessories'], Material=context['material'], Finish=context['finish'], Price=cal, Location=context['location'], date=datetime.today()),
-        'Bhadohi': City8(Name=context['name'], Shape=context['shape'], Size=size, Loft=context['loft'], Type=context['type'], Accessories=context['accessories'], Material=context['material'], Finish=context['finish'], Price=cal, Location=context['location'], date=datetime.today()),
-        'Gorakhpur': City9(Name=context['name'], Shape=context['shape'], Size=size, Loft=context['loft'], Type=context['type'], Accessories=context['accessories'], Material=context['material'], Finish=context['finish'], Price=cal, Location=context['location'], date=datetime.today()),
-        'Sonbhadra': City10(Name=context['name'], Shape=context['shape'], Size=size, Loft=context['loft'], Type=context['type'], Accessories=context['accessories'], Material=context['material'], Finish=context['finish'], Price=cal, Location=context['location'], date=datetime.today())
+        'Varanasi': City1(Location=context['location'], date=datetime.today()),
+        'Chandauli': City2(Location=context['location'], date=datetime.today()),
+        'Mirzapur': City3(Location=context['location'], date=datetime.today()),
+        'Sonbhadra': City4(Location=context['location'], date=datetime.today()),
+        'Ayodhya': City5(Location=context['location'], date=datetime.today()),
+        'Prayagraj': City6(Location=context['location'], date=datetime.today()),
+        'Lucknow': City7(Location=context['location'], date=datetime.today()),
+        'Bhadohi': City8(Location=context['location'], date=datetime.today()),
+        'Gorakhpur': City9(Location=context['location'], date=datetime.today()),
+        'Sonbhadra': City10(Location=context['location'], date=datetime.today()),
+        # 'Ghazipur' : City10(Phone = details, Shape = context['shape'], Size = size, Loft = context['loft'], Type = context['type'], Accessories = context['accessories'], Material = context['material'], Finish = context['finish'],Price = cal, Location = context['location'], date = datetime.today()),
+        # 'Azamgarh' :City10(Phone = details, Shape = context['shape'], Size = size, Loft = context['loft'], Type = context['type'], Accessories = context['accessories'], Material = context['material'], Finish = context['finish'],Price = cal, Location = context['location'], date = datetime.today()),
+        # 'Kanpur' : City10(Phone = details, Shape = context['shape'], Size = size, Loft = context['loft'], Type = context['type'], Accessories = context['accessories'], Material = context['material'], Finish = context['finish'],Price = cal, Location = context['location'], date = datetime.today()),
+        # 'Jaunpur' : City10(Phone = details, Shape = context['shape'], Size = size, Loft = context['loft'], Type = context['type'], Accessories = context['accessories'], Material = context['material'], Finish = context['finish'],Price = cal, Location = context['location'], date = datetime.today())
     }
     city_obj = city[request.session.get('location')]
+    # city_obj.kitchen = details
     city_obj.save()
 
     context['size'] = size
     context['price'] = cal
     context['loft'] = request.session.get('loft') + ' feet loft'
-    # request.session['pdf_variable'] = pdf_variable
-    # request.session['dimensions'] = a+b+c
-    # request.session['price'] = cal
     date = datetime.now().date()
     # Pdf generating script
     pdf = FPDF()
@@ -935,15 +945,15 @@ def kitchen_summary_buildpkg(request):
     # Email api
     template = render_to_string('email_template.html', {
                                 'name': request.session.get('name')})
-    # email = EmailMessage(
-    #     'Modular Kitchen Estimate',
-    #     template,
-    #     settings.EMAIL_HOST_USER,
-    #     [request.session.get('email')]
-    # )
-    # # name = request.session.get('name') + '_KichenEstimate.pdf'
-    # email.attach_file(file_name)
-    # email.fail_silently = True
+    email = EmailMessage(
+        'Modular Kitchen Estimate',
+        template,
+        settings.EMAIL_HOST_USER,
+        [request.session.get('email')]
+    )
+    # name = request.session.get('name') + '_KichenEstimate.pdf'
+    email.attach_file(file_name)
+    email.fail_silently = True
     # email.send()
 
     return render(request, 'kitchen_summary_buildpkg.html', {'context': context})

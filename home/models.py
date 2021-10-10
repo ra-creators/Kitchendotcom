@@ -17,8 +17,9 @@ class c_details(models.Model):
 
 
 class kitchen_details(models.Model):
-
     Name = models.CharField(max_length=122, default="NA")
+    Phone = models.CharField(max_length=12, default="NA")
+    Email = models.CharField(max_length=122, default="NA")
     Shape = models.CharField(max_length=12, default="NA")
     Size = models.CharField(max_length=30, null=True, default="NA")
     Type = models.CharField(max_length=30, default="NA")
@@ -63,219 +64,210 @@ class Constant(models.Model):
 
 
 class City1(models.Model):
-    Name = models.CharField(max_length=122, default="NA")
-    Shape = models.CharField(max_length=12, default="NA")
-    Size = models.CharField(max_length=30, null=True, default="NA")
-    Type = models.CharField(max_length=30, default="NA")
-    Material = models.CharField(max_length=12, default="NA")
-    Countertop = models.CharField(max_length=12, default="NA")
-    Loft = models.CharField(max_length=12, default="NA")
-    Finish = models.CharField(max_length=12, default="NA")
-    Accessories = models.CharField(max_length=12, default="NA")
-    Services = models.TextField(max_length=32, default="NA")
-    Appliances = models.TextField(max_length=32, default="NA")
-    # customer = models.ForeignKey(c_details, blank=True, null=True, on_delete=models.CASCADE )
-    Price = models.CharField(max_length=12, default="NA")
+    kitchen = models.OneToOneField(
+        kitchen_details, on_delete=models.CASCADE, blank=True, null=True)
     Location = models.CharField(max_length=12, default="NA")
     date = models.DateField(default=1111-11-11)
 
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
+        if not self.kitchen:
+            self.kitchen = kitchen_details.objects.create()
+            super().save(*args, **kwargs)
+
+    def delete(self, *args, **kwargs):
+        super().delete(*args, **kwargs)
+        if self.kitchen:
+            self.kitchen.delete()
+
     def __str__(self):
-        return self.Name
+        return self.kitchen.Name
 
 
 class City2(models.Model):
-    Name = models.CharField(max_length=122, default="NA")
-    Shape = models.CharField(max_length=12, default="NA")
-    Size = models.CharField(max_length=30, null=True, default="NA")
-    Type = models.CharField(max_length=30, default="NA")
-    Material = models.CharField(max_length=12, default="NA")
-    Countertop = models.CharField(max_length=12, default="NA")
-    Loft = models.CharField(max_length=12, default="NA")
-    Finish = models.CharField(max_length=12, default="NA")
-    Accessories = models.CharField(max_length=12, default="NA")
-    Services = models.TextField(max_length=32, default="NA")
-    Appliances = models.TextField(max_length=32, default="NA")
-    # customer = models.ForeignKey(c_details, blank=True, null=True, on_delete=models.CASCADE )
-    Price = models.CharField(max_length=12, default="NA")
+    kitchen = models.OneToOneField(
+        kitchen_details, on_delete=models.CASCADE, blank=True, null=True)
     Location = models.CharField(max_length=12, default="NA")
     date = models.DateField(default=1111-11-11)
 
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
+        if not self.kitchen:
+            self.kitchen = kitchen_details.objects.create()
+            super().save(*args, **kwargs)
+
+    def delete(self, *args, **kwargs):
+        super().delete(*args, **kwargs)
+        if self.kitchen:
+            self.kitchen.delete()
+
     def __str__(self):
-        return self.Name
+        return self.kitchen.Name
 
 
 class City3(models.Model):
-    Name = models.CharField(max_length=122, default="NA")
-    Shape = models.CharField(max_length=12, default="NA")
-    Size = models.CharField(max_length=30, null=True, default="NA")
-    Type = models.CharField(max_length=30, default="NA")
-    Material = models.CharField(max_length=12, default="NA")
-    Countertop = models.CharField(max_length=12, default="NA")
-    Loft = models.CharField(max_length=12, default="NA")
-    Finish = models.CharField(max_length=12, default="NA")
-    Accessories = models.CharField(max_length=12, default="NA")
-    Services = models.TextField(max_length=32, default="NA")
-    Appliances = models.TextField(max_length=32, default="NA")
-    # customer = models.ForeignKey(c_details, blank=True, null=True, on_delete=models.CASCADE )
-    Price = models.CharField(max_length=12, default="NA")
+    kitchen = models.OneToOneField(
+        kitchen_details, on_delete=models.CASCADE, blank=True, null=True)
     Location = models.CharField(max_length=12, default="NA")
     date = models.DateField(default=1111-11-11)
 
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
+        if not self.kitchen:
+            self.kitchen = kitchen_details.objects.create()
+            super().save(*args, **kwargs)
+
+    def delete(self, *args, **kwargs):
+        super().delete(*args, **kwargs)
+        if self.kitchen:
+            self.kitchen.delete()
+
     def __str__(self):
-        return self.Name
+        return self.kitchen.Name
 
 
 class City4(models.Model):
-    Name = models.CharField(max_length=122, default="NA")
-    Shape = models.CharField(max_length=12, default="NA")
-    Size = models.CharField(max_length=30, null=True, default="NA")
-    Type = models.CharField(max_length=30, default="NA")
-    Material = models.CharField(max_length=12, default="NA")
-    Countertop = models.CharField(max_length=12, default="NA")
-    Loft = models.CharField(max_length=12, default="NA")
-    Finish = models.CharField(max_length=12, default="NA")
-    Accessories = models.CharField(max_length=12, default="NA")
-    Services = models.TextField(max_length=32, default="NA")
-    Appliances = models.TextField(max_length=32, default="NA")
-    # customer = models.ForeignKey(c_details, blank=True, null=True, on_delete=models.CASCADE )
-    Price = models.CharField(max_length=12, default="NA")
+    kitchen = models.OneToOneField(
+        kitchen_details, on_delete=models.CASCADE, blank=True, null=True)
     Location = models.CharField(max_length=12, default="NA")
     date = models.DateField(default=1111-11-11)
 
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
+        if not self.kitchen:
+            self.kitchen = kitchen_details.objects.create()
+            super().save(*args, **kwargs)
+
+    def delete(self, *args, **kwargs):
+        super().delete(*args, **kwargs)
+        if self.kitchen:
+            self.kitchen.delete()
+
     def __str__(self):
-        return self.Name
+        return self.kitchen.Name
 
 
 class City5(models.Model):
-    Name = models.CharField(max_length=122, default="NA")
-    Shape = models.CharField(max_length=12, default="NA")
-    Size = models.CharField(max_length=30, null=True, default="NA")
-    Type = models.CharField(max_length=30, default="NA")
-    Material = models.CharField(max_length=12, default="NA")
-    Countertop = models.CharField(max_length=12, default="NA")
-    Loft = models.CharField(max_length=12, default="NA")
-    Finish = models.CharField(max_length=12, default="NA")
-    Accessories = models.CharField(max_length=12, default="NA")
-    Services = models.TextField(max_length=32, default="NA")
-    Appliances = models.TextField(max_length=32, default="NA")
-    # customer = models.ForeignKey(c_details, blank=True, null=True, on_delete=models.CASCADE )
-    Price = models.CharField(max_length=12, default="NA")
+    kitchen = models.OneToOneField(
+        kitchen_details, on_delete=models.CASCADE, blank=True, null=True)
     Location = models.CharField(max_length=12, default="NA")
     date = models.DateField(default=1111-11-11)
 
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
+        if not self.kitchen:
+            self.kitchen = kitchen_details.objects.create()
+            super().save(*args, **kwargs)
+
+    def delete(self, *args, **kwargs):
+        super().delete(*args, **kwargs)
+        if self.kitchen:
+            self.kitchen.delete()
+
     def __str__(self):
-        return self.Name
+        return self.kitchen.Name
 
 
 class City6(models.Model):
-    Name = models.CharField(max_length=122, default="NA")
-    Shape = models.CharField(max_length=12, default="NA")
-    Size = models.CharField(max_length=30, null=True, default="NA")
-    Type = models.CharField(max_length=30, default="NA")
-    Material = models.CharField(max_length=12, default="NA")
-    Countertop = models.CharField(max_length=12, default="NA")
-    Loft = models.CharField(max_length=12, default="NA")
-    Finish = models.CharField(max_length=12, default="NA")
-    Accessories = models.CharField(max_length=12, default="NA")
-    Services = models.TextField(max_length=32, default="NA")
-    Appliances = models.TextField(max_length=32, default="NA")
-    # customer = models.ForeignKey(c_details, blank=True, null=True, on_delete=models.CASCADE )
-    Price = models.CharField(max_length=12, default="NA")
+    kitchen = models.OneToOneField(
+        kitchen_details, on_delete=models.CASCADE, blank=True, null=True)
     Location = models.CharField(max_length=12, default="NA")
     date = models.DateField(default=1111-11-11)
 
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
+        if not self.kitchen:
+            self.kitchen = kitchen_details.objects.create()
+            super().save(*args, **kwargs)
+
+    def delete(self, *args, **kwargs):
+        super().delete(*args, **kwargs)
+        if self.kitchen:
+            self.kitchen.delete()
+
     def __str__(self):
-        return self.Name
+        return self.kitchen.Name
 
 
 class City7(models.Model):
-    Name = models.CharField(max_length=122, default="NA")
-    Shape = models.CharField(max_length=12, default="NA")
-    Size = models.CharField(max_length=30, null=True, default="NA")
-    Type = models.CharField(max_length=30, default="NA")
-    Material = models.CharField(max_length=12, default="NA")
-    Countertop = models.CharField(max_length=12, default="NA")
-    Loft = models.CharField(max_length=12, default="NA")
-    Finish = models.CharField(max_length=12, default="NA")
-    Accessories = models.CharField(max_length=12, default="NA")
-    Services = models.TextField(max_length=32, default="NA")
-    Appliances = models.TextField(max_length=32, default="NA")
-    # customer = models.ForeignKey(c_details, blank=True, null=True, on_delete=models.CASCADE )
-    Price = models.CharField(max_length=12, default="NA")
+    kitchen = models.OneToOneField(
+        kitchen_details, on_delete=models.CASCADE, blank=True, null=True)
     Location = models.CharField(max_length=12, default="NA")
     date = models.DateField(default=1111-11-11)
 
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
+        if not self.kitchen:
+            self.kitchen = kitchen_details.objects.create()
+            super().save(*args, **kwargs)
+
+    def delete(self, *args, **kwargs):
+        super().delete(*args, **kwargs)
+        if self.kitchen:
+            self.kitchen.delete()
+
     def __str__(self):
-        return self.Name
+        return self.kitchen.Name
 
 
 class City8(models.Model):
-    Name = models.CharField(max_length=122, default="NA")
-    Shape = models.CharField(max_length=12, default="NA")
-    Size = models.CharField(max_length=30, null=True, default="NA")
-    Type = models.CharField(max_length=30, default="NA")
-    Material = models.CharField(max_length=12, default="NA")
-    Countertop = models.CharField(max_length=12, default="NA")
-    Loft = models.CharField(max_length=12, default="NA")
-    Finish = models.CharField(max_length=12, default="NA")
-    Accessories = models.CharField(max_length=12, default="NA")
-    Services = models.TextField(max_length=32, default="NA")
-    Appliances = models.TextField(max_length=32, default="NA")
-    # customer = models.ForeignKey(c_details, blank=True, null=True, on_delete=models.CASCADE )
-    Price = models.CharField(max_length=12, default="NA")
+    kitchen = models.OneToOneField(
+        kitchen_details, on_delete=models.CASCADE, blank=True, null=True)
     Location = models.CharField(max_length=12, default="NA")
     date = models.DateField(default=1111-11-11)
 
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
+        if not self.kitchen:
+            self.kitchen = kitchen_details.objects.create()
+            super().save(*args, **kwargs)
+
+    def delete(self, *args, **kwargs):
+        super().delete(*args, **kwargs)
+        if self.kitchen:
+            self.kitchen.delete()
+
     def __str__(self):
-        return self.Name
+        return self.kitchen.Name
 
 
 class City9(models.Model):
-    Name = models.CharField(max_length=122, default="NA")
-    Shape = models.CharField(max_length=12, default="NA")
-    Size = models.CharField(max_length=30, null=True, default="NA")
-    Type = models.CharField(max_length=30, default="NA")
-    Material = models.CharField(max_length=12, default="NA")
-    Countertop = models.CharField(max_length=12, default="NA")
-    Loft = models.CharField(max_length=12, default="NA")
-    Finish = models.CharField(max_length=12, default="NA")
-    Accessories = models.CharField(max_length=12, default="NA")
-    Services = models.TextField(max_length=32, default="NA")
-    Appliances = models.TextField(max_length=32, default="NA")
-    # customer = models.ForeignKey(c_details, blank=True, null=True, on_delete=models.CASCADE )
-    Price = models.CharField(max_length=12, default="NA")
+    kitchen = models.OneToOneField(
+        kitchen_details, on_delete=models.CASCADE, blank=True, null=True)
     Location = models.CharField(max_length=12, default="NA")
     date = models.DateField(default=1111-11-11)
 
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
+        if not self.kitchen:
+            self.kitchen = kitchen_details.objects.create()
+            super().save(*args, **kwargs)
+
+    def delete(self, *args, **kwargs):
+        super().delete(*args, **kwargs)
+        if self.kitchen:
+            self.kitchen.delete()
+
     def __str__(self):
-        return self.Name
+        return self.kitchen.Name
 
 
 class City10(models.Model):
-    Name = models.CharField(max_length=122, default="NA")
-    Shape = models.CharField(max_length=12, default="NA")
-    Size = models.CharField(max_length=30, null=True, default="NA")
-    Type = models.CharField(max_length=30, default="NA")
-    Material = models.CharField(max_length=12, default="NA")
-    Countertop = models.CharField(max_length=12, default="NA")
-    Loft = models.CharField(max_length=12, default="NA")
-    Finish = models.CharField(max_length=12, default="NA")
-    Accessories = models.CharField(max_length=12, default="NA")
-    Services = models.TextField(max_length=32, default="NA")
-    Appliances = models.TextField(max_length=32, default="NA")
-    # customer = models.ForeignKey(c_details, blank=True, null=True, on_delete=models.CASCADE )
-    Price = models.CharField(max_length=12, default="NA")
+    kitchen = models.OneToOneField(
+        kitchen_details, on_delete=models.CASCADE, blank=True, null=True)
     Location = models.CharField(max_length=12, default="NA")
     date = models.DateField(default=1111-11-11)
 
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
+        if not self.kitchen:
+            self.kitchen = kitchen_details.objects.create()
+            super().save(*args, **kwargs)
+
+    def delete(self, *args, **kwargs):
+        super().delete(*args, **kwargs)
+        if self.kitchen:
+            self.kitchen.delete()
+
     def __str__(self):
-        return self.Name
-
-
-class TempLink(models.Model):
-    kitchen_details = models.OneToOneField(kitchen_details, on_delete=CASCADE)
-    link = models.UUIDField(default=uuid4, unique=True,)
-    date = models.DateField(auto_now=True)
-
-    def __str__(self):
-        return self.kitchen_details.Name
+        return self.kitchen.Name
