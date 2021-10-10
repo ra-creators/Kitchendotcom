@@ -985,3 +985,7 @@ def customer_form(request, slug):
         'form_inst': form_instance,
     }
     return render(request, 'customer_form.html', context)
+
+
+def billing(request):
+    return render(request, 'billing.html')
