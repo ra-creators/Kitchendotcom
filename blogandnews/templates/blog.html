@@ -14,8 +14,8 @@
   <!-- fontawesome icons -->
   <script src="https://kit.fontawesome.com/fecc50ad8e.js" crossorigin="anonymous"></script>
   <!-- custom css -->
-  <link rel="stylesheet" href="{%static " common/css/style.css"%}">
-  <link rel="stylesheet" href="{%static " blogandnews/css/blogandnews.css"%}">
+  <link rel="stylesheet" href="{%static "common/css/style.css"%}">
+  <link rel="stylesheet" href="{%static "blogandnews/css/blogandnews.css"%}">
 </head>
 
 <body>
@@ -43,29 +43,11 @@
       </div>
     </div>
   </div>
-<!-- Comments section -->
-  <div class="Container">
-    <h2>Comment</h2>
-    <form action="blog/blogComment" method="post">
-    {% csrf_token %}
-    <input type="text" name="comment" placeholder="enter your comment">
-    <input type="hidden" name="blogSno" value="{{blog.id}}">
-    <input type="submit" value="Submit">
-    </form>
-    <div class="row my-3">
-        <div class="col-md-2 bg-success"> image here</div>
-        <div class="col-md-10 bg-primary"> <b> RohanDas </b> says This is best blog</div>
-    </div>
-    <div class="row my-3">
-        <div class="col-md-2 bg-success"> image here</div>
-        <div class="col-md-10 bg-primary"> <b> RohanDas </b> says This is best blog</div>
-    </div>
 
-  </div>
   {% include 'includes/footer.html' %}
 
 
-  <script src="{% static "common/js/nav.js" %}"></script>
+  <script src="{%static "common/js/nav.js"%}"></script>
 </body>
 
 </html>

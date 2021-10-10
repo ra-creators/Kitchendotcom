@@ -30,7 +30,7 @@
             <div class="col-lg-5 col-md-12 d-none d-sm-block">
                 <img src="{%static "assets/img/Kitchen-1.png"%}" class="img-fluid h-100" id="kitchen1" alt="Kitchen">
             </div>
-            <div class="col-lg-7 col-sm-12 p-5 text-start">
+            <div class="col-lg-7 col-sm-12 p-1 p-sm-2 p-md-5 text-start">
                 <form method="POST">
                     {% csrf_token %}
                     <div class="ms-md-5 my-md-3">
@@ -45,7 +45,7 @@
                         <label for="location" class="form-label">Location</label>
                         <select class="form-control" required id="location" name="location">
                             <option selected disabled>Choose Location</option>
-                            <option value="Varanasi">Varanasi</option>
+							<option value="Varanasi">Varanasi</option>
                             <option value="Chandauli">Chandauli</option>
                             <option value="Mirzapur">Mirzapur</option>
                             <option value="Sonbhadra">Sonbhadra</option>

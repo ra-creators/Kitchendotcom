@@ -119,6 +119,8 @@ a:hover {
 }
 
 #contactus-footer .social-list li {
+	
+    font-family: 'Font Awesome 5 Brands';
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
