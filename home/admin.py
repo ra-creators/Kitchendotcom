@@ -1,4 +1,5 @@
 from django.contrib import admin
+from django.utils.html import format_html
 from home.models import c_details, kitchen_details, Constant, City1, City2, City3, City4, City5, City6, City7, City8, City9, City10
 
 # Displaying Models
@@ -27,4 +28,31 @@ admin.site.register(City6)
 admin.site.register(City7)
 admin.site.register(City8)
 admin.site.register(City9)
-admin.site.register(City10)
+# admin.site.register(City10)
+
+
+class City10Admin(admin.ModelAdmin):
+    list_display = ['Location', 'customer_name',
+                    'kitchen_shape', 'kitchen_size', 'price']
+
+    def customer_name(self, x):
+        cust_name = x.kitchen.Name
+        link = "<a href=\"{link}\">{link_name}</a>".format(
+            link='test', link_name=cust_name)
+        return format_html(link)
+
+    def kitchen_shape(self, x):
+        link = "<a href=\"/admin/home/kitchen_details/{link}\">{link_name}</a>".format(
+            link=x.kitchen.pk, link_name=x.kitchen.Shape)
+        return format_html(link)
+
+    def kitchen_size(self, x):
+        return x.kitchen.Size
+
+    def price(self, x):
+        return x.kitchen.Price
+
+
+@admin.register(City10)
+class ExtendedCity10Admin(City10Admin):
+    inlines = City10Admin.inlines
