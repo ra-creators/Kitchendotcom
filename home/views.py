@@ -988,4 +988,4 @@ def customer_form(request, slug):
 
 
 def billing(request):
-    return render(request, 'billing.html')
+    return render(request, 'billing_form.html')
