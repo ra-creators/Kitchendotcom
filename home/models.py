@@ -63,7 +63,7 @@ class Constant(models.Model):
         return "Rates"
 
 
-class City1(models.Model):
+class City(models.Model):
     kitchen = models.OneToOneField(
         kitchen_details, on_delete=models.CASCADE, blank=True, null=True)
     Location = models.CharField(max_length=12, default="NA")
@@ -84,193 +84,60 @@ class City1(models.Model):
         return self.kitchen.Name
 
 
-class City2(models.Model):
-    kitchen = models.OneToOneField(
-        kitchen_details, on_delete=models.CASCADE, blank=True, null=True)
-    Location = models.CharField(max_length=12, default="NA")
-    date = models.DateField(auto_created=True)
-
-    def save(self, *args, **kwargs):
-        super().save(*args, **kwargs)
-        if not self.kitchen:
-            self.kitchen = kitchen_details.objects.create()
-            super().save(*args, **kwargs)
-
-    def delete(self, *args, **kwargs):
-        super().delete(*args, **kwargs)
-        if self.kitchen:
-            self.kitchen.delete()
-
-    def __str__(self):
-        return self.kitchen.Name
+class City11(City):
+    class Meta:
+        proxy = True
+        verbose_name = 'Kolkata'
 
 
-class City3(models.Model):
-    kitchen = models.OneToOneField(
-        kitchen_details, on_delete=models.CASCADE, blank=True, null=True)
-    Location = models.CharField(max_length=12, default="NA")
-    date = models.DateField(auto_created=True)
-
-    def save(self, *args, **kwargs):
-        super().save(*args, **kwargs)
-        if not self.kitchen:
-            self.kitchen = kitchen_details.objects.create()
-            super().save(*args, **kwargs)
-
-    def delete(self, *args, **kwargs):
-        super().delete(*args, **kwargs)
-        if self.kitchen:
-            self.kitchen.delete()
-
-    def __str__(self):
-        return self.kitchen.Name
+class City1(City):
+    class Meta:
+        proxy = True
 
 
-class City4(models.Model):
-    kitchen = models.OneToOneField(
-        kitchen_details, on_delete=models.CASCADE, blank=True, null=True)
-    Location = models.CharField(max_length=12, default="NA")
-    date = models.DateField(auto_created=True)
-
-    def save(self, *args, **kwargs):
-        super().save(*args, **kwargs)
-        if not self.kitchen:
-            self.kitchen = kitchen_details.objects.create()
-            super().save(*args, **kwargs)
-
-    def delete(self, *args, **kwargs):
-        super().delete(*args, **kwargs)
-        if self.kitchen:
-            self.kitchen.delete()
-
-    def __str__(self):
-        return self.kitchen.Name
+class City2(City):
+    class Meta:
+        proxy = True
 
 
-class City5(models.Model):
-    kitchen = models.OneToOneField(
-        kitchen_details, on_delete=models.CASCADE, blank=True, null=True)
-    Location = models.CharField(max_length=12, default="NA")
-    date = models.DateField(auto_created=True)
-
-    def save(self, *args, **kwargs):
-        super().save(*args, **kwargs)
-        if not self.kitchen:
-            self.kitchen = kitchen_details.objects.create()
-            super().save(*args, **kwargs)
-
-    def delete(self, *args, **kwargs):
-        super().delete(*args, **kwargs)
-        if self.kitchen:
-            self.kitchen.delete()
-
-    def __str__(self):
-        return self.kitchen.Name
+class City3(City):
+    class Meta:
+        proxy = True
 
 
-class City6(models.Model):
-    kitchen = models.OneToOneField(
-        kitchen_details, on_delete=models.CASCADE, blank=True, null=True)
-    Location = models.CharField(max_length=12, default="NA")
-    date = models.DateField(auto_created=True)
-
-    def save(self, *args, **kwargs):
-        super().save(*args, **kwargs)
-        if not self.kitchen:
-            self.kitchen = kitchen_details.objects.create()
-            super().save(*args, **kwargs)
-
-    def delete(self, *args, **kwargs):
-        super().delete(*args, **kwargs)
-        if self.kitchen:
-            self.kitchen.delete()
-
-    def __str__(self):
-        return self.kitchen.Name
+class City4(City):
+    class Meta:
+        proxy = True
 
 
-class City7(models.Model):
-    kitchen = models.OneToOneField(
-        kitchen_details, on_delete=models.CASCADE, blank=True, null=True)
-    Location = models.CharField(max_length=12, default="NA")
-    date = models.DateField(auto_created=True)
-
-    def save(self, *args, **kwargs):
-        super().save(*args, **kwargs)
-        if not self.kitchen:
-            self.kitchen = kitchen_details.objects.create()
-            super().save(*args, **kwargs)
-
-    def delete(self, *args, **kwargs):
-        super().delete(*args, **kwargs)
-        if self.kitchen:
-            self.kitchen.delete()
-
-    def __str__(self):
-        return self.kitchen.Name
+class City5(City):
+    class Meta:
+        proxy = True
 
 
-class City8(models.Model):
-    kitchen = models.OneToOneField(
-        kitchen_details, on_delete=models.CASCADE, blank=True, null=True)
-    Location = models.CharField(max_length=12, default="NA")
-    date = models.DateField(auto_created=True)
-
-    def save(self, *args, **kwargs):
-        super().save(*args, **kwargs)
-        if not self.kitchen:
-            self.kitchen = kitchen_details.objects.create()
-            super().save(*args, **kwargs)
-
-    def delete(self, *args, **kwargs):
-        super().delete(*args, **kwargs)
-        if self.kitchen:
-            self.kitchen.delete()
-
-    def __str__(self):
-        return self.kitchen.Name
+class City6(City):
+    class Meta:
+        proxy = True
 
 
-class City9(models.Model):
-    kitchen = models.OneToOneField(
-        kitchen_details, on_delete=models.CASCADE, blank=True, null=True)
-    Location = models.CharField(max_length=12, default="NA")
-    date = models.DateField(auto_created=True)
-
-    def save(self, *args, **kwargs):
-        super().save(*args, **kwargs)
-        if not self.kitchen:
-            self.kitchen = kitchen_details.objects.create()
-            super().save(*args, **kwargs)
-
-    def delete(self, *args, **kwargs):
-        super().delete(*args, **kwargs)
-        if self.kitchen:
-            self.kitchen.delete()
-
-    def __str__(self):
-        return self.kitchen.Name
+class City7(City):
+    class Meta:
+        proxy = True
 
 
-class City10(models.Model):
-    kitchen = models.OneToOneField(
-        kitchen_details, on_delete=models.CASCADE, blank=True, null=True)
-    Location = models.CharField(max_length=12, default="NA")
-    date = models.DateField(auto_created=True)
+class City8(City):
+    class Meta:
+        proxy = True
 
-    def save(self, *args, **kwargs):
-        super().save(*args, **kwargs)
-        if not self.kitchen:
-            self.kitchen = kitchen_details.objects.create()
-            super().save(*args, **kwargs)
 
-    def delete(self, *args, **kwargs):
-        super().delete(*args, **kwargs)
-        if self.kitchen:
-            self.kitchen.delete()
+class City9(City):
+    class Meta:
+        proxy = True
 
-    def __str__(self):
-        return self.kitchen.Name
+
+class City10(City):
+    class Meta:
+        proxy = True
 
 
 class TempLink(models.Model):

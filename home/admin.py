@@ -1,7 +1,7 @@
 from home.models import c_details, kitchen_details, Constant, City1, City2, City3, City4, City5, City6, City7, City8, City9, City10
 from django.utils.html import format_html
 from datetime import date, datetime, timedelta
-from home.models import c_details, kitchen_details, Constant, City1, City2, City3, City4, City5, City6, City7, City8, City9, City10, TempLink
+from home.models import c_details, kitchen_details, Constant, City1, City2, City3, City4, City5, City6, City7, City8, City9, City10, City11, TempLink
 from django.db import models
 from django.contrib import admin
 
@@ -22,16 +22,6 @@ from django.contrib import admin
 admin.site.register(c_details)
 # admin.site.register(calculation)
 admin.site.register(Constant)
-# admin.site.register(City1)
-# admin.site.register(City2)
-# admin.site.register(City3)
-# admin.site.register(City4)
-# admin.site.register(City5)
-# admin.site.register(City6)
-# admin.site.register(City7)
-# admin.site.register(City8)
-# admin.site.register(City9)
-# admin.site.register(City10)
 
 
 @admin.action(description="Create temp links")
@@ -72,8 +62,7 @@ class kitchen_detailsAdmin(admin.ModelAdmin):
         js = ("admin/copy-btn.js",)
 
 
-@admin.register(City1)
-class City1Admin(admin.ModelAdmin):
+class CitysAdmin(admin.ModelAdmin):
     list_display = ['Location', 'customer_name',
                     'kitchen_shape', 'kitchen_size', 'price', 'getTempLink', 'link_expiry']
 
@@ -115,176 +104,17 @@ class City1Admin(admin.ModelAdmin):
         js = ("admin/copy-btn.js",)
 
 
-@admin.register(City2)
-class City2Admin(admin.ModelAdmin):
-    list_display = ['Location', 'customer_name',
-                    'kitchen_shape', 'kitchen_size', 'price', 'getTempLink', 'link_expiry']
-
-    def customer_name(self, x):
-        cust_name = x.kitchen.Name
-        link = "<a href=\"/admin/home/kitchen_details/{link}\">{link_name}</a>".format(
-            link=x.kitchen.pk, link_name=cust_name)
-        return format_html(link)
-
-    def kitchen_shape(self, x):
-        link = "<a href=\"/admin/home/kitchen_details/{link}\">{link_name}</a>".format(
-            link=x.kitchen.pk, link_name=x.kitchen.Shape)
-        return format_html(link)
-
-    def kitchen_size(self, x):
-        return x.kitchen.Size
-
-    def price(self, x):
-        return x.kitchen.Price
-
-    def getTempLink(self, x):
-        tempLinkObj = TempLink.objects.get(kitchen_details=x.kitchen)
-        return tempLinkObj.link
-
-    def link_expiry(self, x):
-        tempLinkObj = TempLink.objects.get(kitchen_details=x.kitchen)
-        if tempLinkObj.date:
-            date_diff = (datetime.now().date() - tempLinkObj.date)
-            if(date_diff.days > 2):
-                return 'expired'
-            else:
-                return (tempLinkObj.date + timedelta(days=2))
-        else:
-            return '-'
-
-    actions = [create_link_city]
-
-    class Media:
-        js = ("admin/copy-btn.js",)
-
-
-@admin.register(City8)
-class City8Admin(admin.ModelAdmin):
-    list_display = ['Location', 'customer_name',
-                    'kitchen_shape', 'kitchen_size', 'price', 'getTempLink', 'link_expiry']
-
-    def customer_name(self, x):
-        cust_name = x.kitchen.Name
-        link = "<a href=\"/admin/home/kitchen_details/{link}\">{link_name}</a>".format(
-            link=x.kitchen.pk, link_name=cust_name)
-        return format_html(link)
-
-    def kitchen_shape(self, x):
-        link = "<a href=\"/admin/home/kitchen_details/{link}\">{link_name}</a>".format(
-            link=x.kitchen.pk, link_name=x.kitchen.Shape)
-        return format_html(link)
-
-    def kitchen_size(self, x):
-        return x.kitchen.Size
-
-    def price(self, x):
-        return x.kitchen.Price
-
-    def getTempLink(self, x):
-        tempLinkObj = TempLink.objects.get(kitchen_details=x.kitchen)
-        return tempLinkObj.link
-
-    def link_expiry(self, x):
-        tempLinkObj = TempLink.objects.get(kitchen_details=x.kitchen)
-        if tempLinkObj.date:
-            date_diff = (datetime.now().date() - tempLinkObj.date)
-            if(date_diff.days > 2):
-                return 'expired'
-            else:
-                return (tempLinkObj.date + timedelta(days=2))
-        else:
-            return '-'
-
-    actions = [create_link_city]
-
-    class Media:
-        js = ("admin/copy-btn.js",)
-
-
-@admin.register(City9)
-class City9Admin(admin.ModelAdmin):
-    list_display = ['Location', 'customer_name',
-                    'kitchen_shape', 'kitchen_size', 'price', 'getTempLink', 'link_expiry']
-
-    def customer_name(self, x):
-        cust_name = x.kitchen.Name
-        link = "<a href=\"/admin/home/kitchen_details/{link}\">{link_name}</a>".format(
-            link=x.kitchen.pk, link_name=cust_name)
-        return format_html(link)
-
-    def kitchen_shape(self, x):
-        link = "<a href=\"/admin/home/kitchen_details/{link}\">{link_name}</a>".format(
-            link=x.kitchen.pk, link_name=x.kitchen.Shape)
-        return format_html(link)
-
-    def kitchen_size(self, x):
-        return x.kitchen.Size
-
-    def price(self, x):
-        return x.kitchen.Price
-
-    def getTempLink(self, x):
-        tempLinkObj = TempLink.objects.get(kitchen_details=x.kitchen)
-        return tempLinkObj.link
-
-    def link_expiry(self, x):
-        tempLinkObj = TempLink.objects.get(kitchen_details=x.kitchen)
-        if tempLinkObj.date:
-            date_diff = (datetime.now().date() - tempLinkObj.date)
-            if(date_diff.days > 2):
-                return 'expired'
-            else:
-                return (tempLinkObj.date + timedelta(days=2))
-        else:
-            return '-'
-
-    actions = [create_link_city]
-
-    class Media:
-        js = ("admin/copy-btn.js",)
-
-
-@admin.register(City10)
-class City10Admin(admin.ModelAdmin):
-    list_display = ['Location', 'customer_name',
-                    'kitchen_shape', 'kitchen_size', 'price', 'getTempLink', 'link_expiry']
-
-    def customer_name(self, x):
-        cust_name = x.kitchen.Name
-        link = "<a href=\"/admin/home/kitchen_details/{link}\">{link_name}</a>".format(
-            link=x.kitchen.pk, link_name=cust_name)
-        return format_html(link)
-
-    def kitchen_shape(self, x):
-        link = "<a href=\"/admin/home/kitchen_details/{link}\">{link_name}</a>".format(
-            link=x.kitchen.pk, link_name=x.kitchen.Shape)
-        return format_html(link)
-
-    def kitchen_size(self, x):
-        return x.kitchen.Size
-
-    def price(self, x):
-        return x.kitchen.Price
-
-    def getTempLink(self, x):
-        tempLinkObj = TempLink.objects.get(kitchen_details=x.kitchen)
-        return tempLinkObj.link
-
-    def link_expiry(self, x):
-        tempLinkObj = TempLink.objects.get(kitchen_details=x.kitchen)
-        if tempLinkObj.date:
-            date_diff = (datetime.now().date() - tempLinkObj.date)
-            if(date_diff.days > 2):
-                return 'expired'
-            else:
-                return (tempLinkObj.date + timedelta(days=2))
-        else:
-            return '-'
-
-    actions = [create_link_city]
-
-    class Media:
-        js = ("admin/copy-btn.js",)
+admin.site.register(City1, CitysAdmin)
+admin.site.register(City2, CitysAdmin)
+admin.site.register(City3, CitysAdmin)
+admin.site.register(City4, CitysAdmin)
+admin.site.register(City5, CitysAdmin)
+admin.site.register(City6, CitysAdmin)
+admin.site.register(City7, CitysAdmin)
+admin.site.register(City8, CitysAdmin)
+admin.site.register(City9, CitysAdmin)
+admin.site.register(City10, CitysAdmin)
+admin.site.register(City11, CitysAdmin)
 
 
 @admin.register(TempLink)
