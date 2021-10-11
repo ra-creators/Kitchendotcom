@@ -181,8 +181,8 @@ header p {
     padding: 1rem 3rem;
   }
   #progress .state {
-    height: 15vh;
-    width: 15vh;
+    height: 10vh;
+    width: 10vh;
   }
 }
 /*# sourceMappingURL=details.css.map */
