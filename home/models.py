@@ -36,6 +36,12 @@ class kitchen_details(models.Model):
     date = models.DateField(auto_created=True)
     # Summary_Pdf = models.FileField(upload_to = 'pdf/',  default="/Summary.pdf")
 
+    class Meta:
+        db_table = ''
+        managed = True
+        verbose_name = 'Kitchen Details'
+        verbose_name_plural = 'Kitchen Details'
+
     def __str__(self):
         return self.Name
 
@@ -84,60 +90,70 @@ class City(models.Model):
         return self.kitchen.Name
 
 
-class City11(City):
-    class Meta:
-        proxy = True
-        verbose_name = 'Kolkata'
-
-
 class City1(City):
     class Meta:
         proxy = True
+        verbose_name = 'Varanasi kitchen'
 
 
 class City2(City):
     class Meta:
         proxy = True
+        verbose_name = 'Chandauli kitchen'
 
 
 class City3(City):
     class Meta:
         proxy = True
+        verbose_name = 'Mirzapur kitchen'
 
 
 class City4(City):
     class Meta:
         proxy = True
+        verbose_name = 'Sonbhadra kitchen'
 
 
 class City5(City):
     class Meta:
         proxy = True
+        verbose_name = 'Ayodhya kitchen'
 
 
 class City6(City):
     class Meta:
         proxy = True
+        verbose_name = 'Prayagraj kitchen'
 
 
 class City7(City):
     class Meta:
         proxy = True
+        verbose_name = 'Lucknow kitchen'
 
 
 class City8(City):
     class Meta:
         proxy = True
+        verbose_name = 'Bhadohi kitchen'
 
 
 class City9(City):
     class Meta:
         proxy = True
+        verbose_name = 'Gorakhpur kitchen'
 
 
 class City10(City):
     class Meta:
         proxy = True
+        verbose_name = 'Sonbhadra kitchen'
+
+
+class City11(City):
+    class Meta:
+        proxy = True
+        verbose_name = 'Mirzapur kitchen'
 
 
 class TempLink(models.Model):

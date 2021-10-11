@@ -43,7 +43,9 @@ class kitchen_detailsAdmin(admin.ModelAdmin):
 
     def getTempLink(self, x):
         tempLinkObj = TempLink.objects.get(kitchen_details=x)
-        return tempLinkObj.link
+        linkBtn = "<div onClick=\"copyToClip(this)\" value=\"kitchendotcom.in/custormerform/{tmpLinkObj}\" class=\"button\">Copy</div>".format(
+            tmpLinkObj=tempLinkObj.link)
+        return format_html(linkBtn)
 
     def link_expiry(self, x):
         tempLinkObj = TempLink.objects.get(kitchen_details=x)
@@ -85,7 +87,9 @@ class CitysAdmin(admin.ModelAdmin):
 
     def getTempLink(self, x):
         tempLinkObj = TempLink.objects.get(kitchen_details=x.kitchen)
-        return tempLinkObj.link
+        linkBtn = "<div onClick=\"copyToClip(this)\" value=\"kitchendotcom.in/custormerform/{tmpLinkObj}\" class=\"button\">Copy</div>".format(
+            tmpLinkObj=tempLinkObj.link)
+        return format_html(linkBtn)
 
     def link_expiry(self, x):
         tempLinkObj = TempLink.objects.get(kitchen_details=x.kitchen)
