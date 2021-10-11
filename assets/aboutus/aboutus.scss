@@ -49,6 +49,7 @@ nav {
     right: 0;
     transform: translateY(-50%);
     height: 30vh;
+	z-index: -1;
 }
 
 #graphics-2 {
@@ -57,6 +58,7 @@ nav {
     left: 0;
     height: 30vh;
     transform: translateY(-50%);
+	z-index: -1;
 }
 
 #graphics-3 {
@@ -64,6 +66,7 @@ nav {
     width: fit-content;
     right: 0;
     height: 30vh;
+	z-index: -1;
     transform: translateY(-50%);
 }
 
