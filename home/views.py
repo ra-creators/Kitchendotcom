@@ -1110,26 +1110,26 @@ def billing(request):
 #     return render(request, 'billing_output.html', context_invoice)
 
 
-def invoice_pdf(request):
-    template_path = 'billing_output.html'
+# def invoice_pdf(request):
+#     template_path = 'billing_output.html'
 
-    context = request.session.get('context_invoice')
-    # return HttpResponse(context)
+#     context = request.session.get('context_invoice')
+#     # return HttpResponse(context)
 
-    response = HttpResponse(content_type='application/pdf')
+#     response = HttpResponse(content_type='application/pdf')
 
-    response['Coontent-Disposition'] = 'filename="invoice.pdf"'
+#     response['Coontent-Disposition'] = 'filename="invoice.pdf"'
 
-    template = get_template(template_path)
+#     template = get_template(template_path)
 
-    html = template.render(context)
+#     html = template.render(context)
 
-    # create pdf
-    pisa_status = pisa.CreatePDF(
-        html, dest=response
-    )
+#     # create pdf
+#     pisa_status = pisa.CreatePDF(
+#         html, dest=response
+#     )
 
-    # if error
-    if pisa_status.err:
-        return HttpResponse('We had some error <pre>' + html + '</pre>')
-    return response
+#     # if error
+#     if pisa_status.err:
+#         return HttpResponse('We had some error <pre>' + html + '</pre>')
+#     return response

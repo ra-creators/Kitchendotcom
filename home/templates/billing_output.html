@@ -335,7 +335,7 @@
           <td>HSN/SAC</td>
           <td>Taxable value</td>
           <td>
-            <div class="row g-0">Integrated Tax</div>
+            <div class="row g-0">Tax</div>
             <div class="row g-0 border-top border-dark">
               <div class="col border-end border-dark text-center">Rate</div>
               <div class="col text-center">Amount</div>
@@ -389,14 +389,14 @@
         </div>
       </div>
     </section>
-      <a class="btn btn-primary m-2" href="{% url "invoice_pdf" %}" target="_blank">Create Invoice Pdf</a>
+      {% comment %} <a class="btn btn-primary m-2" href="{% url "invoice_pdf" %}" target="_blank">Create Invoice Pdf</a> {% endcomment %}
   </div>
 
-  <div class="row d-print-none">
+  {% comment %} <div class="row d-print-none">
     <div class="col">
       <button class="cmd btn btn-primary" >Print this page</button>
     </div>
-  </div>
+  </div> {% endcomment %}
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.5/jspdf.min.js"></script>
