@@ -43,6 +43,7 @@ body {
   -webkit-transform: translateY(-50%);
           transform: translateY(-50%);
   height: 30vh;
+  z-index: -1;
 }
 
 #graphics-2 {
@@ -54,6 +55,7 @@ body {
   height: 30vh;
   -webkit-transform: translateY(-50%);
           transform: translateY(-50%);
+  z-index: -1;
 }
 
 #graphics-3 {
@@ -63,6 +65,7 @@ body {
   width: fit-content;
   right: 0;
   height: 30vh;
+  z-index: -1;
   -webkit-transform: translateY(-50%);
           transform: translateY(-50%);
 }
@@ -97,5 +100,15 @@ body {
 
 .row {
   padding: 1.5rem 0;
+}
+
+@media only screen and (max-width: 600px){
+	#sec-one h1{
+		position: unset;
+		font-size: 40px;
+		padding: 1rem 2rem;
+		text-align: center;
+		width:100%;
+	}
 }
 /*# sourceMappingURL=aboutus.css.map */

@@ -9,7 +9,7 @@
   <!-- bootstrap CSS only -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous" />
-  <style>
+  <style type="text/css">
     * {
       font-size: 10px;
     }
@@ -47,11 +47,45 @@
     td {
       border: 1px solid black;
     }
+
+    @media print {
+      * {
+        font-size: 10px;
+      }
+
+      .page-cont {
+        border: 1px solid black;
+      }
+
+      .cell {
+        border: 1px solid black;
+        padding: 1px !important;
+      }
+
+      .col {
+        margin: 0;
+        padding: 0;
+      }
+
+      .row {
+        margin: 0;
+        padding: 0;
+      }
+
+      p {
+        margin: 0;
+        padding: 0;
+      }
+
+      td {
+        border: 1px solid black;
+      }
+    }
   </style>
 </head>
 
 <body>
-  <div class="page-cont d-flex flex-column m-2">
+  <div id="page" class="page-cont d-flex flex-column m-2">
     {% comment %} section one {% endcomment %}
     <section class="row g-0">
       <div class="col">
@@ -60,12 +94,12 @@
           <p>
             <!-- name -->
             <p class="fw-bold">
-              RAJAT AGRAWAL CREATORS
+              {{franch_name}}
             </p>
             <!-- address -->
-            <p>
-              ASH BHAIRO VARANASI GSTIN/UIN:
-              09CLEPA9997D1ZQ State Name : Uttar Pradesh, Code : 09
+            <p> {{franch_address}} </p>
+            <p> GSTIN/UIN: {{franch_gst}} </p>
+            <p> State Name : {{franch_state}}, Code : {{franch_statecode}}
             </p>
             <div class="row g-0">
               <div class="col">GSTIN/UIN</div>
@@ -145,98 +179,99 @@
             </div>
           </div>
         </div>
-        <div class="col d-flex flex-column">
-          <div class="row g-0">
-            <div class="col h-100 cell">
-              <p>Invoice No.</p>
-              <p>
-                {{invoice_no}}
-              </p>
-            </div>
-            <div class="col h-100 cell">
-              <p>Dated </p>
-              <p>
-                {{date}}
-              </p>
-            </div>
-          </div>
-          <div class="row g-0">
-            <div class="col cell h-100">
-              <p>Delivery Note</p>
-              <p>
-                {{delivery_note}}
-              </p>
-            </div>
-            <div class="col cell h-100">
-              <p>Mode/Terms of Payment</p>
-              <p>
-                {{payment_mode}}
-              </p>
-            </div>
-          </div>
-          <div class="row g-0">
-            <div class="col cell h-100">
-              <p>Reference No. & Date.</p>
-              <p>
-                {{ref_no}}
-              </p>
-            </div>
-            <div class="col cell h-100">
-              <p>Other References</p>
-              <p>
-                {{other_ref}}
-              </p>
-            </div>
-          </div>
-          <div class="row g-0">
-            <div class="col cell h-100">
-              <p>Buyer's order no</p>
-              <p>
-                {{buy_ord_no}}
-              </p>
-            </div>
-            <div class="col cell h-100">
-              <p>Dated</p>
-              <p>
-                {{buy_dated}}
-              </p>
-            </div>
-          </div>
-          <div class="row g-0">
-            <div class="col cell h-100">
-              <p>Dispatch Doc No</p>
-              <p>
-                {{dispatch_date}}
-              </p>
-            </div>
-            <div class="col cell h-100">
-              <p>Delivery Note Date</p>
-              <p>
-                {{delivery_date}}
-              </p>
-            </div>
-          </div>
-          <div class="row g-0">
-            <div class="col cell h-100">
-              <p>Dispatched throug</p>
-              <p>
-                {{dispatch_through}}
-              </p>
-            </div>
-            <div class="col cell h-100">
-              <p>Destination</p>
-              <p>
-                {{destination}}
-              </p>
-            </div>
-          </div>
-          <div class="col cell h-100">
-            <p>Terms of delivery</p>
+      </div>
+      <div class="col d-flex flex-column">
+        <div class="row g-0">
+          <div class="col h-100 cell">
+            <p>Invoice No.</p>
             <p>
-              {{delivery_terms}}
+              {{invoice_no}}
+            </p>
+          </div>
+          <div class="col h-100 cell">
+            <p>Dated </p>
+            <p>
+              {{date}}
             </p>
           </div>
         </div>
+        <div class="row g-0">
+          <div class="col cell h-100">
+            <p>Delivery Note</p>
+            <p>
+              {{delivery_note}}
+            </p>
+          </div>
+          <div class="col cell h-100">
+            <p>Mode/Terms of Payment</p>
+            <p>
+              {{payment_mode}}
+            </p>
+          </div>
+        </div>
+        <div class="row g-0">
+          <div class="col cell h-100">
+            <p>Reference No. & Date.</p>
+            <p>
+              {{ref_no}}
+            </p>
+          </div>
+          <div class="col cell h-100">
+            <p>Other References</p>
+            <p>
+              {{other_ref}}
+            </p>
+          </div>
+        </div>
+        <div class="row g-0">
+          <div class="col cell h-100">
+            <p>Buyer's order no</p>
+            <p>
+              {{buy_ord_no}}
+            </p>
+          </div>
+          <div class="col cell h-100">
+            <p>Dated</p>
+            <p>
+              {{buy_dated}}
+            </p>
+          </div>
+        </div>
+        <div class="row g-0">
+          <div class="col cell h-100">
+            <p>Dispatch Doc No</p>
+            <p>
+              {{dispatch_date}}
+            </p>
+          </div>
+          <div class="col cell h-100">
+            <p>Delivery Note Date</p>
+            <p>
+              {{delivery_date}}
+            </p>
+          </div>
+        </div>
+        <div class="row g-0">
+          <div class="col cell h-100">
+            <p>Dispatched throug</p>
+            <p>
+              {{dispatch_through}}
+            </p>
+          </div>
+          <div class="col cell h-100">
+            <p>Destination</p>
+            <p>
+              {{destination}}
+            </p>
+          </div>
+        </div>
+        <div class="col cell h-100">
+          <p>Terms of delivery</p>
+          <p>
+            {{delivery_terms}}
+          </p>
+        </div>
+      </div>
     </section>
 
     {% comment %} table section {% endcomment %}
@@ -255,21 +290,21 @@
           <td>1</td>
           <td>{{item}}</td>
           <td>{{hsn}}</td>
-          <td></td>
-          <td></td>
-          <td></td>
+          <td>{{quantity}}</td>
+          <td>{{rate}}</td>
+          <td>{{per}}</td>
           <td>{{amount}}</td>
         </tr>
         {% for tax in taxs %}
-        <tr>
-          <td></td>
-          <td>{{tax.type}}</td>
-          <td></td>
-          <td></td>
-          <td>{{tax.rate}}</td>
-          <td>%</td>
-          <td>{{tax.amount}}</td>
-        </tr>
+          <tr>
+            <td></td>
+            <td>{{tax.type}}</td>
+            <td></td>
+            <td></td>
+            <td>{{tax.rate}}</td>
+            <td>%</td>
+            <td>{{tax.amount}}</td>
+          </tr>
         {% endfor %}
         <tfoot>
           <td></td>
@@ -308,17 +343,18 @@
           </td>
           <td>Total Tax Amount</td>
         </thead>
-        <tr>
-          <td>{{hsn}}</td>
-          <td>{{tax.ablevalue}}</td>
-          <td>
-            <div class="row g-0">
-              <div class="col border-end border-dark">{{tax.rate}}%</div>
-              <div class="col">{{tax.amount}}</div>
-            </div>
-          </td>
-          <td>465.47</td>
-        </tr>
+        {% for tax in taxs %}{% endfor %}
+          <tr>
+            <td>{{hsn}}</td>
+            <td>{{amount}}</td>
+            <td>
+              <div class="row g-0">
+                <div class="col border-end border-dark">18%</div>
+                <div class="col">{{tax}}</div>
+              </div>
+            </td>
+            <td>{{tax}}</td>
+          </tr>
       </table>
       <div class="row g-0">
         <div class="col-auto">Tax Amount (in words)</div>
@@ -355,6 +391,34 @@
     </section>
       <a class="btn btn-primary m-2" href="{% url "invoice_pdf" %}" target="_blank">Create Invoice Pdf</a>
   </div>
+
+  <div class="row d-print-none">
+    <div class="col">
+      <button class="cmd btn btn-primary" >Print this page</button>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.5/jspdf.min.js"></script>
+
+  <script>
+    $('.cmd').click(function () {  
+      var pdf = new jsPDF('p','mm',[297, 210]);
+      var specialElementHandlers = {
+        '#editor': function (element, renderer) {
+            return true;
+        }
+      };
+      var $addr = $('#page');
+      pdf.fromHTML($addr.html(), 15, 15, {
+            //'width': 170,
+          //  'elementHandlers':specialElementHandlers
+          }
+      );
+      pdf.save('sample-file.pdf');
+    });
+  </script>
+
 </body>
 
 </html>

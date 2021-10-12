@@ -1,16 +1,18 @@
-from home.forms import KitchenDetailsForm
 from django.http.response import HttpResponse, FileResponse
 from django.http import HttpResponseRedirect
 from django.shortcuts import redirect, render, get_object_or_404
 # importing calculation model is removed
 from home.models import c_details, kitchen_details, Constant, City1, City2, City3, City4, City5, City6, City7, City8, City9, City10, TempLink
+from home.forms import KitchenDetailsForm, KitchenImageFormSet, KitchenVideoFormSet
 from datetime import datetime
 from fpdf import FPDF, template
 from django.core.mail import EmailMessage
 from django.conf import settings
-from django.template.loader import get_template, render_to_string
-from num2words import num2words
-# from xhtml2pdf import pisa
+from django.template.loader import render_to_string, get_template
+
+from xhtml2pdf import pisa
+import inflect
+num2words = inflect.engine()
 
 values = Constant.objects.all().last()
 rate = {
@@ -494,7 +496,7 @@ def kitchen_summary(request):
         'b_inch': request.session.get('b_inch'),
         'c_feet': request.session.get('c_feet'),
         'c_inch': request.session.get('c_inch'),
-        'name': request.session.get('name'),
+        # 'name': request.session.get('name'),
         'loft': request.session.get('loft'),
         'type': request.session.get('package'),
         'material': request.session.get('material'),
@@ -617,7 +619,8 @@ def kitchen_summary(request):
     pdf.cell(200, 4, "3. No hidden costs further of any kind of expenses likeDesigning, transportation or installation,etc in case of turnkey.", ln=1, align="L")
     pdf.cell(200, 4, "4. Offers/schemes are marked as*For Free*.", ln=1, align="L")
     pdf.cell(200, 4, "5. Appliances and Services(Ceiling light, Civil work,Plumbing and Flooring) are not counted in above quotaion i.e. it will be quoted as per selection", ln=1, align="L")
-    pdf.cell(200, 4, "6. Payment Schedule as prescribed by area manager.", ln=1, align="L")
+    pdf.cell(
+        200, 4, "6. Payment Schedule as prescribed by area manager.", ln=1, align="L")
 
     pdf.add_page()
     pdf.image("static/pdf/bg_2.png", 0, 0, 210, 297, 'png')
@@ -986,19 +989,30 @@ def customer_form(request, slug):
         return HttpResponse('<h1>link expired</h1>')
 
     order_instance = temp_link.kitchen_details
-    form_instance = KitchenDetailsForm(instance=order_instance)
 
     if(request.method == 'POST'):
         data = KitchenDetailsForm(request.POST, instance=order_instance)
-        if data.is_valid():
+        imgs = KitchenImageFormSet(
+            request.POST, request.FILES, instance=order_instance)
+
+        if data.is_valid() and imgs.is_valid():
+            # pass
             data.save()
+            imgs.save()
+            # stat = imgs.save()
+            # print(stat)
         else:
             return HttpResponse('<h1>bad request</h1>')
         return HttpResponse('<h1>response recorded</h1>')
 
-    context = {}
+    form_instance = KitchenDetailsForm(instance=order_instance)
+    imgformset_instance = KitchenImageFormSet(instance=order_instance)
+    vidformset_instance = KitchenVideoFormSet(instance=order_instance)
+
     context = {
         'form_inst': form_instance,
+        'imgformset_instance': imgformset_instance,
+        'vidformset_instance': vidformset_instance,
     }
     return render(request, 'customer_form.html', context)
 
@@ -1006,60 +1020,103 @@ def customer_form(request, slug):
 def billing(request):
     if request.method == "POST":
         context_invoice = {
-        'ship_name': request.POST.get('ship_name'),
-        'ship_address' : request.POST.get('ship_address'),
-        'ship_gst' : request.POST.get('ship_gst'),
-        'ship_state' : request.POST.get('ship_state'),
-        'ship_statecode' : request.POST.get('ship_statecode'),
-        'bill_name' : request.POST.get('bill_name'),
-        'bill_address' : request.POST.get('bill_address'),
-        'bill_gst' : request.POST.get('bill_gst'),
-        'bill_state' : request.POST.get('bill_state'),
-        'bill_statecode' : request.POST.get('bill_statecode'),
-        'invoice_no' : request.POST.get('invoice_no'),
-        'date' : request.POST.get('date'),
-        'delivery_note' : request.POST.get('delivery_note'),
-        'payment_mode' : request.POST.get('payment_mode'),
-        'ref_no' : request.POST.get('ref_no'),
-        'other_ref' : request.POST.get('other_ref'),
-        'buy_ord_no' : request.POST.get('buy_ord_no'),
-        'buy_dated' : request.POST.get('buy_dated'),
-        'dispatch_date' : request.POST.get('dispatch_date'),
-        'delivery_date' : request.POST.get('delivery_date'),
-        'dispatch_through' : request.POST.get('dispatch_through'),
-        'destination' : request.POST.get('destination'),
-        'delivery_terms' : request.POST.get('delivery_terms'),
-        'item' : request.POST.get('item'),
-        'hsn' : request.POST.get('hsn'),
-        'amount' : request.POST.get('amount')
+            'franch_name': request.POST.get('franch_name'),
+            'franch_address': request.POST.get('franch_address'),
+            'franch_gst': request.POST.get('franch_gst'),
+            'franch_state': request.POST.get('franch_state'),
+            'franch_statecode': request.POST.get('franch_statecode'),
+            'franch_mail': request.POST.get('franch_mail'),
+
+            'ship_name': request.POST.get('ship_name'),
+            'ship_address': request.POST.get('ship_address'),
+            'ship_gst': request.POST.get('ship_gst'),
+            'ship_state': request.POST.get('ship_state'),
+            'ship_statecode': request.POST.get('ship_statecode'),
+
+            'bill_name': request.POST.get('bill_name'),
+            'bill_address': request.POST.get('bill_address'),
+            'bill_gst': request.POST.get('bill_gst'),
+            'bill_state': request.POST.get('bill_state'),
+            'bill_statecode': request.POST.get('bill_statecode'),
+
+            'invoice_no': request.POST.get('invoice_no'),
+            'date': request.POST.get('date'),
+            'delivery_note': request.POST.get('delivery_note'),
+            'payment_mode': request.POST.get('payment_mode'),
+            'ref_no': request.POST.get('ref_no'),
+            'other_ref': request.POST.get('other_ref'),
+            'buy_ord_no': request.POST.get('buy_ord_no'),
+            'buy_dated': request.POST.get('buy_dated'),
+            'dispatch_date': request.POST.get('dispatch_date'),
+            'delivery_date': request.POST.get('delivery_date'),
+            'dispatch_through': request.POST.get('dispatch_through'),
+            'destination': request.POST.get('destination'),
+            'delivery_terms': request.POST.get('delivery_terms'),
+            'item': request.POST.get('item'),
+            'hsn': request.POST.get('hsn'),
+            'quantity': int(request.POST.get('quantity')),
+            'rate': int(request.POST.get('rate')),
+            'per': int(request.POST.get('per')),
+            'amount': request.POST.get('amount'),
+            # 'taxs': [],
         }
+        context_invoice['amount'] = context_invoice['quantity'] / \
+            context_invoice['per']*context_invoice['rate']
 
-    return render(request, 'billing_form.html')#, context_invoice
+        tax = round(int(context_invoice['amount']) * 0.18, 2)
 
-def billing_output(request, context_invoice):
-    tax = round(int(context_invoice['amount']) * 0.18, 2)
+        if context_invoice['franch_statecode'] == context_invoice['bill_statecode']:
+            context_invoice['taxs'] = [
+                {'type': 'cgst', 'rate': '9%', 'amount': tax/2},
+                {'type': 'sgst', 'rate': '9%', 'amount': tax/2}
+            ]
+            print('yes')
+        else:
+            context_invoice['taxs'] = [
+                {'type': 'igst', 'rate': '18%', 'amount': tax}
+            ]
+            print('no')
 
-    if context_invoice['ship_statecode'] == '09':
-        taxs = {
-            'cgst' : {'type' : 'cgst', 'rate' : '9%', 'amount': tax/2},
-            'sgct' : {'type' : 'sgst', 'rate' : '9%', 'amount': tax/2}
-        }
-    else:
-        taxs = {
-            'igst' : {'type' : 'igst', 'rate' : '18%', 'amount': tax}
-        }
+        context_invoice['total'] = int(context_invoice['amount']) + tax
+        num2words.number_to_words(int(tax))
+        context_invoice['total_charge_words'] = num2words.number_to_words(
+            int(context_invoice['total']))
+        context_invoice['tax'] = tax
+        context_invoice['total_tax_words'] = num2words.number_to_words(
+            tax
+        )
+        request.session['context_invoice'] = context_invoice
+        return render(request, 'billing_output.html', context_invoice)
 
-    context_invoice['total'] = int(context_invoice['amount']) + tax
-    num2words(tax, to = 'ordinal')
-    num2words(context_invoice['total'], to = 'ordinal')
-    return render(request, 'billing_output.html', context_invoice)
+    return render(request, 'billing_form.html')
 
-def invoice_pdf(request, context_invoice):
+
+# def billing_output(request, context_invoice):
+#     tax = round(int(context_invoice['amount']) * 0.18, 2)
+
+#     if context_invoice['franch_statecode'] == context_invoice['bill_statecode']:
+#         taxs = {
+#             'cgst': {'type': 'cgst', 'rate': '9%', 'amount': tax/2},
+#             'sgct': {'type': 'sgst', 'rate': '9%', 'amount': tax/2}
+#         }
+#     else:
+#         taxs = {
+#             'igst': {'type': 'igst', 'rate': '18%', 'amount': tax}
+#         }
+
+#     context_invoice['total'] = int(context_invoice['amount']) + tax
+#     num2words(tax)
+#     num2words(context_invoice['total'])
+#     return render(request, 'billing_output.html', context_invoice)
+
+
+def invoice_pdf(request):
     template_path = 'billing_output.html'
 
-    context = context_invoice
+    context = request.session.get('context_invoice')
+    # return HttpResponse(context)
 
-    response = HttpResponse(content_type = 'application/pdf')
+    response = HttpResponse(content_type='application/pdf')
 
     response['Coontent-Disposition'] = 'filename="invoice.pdf"'
 
@@ -1068,11 +1125,11 @@ def invoice_pdf(request, context_invoice):
     html = template.render(context)
 
     # create pdf
-    pisa_status = pisa.CreatePdf(
+    pisa_status = pisa.CreatePDF(
         html, dest=response
     )
 
     # if error
     if pisa_status.err:
-        return HttpResponse('We had some error <pre>' + html +'</pre>')
+        return HttpResponse('We had some error <pre>' + html + '</pre>')
     return response

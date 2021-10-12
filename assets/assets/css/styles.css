@@ -232,18 +232,6 @@ input[type='checkbox']:checked:after {
     border: dashed;
 }
 
-/* Hide Scrolling  */
-
-html {
-    overflow-y: hidden; 
-}
-
-@media (max-width: 1399.98px) {
-    html {
-        overflow-y: auto;
-    }
-}
-
 #decorators {
     position: absolute;
     top: 0;
