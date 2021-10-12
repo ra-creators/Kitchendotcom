@@ -1,7 +1,8 @@
-from home.models import c_details, kitchen_details, Constant, City1, City2, City3, City4, City5, City6, City7, City8, City9, City10
 from django.utils.html import format_html
 from datetime import date, datetime, timedelta
-from home.models import c_details, kitchen_details, Constant, City1, City2, City3, City4, City5, City6, City7, City8, City9, City10, City11, TempLink
+from home.models import c_details, kitchen_details, Constant
+from home.models import City1, City2, City3, City4, City5, City6, City7, City8, City9, City10, City11
+from home.models import TempLink, KitchenImage, KitchenVideo
 from django.db import models
 from django.contrib import admin
 
@@ -36,6 +37,18 @@ def create_link_city(modeladmin, request, queryset):
         TempLink.objects.create(kitchen_details=query.kitchen)
 
 
+class KitchenImageInline(admin.StackedInline):
+    model = KitchenImage
+    extra = 0
+    max_num = 5
+
+
+class KitchenVideoInline(admin.StackedInline):
+    model = KitchenVideo
+    extra = 0
+    max_num = 5
+
+
 @admin.register(kitchen_details)
 class kitchen_detailsAdmin(admin.ModelAdmin):
     list_display = ['Name', 'Location', 'Price', 'getTempLink',  'link_expiry']
@@ -59,6 +72,7 @@ class kitchen_detailsAdmin(admin.ModelAdmin):
             return '-'
 
     actions = [create_link]
+    inlines = [KitchenImageInline, KitchenVideoInline]
 
     class Media:
         js = ("admin/copy-btn.js",)
@@ -102,6 +116,9 @@ class CitysAdmin(admin.ModelAdmin):
         else:
             return '-'
 
+    # def kitchen_images(self,x):
+        # return x.kitchen.image
+
     actions = [create_link_city]
 
     class Media:
@@ -119,6 +136,8 @@ admin.site.register(City8, CitysAdmin)
 admin.site.register(City9, CitysAdmin)
 admin.site.register(City10, CitysAdmin)
 admin.site.register(City11, CitysAdmin)
+# admin.site.register(KitchenImage)
+# admin.site.register(KitchenVid)
 
 
 @admin.register(TempLink)

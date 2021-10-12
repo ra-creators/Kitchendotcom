@@ -129,11 +129,6 @@ USE_L10N = True
 USE_TZ = True
 
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/3.2/howto/static-files/
-
-STATIC_URL = '/static/'
-
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
@@ -141,20 +136,21 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # added manually
 
+# Static files (CSS, JavaScript, Images)
+# https://docs.djangoproject.com/en/3.2/howto/static-files/
+
+STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static')
 ]
-
 STATIC_ROOT = os.path.join(BASE_DIR, 'assets')
 
 CKEDITOR_UPLOAD_PATH = "ckuploads/"
+
 # Managing media
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-# Django-Jet for admin panel
-# JET_PROJECT = 'kdotcom'
-# JET_TOKEN = 'bd2217c5-2670-493b-94b2-22c700208410'
 
 # SMTP Configurations
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'

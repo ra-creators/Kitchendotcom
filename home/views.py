@@ -1,9 +1,9 @@
-from home.forms import KitchenDetailsForm
 from django.http.response import HttpResponse, FileResponse
 from django.http import HttpResponseRedirect
 from django.shortcuts import redirect, render, get_object_or_404
 # importing calculation model is removed
 from home.models import c_details, kitchen_details, Constant, City1, City2, City3, City4, City5, City6, City7, City8, City9, City10, TempLink
+from home.forms import KitchenDetailsForm, KitchenImageFormSet, KitchenVideoFormSet
 from datetime import datetime
 from fpdf import FPDF
 from datetime import datetime
@@ -987,19 +987,30 @@ def customer_form(request, slug):
         return HttpResponse('<h1>link expired</h1>')
 
     order_instance = temp_link.kitchen_details
-    form_instance = KitchenDetailsForm(instance=order_instance)
 
     if(request.method == 'POST'):
         data = KitchenDetailsForm(request.POST, instance=order_instance)
-        if data.is_valid():
+        imgs = KitchenImageFormSet(
+            request.POST, request.FILES, instance=order_instance)
+
+        if data.is_valid() and imgs.is_valid():
+            # pass
             data.save()
+            imgs.save()
+            # stat = imgs.save()
+            # print(stat)
         else:
             return HttpResponse('<h1>bad request</h1>')
         return HttpResponse('<h1>response recorded</h1>')
 
-    context = {}
+    form_instance = KitchenDetailsForm(instance=order_instance)
+    imgformset_instance = KitchenImageFormSet(instance=order_instance)
+    vidformset_instance = KitchenVideoFormSet(instance=order_instance)
+
     context = {
         'form_inst': form_instance,
+        'imgformset_instance': imgformset_instance,
+        'vidformset_instance': vidformset_instance,
     }
     return render(request, 'customer_form.html', context)
 

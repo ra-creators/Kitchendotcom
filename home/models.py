@@ -35,6 +35,17 @@ class kitchen_details(models.Model):
     Location = models.CharField(max_length=12, default="NA")
     date = models.DateField(auto_created=True)
     # Summary_Pdf = models.FileField(upload_to = 'pdf/',  default="/Summary.pdf")
+    Address = models.TextField(max_length=200, default='')
+    Enquiry = models.TextField(max_length=500, blank=True)
+    status_choices = [
+        ('New', 'New'),
+        ('Follow Up', 'Follow Up'),
+        ('Project Started', 'Project Started'),
+        ('Project Completed', 'Project Completed'),
+        ('Declined', 'Declined'),
+    ]
+    Status = models.CharField(
+        max_length=50, choices=status_choices, default='New')
 
     class Meta:
         db_table = ''
@@ -45,7 +56,24 @@ class kitchen_details(models.Model):
     def __str__(self):
         return self.Name
 
-# Model after adding sessions
+
+class KitchenImage(models.Model):
+    kitchen = models.ForeignKey(
+        kitchen_details, on_delete=models.CASCADE)
+    image = models.FileField(upload_to='images/kitchen/')
+
+    class Meta:
+        verbose_name = 'Kitchen Image'
+        verbose_name_plural = 'Kitchen Images'
+
+
+class KitchenVideo(models.Model):
+    kitchen = models.ForeignKey(kitchen_details, on_delete=models.CASCADE)
+    video = models.FileField(upload_to='videos/kitchen/')
+
+    class Meta:
+        verbose_name = 'Kitchen Video'
+        verbose_name_plural = 'Kitchen Videos'
 
 
 class Constant(models.Model):

@@ -1,10 +1,9 @@
-from django.db.models import fields
-from django.forms import ModelForm
+from django.forms import ModelForm, inlineformset_factory
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Layout, Fieldset, ButtonHolder, Submit, Row
 from django import forms
 
-from home.models import kitchen_details
+from home.models import kitchen_details, KitchenImage, KitchenVideo
 
 # TODO
 # model countertop boolean
@@ -74,6 +73,13 @@ APPLLIANCES_CHOICES = [
 ]
 
 
+KitchenImageFormSet = inlineformset_factory(
+    kitchen_details, KitchenImage, fields=('image',), extra=5, max_num=5, )
+
+KitchenVideoFormSet = inlineformset_factory(
+    kitchen_details, KitchenVideo, fields=('video',), extra=5, max_num=5)
+
+
 class KitchenDetailsForm(ModelForm):
 
     def __init__(self, *args, **kwargs):
@@ -95,6 +101,7 @@ class KitchenDetailsForm(ModelForm):
     class Meta:
         model = kitchen_details
         # exclude = ['Price', 'Location', 'date']
+        exclude = ['Status']
         fields = '__all__'
         widgets = {
             'Name': forms.TextInput(attrs={'readonly': True}),
