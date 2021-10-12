@@ -51,7 +51,8 @@ class KitchenVideoInline(admin.StackedInline):
 
 @admin.register(kitchen_details)
 class kitchen_detailsAdmin(admin.ModelAdmin):
-    list_display = ['Name', 'Location', 'Price', 'getTempLink',  'link_expiry']
+    list_display = ['Name', 'Location', 'Price',
+                    'getTempLink',  'link_expiry', 'invoice']
     # ordering = ['Date']
 
     def getTempLink(self, x):
@@ -59,6 +60,9 @@ class kitchen_detailsAdmin(admin.ModelAdmin):
         linkBtn = "<div onClick=\"copyToClip(this)\" value=\"kitchendotcom.in/custormerform/{tmpLinkObj}\" class=\"button\">Copy</div>".format(
             tmpLinkObj=tempLinkObj.link)
         return format_html(linkBtn)
+
+    def invoice(self, x):
+        return format_html("<a target=\"_blank\" class=\"button\" href=\"/billing\">create</a>")
 
     def link_expiry(self, x):
         tempLinkObj = TempLink.objects.get(kitchen_details=x)
@@ -80,13 +84,16 @@ class kitchen_detailsAdmin(admin.ModelAdmin):
 
 class CitysAdmin(admin.ModelAdmin):
     list_display = ['Location', 'customer_name',
-                    'kitchen_shape', 'kitchen_size', 'price', 'getTempLink', 'link_expiry']
+                    'kitchen_shape', 'kitchen_size', 'price', 'getTempLink', 'link_expiry', 'invoice']
 
     def customer_name(self, x):
         cust_name = x.kitchen.Name
         link = "<a href=\"/admin/home/kitchen_details/{link}\">{link_name}</a>".format(
             link=x.kitchen.pk, link_name=cust_name)
         return format_html(link)
+
+    def invoice(self, x):
+        return format_html("<a class=\"button\" target=\"_blank\" href=\"/billing\">create</a>")
 
     def kitchen_shape(self, x):
         link = "<a href=\"/admin/home/kitchen_details/{link}\">{link_name}</a>".format(
