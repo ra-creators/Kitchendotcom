@@ -51,70 +51,80 @@
 </head>
 
 <body>
-  <div class="page-cont d-flex flex-column m-2">
+  <form method="POST" class="page-cont d-flex flex-column m-2">
+    {% csrf_token %}
     {% comment %} section one {% endcomment %}
     <section class="row g-0">
       <div class="col">
         {% comment %} ra creators {% endcomment %}
         <div class="cell">
-          <p>
-            <!-- name -->
-            <p class="fw-bold">
-              RAJAT AGRAWAL CREATORS
-            </p>
-            <!-- address -->
-            <p>
-              ASH BHAIRO VARANASI GSTIN/UIN:
-              09CLEPA9997D1ZQ State Name : Uttar Pradesh, Code : 09
-            </p>
-            <div class="row g-0">
-              <div class="col">GSTIN/UIN</div>
-              <div class="col">29AAUCS8130L1ZI</div>
-            </div>
-            <div class="row g-0">
-              <div class="col">State Name</div>
-              <div class="col">Karnataka, Code : 29</div>
-            </div>
-            <div class="row g-0">
-              <div class="col">Email</div>
-              <div class="col">: info@racreators.com</div>
-            </div>
+          <!-- name -->
+          <p class="fw-bold">
+            <label for="franch_name">Name : </label>
+            <input type="text" placeholder="RAJAT AGRAWAL CREATORS" name="franch_name" id="franch_name">
           </p>
+          <!-- address -->
+          <p>
+            <label for="franch_address">Address</label>
+            <textarea type="text" placeholder="ASH BHAIRO, VARANASI" name="franch_address" id="franch_address"></textarea>
+          </p>
+          <div class="row g-0">
+            <label for="franch_gst"  class="col">GSTIN/UIN</label>
+            <div class="col">
+              <input type="text" placeholder="09CLEPA9997D1ZQ" name="franch_gst" id="franch_gst">
+            </div>
+          </div>
+          <div class="row g-0">
+            <label for="franch_state" class="col">State Name</label>
+            <div class="col"> 
+            <input type="text" placeholder="Uttar Pradesh" name="franch_state" id="franch_state">
+            </div>
+          </div>
+          <div class="row g-0">
+            <label for="franch_statecode" class="col">State Code :</label>
+            <div class="col">
+              <input type="text" placeholder="09" name="franch_statecode" id="franch_statecode">
+            </div>
+          </div>
+          <div class="row g-0">
+            <label for="franch_mail" class="col">Mail :</label>
+            <div class="col">
+              <input type="text" name="franch_mail" id="franch_mail" placeholder="info@racreators.com">
+            </div>
+          </div>
         </div>
         {% comment %} ship to {% endcomment %}
         <div class="cell">
-          <p>
-            <div class="row g-0">
-              <p>Consignee (Ship to)</p>
-            </div>
-            <!-- name -->
-            <p class="fw-bold">
-              <label for="ship_name">Name : </label>
-              <input type="text" name="ship_name" id="ship_name">
-            </p>
-            <!-- address -->
-            <p>
-              <label for="ship_address">Address</label>
-              <textarea type="text" name="ship_address" id="ship_address"> </textarea>
-            </p>
-            <div class="row g-0">
-              <label for="ship_gst" class="col">GSTIN/UIN</label>
-              <div class="col">
-                <input type="text" name="ship_gst" id="ship_gst">
-              </div>
-            </div>
-            <div class="row g-0">
-              <label for="ship_state" class="col">State Name</label>
-              <div class="col"> <input type="text" name="ship_state" id="ship_state">
-              </div>
-            </div>
-            <div class="row g-0">
-              <label for="ship_statecode" class="col">State Code :</label>
-              <div class="col">
-                <input type="text" name="ship_statecode" id="ship_statecode">
-              </div>
-            </div>
+          <div class="row g-0">
+            <p>Consignee (Ship to)</p>
+          </div>
+          <!-- name -->
+          <p class="fw-bold">
+            <label for="ship_name">Name : </label>
+            <input type="text" name="ship_name" id="ship_name">
           </p>
+          <!-- address -->
+          <p>
+            <label for="ship_address">Address</label>
+            <textarea type="text" name="ship_address" id="ship_address"> </textarea>
+          </p>
+          <div class="row g-0">
+            <label for="ship_gst" class="col">GSTIN/UIN</label>
+            <div class="col">
+              <input type="text" name="ship_gst" id="ship_gst">
+            </div>
+          </div>
+          <div class="row g-0">
+            <label for="ship_state" class="col">State Name</label>
+            <div class="col"> <input type="text" name="ship_state" id="ship_state">
+            </div>
+          </div>
+          <div class="row g-0">
+            <label for="ship_statecode" class="col">State Code :</label>
+            <div class="col">
+              <input type="text" name="ship_statecode" id="ship_statecode">
+            </div>
+          </div>
         </div>
         {% comment %} bill to {% endcomment %}
         <div class="cell">
@@ -228,7 +238,6 @@
           <td>Quantity</td>
           <td>Rate</td>
           <td>per</td>
-          <td>Amount</td>
         </thead>
         <tr>
           <td>1</td>
@@ -238,106 +247,24 @@
           <td>
             <input type="text" placeholder="HSN Code" name="hsn" id="hsn">
           </td>
-          <td></td>
-          <td></td>
-          <td></td>
           <td>
-            <input type="text" placeholder="Amount" name="amount" id="amount">
-
+            <input type="digit" value="0" placeholder="Quantity" name="quantity" id="quantity">
           </td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>IGST 18%</td>
-          <td></td>
-          <td></td>
-          <td>18</td>
-          <td>%</td>
-          <td>465.47</td>
-        </tr>
-        <tfoot>
-          <td></td>
-          <td>Total</td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td>₹ 3,051.00</td>
-        </tfoot>
-      </table>
-      <div class="row g-0 cell">
-        <div class="row g-0">
-          <div class="col">
-            <p>Amount Chargeable (in words)</p>
-          </div>
-          <div class="col">
-            <p class="text-end">E. & O.E</p>
-          </div>
-        </div>
-        <div class="row g-0 fw-bold">INR Three Thousand Fifty One Only</div>
-      </div>
-    </section>
-    {% comment %} total section {% endcomment %}
-    <section class="row g-0">
-      <table>
-        <thead>
-          <td>HSN/SAC</td>
-          <td>Taxable value</td>
           <td>
-            <div class="row g-0">Integrated Tax</div>
-            <div class="row g-0 border-top border-dark">
-              <div class="col border-end border-dark text-center">Rate</div>
-              <div class="col text-center">Amount</div>
-            </div>
+            <input type="digit" value="0" placeholder="rate" name="rate" id="rate">
           </td>
-          <td>Total Tax Amount</td>
-        </thead>
-        <tr>
-          <td>998313</td>
-          <td>2,585.93</td>
           <td>
-            <div class="row g-0">
-              <div class="col border-end border-dark">18%</div>
-              <div class="col">465.47</div>
-            </div>
+            <input type="digit" value="1" placeholder="per" name="per" id="per">
           </td>
-          <td>465.47</td>
         </tr>
       </table>
-      <div class="row g-0">
-        <div class="col-auto">Tax Amount (in words)</div>
-        <div class="col fw-bold">
-          INR Four Hundred Sixty Five and Forty Seven paise Only
-        </div>
-      </div>
-    </section>
 
-    <!-- footer -->
-    <section class="row g-0 mt-auto">
-      <div class="col">
-        <div class="row g-0">
-          <p>Remarks :</p>
-          <p>
-            Investment for Digital Marketing for the period 15 August 2021 to
-            14 September 2021
-          </p>
-        </div>
-        <div class="row g-0">
-          <p class="fw-undrline">Declaration</p>
-          <p>
-            We declare that this invoice shows the actual price of the goods
-            described and that all particulars are true and correct.
-          </p>
+      <div class="row text-center">
+        <div class="col-auto">
+          <button class="btn btn-primary">Submit</button>
         </div>
       </div>
-      <div class="col d-flex flex-column">
-        <div class="cell mt-auto d-flex flex-column" style="height: 50%">
-          <p class="row g-0 fw-bold">for RAJAT AGRAWAL CREATORS</p>
-          <p class="row g-0 mt-auto">Authorised Signatory</p>
-        </div>
-      </div>
-    </section>
-  </div>
+  </form>
 </body>
 
 </html>
