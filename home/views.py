@@ -5,8 +5,7 @@ from django.shortcuts import redirect, render, get_object_or_404
 from home.models import c_details, kitchen_details, Constant, City1, City2, City3, City4, City5, City6, City7, City8, City9, City10, TempLink
 from home.forms import KitchenDetailsForm, KitchenImageFormSet, KitchenVideoFormSet
 from datetime import datetime
-from fpdf import FPDF
-from datetime import datetime
+from fpdf import FPDF, template
 from django.core.mail import EmailMessage
 from django.conf import settings
 from django.template.loader import render_to_string, get_template
@@ -484,7 +483,7 @@ def select_appliances(request):
 
 def kitchen_summary(request):
 
-    constant = Constant.objects.all().last()
+    # constant = Constant.objects.all().last()
     # key names are as per summary page
     context = {
         'name': request.session.get('name'),
@@ -497,7 +496,7 @@ def kitchen_summary(request):
         'b_inch': request.session.get('b_inch'),
         'c_feet': request.session.get('c_feet'),
         'c_inch': request.session.get('c_inch'),
-        'name': request.session.get('name'),
+        # 'name': request.session.get('name'),
         'loft': request.session.get('loft'),
         'type': request.session.get('package'),
         'material': request.session.get('material'),
@@ -1059,7 +1058,7 @@ def billing(request):
             'rate': int(request.POST.get('rate')),
             'per': int(request.POST.get('per')),
             'amount': request.POST.get('amount'),
-            'taxs': [],
+            # 'taxs': [],
         }
         context_invoice['amount'] = context_invoice['quantity'] / \
             context_invoice['per']*context_invoice['rate']
@@ -1071,10 +1070,12 @@ def billing(request):
                 {'type': 'cgst', 'rate': '9%', 'amount': tax/2},
                 {'type': 'sgst', 'rate': '9%', 'amount': tax/2}
             ]
+            print('yes')
         else:
             context_invoice['taxs'] = [
                 {'type': 'igst', 'rate': '18%', 'amount': tax}
             ]
+            print('no')
 
         context_invoice['total'] = int(context_invoice['amount']) + tax
         num2words.number_to_words(int(tax))
@@ -1109,26 +1110,26 @@ def billing(request):
 #     return render(request, 'billing_output.html', context_invoice)
 
 
-def invoice_pdf(request):
-    template_path = 'billing_output.html'
+# def invoice_pdf(request):
+#     template_path = 'billing_output.html'
 
-    context = request.session.get('context_invoice')
-    # return HttpResponse(context)
+#     context = request.session.get('context_invoice')
+#     # return HttpResponse(context)
 
-    response = HttpResponse(content_type='application/pdf')
+#     response = HttpResponse(content_type='application/pdf')
 
-    response['Coontent-Disposition'] = 'filename="invoice.pdf"'
+#     response['Coontent-Disposition'] = 'filename="invoice.pdf"'
 
-    template = get_template(template_path)
+#     template = get_template(template_path)
 
-    html = template.render(context)
+#     html = template.render(context)
 
-    # create pdf
-    pisa_status = pisa.CreatePDF(
-        html, dest=response
-    )
+#     # create pdf
+#     pisa_status = pisa.CreatePDF(
+#         html, dest=response
+#     )
 
-    # if error
-    if pisa_status.err:
-        return HttpResponse('We had some error <pre>' + html + '</pre>')
-    return response
+#     # if error
+#     if pisa_status.err:
+#         return HttpResponse('We had some error <pre>' + html + '</pre>')
+#     return response

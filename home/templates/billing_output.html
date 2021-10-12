@@ -297,15 +297,15 @@
           <td>{{amount}}</td>
         </tr>
         {% for tax in taxs %}
-        <tr>
-          <td></td>
-          <td>{{tax.type}}</td>
-          <td></td>
-          <td></td>
-          <td>{{tax.rate}}</td>
-          <td>%</td>
-          <td>{{tax.amount}}</td>
-        </tr>
+          <tr>
+            <td></td>
+            <td>{{tax.type}}</td>
+            <td></td>
+            <td></td>
+            <td>{{tax.rate}}</td>
+            <td>%</td>
+            <td>{{tax.amount}}</td>
+          </tr>
         {% endfor %}
         <tfoot>
           <td></td>
@@ -336,7 +336,7 @@
           <td>HSN/SAC</td>
           <td>Taxable value</td>
           <td>
-            <div class="row g-0">Integrated Tax</div>
+            <div class="row g-0">Tax</div>
             <div class="row g-0 border-top border-dark">
               <div class="col border-end border-dark text-center">Rate</div>
               <div class="col text-center">Amount</div>
@@ -344,17 +344,18 @@
           </td>
           <td>Total Tax Amount</td>
         </thead>
-        <tr>
-          <td>{{hsn}}</td>
-          <td>{{tax.ablevalue}}</td>
-          <td>
-            <div class="row g-0">
-              <div class="col border-end border-dark">{{tax.rate}}%</div>
-              <div class="col">{{tax.amount}}</div>
-            </div>
-          </td>
-          <td>465.47</td>
-        </tr>
+        {% for tax in taxs %}{% endfor %}
+          <tr>
+            <td>{{hsn}}</td>
+            <td>{{amount}}</td>
+            <td>
+              <div class="row g-0">
+                <div class="col border-end border-dark">18%</div>
+                <div class="col">{{tax}}</div>
+              </div>
+            </td>
+            <td>{{tax}}</td>
+          </tr>
       </table>
       <div class="row g-0">
         <div class="col-auto">Tax Amount (in words)</div>
@@ -389,6 +390,7 @@
         </div>
       </div>
     </section>
+      {% comment %} <a class="btn btn-primary m-2" href="{% url "invoice_pdf" %}" target="_blank">Create Invoice Pdf</a> {% endcomment %}
   </div>
 
   <div class="row d-print-none">
