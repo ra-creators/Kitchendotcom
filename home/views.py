@@ -5,12 +5,12 @@ from django.shortcuts import redirect, render, get_object_or_404
 # importing calculation model is removed
 from home.models import c_details, kitchen_details, Constant, City1, City2, City3, City4, City5, City6, City7, City8, City9, City10, TempLink
 from datetime import datetime
-from fpdf import FPDF
-from datetime import datetime
+from fpdf import FPDF, template
 from django.core.mail import EmailMessage
 from django.conf import settings
-from django.template.loader import render_to_string
-
+from django.template.loader import get_template, render_to_string
+from num2words import num2words
+# from xhtml2pdf import pisa
 
 values = Constant.objects.all().last()
 rate = {
@@ -481,7 +481,7 @@ def select_appliances(request):
 
 def kitchen_summary(request):
 
-    constant = Constant.objects.all().last()
+    # constant = Constant.objects.all().last()
     # key names are as per summary page
     context = {
         'name': request.session.get('name'),
@@ -617,8 +617,7 @@ def kitchen_summary(request):
     pdf.cell(200, 4, "3. No hidden costs further of any kind of expenses likeDesigning, transportation or installation,etc in case of turnkey.", ln=1, align="L")
     pdf.cell(200, 4, "4. Offers/schemes are marked as*For Free*.", ln=1, align="L")
     pdf.cell(200, 4, "5. Appliances and Services(Ceiling light, Civil work,Plumbing and Flooring) are not counted in above quotaion i.e. it will be quoted as per selection", ln=1, align="L")
-    pdf.cell(
-        200, 4, "6. Payment Schedule as prescribed by area manager.", ln=1, align="L")
+    pdf.cell(200, 4, "6. Payment Schedule as prescribed by area manager.", ln=1, align="L")
 
     pdf.add_page()
     pdf.image("static/pdf/bg_2.png", 0, 0, 210, 297, 'png')
@@ -1005,4 +1004,75 @@ def customer_form(request, slug):
 
 
 def billing(request):
-    return render(request, 'billing_form.html')
+    if request.method == "POST":
+        context_invoice = {
+        'ship_name': request.POST.get('ship_name'),
+        'ship_address' : request.POST.get('ship_address'),
+        'ship_gst' : request.POST.get('ship_gst'),
+        'ship_state' : request.POST.get('ship_state'),
+        'ship_statecode' : request.POST.get('ship_statecode'),
+        'bill_name' : request.POST.get('bill_name'),
+        'bill_address' : request.POST.get('bill_address'),
+        'bill_gst' : request.POST.get('bill_gst'),
+        'bill_state' : request.POST.get('bill_state'),
+        'bill_statecode' : request.POST.get('bill_statecode'),
+        'invoice_no' : request.POST.get('invoice_no'),
+        'date' : request.POST.get('date'),
+        'delivery_note' : request.POST.get('delivery_note'),
+        'payment_mode' : request.POST.get('payment_mode'),
+        'ref_no' : request.POST.get('ref_no'),
+        'other_ref' : request.POST.get('other_ref'),
+        'buy_ord_no' : request.POST.get('buy_ord_no'),
+        'buy_dated' : request.POST.get('buy_dated'),
+        'dispatch_date' : request.POST.get('dispatch_date'),
+        'delivery_date' : request.POST.get('delivery_date'),
+        'dispatch_through' : request.POST.get('dispatch_through'),
+        'destination' : request.POST.get('destination'),
+        'delivery_terms' : request.POST.get('delivery_terms'),
+        'item' : request.POST.get('item'),
+        'hsn' : request.POST.get('hsn'),
+        'amount' : request.POST.get('amount')
+        }
+
+    return render(request, 'billing_form.html')#, context_invoice
+
+def billing_output(request, context_invoice):
+    tax = round(int(context_invoice['amount']) * 0.18, 2)
+
+    if context_invoice['ship_statecode'] == '09':
+        taxs = {
+            'cgst' : {'type' : 'cgst', 'rate' : '9%', 'amount': tax/2},
+            'sgct' : {'type' : 'sgst', 'rate' : '9%', 'amount': tax/2}
+        }
+    else:
+        taxs = {
+            'igst' : {'type' : 'igst', 'rate' : '18%', 'amount': tax}
+        }
+
+    context_invoice['total'] = int(context_invoice['amount']) + tax
+    num2words(tax, to = 'ordinal')
+    num2words(context_invoice['total'], to = 'ordinal')
+    return render(request, 'billing_output.html', context_invoice)
+
+def invoice_pdf(request, context_invoice):
+    template_path = 'billing_output.html'
+
+    context = context_invoice
+
+    response = HttpResponse(content_type = 'application/pdf')
+
+    response['Coontent-Disposition'] = 'filename="invoice.pdf"'
+
+    template = get_template(template_path)
+
+    html = template.render(context)
+
+    # create pdf
+    pisa_status = pisa.CreatePdf(
+        html, dest=response
+    )
+
+    # if error
+    if pisa_status.err:
+        return HttpResponse('We had some error <pre>' + html +'</pre>')
+    return response

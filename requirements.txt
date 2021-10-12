@@ -9,3 +9,5 @@ fpdf==1.7.2
 pytz==2021.3
 six==1.16.0
 sqlparse==0.4.2
+num2words==0.5.10
+xhtml2pdf==0.2.5
