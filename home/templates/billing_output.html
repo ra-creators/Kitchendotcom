@@ -369,14 +369,13 @@
     <section class="row g-0 mt-auto">
       <div class="col">
         <div class="row g-0">
-          <p>Remarks :</p>
+          <p class="text-decoration-underline">Remarks :</p>
           <p>
-            Investment for Digital Marketing for the period 15 August 2021 to
-            14 September 2021
+            {{remarks}}
           </p>
         </div>
         <div class="row g-0">
-          <p class="fw-undrline">Declaration</p>
+          <p class="text-decoration-underline">Declaration</p>
           <p>
             We declare that this invoice shows the actual price of the goods
             described and that all particulars are true and correct.
@@ -390,12 +389,11 @@
         </div>
       </div>
     </section>
-      {% comment %} <a class="btn btn-primary m-2" href="{% url "invoice_pdf" %}" target="_blank">Create Invoice Pdf</a> {% endcomment %}
   </div>
 
   <div class="row d-print-none">
     <div class="col text-center">
-      <button onclick="window.print()" class="cmd btn btn-primary" >Print pdf</button>
+      <button onclick="window.print()" class="cmd btn btn-primary" >Print</button>
     </div>
   </div>
   </script>

@@ -10,7 +10,6 @@ from django.core.mail import EmailMessage
 from django.conf import settings
 from django.template.loader import render_to_string, get_template
 
-from xhtml2pdf import pisa
 import inflect
 num2words = inflect.engine()
 
@@ -1058,6 +1057,7 @@ def billing(request):
             'rate': int(request.POST.get('rate')),
             'per': int(request.POST.get('per')),
             'amount': request.POST.get('amount'),
+            'remarks': request.POST.get('remarks'),
             # 'taxs': [],
         }
         context_invoice['amount'] = context_invoice['quantity'] / \
