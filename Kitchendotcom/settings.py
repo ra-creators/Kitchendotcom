@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     'home.apps.HomeConfig',
     'project.apps.ProjectConfig',
     'blogandnews.apps.BlogandnewsConfig',
+    'billing.apps.BillingConfig',
     'jet.dashboard',
     'jet',
     'django.contrib.admin',

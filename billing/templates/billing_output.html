@@ -285,17 +285,19 @@
           <td>Quantity</td>
           <td>Rate</td>
           <td>per</td>
-          <td>Amount</td>
+          <td>Amount +tax</td>
         </thead>
-        <tr>
-          <td>1</td>
-          <td>{{item}}</td>
-          <td>{{hsn}}</td>
-          <td>{{quantity}}</td>
-          <td>{{rate}}</td>
-          <td>{{per}}</td>
-          <td>{{amount}}</td>
-        </tr>
+        {% for item in items %}
+          <tr>
+            <td>{{forloop.counter}}</td>
+            <td>{{item.item}}</td>
+            <td>{{item.hsn}}</td>
+            <td>{{item.quantity}}</td>
+            <td>{{item.rate}}</td>
+            <td>{{item.per}}</td>
+            <td>{{item.amount}}</td>
+          </tr>
+        {% endfor %}
         {% for tax in taxs %}
           <tr>
             <td></td>
@@ -333,6 +335,7 @@
     <section class="row g-0">
       <table>
         <thead>
+          <td></td>
           <td>HSN/SAC</td>
           <td>Taxable value</td>
           <td>
@@ -344,18 +347,29 @@
           </td>
           <td>Total Tax Amount</td>
         </thead>
-        {% for tax in taxs %}{% endfor %}
+        {% for item in items %}
           <tr>
-            <td>{{hsn}}</td>
-            <td>{{amount}}</td>
+            <td>{{forloop.counter}}</td>
+            <td>{{item.hsn}}</td>
+            <td>{{item.amount}}</td>
             <td>
               <div class="row g-0">
                 <div class="col border-end border-dark">18%</div>
-                <div class="col">{{tax}}</div>
+                <div class="col">{{item.tax}}</div>
               </div>
             </td>
+            <td>{{item.tax}}</td>
+          </tr>
+        {% endfor %}
+        <tfoot>
+          <tr>
+            <td></td>
+            <td>Total</td>
+            <td>{{total_wo_tax}}</td>
+            <td>18%</td>
             <td>{{tax}}</td>
           </tr>
+        </tfoot>
       </table>
       <div class="row g-0">
         <div class="col-auto">Tax Amount (in words)</div>

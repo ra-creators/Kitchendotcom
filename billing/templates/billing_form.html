@@ -47,6 +47,13 @@
     td {
       border: 1px solid black;
     }
+    #item-area{
+      counter-reset: rowNumber;
+    }
+    #item-area>tr>th::before{
+      counter-increment: rowNumber;
+      content: counter(rowNumber);
+    }
   </style>
 </head>
 
@@ -229,35 +236,45 @@
     </section>
 
     {% comment %} table section {% endcomment %}
-    <section class="row g-0">
-      <table class="cell">
+    <section class="row g-0 border border-dark">
+      <div class="row text-end">
+        <div class="col text-end">
+          <button class="btn btn-primary m-2" id="add-item" >Add item</button>
+        </div>
+      </div>
+      <table class="cell table table-hover">
         <thead>
-          <td>SI No.</td>
-          <td>Description of Service</td>
-          <td>HSN/SAC</td>
-          <td>Quantity</td>
-          <td>Rate</td>
-          <td>per</td>
+          <tr>  
+            <th scope="col">SI No.</th>
+            <th scope="col">Description of Service</th>
+            <th scope="col">HSN/SAC</th>
+            <th scope="col">Quantity</th>
+            <th scope="col">Rate</th>
+            <th scope="col">per</th>
+          </tr>
         </thead>
-        <tr>
-          <td>1</td>
-          <td>
-            <input type="text" placeholder="Item Name" name="item" id="item">
-          </td>
-          <td>
-            <input type="text" placeholder="HSN Code" name="hsn" id="hsn">
-          </td>
-          <td>
-            <input type="digit" value="0" placeholder="Quantity" name="quantity" id="quantity">
-          </td>
-          <td>
-            <input type="digit" value="0" placeholder="rate" name="rate" id="rate">
-          </td>
-          <td>
-            <input type="digit" value="1" placeholder="per" name="per" id="per">
-          </td>
-        </tr>
+        <tbody id="item-area" >
+          <tr>
+            <th scope="row"></th>
+            <td>
+              <input type="text" placeholder="Item Name" name="item" id="item">
+            </td>
+            <td>
+              <input type="text" placeholder="HSN Code" name="hsn" id="hsn">
+            </td>
+            <td>
+              <input type="digit" value="0" placeholder="Quantity" name="quantity" id="quantity">
+            </td>
+            <td>
+              <input type="digit" value="0" placeholder="rate" name="rate" id="rate">
+            </td>
+            <td>
+              <input type="digit" value="1" placeholder="per" name="per" id="per">
+            </td>
+          </tr>
+        </tbody>
       </table>
+    </section>
 
       <!-- footer -->
     <section class="row g-0 mt-auto">
@@ -291,6 +308,35 @@
         </div>
       </div>
   </form>
+  <script>
+    const itemArea = document.getElementById("item-area")
+    const addItem = document.getElementById("add-item")
+    const newRowContent = `
+            <th scope="row"></th>
+            <td>
+              <input type="text" placeholder="Item Name" name="item" id="item">
+            </td>
+            <td>
+              <input type="text" placeholder="HSN Code" name="hsn" id="hsn">
+            </td>
+            <td>
+              <input type="digit" value="0" placeholder="Quantity" name="quantity" id="quantity">
+            </td>
+            <td>
+              <input type="digit" value="0" placeholder="rate" name="rate" id="rate">
+            </td>
+            <td>
+              <input type="digit" value="1" placeholder="per" name="per" id="per">
+            </td>
+    `
+    addItem.addEventListener('click', (e)=>{
+      e.preventDefault();
+      console.log('clicked')
+      let newRow = itemArea.insertRow()
+      newRow.innerHTML = newRowContent
+      // itemArea.append(newRow)
+    })
+  </script>
 </body>
 
 </html>
