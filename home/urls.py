@@ -75,7 +75,7 @@ urlpatterns = [
     path("summary/buildpkg", views.kitchen_summary_buildpkg,
          name='kitchen_summary_buildpkg'),
     path("custormerform/<str:slug>", views.customer_form, name='customer_form'),
-    path("billing", views.billing, name='billing'),
+    path("billing/", views.billing, name='billing'),
     #     path("billing_output", views.billing_output, name='billing_output'),
     # path("invoice_pdf", views.invoice_pdf, name='invoice_pdf'),
 ]

@@ -66,7 +66,7 @@
           <!-- address -->
           <p>
             <label for="franch_address">Address</label>
-            <textarea type="text" placeholder="ASH BHAIRO, VARANASI" name="franch_address" id="franch_address"></textarea>
+            <textarea type="text" placeholder="ASH BHAIRO, VARANASI"  rows="1" name="franch_address" id="franch_address"></textarea>
           </p>
           <div class="row g-0">
             <label for="franch_gst"  class="col">GSTIN/UIN</label>
@@ -106,7 +106,7 @@
           <!-- address -->
           <p>
             <label for="ship_address">Address</label>
-            <textarea type="text" name="ship_address" id="ship_address"> </textarea>
+            <textarea type="text" name="ship_address" id="ship_address" rows="1" > </textarea>
           </p>
           <div class="row g-0">
             <label for="ship_gst" class="col">GSTIN/UIN</label>
@@ -139,7 +139,7 @@
           <!-- address -->
           <p>
             <label for="bill_address">Address</label>
-            <textarea type="text" name="bill_address" id="bill_address"> </textarea>
+            <textarea type="text" name="bill_address" id="bill_address" rows="1" > </textarea>
           </p>
           <div class="row g-0">
             <label for="bill_gst" class="col">GSTIN/UIN</label>
@@ -259,8 +259,34 @@
         </tr>
       </table>
 
-      <div class="row text-center">
-        <div class="col-auto">
+      <!-- footer -->
+    <section class="row g-0 mt-auto">
+      <div class="col">
+        <div class="row g-0">
+          <p>Remarks :</p>
+          <p>
+            <textarea name="remarks" id="remarks" cols="30" rows="1"></textarea>
+          </p>
+        </div>
+        <div class="row g-0">
+          <p class="fw-undrline">Declaration</p>
+          <p>
+            We declare that this invoice shows the actual price of the goods
+            described and that all particulars are true and correct.
+          </p>
+        </div>
+      </div>
+      <div class="col d-flex flex-column">
+        <div class="cell mt-auto d-flex flex-column" style="height: 50%">
+          <p class="row g-0 fw-bold">for RAJAT AGRAWAL CREATORS</p>
+          <p class="row g-0 mt-auto">Authorised Signatory</p>
+        </div>
+      </div>
+    </section>
+  </div>
+
+      <div class="row text-center p-2 m-2">
+        <div class="col text-center">
           <button class="btn btn-primary">Submit</button>
         </div>
       </div>

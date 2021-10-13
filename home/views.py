@@ -2,15 +2,15 @@ from django.http.response import HttpResponse, FileResponse
 from django.http import HttpResponseRedirect
 from django.shortcuts import redirect, render, get_object_or_404
 # importing calculation model is removed
-from home.models import c_details, kitchen_details, Constant, City1, City2, City3, City4, City5, City6, City7, City8, City9, City10, TempLink
+from home.models import City11, City12, City13, Other, c_details, kitchen_details, Constant, City1, City2, City3, City4, City5, City6, City7, City8, City9, City10, TempLink
 from home.forms import KitchenDetailsForm, KitchenImageFormSet, KitchenVideoFormSet
 from datetime import datetime
 from fpdf import FPDF, template
 from django.core.mail import EmailMessage
 from django.conf import settings
 from django.template.loader import render_to_string, get_template
+from django.contrib.admin.views.decorators import staff_member_required
 
-from xhtml2pdf import pisa
 import inflect
 num2words = inflect.engine()
 
@@ -536,6 +536,10 @@ def kitchen_summary(request):
         'Bhadohi': City8(Location=context['location'], date=datetime.today()),
         'Gorakhpur': City9(Location=context['location'], date=datetime.today()),
         'Sonbhadra': City10(Location=context['location'], date=datetime.today()),
+        'Azamgarh': City11(Location=context['location'], date=datetime.today()),
+        'Kanpur': City12(Location=context['location'], date=datetime.today()),
+        'Jaunpur': City13(Location=context['location'], date=datetime.today()),
+        'Other': Other(Location=context['location'], date=datetime.today())
         # 'Ghazipur' : City10(Phone = details, Shape = context['shape'], Size = size, Loft = context['loft'], Type = context['type'], Accessories = context['accessories'], Material = context['material'], Finish = context['finish'],Price = cal, Location = context['location'], date = datetime.today()),
         # 'Azamgarh' :City10(Phone = details, Shape = context['shape'], Size = size, Loft = context['loft'], Type = context['type'], Accessories = context['accessories'], Material = context['material'], Finish = context['finish'],Price = cal, Location = context['location'], date = datetime.today()),
         # 'Kanpur' : City10(Phone = details, Shape = context['shape'], Size = size, Loft = context['loft'], Type = context['type'], Accessories = context['accessories'], Material = context['material'], Finish = context['finish'],Price = cal, Location = context['location'], date = datetime.today()),
@@ -786,7 +790,11 @@ def kitchen_summary_buildpkg(request):
         'Lucknow': City7(Location=context['location'], date=datetime.today()),
         'Bhadohi': City8(Location=context['location'], date=datetime.today()),
         'Gorakhpur': City9(Location=context['location'], date=datetime.today()),
-        'Sonbhadra': City10(Location=context['location'], date=datetime.today()),
+        'Ghazipur': City10(Location=context['location'], date=datetime.today()),
+        'Azamgarh': City11(Location=context['location'], date=datetime.today()),
+        'Kanpur': City12(Location=context['location'], date=datetime.today()),
+        'Jaunpur': City13(Location=context['location'], date=datetime.today()),
+        'Other': Other(Location=context['location'], date=datetime.today())
         # 'Ghazipur' : City10(Phone = details, Shape = context['shape'], Size = size, Loft = context['loft'], Type = context['type'], Accessories = context['accessories'], Material = context['material'], Finish = context['finish'],Price = cal, Location = context['location'], date = datetime.today()),
         # 'Azamgarh' :City10(Phone = details, Shape = context['shape'], Size = size, Loft = context['loft'], Type = context['type'], Accessories = context['accessories'], Material = context['material'], Finish = context['finish'],Price = cal, Location = context['location'], date = datetime.today()),
         # 'Kanpur' : City10(Phone = details, Shape = context['shape'], Size = size, Loft = context['loft'], Type = context['type'], Accessories = context['accessories'], Material = context['material'], Finish = context['finish'],Price = cal, Location = context['location'], date = datetime.today()),
@@ -1017,6 +1025,7 @@ def customer_form(request, slug):
     return render(request, 'customer_form.html', context)
 
 
+@staff_member_required
 def billing(request):
     if request.method == "POST":
         context_invoice = {
@@ -1058,6 +1067,7 @@ def billing(request):
             'rate': int(request.POST.get('rate')),
             'per': int(request.POST.get('per')),
             'amount': request.POST.get('amount'),
+            'remarks': request.POST.get('remarks'),
             # 'taxs': [],
         }
         context_invoice['amount'] = context_invoice['quantity'] / \

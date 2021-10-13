@@ -1,14 +1,14 @@
 #line1{
-  stroke: white;
-}
+    stroke: white;
+  }
 
 html, body {
-  width: 100%;
-  min-height: 100%;
+    width: 100%;
+    min-height: 100%;
 }
 
 #svg{
-  position: absolute;
-  width: 100%;
-  height: 100%;
-}
+    position: absolute;
+    width: 100%;
+    height: 100%;
+  }

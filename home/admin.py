@@ -1,7 +1,7 @@
 from django.utils.html import format_html
 from datetime import date, datetime, timedelta
 from home.models import c_details, kitchen_details, Constant
-from home.models import City1, City2, City3, City4, City5, City6, City7, City8, City9, City10, City11
+from home.models import City1, City2, City3, City4, City5, City6, City7, City8, City9, City10, City11, City12, City13, Other
 from home.models import TempLink, KitchenImage, KitchenVideo
 from django.db import models
 from django.contrib import admin
@@ -143,6 +143,9 @@ admin.site.register(City8, CitysAdmin)
 admin.site.register(City9, CitysAdmin)
 admin.site.register(City10, CitysAdmin)
 admin.site.register(City11, CitysAdmin)
+admin.site.register(City12, CitysAdmin)
+admin.site.register(City13, CitysAdmin)
+admin.site.register(Other, CitysAdmin)
 # admin.site.register(KitchenImage)
 # admin.site.register(KitchenVid)
 
