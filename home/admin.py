@@ -86,6 +86,10 @@ class CitysAdmin(admin.ModelAdmin):
     list_display = ['Location', 'customer_name',
                     'kitchen_shape', 'kitchen_size', 'price', 'getTempLink', 'link_expiry', 'invoice']
 
+    def Location(self, x):
+        location = x.kitchen.Location
+        return location
+
     def customer_name(self, x):
         cust_name = x.kitchen.Name
         link = "<a href=\"/admin/home/kitchen_details/{link}\">{link_name}</a>".format(
