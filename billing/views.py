@@ -49,6 +49,7 @@ def billing(request):
             'amount': request.POST.getlist('amount'),
 
             'remarks': request.POST.get('remarks'),
+            'for': request.POST.get('for'),
             # 'taxs': [],
         }
         # context_invoice['amount'] = context_invoice['quantity'] / \
