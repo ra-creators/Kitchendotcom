@@ -34,12 +34,11 @@
     <div class="container content">
       {{blog.content|safe}}
 
-      <div class="d-flex align-items-center justify-content-between">
-        <i class="far fa-thumbs-up"></i>
-        <i class="px-2 far fa-comment-dots"></i>
-        <i class="ms-auto fas fa-share-alt"></i>
-        <i class="px-2 far fa-bookmark"></i>
-        <div></div>
+      <div class="d-flex align-items-center justify-content-start">
+        <div class="row">
+          <a class="col-auto" href="{% url 'blog_like' blog.id %}"><i class="far fa-thumbs-up"></i></a>
+          <div class="col-auto"><p>{% if blog.likes %} {{blog.likes}} {% endif %}</p></div>
+        </div>     
       </div>
     </div>
   </div>
@@ -57,7 +56,7 @@
           <div class="d-flex justify-content-between align-items-center">
             <span>
               <small class="font-weight-bold text-primary">{{comment.mail}}</small>
-              <small class="font-weight-bold">{{comment.comment}}</small></span>
+              <small class="font-weight-bold">{{comment.comment | safe}}</small></span>
           </div> <small class="text-muted">{{comment.timestamp | timesince}} ago</small>
         </div>
         {% endfor %}

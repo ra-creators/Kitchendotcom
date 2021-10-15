@@ -6,10 +6,10 @@ from django.utils.timezone import now
 class Blog(models.Model):
     title = models.CharField(max_length=100, default="Title")
     author = models.CharField(max_length=100, default="admin")
-    date = models.DateField(auto_now=True)
+    date = models.DateField( auto_created=True)
     image = models.FileField(upload_to="blogs/", max_length=100)
     content = RichTextField()
-
+    likes  = models.IntegerField(default=0)
     class Meta:
         ordering = ['-date']
 

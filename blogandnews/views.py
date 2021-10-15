@@ -19,6 +19,14 @@ def blog(request, blogId):
     return render(request, 'blog.html', context)
 
 
+def blog_like(request, blogId):
+    blog = get_object_or_404(Blog, id=blogId)
+    blog.likes = blog.likes + 1
+    blog.save()
+
+    return redirect("blog", blogId=blogId)
+
+
 def comments(request, blogId):
     if request.method == "POST":
         comment = request.POST.get("comment")
