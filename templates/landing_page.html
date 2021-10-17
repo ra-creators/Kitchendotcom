@@ -22,7 +22,12 @@
 </head>
 
 <body>
-  <nav>
+
+  {% comment %} https://codepen.io/MarcoGuglielmelli/pen/lLCxy {% endcomment %}
+  <canvas id="canvas"></canvas>
+
+
+   <nav>
     <div class="brand">
       <img src="{%static "landing page/img/nav_lamp.png" %}" alt="" />
       <a href="/">
@@ -37,13 +42,13 @@
         <a href="/" class="active">Home</a>
       </li>
       <li>
-        <a href="/aboutus">About Us</a>
+        <a href="/aboutus">AboutUs</a>
       </li>
       <li>
-        <a href="/blogandnews">Blog & News</a>
+        <a href="/blogandnews">Blog&News</a>
       </li>
       <li>
-        <a href="/contactus">Contact Us</a>
+        <a href="/contactus">ContactUs</a>
       </li>
     </ul>
     <div class="icon" onclick="navButton()">
@@ -222,6 +227,12 @@
         formErr('fill all fields')
     })
   </script>
+
+  <script src="https://www.marcoguglie.it/Codepen/AnimatedHeaderBg/demo-1/js/EasePack.min.js"></script>
+  <script src="https://www.marcoguglie.it/Codepen/AnimatedHeaderBg/demo-1/js/rAF.js"></script>
+  <script src="https://www.marcoguglie.it/Codepen/AnimatedHeaderBg/demo-1/js/TweenLite.min.js"></script>
+
+  <script src="{% static "/landing page/js/landing_animation.js"%}"></script>
 
 </body>
 
