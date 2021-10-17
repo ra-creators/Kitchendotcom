@@ -5,11 +5,13 @@ from .models import Blog, News, BlogComment
 # admin.site.register((Blog, BlogComment))
 admin.site.register(News)
 
+
 class CommentInline(admin.StackedInline):
     model = BlogComment
     extra = 0
 
+
 @admin.register(Blog)
 class Blog_admin(admin.ModelAdmin):
-    list_display = ['title','likes','date']
+    list_display = ['title', 'likes', 'date']
     inlines = [CommentInline]

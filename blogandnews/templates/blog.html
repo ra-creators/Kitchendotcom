@@ -36,7 +36,7 @@
 
       <div class="d-flex align-items-center justify-content-start">
         <div class="row">
-          <a class="col-auto" href="{% url 'blog_like' blog.id %}"><i class="far fa-thumbs-up"></i></a>
+          <a id="like-link" blogId={{blog.id}} class="col-auto disabled" href="{% url 'blog_like' blog.id %}"><i class="far fa-thumbs-up"></i></a>
           <div class="col-auto"><p>{% if blog.likes %} {{blog.likes}} {% endif %}</p></div>
         </div>     
       </div>
@@ -87,6 +87,7 @@
 
 
   <script src="{%static "common/js/nav.js"%}"></script>
+  <script src="{%static "like.js"%}"></script>
 </body>
 
 </html>
