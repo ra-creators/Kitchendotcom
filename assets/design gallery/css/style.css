@@ -61,10 +61,7 @@ body {
 }
 
 #first .punch-line {
-  color: #368685;
-  position: relative;
-  -ms-flex-item-align: end;
-      align-self: flex-end;
+  height: 100%;
   font-family: Playfair Display;
   font-style: normal;
   font-weight: bold;
@@ -72,6 +69,18 @@ body {
   line-height: 64px;
   text-align: center;
   color: #368685;
+  -webkit-animation: glow 1s ease-in-out infinite alternate;
+          animation: glow 1s ease-in-out infinite alternate;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+@-webkit-keyframes glow {
+  from {
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #fff, 0 0 50px #fff, 0 0 60px #fff, 0 0 70px #fff;
+  }
+  to {
+    text-shadow: 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #fff, 0 0 50px #fff, 0 0 60px #fff, 0 0 70px #fff, 0 0 80px #fff;
+  }
 }
 
 #second {

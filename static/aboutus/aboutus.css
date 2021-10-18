@@ -6,6 +6,10 @@ body {
   font-family: Playfair Display;
 }
 
+.brand-name {
+  color: white !important;
+}
+
 #sec-one h1 {
   background-color: #ffd9bf;
   width: -webkit-fit-content;
@@ -102,13 +106,13 @@ body {
   padding: 1.5rem 0;
 }
 
-@media only screen and (max-width: 600px){
-	#sec-one h1{
-		position: unset;
-		font-size: 40px;
-		padding: 1rem 2rem;
-		text-align: center;
-		width:100%;
-	}
+@media only screen and (max-width: 1000px) {
+  #sec-one h1 {
+    position: unset;
+    font-size: 40px;
+    padding: 1rem 2rem;
+    text-align: center;
+    width: 100%;
+  }
 }
 /*# sourceMappingURL=aboutus.css.map */
