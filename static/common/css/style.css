@@ -179,10 +179,11 @@ a:hover {
 }
 
 #common-footer {
-  background-image: url("/static/common/img/Rectangle 32.svg");
-  background-repeat: no-repeat;
-  background-size: cover;
   font-family: Open Sans;
+}
+
+#common-footer .content {
+  background-color: #006665;
 }
 
 #common-footer .bg {
@@ -238,10 +239,11 @@ a:hover {
   width: 1rem;
 }
 
-#common-footer .middle-row {
+#common-footer .bottom-row {
   border: 0.97982px solid #ffd2b2;
   border-left: 0;
   border-right: 0;
+  border-bottom: 0;
 }
 
 #common-footer a {
