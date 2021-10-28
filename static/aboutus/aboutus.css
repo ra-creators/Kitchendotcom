@@ -6,10 +6,6 @@ body {
   font-family: Playfair Display;
 }
 
-.brand-name {
-  color: white !important;
-}
-
 #sec-one h1 {
   background-color: #ffd9bf;
   width: -webkit-fit-content;

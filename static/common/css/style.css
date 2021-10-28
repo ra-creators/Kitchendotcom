@@ -1,3 +1,8 @@
+#common-nav {
+  background-color: #2B807F;
+  color: #FFD2B2;
+}
+
 nav {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -9,7 +14,11 @@ nav {
       -ms-flex-pack: justify;
           justify-content: space-between;
   text-decoration: none;
-  padding: 1rem 0;
+  padding: 2rem 1.4rem;
+  color: #FFD2B2;
+  margin-left: -1.4rem;
+  margin-right: -1.4rem;
+  margin-bottom: 3rem;
 }
 
 nav .brand {
@@ -22,7 +31,6 @@ nav .brand {
 }
 
 nav .brand-name {
-  color: rgba(0, 102, 101, 0.9);
   font-family: Open Sans;
   font-size: 2.2rem;
   font-style: normal;
@@ -33,15 +41,15 @@ nav .brand-name {
 }
 
 nav #nav-links .active {
-  border-bottom: 4.0217px solid rgba(0, 102, 101, 0.79);
+  border-bottom: 4.0217px solid #FFD2B2;
 }
 
 nav #nav-links .active a {
-  color: #fcb685;
+  color: #FFD2B2;
 }
 
 nav #nav-links li a:hover {
-  border-bottom: 4.0217px solid rgba(0, 102, 101, 0.79);
+  border-bottom: 4.0217px solid #FFD2B2;
 }
 
 nav .links {
@@ -60,7 +68,7 @@ nav .links li {
 }
 
 nav .links li a {
-  color: #fbc49e;
+  color: #FFD2B2;
   text-decoration: none;
   font-family: "Poppins", sans-serif;
   font-size: 1.6rem;
@@ -74,7 +82,7 @@ nav .links li a {
 }
 
 nav .links li a:hover {
-  color: #fcb685;
+  color: #FFD2B2;
 }
 
 nav li:last-child {
@@ -99,7 +107,7 @@ nav .icon {
     text-align: center;
   }
   nav .links li .active {
-    border-bottom: 4.0217px solid #fcb685 !important;
+    border-bottom: 4.0217px solid #FFD2B2 !important;
   }
   nav .links .closebtn {
     display: block;
@@ -134,7 +142,7 @@ nav .icon {
   }
   nav .responsive li:hover {
     background-color: rgba(66, 61, 61, 0.18);
-    border-bottom: 4.0217px solid #fcb685 !important;
+    border-bottom: 4.0217px solid #FFD2B2 !important;
   }
 }
 

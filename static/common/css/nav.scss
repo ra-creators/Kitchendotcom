@@ -1,12 +1,22 @@
-$primary-color: rgba(0, 102, 101, 0.9);
-$font-color: rgb(252, 182, 133);
+$primary-color:#2B807F;
+$font-color: #FFD2B2;
+
+#common-nav{
+  background-color: $primary-color;
+  color: $font-color;
+}
 
 nav {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
   text-decoration: none;
-  padding: 1rem 0;
+  padding: 2rem 1.4rem;
+  color: $font-color;
+
+  margin-left: -1.4rem;
+  margin-right: -1.4rem;
+  margin-bottom: 3rem;
 
   .brand {
     display: flex;
@@ -15,7 +25,6 @@ nav {
 
   .brand-name {
     // padding-left: 2.5rem;
-    color: $primary-color;
     font-family: Open Sans;
     font-size: 2.2rem;
     font-style: normal;
@@ -31,12 +40,12 @@ nav {
         color: $font-color;
       }
 
-      border-bottom: 4.0217px solid rgba(0, 102, 101, 0.79);
+      border-bottom: 4.0217px solid $font-color;
     }
 
     li {
       a:hover {
-        border-bottom: 4.0217px solid rgba(0, 102, 101, 0.79);
+        border-bottom: 4.0217px solid $font-color;
       }
     }
   }
@@ -53,7 +62,7 @@ nav {
       padding: 0 2.5rem;
 
       a {
-        color: #fbc49e;
+        color: $font-color;
         text-decoration: none;
         font-family: "Poppins", sans-serif;
         font-size: 1.6rem;

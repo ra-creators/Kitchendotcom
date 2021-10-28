@@ -51,10 +51,13 @@ $footer-primary:rgba(255, 210, 178, 1);
 
 #common-footer {
   // background-color: rgba(255, 210, 178, 0.92);
-  background-image: url("/static/common/img/Rectangle\ 32.svg");
-  background-repeat: no-repeat;
-  background-size: cover;
+  // background-image: url("/static/common/img/Rectangle\ 32.svg");
+  // background-repeat: no-repeat;
+  // background-size: cover;
   font-family: Open Sans;
+  .content {
+    background-color: $footer-bg;
+  }
 
   .bg {
     // height: 100%;
@@ -104,10 +107,11 @@ $footer-primary:rgba(255, 210, 178, 1);
     width: 1rem;
   }
 
-  .middle-row {
+  .bottom-row {
     border: 0.979821px solid $footer-primary;
     border-left: 0;
     border-right: 0;
+    border-bottom: 0;
   }
 
   a {
