@@ -1,5 +1,8 @@
 from django.shortcuts import render
 from django.contrib.admin.views.decorators import staff_member_required
+
+from billing.models import Bill, Bill_Item
+
 import inflect
 num2words = inflect.engine()
 
@@ -52,6 +55,48 @@ def billing(request):
             'for': request.POST.get('for'),
             # 'taxs': [],
         }
+
+        bill_obj_value = {
+            'franch_name': request.POST.get('franch_name'),
+            'franch_address': request.POST.get('franch_address'),
+            'franch_gst': request.POST.get('franch_gst'),
+            'franch_state': request.POST.get('franch_state'),
+            'franch_statecode': request.POST.get('franch_statecode'),
+            'franch_mail': request.POST.get('franch_mail'),
+
+            'ship_name': request.POST.get('ship_name'),
+            'ship_address': request.POST.get('ship_address'),
+            'ship_gst': request.POST.get('ship_gst'),
+            'ship_state': request.POST.get('ship_state'),
+            'ship_statecode': request.POST.get('ship_statecode'),
+
+            'bill_name': request.POST.get('bill_name'),
+            'bill_address': request.POST.get('bill_address'),
+            'bill_gst': request.POST.get('bill_gst'),
+            'bill_state': request.POST.get('bill_state'),
+            'bill_statecode': request.POST.get('bill_statecode'),
+
+            'invoice_no': request.POST.get('invoice_no'),
+            'date': request.POST.get('date'),
+            'delivery_note': request.POST.get('delivery_note'),
+            'payment_mode': request.POST.get('payment_mode'),
+            'ref_no': request.POST.get('ref_no'),
+            'other_ref': request.POST.get('other_ref'),
+            'buy_ord_no': request.POST.get('buy_ord_no'),
+            'buy_dated': request.POST.get('buy_dated'),
+            'dispatch_date': request.POST.get('dispatch_date'),
+            'delivery_date': request.POST.get('delivery_date'),
+            'dispatch_through': request.POST.get('dispatch_through'),
+            'destination': request.POST.get('destination'),
+            'delivery_terms': request.POST.get('delivery_terms'),
+
+            'remarks': request.POST.get('remarks'),
+            '_for': request.POST.get('for'),
+            # 'taxs': [],
+        }
+        bill = Bill(**bill_obj_value)
+        bill.save()
+
         # context_invoice['amount'] = context_invoice['quantity'] / \
         # context_invoice['per']*context_invoice['rate']
 
@@ -89,6 +134,8 @@ def billing(request):
                 'tax': tax,
             }
             items.append(item)
+            bill_item = Bill_Item(bill=bill, **item)
+            bill_item.save()
 
         if context_invoice['franch_statecode'] == context_invoice['bill_statecode']:
             context_invoice['taxs'] = [
@@ -113,6 +160,12 @@ def billing(request):
             total_tax
         )
         request.session['context_invoice'] = context_invoice
+
+        bill.total = total_amount
+        bill.total_wo_tax = total_wo_tax
+        bill.tax = total_tax
+        bill.save()
+
         return render(request, 'billing_output.html', context_invoice)
 
     return render(request, 'billing_form.html')
