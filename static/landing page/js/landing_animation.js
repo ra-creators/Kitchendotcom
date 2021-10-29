@@ -90,20 +90,20 @@
         if(e.type == 'touchstart'){
             var touch = e.touches[0] || e.changedTouches[0];
             posx = touch.pageX;
-            posy = touch.pageY;
+            posy = touch.screenY;
         } else if ( e.type == 'mousemove' ) {
             if (e.pageX || e.pageY) {
                 posx = e.pageX;
-                posy = e.pageY;
+                posy = e.clientY;
             }
             else if (e.clientX || e.clientY)    {
-                posx = e.clientX + document.body.scrollLeft + document.documentElement.scrollLeft;
-                posy = e.clientY + document.body.scrollTop + document.documentElement.scrollTop;
+                posx = e.clientX;
+                posy = e.clientY;
             }
         }
-        console.log(target)
         target.x = posx;
         target.y = posy;
+        // console.log(target)
     }
 
     function scrollCheck() {
